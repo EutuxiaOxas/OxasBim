@@ -1,4 +1,8 @@
- .feather {
+body {
+    font-size: .875rem;
+  }
+  
+  .feather {
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
@@ -63,7 +67,7 @@
    */
   
   [role="main"] {
-    padding-top: 15px; /* Space for fixed navbar */
+    padding-top: 133px; /* Space for fixed navbar */
   }
   
   @media (min-width: 768px) {

@@ -15,6 +15,13 @@ class LandingCheck
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(auth()->user())
+        {
+            if(auth()->user()->roles->title == 'editor' || auth()->user()->roles->title == 'administrador'){
+                return $next($request);
+            }
+        }
+
+        return redirect('/cms');
     }
 }

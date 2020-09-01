@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Logo_Banner;
 class HomeController extends Controller
 {
     /**
@@ -11,18 +11,17 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function lading()
     {
-        return view('home');
+        $sliders = Logo_Banner::where('tipo', 'banner')->where('status', 1)->get();
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+        return view('landing', compact('sliders', 'logo'));
     }
 }

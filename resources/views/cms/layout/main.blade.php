@@ -8,8 +8,6 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
     <title>@yield('title')</title>
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style_cms.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
     <!--datables CSS básico-->
@@ -23,33 +21,15 @@
 
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <style type="text/css">
-
-        .acordeon_container{
-            max-height: 0;
-            overflow: hidden;
-            transition: all .4s linear;
-        }
-
-        .acordeon_item{
-            list-style: none;
-            
-        }
-
-        .nav-item:hover .acordeon_container{
-          max-height: 20rem;
-        }
-
-    </style>
-
+    <!-- Jquery -->
+    <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
 
 </head>
 
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('cms.home') }}">Dashboard</a>
-        <ul class="navbar-nav px-3">
+        <a class="navbar-brand col-auto col-sm-3 col-md-2 mr-0" href="{{ route('cms.home') }}">Dashboard</a>
+        <ul class="navbar-nav px-3 col-auto">
             <li class="nav-item text-nowrap">
                 <form action="{{route('login.logout')}}" method="POST" id="form_salir_sesion">
                     @csrf
@@ -60,7 +40,6 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-
             <!-- Navbar movil -->
             <nav class="navbar navbar-expand-lg navbar-light d-md-none mt-5 bg-light col-12">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,8 +57,6 @@
                 </ul>
               </div>
             </nav>
-
-
             <!-- Navbar Desktop -->
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
@@ -110,16 +87,14 @@
                 </div>
             </nav>
             <section class="col-md-10">
-                <main role="main">
+                <main role="main" class="main_cms pb-4">
                     @yield('content')
                 </main>
             </section>
         </div>
     </div>
 
-    <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-
     <script type="text/javascript">
         function cerrarSesion() {
             document.querySelector('#form_salir_sesion').submit();
@@ -127,7 +102,6 @@
     </script>
     <!-- datatables JS -->
     <script src="{{ asset('vendor/datatables/datatables.min.js') }}"></script>
-
     <!-- para usar botones en datatables JS -->
     <script src="{{ asset('vendor/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables/JSZip-2.5.0/jszip.min.js') }}"></script>

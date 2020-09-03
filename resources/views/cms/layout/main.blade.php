@@ -74,7 +74,6 @@
                         Usuarios
                     </a>
                   </li>
-
                 </ul>
               </div>
             </nav>
@@ -102,6 +101,9 @@
                           <ul class="acordeon_container">
                             <li class="acordeon_item">
                               <a href="{{route('banners.home')}}" class="nav-link">Home</a>
+                            </li>
+                            <li class="acordeon_item">
+                              <a href="{{route('blog.categories')}}" class="nav-link">Blog Categorias</a>
                             </li>
                           </ul>
                         </li>

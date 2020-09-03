@@ -58,4 +58,20 @@ Route::middleware('landing')->group(function () {
 	//ocultar/activar banners
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
-});
+
+	/*--------------- BLOG --------------*/
+
+
+		/*--------------- CATEGORIAS --------------*/
+
+	Route::get('/cms/blog/categorias', 'Cms\blog\BlogCategorieController@index')->name('blog.categories');
+
+	//métodos posts
+
+	Route::post('/cms/crear/categoria', 'Cms\blog\BlogCategorieController@crearCategoria')->name('blog.categories.create');
+
+	Route::post('/cms/editar/categoria/{id}', 'Cms\blog\BlogCategorieController@actualizarCategoria')->name('blog.categories.update');
+
+	Route::post('/cms/eliminar/categoria/{id}', 'Cms\blog\BlogCategorieController@eliminarCategoria')->name('blog.categories.destroy');
+
+});	

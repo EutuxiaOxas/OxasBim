@@ -74,4 +74,19 @@ Route::middleware('landing')->group(function () {
 
 	Route::post('/cms/eliminar/categoria/{id}', 'Cms\blog\BlogCategorieController@eliminarCategoria')->name('blog.categories.destroy');
 
+
+		/*--------------- ARTICULOS --------------*/
+
+	Route::get('/cms/blog/articulos', 'Cms\blog\ArticleController@index')->name('blog.articles');
+	Route::get('/cms/crear/articulo', 'Cms\blog\ArticleController@crearArticulo')->name('blog.article.create');
+	Route::get('/cms/editar/articulo/{id}', 'Cms\blog\ArticleController@editarArticulo')->name('blog.article.show');
+
+	//metodos posts
+
+	Route::post('/cms/guardar/articulo', 'Cms\blog\ArticleController@guardarArticulo')->name('blog.article.store');
+
+	Route::post('/cms/actualizar/articulo/{id}', 'Cms\blog\ArticleController@actualizarArticulo')->name('blog.article.update');
+
+	Route::post('/cms/eliminar/article/{id}', 'Cms\blog\ArticleController@eliminarArticulo')->name('blog.article.destroy');
+
 });	

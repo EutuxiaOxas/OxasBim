@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class BlogArticle extends Model
 {
-    protected $fillable = ['title', 'content', 'picture', 'keywords', 'autor_id', 'category_id'];
+    protected $fillable = ['title', 'content', 'picture', 'keywords', 'autor_id', 'category_id', 'date'];
+
+
+    public function author()
+    {
+    	return $this->belongsTo('App\User', 'autor_id');
+    }
+
+    public function category()
+    {
+    	return $this->belongsTo('App\BlogCategorie', 'category_id');
+    }
 }

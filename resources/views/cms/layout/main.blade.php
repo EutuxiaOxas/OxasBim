@@ -105,6 +105,9 @@
                             <li class="acordeon_item">
                               <a href="{{route('blog.categories')}}" class="nav-link">Blog Categorias</a>
                             </li>
+                            <li class="acordeon_item">
+                              <a href="{{route('blog.articles')}}" class="nav-link">Blog Articulos</a>
+                            </li>
                           </ul>
                         </li>
                         @endif

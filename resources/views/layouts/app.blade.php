@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     @yield('captcha')
 </head>
 <body>
@@ -40,6 +40,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="{{route('blog')}}" class="nav-link">Blog</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -82,5 +85,7 @@
             @yield('content')
         </main>
     </div>
+
+    
 </body>
 </html>

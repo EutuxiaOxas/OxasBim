@@ -46,6 +46,7 @@
 	                	<td>{{$articulo->date}}</td>
 	                	<td>
 	                		<a href="{{route('blog.article.show', $articulo->id)}}" class="btn btn-outline-success">Editar</a>
+	                		<button type="button" id="{{$articulo->id}}" class="btn btn-outline-success comentarios" data-toggle="modal" data-target="#modalComentarios">Comentarios</button>
 	                		<button type="button" id="{{$articulo->id}}" class="btn btn-outline-danger eliminar_button" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
 	                	</td>
 	                </tr>
@@ -79,6 +80,29 @@
 </div>
 
 
+<div class="modal fade" id="modalComentarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Comentarios</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="comments_container">
+                	
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script type="text/javascript">
 	let eliminarButtons = document.querySelectorAll('.eliminar_button');
 	let eliminarSubmit = document.getElementById('eliminar_submit');
@@ -102,6 +126,87 @@
 			});
 		});
 	}
+</script>
+
+
+<script type="text/javascript">
+	let commentsButtons = document.querySelectorAll('.comentarios');
+
+	if(commentsButtons)
+	{
+		commentsButtons.forEach(button => {
+			button.addEventListener('click', e => {
+				let id = e.target.id
+				getComment(id)
+			});
+		});
+	}
+
+
+//funciones axios comentarios
+	function getComment(id)
+	{
+		axios.get(`/get/comments/${id}`)
+			.then(response => {
+				modalComment(response.data)
+			})
+	}
+
+
+	function deleteComment(id, element)
+	{
+		axios.post(`/delete/comment/${id}`)
+			.then(response => {
+				if(response.status == 200)
+				{
+					element.remove();
+				}
+			});
+	}
+
+
+//funciones modales comentarios
+
+	function modalComment(comments)
+	{
+		const container = document.getElementById('comments_container')
+		container.innerHTML = '';
+
+
+		comments.forEach( comment => {
+			container.innerHTML += `
+				<div class="d-flex mb-2 justify-content-between comment_modal">
+					<p>${comment.comment}</p>
+					<div>
+						<a href="#" class="btn btn-outline-danger" id="${comment.id}">Eliminar</a>
+					</div>
+				</div>
+			`
+		});
+
+
+		commentEvents()
+	}
+
+	function commentEvents()
+	{
+		let comment_container = document.querySelectorAll('.comment_modal');
+
+		if(comment_container)
+		{
+			comment_container.forEach(comment => {
+				comment.addEventListener('click', e => {
+					if(e.target.textContent == 'Eliminar')
+					{
+						let id = e.target.id,
+							element = e.target.parentNode.parentNode;
+
+						deleteComment(id, element)
+					}
+				});
+			});
+		}
+ 	}
 </script>
 
 @endsection

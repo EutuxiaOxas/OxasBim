@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@lading')->name('home');
 
+
+Route::get('/blog', 'HomeController@blog')->name('blog');
+Route::get('/article/{id}', 'HomeController@showPost')->name('blog.show');
+
 Auth::routes();
 
 /*---------------Login --------------*/
@@ -89,4 +93,14 @@ Route::middleware('landing')->group(function () {
 
 	Route::post('/cms/eliminar/article/{id}', 'Cms\blog\ArticleController@eliminarArticulo')->name('blog.article.destroy');
 
-});	
+	//------- COMENTARIOS -----------
+	Route::get('/get/comments/{id}', 'Cms\blog\BlogCommentController@getComments');
+
+	Route::post('/delete/comment/{id}', 'Cms\blog\BlogCommentController@deleteComment');
+
+
+});
+
+/*--------------- ENVIO DE COMENTARIOS --------------*/
+
+	Route::post('/send/comment', 'Cms\blog\BlogCommentController@addComment');

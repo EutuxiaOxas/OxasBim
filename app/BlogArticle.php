@@ -18,4 +18,9 @@ class BlogArticle extends Model
     {
     	return $this->belongsTo('App\BlogCategorie', 'category_id');
     }
+
+    public function comments()
+    {
+    	return $this->hasMany('App\BlogComment', 'article_id');
+    }
 }

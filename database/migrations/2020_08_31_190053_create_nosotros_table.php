@@ -16,9 +16,10 @@ class CreateNosotrosTable extends Migration
         Schema::create('nosotros', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('subtitle');
             $table->text('description');
             $table->string('image');
-            $table->string('status');
+            $table->string('tipo');
             $table->timestamps();
         });
     }

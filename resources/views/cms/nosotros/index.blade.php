@@ -8,12 +8,18 @@
 	@if(session('error'))
 	    <div class="alert alert-danger my-4" role="alert">
 	      {{session('error')}}
+	      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	      </button>
 	    </div>
 	@endif
 
 	@if(session('message'))
 	    <div class="alert alert-success my-4" role="alert">
 	      {{session('message')}}
+	      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	      </button>
 	    </div>
 	@endif
 
@@ -21,7 +27,7 @@
 	<section class="row my-4">
 		<div class="col-12	 d-flex justify-content-between">
 			<h1>
-				Secciones nosotros
+				Nosotros
 			</h1>
 			<div>
 				<a href="{{route('nosotros.create')}}" class="btn btn-outline-success">Crear Sección</a>
@@ -29,7 +35,57 @@
 		</div>
 	</section>
 
+	
+
 	<hr>
+
+	<div>
+		<h3>Banner principal</h3>
+		<div class="row">
+			<div class="col-4">
+				@if(isset($banner))
+					<img src="{{asset('storage/'. $banner->image)}}" style="width: 100%; object-fit: cover;">
+				@else
+					<img src="" width="50">
+				@endif
+			</div>
+			<div class="col-8">
+				<form action="{{route('nosotros.store.banner')}}" method="POST" enctype="multipart/form-data">
+					@csrf
+					<div class="row">
+						<div class="col-12 form-group">
+							<h5>Titulo</h5>
+							@if(isset($banner))
+								<input class="form-control" type="text" value="{{$banner->title}}" name="title">
+							@else
+								<input class="form-control" type="text" name="title">
+							@endif
+						</div>
+						<div class="col-12 form-group">
+							<h5>Descripción</h5>
+							@if(isset($banner))
+								<textarea class="form-control" name="description">{{$banner->description}}</textarea>
+							@else
+								<textarea class="form-control" name="description"></textarea>
+							@endif
+						</div>
+						<div class="col-12 form-group">
+							<h5>Imagen</h5>
+							<input type="file" name="image">
+						</div>
+
+						<div class="col-12 form-group">
+							@if(isset($banner))
+								<input type="submit" class="btn btn-primary" value="Actualizar Banner">
+							@else 
+								<input type="submit" class="btn btn-primary" value="Crear Banner">
+							@endif
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 	<section>
 		<div class="table-responsive">
@@ -39,24 +95,24 @@
 		        <th>#</th>
 		        <th>Imagen</th>
 		        <th>Titulo</th>
+		        <th>subtitle</th>
 		        <th>Descripción</th>
-		        <th>Sección</th>
 		        <th>Acciones</th>
 		      </tr>
 		    </thead>
 		    <tbody>
-		      @foreach($banners as $banner)
+		      @foreach($secciones as $seccion)
 		      <tr>
-		        <td>{{$banner->id}}</td>
+		        <td>{{$seccion->id}}</td>
 		        <td>
-		        	<img src="{{asset('storage/'. $banner->image)}}" width="50">
+		        	<img src="{{asset('storage/'. $seccion->image)}}" width="50">
 		        </td>
-		        <td>{{$banner->title}}</td>
-		        <td>{{$banner->description}}</td>
-		        <td>{{$banner->status}}</td>
+		        <td>{{$seccion->title}}</td>
+		        <td>{{$seccion->subtitle}}</td>
+		        <td>{{substr($seccion->description, 0, 65)}} ...</td>
 		        <td class="d-flex">
-		          <a href="{{route('nosotros.show', $banner->id)}}" class="btn btn-outline-success mr-2">editar</a>
-		          <button type="button" id="{{$banner->id}}" class="btn btn-outline-danger eliminar" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+		          <a href="{{route('nosotros.show', $seccion->id)}}" class="btn btn-outline-success mr-2">editar</a>
+		          <button type="button" id="{{$seccion->id}}" class="btn btn-outline-danger eliminar" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
 		        </td>
 		      </tr>
 		      @endforeach
@@ -77,11 +133,12 @@
 	      <div class="modal-body">
 	        <form action="" id="eliminar_form" method="POST">
 	        	@csrf
+	        	<div id="modal_text"></div>
 	        </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar Banner</button>
+	        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar Seccion</button>
 	      </div>
 	    </div>
 	  </div>
@@ -109,15 +166,19 @@
 		{
 			eliminarButtons.forEach(buttons => {
 				buttons.addEventListener('click', (e) => {
-					let id = e.target.id
-					modalEliminar(id)
+					let id = e.target.id,
+						text = e.target.parentNode.parentNode.children[2].textContent;
+					modalEliminar(id, text)
 				});
 			});
 		}
 
 
-		function modalEliminar(id){
-			let formEliminar = document.getElementById('eliminar_form');
+		function modalEliminar(id, text){
+			let formEliminar = document.getElementById('eliminar_form'),
+				textEliminar = document.getElementById('modal_text');
+
+			textEliminar.innerHTML = `¿Seguro que desea eliminar la sección con titulo <strong>${text}</strong>?`;
 			formEliminar.action = `/cms/nosotros/eliminar/${id}`;
 		}
 	</script>

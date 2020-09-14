@@ -31,8 +31,10 @@ class HomeController extends Controller
 
     public function nosotros()
     {
-        $principal = Nosotro::where('status', 'principal')->first();
+        $principal = Nosotro::where('tipo', 'banner')->first();
+
+        $secciones = Nosotro::where('tipo', 'seccion')->get();
         
-        return view('nosotros', compact('principal'));
+        return view('nosotros', compact('principal', 'secciones'));
     }
 }

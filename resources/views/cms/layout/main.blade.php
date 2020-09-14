@@ -108,7 +108,7 @@
                               <a href="{{route('banners.home')}}" class="nav-link menu_hover">Home</a>
                             </li>
                             <li class="acordeon_item">
-                              <a href="{{route('nosotros.home')}}" class="nav-link">Nosotros</a>
+                              <a href="{{route('nosotros.home')}}" class="nav-link menu_hover">Nosotros</a>
                             </li>
                           </ul>
                         </li>

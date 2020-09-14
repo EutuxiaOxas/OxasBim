@@ -14,9 +14,72 @@ class NosotrosController extends Controller
 {
     public function index()
     {
-    	$banners = Nosotro::all();
+    	$secciones = Nosotro::where('tipo', 'seccion')->get();
+        $banner = Nosotro::where('tipo', 'banner')->first();
+    	return view('cms.nosotros.index', compact('secciones', 'banner'));
+    }
 
-    	return view('cms.nosotros.index', compact('banners'));
+    public function guardarBanner(Request $request)
+    {
+            
+
+            $banner = Nosotro::where('tipo', 'banner')->first();
+
+            if(isset($banner))
+            {
+
+                if($request->file('image'))
+                {
+                    $deleted = Storage::disk('public')->delete($banner->image);
+
+                    if(isset($deleted) || $banner->image == null)
+                    {
+
+                        $path = $request->file('image')->store('public');
+                        $file = Str::replaceFirst('public/', '',$path);
+
+                        $banner->update([
+                            'title' => $request->title,
+                            'subtitle' => 'banner principal',
+                            'description' => $request->description,
+                            'tipo' => 'banner',
+                            'image' => $file,
+                        ]);
+                    }
+                }else {
+                    $banner->update([
+                        'title' => $request->title,
+                        'subtitle' => 'banner principal',
+                        'description' => $request->description,
+                        'tipo' => 'banner',
+                    ]);
+                }
+
+                
+                return back()->with('message','Banner actualizado con éxito');
+
+
+            }else {
+
+                $path = $request->file('image')->store('public');
+                $file = Str::replaceFirst('public/', '',$path);
+
+
+                $banner = new Nosotro;
+
+                $banner->create([
+                    'title' => $request->title,
+                    'subtitle' => 'banner principal',
+                    'description' => $request->description,
+                    'tipo' => 'banner',
+                    'image' => $file,
+                ]);
+
+                return back()->with('message','Banner creado con éxito');
+            }
+
+            
+           
     }
 
     public function crearNosotros()
@@ -33,8 +96,9 @@ class NosotrosController extends Controller
     	$seccion = new Nosotro;
     	$seccion->create([
     		'title' => $request->title,
+            'subtitle' => $request->subtitle,
     		'description' => $request->description,
-    		'status' => $request->status,
+    		'tipo' => 'seccion',
     		'image' => $file,
     	]);
 
@@ -65,8 +129,8 @@ class NosotrosController extends Controller
 
     	        $banner->update([
     	            'title' => $request->title,
+                    'subtitle' => $request->subtitle,
     	            'description' =>$request->description,
-    	            'status' => $request->status,
     	            'image' => $file,
     	        ]);
     	        
@@ -77,7 +141,7 @@ class NosotrosController extends Controller
     	} else {
     	    $banner->update([
     	        'title' => $request->title,
-    	        'status' => $request->status,
+                'subtitle' => $request->subtitle,
     	        'description' =>$request->description,
     	    ]);
 

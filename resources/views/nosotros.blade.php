@@ -20,32 +20,30 @@
 </section>
 
 <section class="container ">
-    <div class="row banners_content py-5">
-        <div class="banner_img col-6 img-fluid">
-            <img src="https://picsum.photos/700/400" class="w-100">
+    @php $contador = 1 @endphp
+    @foreach($secciones as $seccion)
+        @if($contador % 2 == 0)
+        <div class="row banners_content py-5">
+            <div class="banner_body col-6">
+                <h2>{{$seccion->title}}</h2>
+                <p>{{$seccion->description}}</p>
+            </div>
+            <div class="banner_img col-6 img-fluid">
+                <img src="{{asset('storage/'.$seccion->image)}}" style="width: 100%; height: 70%; object-fit: cover;">
+            </div>
         </div>
-        <div class="banner_body col-6">
-            <h2>Titulo</h2>
-            <p>Contenido</p>
-        </div>
-    </div>
-    <div class="row banners_content py-5">
-        <div class="banner_body col-6">
-            <h2>Titulo</h2>
-            <p>Contenido</p>
-        </div>
-        <div class="banner_img col-6 img-fluid">
-            <img src="https://picsum.photos/700/400" class="w-100">
-        </div>
-    </div>
-    <div class="row banners_content py-5">
-        <div class="banner_img col-6 img-fluid">
-            <img src="https://picsum.photos/700/400" class="w-100">
-        </div>
-        <div class="banner_body col-6">
-            <h2>Titulo</h2>
-            <p>Contenido</p>
-        </div>
-    </div>
+        @else
+            <div class="row banners_content py-5">
+                <div class="banner_img col-6 img-fluid">
+                    <img src="{{asset('storage/'.$seccion->image)}}" style="width: 100%; height: 70%; object-fit: cover;">
+                </div>
+                <div class="banner_body col-6">
+                    <h2>{{$seccion->title}}</h2>
+                    <p>{{$seccion->description}}</p>
+                </div>
+            </div>
+        @endif
+        @php $contador++ @endphp
+    @endforeach
 </section>
 @endsection

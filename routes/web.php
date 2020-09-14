@@ -76,6 +76,7 @@ Route::middleware('landing')->group(function () {
 
 	//crear y eliminar
 	Route::post('/cms/nosotros/guardar', 'Cms\NosotrosController@guardarNosotros')->name('nosotros.store');
+	Route::post('/cms/nosotros/guardar/banner', 'Cms\NosotrosController@guardarBanner')->name('nosotros.store.banner');
 	Route::post('/cms/nosotros/actualizar/{id}', 'Cms\NosotrosController@actualizarNosotros')->name('nosotros.update');
 	Route::post('/cms/nosotros/eliminar/{id}', 'Cms\NosotrosController@eliminarSeccion');
 

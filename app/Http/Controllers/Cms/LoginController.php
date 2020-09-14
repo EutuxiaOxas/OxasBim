@@ -16,8 +16,8 @@ class LoginController extends Controller
         if(auth()->user()){
             return redirect('/cms');
         }
-
-    	return view('cms.auth.login');
+        $navbar_null = true;
+    	return view('cms.auth.login', compact('navbar_null'));
     }
 
 

@@ -9,7 +9,6 @@
     <meta name="generator" content="Jekyll v4.0.1">
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style_cms.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
     <!--datables CSS básico-->
@@ -39,6 +38,11 @@
 
         .nav-item:hover .acordeon_container{
           max-height: 20rem;
+        }
+
+
+        .menu_hover:hover {
+            color: blue;
         }
 
     </style>
@@ -86,7 +90,7 @@
                     <ul class="nav flex-column">
                         @if(auth()->user()->roles->title == 'administrador')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cms.users') }}">
+                            <a class="nav-link menu_hover" href="{{ route('cms.users') }}">
                                 <span data-feather="file"></span>
                                 Usuarios
                             </a>
@@ -95,13 +99,13 @@
 
                         @if(auth()->user()->roles->title == 'editor' || auth()->user()->roles->title == 'administrador')
                         <li class="nav-item items">
-                          <a class="nav-link" href="#">
+                          <a class="nav-link menu_hover"  href="#">
                             <span data-feather="file"></span>
                             Pagina web
                           </a>
                           <ul class="acordeon_container">
                             <li class="acordeon_item">
-                              <a href="{{route('banners.home')}}" class="nav-link">Home</a>
+                              <a href="{{route('banners.home')}}" class="nav-link menu_hover">Home</a>
                             </li>
                             <li class="acordeon_item">
                               <a href="{{route('nosotros.home')}}" class="nav-link">Nosotros</a>

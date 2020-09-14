@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,6 +23,9 @@
 </head>
 <body>
     <div id="app">
+        @if(isset($navbar_null))
+
+        @else
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 
@@ -80,7 +83,7 @@
                 </div>
             </div>
         </nav>
-
+        @endif
         <main class="">
             @yield('content')
         </main>

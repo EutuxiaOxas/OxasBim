@@ -15,8 +15,8 @@ class CreateLogoBannersTable extends Migration
     {
         Schema::create('logo__banners', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->string('image');
             $table->string('tipo');
             $table->boolean('status');

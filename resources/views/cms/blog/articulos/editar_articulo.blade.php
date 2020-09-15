@@ -145,7 +145,9 @@
 	}
 </script>
 
+
 <script type="text/javascript">
+	//verificacion URL AMIGABLES 
 	let input_title = document.getElementById('title'),
 		url = document.getElementById('url');
 
@@ -163,6 +165,8 @@
 		}
 	});
 
+
+	//llamada ajax para verificar
 	function verifySlug(url)
 	{
 		axios.get(`/cms/blog/verify/${url}`)
@@ -176,7 +180,7 @@
 		})
 	}
 
-
+	//cambio en el mensaje de verificacion
 	function verifyMessage(status)
 	{
 		let container = document.getElementById('url_verify');
@@ -194,6 +198,8 @@
 		container.style.display = 'block';
 	}
 
+
+	//funcion para transformar el titulo en url amigable
 	function string_to_slug (str) {
 	    str = str.replace(/^\s+|\s+$/g, ''); // trim
 	    str = str.toLowerCase();

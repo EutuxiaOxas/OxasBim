@@ -48,7 +48,7 @@
 
 		<div class="form-group col-12">
 			<h5>Contenido</h5>
-			<textarea class="form-control" id="content" required name="content"></textarea>
+			<textarea class="ckeditor" id="content" required name="content"></textarea>
 		</div>
 
 		<div class="form-group col-4">
@@ -76,7 +76,9 @@
 	</form>
 </section>
 
-
+	
+<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+	
 <script type="text/javascript">
 	const submitButton = document.getElementById('form_submit')
 
@@ -112,7 +114,7 @@
 		if(title.value == '')
 		{
 			errors.push('Debes colocar un titulo')
-		}if(content.value == '')
+		}if(CKEDITOR.instances.content.getData() == '')
 		{
 			errors.push('Debes colocar un contenido')
 		}if(imagen.files.length <= 0)

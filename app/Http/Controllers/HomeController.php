@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Logo_Banner;
 
 use App\BlogArticle;
+use App\BlogCategorie;
 class HomeController extends Controller
 {
     /**
@@ -30,15 +31,25 @@ class HomeController extends Controller
 
     public function blog()
     {
-        $posts = BlogArticle::paginate(3);
-
-        return view('blog.index', compact('posts'));
+        $posts = BlogArticle::orderBy('id', 'DESC')->paginate(15);
+        $categorias = BlogCategorie::all();
+        return view('blog.index', compact('posts', 'categorias'));
     }
 
-    public function showPost($id)
+    public function showPost($slug)
     {
-        $post = BlogArticle::find($id);
+        $post = BlogArticle::where('slug', $slug)->first();
         $comments = $post->comments;
         return view('blog.post', compact('post', 'comments'));
     }
+
+    public function blogByCategories($name)
+    {
+        
+        $categoria = BlogCategorie::where('name', $name)->first();
+        $posts = BlogArticle::where('category_id', $categoria->id)->paginate(15);
+        $categorias = BlogCategorie::all();
+        return view('blog.index', compact('posts', 'categorias'));
+    }
+
 }

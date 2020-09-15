@@ -17,8 +17,8 @@ class CreateBlogCommentsTable extends Migration
             $table->id();
             $table->string('comment');
             $table->foreignId('article_id');
-            $table->foreignId('status_id');
-            $table->foreignId('reader_id');
+            $table->foreignId('status_id')->nullable();
+            $table->foreignId('reader_id')->nullable();
             $table->timestamps();
         });
     }

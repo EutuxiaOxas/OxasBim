@@ -17,6 +17,21 @@ class ArticleController extends Controller
     	return view('cms.blog.articulos.index', compact('articulos'));
     }
 
+
+    public function verifySlug($slug)
+    {
+
+        $url = BlogArticle::where('slug', $slug)->first();
+
+        if(isset($url))
+        {
+            return 0;
+        }else
+        {
+            return 1;
+        }
+    }
+
     public function crearArticulo()
     {
     	$categorias = BlogCategorie::all();

@@ -9,7 +9,7 @@
 	  <img src="{{asset('storage/'.$post->picture)}}" style="height: 60vh; object-fit: cover;" class="card-img-top" alt="...">
 	  <div class="card-body">
 	    <h5 class="card-title">{{$post->title}}</h5>
-	    <p class="card-text">{{$post->content}}</p>
+	    <p class="card-text">{!!$post->content!!}</p>
 	    <p class="card-text"><small class="text-muted">{{$post->date}}</small></p>
 	  </div>
 	</div>
@@ -44,6 +44,7 @@
 
 	submitButton.addEventListener('click', e =>{
 		e.preventDefault();
+
 		sendComment(post_id.value, comment.value)
 		comment.value = '';
 	})

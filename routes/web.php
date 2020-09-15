@@ -17,7 +17,9 @@ Route::get('/', 'HomeController@lading')->name('home');
 
 
 Route::get('/blog', 'HomeController@blog')->name('blog');
-Route::get('/article/{id}', 'HomeController@showPost')->name('blog.show');
+Route::get('/blog/{slug}', 'HomeController@showPost')->name('blog.show');
+
+Route::get('/categories/{name}', 'HomeController@blogByCategories')->name('blog.category.show');
 
 Auth::routes();
 
@@ -84,6 +86,8 @@ Route::middleware('landing')->group(function () {
 	Route::get('/cms/blog/articulos', 'Cms\blog\ArticleController@index')->name('blog.articles');
 	Route::get('/cms/crear/articulo', 'Cms\blog\ArticleController@crearArticulo')->name('blog.article.create');
 	Route::get('/cms/editar/articulo/{id}', 'Cms\blog\ArticleController@editarArticulo')->name('blog.article.show');
+
+	Route::get('/cms/blog/verify/{slug}', 'Cms\blog\ArticleController@verifySlug');
 
 	//metodos posts
 

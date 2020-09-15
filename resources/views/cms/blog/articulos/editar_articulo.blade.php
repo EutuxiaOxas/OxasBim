@@ -44,6 +44,7 @@
 		<div class="form-group col-12">
 			<h5>URL final</h5>
 			<input class="form-control" id="url" maxlength="191" type="text" value="{{$articulo->slug}}" autocomplete="off" name="slug">
+			<small style="display: none;" id="url_verify"></small>
 		</div>
 
 		<div class="form-group col-12">
@@ -152,7 +153,46 @@
 	input_title.addEventListener('keyup', e => {
 		let valor = string_to_slug(input_title.value);
 		url.value = valor
+
+		if(input_title.value != '')
+		{
+			verifySlug(valor)
+		}else {
+			let container = document.getElementById('url_verify');
+			container.style.display = 'none'
+		}
 	});
+
+	function verifySlug(url)
+	{
+		axios.get(`/cms/blog/verify/${url}`)
+		.then(res => {
+			if(res.data == 1)
+			{
+				verifyMessage('aceptado')
+			} else {
+				verifyMessage('negado')
+			}
+		})
+	}
+
+
+	function verifyMessage(status)
+	{
+		let container = document.getElementById('url_verify');
+
+		if(status == 'aceptado')
+		{
+			container.textContent = 'URL Permitida';
+			container.style.color = 'green';
+		}else if(status == 'negado')
+		{
+			container.textContent = 'Esta URL ya se encuentra en uso';
+			container.style.color = 'red';
+		}
+
+		container.style.display = 'block';
+	}
 
 	function string_to_slug (str) {
 	    str = str.replace(/^\s+|\s+$/g, ''); // trim

@@ -40,7 +40,7 @@
 	                		<img src="{{asset('storage/'.$articulo->picture)}}" width="50">
 	                	</td>
 	                	<td>{{$articulo->title}}</td>
-	                	<td>{!!$articulo->content!!}</td>
+	                	<td>{!!substr($articulo->content, 0, 20)!!}</td>
 	                	<td>{{$articulo->author->name}}</td>
 	                	<td>{{$articulo->category->name}}</td>
 	                	<td>{{$articulo->date}}</td>

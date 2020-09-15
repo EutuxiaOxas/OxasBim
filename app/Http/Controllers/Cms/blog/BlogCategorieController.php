@@ -20,13 +20,9 @@ class BlogCategorieController extends Controller
 
     public function crearCategoria(Request $request)
     {
-    	$path = $request->file('picture')->store('public');
-    	$file = Str::replaceFirst('public/', '',$path);
-
     	BlogCategorie::create([
     		'name' => $request->name,
     		'description' => $request->description,
-    		'picture' => $file,
     	]);
 
     	return back()->with('message', 'Categoria creada con éxito');
@@ -40,30 +36,10 @@ class BlogCategorieController extends Controller
 
     	$categoria = BlogCategorie::find($id);
 
-    	if($request->file('picture'))
-    	{
-    		$deleted = Storage::disk('public')->delete($categoria->picture);
-
-    		if(isset($deleted) || $categoria->picture == null)
-    		{
-    			$path = $request->file('picture')->store('public');
-    			$file = Str::replaceFirst('public/', '',$path);
-
-    			$categoria->update([
-    				'name' => $request->name,
-    				'description' => $request->description,
-    				'picture' => $file,
-    			]);
-    		}else {
-    			return back()->with('error', 'No se pudo actualizar la categoria actualizada con éxito');
-    		}
-
-    	}else {
-    		$categoria->update([
-    			'name' => $request->name,
-    			'description' => $request->description,
-    		]);
-    	}
+		$categoria->update([
+			'name' => $request->name,
+			'description' => $request->description,
+		]);
 
     	return back()->with('message', 'Categoria actualizada con éxito');
     }
@@ -73,15 +49,9 @@ class BlogCategorieController extends Controller
     {
     	$categoria = BlogCategorie::find($id);
 
-    	$deleted = Storage::disk('public')->delete($categoria->picture);
+		$categoria->delete();
 
-    	if(isset($deleted) || $categoria->picture == null)
-    	{
-    		$categoria->delete();
+		return back()->with('error', 'Categoria eliminada con éxito');
 
-    		return back()->with('error', 'Categoria eliminada con éxito');
-    	}
-
-    	return back()->with('error', 'No se pudo eliminar la categoria');
     }
 }

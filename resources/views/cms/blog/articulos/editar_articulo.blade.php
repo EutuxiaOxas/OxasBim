@@ -16,6 +16,9 @@
 	@if (session('error'))
 	    <div class="alert alert-danger" role="alert">
 	        {{ session('error') }}
+	        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	            <span aria-hidden="true">&times;</span>
+	          </button>
 	    </div>
 	@endif
 
@@ -23,6 +26,9 @@
 	@if (session('message'))
 	    <div class="alert alert-success" role="alert">
 	        {{ session('message') }}
+	        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	            <span aria-hidden="true">&times;</span>
+	          </button>
 	    </div>
 	@endif
 
@@ -30,9 +36,14 @@
 
 	<form method="POST" id="form" action="{{route('blog.article.update', $articulo->id)}}" enctype="multipart/form-data">
 		@csrf
-		<div class="form-group col-4">
+		<div class="form-group col-12">
 			<h5>Titulo</h5>
 			<input class="form-control" id="title" maxlength="191" value="{{$articulo->title}}" required type="text" name="title">
+		</div>
+
+		<div class="form-group col-12">
+			<h5>URL final</h5>
+			<input class="form-control" id="url" maxlength="191" type="text" value="{{$articulo->slug}}" autocomplete="off" name="slug">
 		</div>
 
 		<div class="form-group col-12">
@@ -45,7 +56,7 @@
 			<input type="date" id="date" value="{{$articulo->date}}" name="date">
 		</div>
 
-		<div class="form-group col-4">
+		<div class="form-group col-12">
 			<h5>Categoria</h5>
 			<select class="form-control" id="categoria" name="category_id">
 				<option value="0">Selecciona una categoria</option>
@@ -130,9 +141,38 @@
 			return true;
 		}
 
-
-
 	}
 </script>
+
+<script type="text/javascript">
+	let input_title = document.getElementById('title'),
+		url = document.getElementById('url');
+
+
+	input_title.addEventListener('keyup', e => {
+		let valor = string_to_slug(input_title.value);
+		url.value = valor
+	});
+
+	function string_to_slug (str) {
+	    str = str.replace(/^\s+|\s+$/g, ''); // trim
+	    str = str.toLowerCase();
+	  
+	    // remove accents, swap ñ for n, etc
+	    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+	    var to   = "aaaaaeeeeiiiioooouuuunc------";
+
+	    for (var i=0, l=from.length ; i<l ; i++) {
+	        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+	    }
+
+	    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+	        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+	        .replace(/-+/g, '-'); // collapse dashes
+
+	    return str;
+	}
+</script>
+
 
 @endsection

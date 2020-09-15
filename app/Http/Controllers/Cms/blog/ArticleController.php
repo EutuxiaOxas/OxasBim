@@ -30,6 +30,7 @@ class ArticleController extends Controller
 
     	BlogArticle::create([
     		'title' => $request->title,
+            'slug' => $request->slug,
     		'content' => $request->content,
     		'category_id' => $request->category_id,
     		'autor_id' => auth()->user()->id,
@@ -64,6 +65,7 @@ class ArticleController extends Controller
 
     			$articulo->update([
     				'title' => $request->title,
+                    'slug' => $request->slug,
     				'content' => $request->content,
     				'category_id' => $request->category_id,
     				'date' => $request->date,
@@ -77,6 +79,7 @@ class ArticleController extends Controller
     	}else {
     		$articulo->update([
     			'title' => $request->title,
+                'slug' => $request->slug,
     			'content' => $request->content,
     			'category_id' => $request->category_id,
     			'date' => $request->date,

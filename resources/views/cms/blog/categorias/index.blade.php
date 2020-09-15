@@ -15,12 +15,18 @@
 	@if (session('message'))
 	    <div class="alert alert-success" role="alert">
 	        {{ session('message') }}
+	        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	            <span aria-hidden="true">&times;</span>
+	        </button>
 	    </div>
 	@endif
 
 	@if (session('error'))
 	    <div class="alert alert-danger" role="alert">
 	        {{ session('error') }}
+	        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	            <span aria-hidden="true">&times;</span>
+	        </button>
 	    </div>
 	@endif
 	<div class="table-responsive">
@@ -28,7 +34,6 @@
 	        <thead>
 	            <tr>
 	                <th>#</th>
-	                <th>Imagen</th>
 	                <th>Titulo</th>
 	                <th>Descripción</th>
 	                <th>Acciones</th>
@@ -38,9 +43,6 @@
 	            @foreach($categorias as $categoria)
 	                <tr>
 	                	<td>{{$categoria->id}}</td>
-	                    <td>
-	                    	<img src="{{asset('storage/'.$categoria->picture)}}" width="50">
-	                    </td>
 	                    <td>{{$categoria->name}}</td>
 	                    <td>{{$categoria->description}}</td>
 	                    <td>
@@ -75,14 +77,10 @@
                     	<h5>Descripción</h5>
                     	<textarea required class="form-control" id="description_crear" name="description"></textarea>
                     </div>
-                    <div class="form-group">
-                    	<h5>Imagen</h5>
-                    	<input type="file" id="image_crear" name="picture">
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" id="crear_submit" class="btn btn-primary">Crear Categoria</button>
             </div>
         </div>
@@ -110,10 +108,6 @@
                     	<h5>Descripción</h5>
                     	<textarea required class="form-control" id="description_editar" name="description"></textarea>
                     </div>
-                    <div class="form-group">
-                    	<h5>Imagen</h5>
-                    	<input type="file" id="image_editar" name="picture">
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -140,7 +134,7 @@
                 <p>Seguro que desea eliminar esta categoria?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar Categoria</button>
             </div>
         </div>
@@ -209,8 +203,8 @@
 			button.addEventListener('click', (e) => {
 				let form = document.getElementById('editar_form'),
 					id = e.target.id,
-					title = e.target.parentNode.parentNode.cells[2].textContent,
-					description = e.target.parentNode.parentNode.cells[3].textContent;
+					title = e.target.parentNode.parentNode.cells[1].textContent,
+					description = e.target.parentNode.parentNode.cells[2].textContent;
 
 				modalEditar(form,title,description,id)
 			});
@@ -224,9 +218,10 @@
 		eliminarButtons.forEach(button => {
 			button.addEventListener('click', (e) => {
 				let id = e.target.id,
+					message = e.target.parentNode.parentNode.cells[1].textContent,
 					form = document.getElementById('eliminar_form');
 
-				modalEliminar(form, id)
+				modalEliminar(form, id, message)
 			});
 		});
 	}
@@ -238,12 +233,10 @@
 // --------------- FUNCION VERIFICAR -------------
 	function verificar(text = '')
 	{
-		console.log('entrando')
 
 		let errors = [];
 		let title = document.getElementById('title_crear'),
 				description = document.getElementById('description_crear'),
-				image = document.getElementById('image_crear'),
 				error_container = document.getElementById('error_div');
 
 		
@@ -264,9 +257,6 @@
 		}if(description.value === '')
 		{
 			errors.push('Debes agregar una descripcion')
-		}if(image.files.length <= 0 && text == '')
-		{
-			errors.push('Debes agregar una imagen')
 		}
 		
 		
@@ -308,9 +298,10 @@
 	}
 
 
-	function modalEliminar(form, id)
+	function modalEliminar(form, id,message)
 	{
 		form.action = `/cms/eliminar/categoria/${id}`
+		form.innerHTML += `<div>Categoria: <strong>${message}</strong></div>`
 	}
 </script>
 

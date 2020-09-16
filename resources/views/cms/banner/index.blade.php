@@ -79,15 +79,15 @@
                                 <td>{{ $banner->description }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('banners.show', $banner->id) }}"
-                                        class="btn btn-outline-success btn-sm mr-1">Editar</a>
+                                        class="btn btn-sm btn-outline-success btn-sm mr-1">Editar</a>
                                     @if ($banner->status == 1)
                                         <a href="{{ route('banners.desactive', $banner->id) }}"
-                                            class="btn btn-outline-success btn-sm mr-1">Ocultar</a>
+                                            class="btn btn-sm btn-outline-success btn-sm mr-1">Ocultar</a>
                                     @elseif($banner->status == 0)
                                         <a href="{{ route('banners.active', $banner->id) }}"
                                             class="btn btn-outline-info btn-sm mr-1">Mostrar</a>
                                     @endif
-                                    <button type="button" id="{{ $banner->id }}" class="btn btn-outline-danger btn-sm eliminar"
+                                    <button type="button" id="{{ $banner->id }}" class="btn btn-sm btn-outline-danger btn-sm eliminar"
                                         data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
                                 </td>
                             </tr>
@@ -110,9 +110,11 @@
                         <form action="" id="eliminar_form" method="POST">
                             @csrf
                         </form>
+                        <p id="banner_seccion"></p>
+                        <p>¿Seguro que desea eliminar este banner?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar Banner</button>
                     </div>
                 </div>
@@ -189,15 +191,18 @@
             if (eliminarButtons) {
                 eliminarButtons.forEach(buttons => {
                     buttons.addEventListener('click', (e) => {
-                        let id = e.target.id
-                        modalEliminar(id)
+                        let id = e.target.id,
+                            message = e.target.parentNode.parentNode.children[0].textContent;
+                        modalEliminar(id, message)
                     });
                 });
             }
 
-            function modalEliminar(id) {
-                let formEliminar = document.getElementById('eliminar_form');
+            function modalEliminar(id, message) {
+                let formEliminar = document.getElementById('eliminar_form'),
+                    banner = document.getElementById('banner_seccion');
                 formEliminar.action = `/cms/eliminar/banner/${id}`;
+                banner.innerHTML = `Banner #: <strong>${message}</strong>`
             }
 
         </script>

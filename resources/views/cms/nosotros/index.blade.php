@@ -119,8 +119,8 @@
 		        <td>{{$seccion->subtitle}}</td>
 		        <td>{{substr($seccion->description, 0, 65)}} ...</td>
 		        <td class="d-flex">
-		          <a href="{{route('nosotros.show', $seccion->id)}}" class="btn btn-outline-success mr-2">editar</a>
-		          <button type="button" id="{{$seccion->id}}" class="btn btn-outline-danger eliminar" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+		          <a href="{{route('nosotros.show', $seccion->id)}}" class="btn btn-sm btn-outline-success mr-2">editar</a>
+		          <button type="button" id="{{$seccion->id}}" class="btn btn-sm btn-outline-danger eliminar" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
 		        </td>
 		      </tr>
 		      @endforeach
@@ -145,7 +145,7 @@
 	        </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
 	        <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar Seccion</button>
 	      </div>
 	    </div>

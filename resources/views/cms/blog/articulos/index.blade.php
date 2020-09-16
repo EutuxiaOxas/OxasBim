@@ -16,6 +16,9 @@
 	@if (session('error'))
 	    <div class="alert alert-danger" role="alert">
 	        {{ session('error') }}
+	        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	            <span aria-hidden="true">&times;</span>
+	          </button>
 	    </div>
 	@endif
 	<div class="table-responsive">
@@ -25,7 +28,7 @@
 	                <th>#</th>
 	                <th>Imagen</th>
 	                <th>Titulo</th>
-	                <th>Contenido</th>
+	                <th>Keywords</th>
 	                <th>Autor</th>
 	                <th>Categoria</th>
 	                <th>Fecha</th>
@@ -40,14 +43,18 @@
 	                		<img src="{{asset('storage/'.$articulo->picture)}}" width="50">
 	                	</td>
 	                	<td>{{$articulo->title}}</td>
-	                	<td>{!!substr($articulo->content, 0, 20)!!}</td>
+	                	<td>
+	                		@foreach($articulo->keywords as $k)
+	                			{{$k->keyword}},
+	                		@endforeach
+	                	</td>
 	                	<td>{{$articulo->author->name}}</td>
 	                	<td>{{$articulo->category->name}}</td>
 	                	<td>{{$articulo->date}}</td>
 	                	<td>
-	                		<a href="{{route('blog.article.show', $articulo->id)}}" class="btn btn-outline-success">Editar</a>
-	                		<button type="button" id="{{$articulo->id}}" class="btn btn-outline-success comentarios" data-toggle="modal" data-target="#modalComentarios">Comentarios</button>
-	                		<button type="button" id="{{$articulo->id}}" class="btn btn-outline-danger eliminar_button" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+	                		<a href="{{route('blog.article.show', $articulo->id)}}" class="btn btn-sm btn-outline-success">Editar</a>
+	                		<button type="button" id="{{$articulo->id}}" class="btn btn-sm btn-outline-success comentarios" data-toggle="modal" data-target="#modalComentarios">Comentarios</button>
+	                		<button type="button" id="{{$articulo->id}}" class="btn btn-sm btn-outline-danger eliminar_button" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
 	                	</td>
 	                </tr>
 	            @endforeach
@@ -69,10 +76,11 @@
                 <form action="" id="eliminar_form" method="POST">
                     @csrf
                 </form>
+                <p id="name_article"></p>
                 <p>¿Seguro que desea eliminar este articulo?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar Articulo</button>
             </div>
         </div>
@@ -95,7 +103,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 
             </div>
         </div>
@@ -120,7 +128,11 @@
 			button.addEventListener('click', (e) => {
 				let form = document.getElementById('eliminar_form');
 
-				let id = e.target.id
+				let id = e.target.id,
+					title_eliminar = document.getElementById('name_article');
+
+				title_eliminar.innerHTML = `Articulo: <strong>${e.target.parentNode.parentNode.children[2].textContent}</strong>`;
+
 
 				form.action = `/cms/eliminar/article/${id}`
 			});

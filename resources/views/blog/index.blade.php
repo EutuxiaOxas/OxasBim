@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+	Blog | Articulos
+@endsection
 
 @section('content')
 	<div class="container">
@@ -24,7 +27,13 @@
 				<h3>Categorias</h3>
 				@foreach($categorias as $categoria)
 				<div>
-					<a href="{{route('blog.category.show', $categoria->name)}}" class="">{{$categoria->name}}</a>
+					<a href="{{route('blog.category.show', $categoria->name)}}" title="{{$categoria->description}}" class="">{{$categoria->name}}</a>
+				</div>
+				@endforeach
+				<h3 class="my-1">Keywords</h3>
+				@foreach($keywords as $k)
+				<div>
+					<a href="{{route('blog.tag.show', $k->keyword)}}" class="">{{$k->keyword}}</a>
 				</div>
 				@endforeach
 			</div>

@@ -7,6 +7,7 @@ use App\Logo_Banner;
 
 use App\BlogArticle;
 use App\BlogCategorie;
+use App\Keyword;
 class HomeController extends Controller
 {
     /**
@@ -33,7 +34,8 @@ class HomeController extends Controller
     {
         $posts = BlogArticle::orderBy('id', 'DESC')->paginate(15);
         $categorias = BlogCategorie::all();
-        return view('blog.index', compact('posts', 'categorias'));
+        $keywords = Keyword::all();
+        return view('blog.index', compact('posts', 'categorias', 'keywords'));
     }
 
     public function showPost($slug)
@@ -47,9 +49,19 @@ class HomeController extends Controller
     {
         
         $categoria = BlogCategorie::where('name', $name)->first();
-        $posts = BlogArticle::where('category_id', $categoria->id)->paginate(15);
+        $posts = BlogArticle::where('category_id', $categoria->id)->orderBy('id', 'DESC')->paginate(15);
         $categorias = BlogCategorie::all();
-        return view('blog.index', compact('posts', 'categorias'));
+        $keywords = Keyword::all();
+        return view('blog.index', compact('posts', 'categorias', 'keywords'));
+    }
+
+    public function blogByTag($name)
+    {
+        $tag = Keyword::where('keyword', $name)->first();
+        $posts = $tag->articles()->orderBy('id', 'DESC')->paginate(15);
+        $categorias = BlogCategorie::all();
+        $keywords = Keyword::all();
+        return view('blog.index', compact('posts', 'categorias', 'keywords'));
     }
 
 }

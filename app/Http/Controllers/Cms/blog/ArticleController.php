@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\BlogArticle;
 use App\BlogCategorie;
+use App\Keyword;
 use Storage;
 use Str;
 class ArticleController extends Controller
@@ -40,19 +41,42 @@ class ArticleController extends Controller
 
     public function guardarArticulo(Request $request)
     {
+        
     	$path = $request->file('picture')->store('public');
     	$file = Str::replaceFirst('public/', '',$path);
 
-    	BlogArticle::create([
+    	$article = BlogArticle::create([
     		'title' => $request->title,
             'slug' => $request->slug,
     		'content' => $request->content,
     		'category_id' => $request->category_id,
     		'autor_id' => auth()->user()->id,
     		'date' => $request->date,
-    		'keywords' => 'vacio',
     		'picture' => $file,
     	]);
+
+        $keywords = $request->clave;
+
+        $tags = explode(",", $keywords);
+
+        $keywords = [];
+
+        foreach ($tags as $tag) {
+            $verificar = Keyword::where('keyword', $tag)->first();
+
+            if(isset($verificar))
+            {  
+                $keywords[] = $verificar->id;
+            }else {
+                $keyword = Keyword::create([
+                    'keyword' => $tag,
+                ]);
+
+                $keywords[] = $keyword->id;
+            }
+        }
+
+        $article->keywords()->sync($keywords);
 
 
     	return back()->with('message', 'Articulo creado con éxito');
@@ -61,8 +85,25 @@ class ArticleController extends Controller
     public function editarArticulo($id)
     {
     	$articulo = BlogArticle::find($id);
+        $tags = $articulo->keywords;
+
+        $keywords = null;
+        $contador = 1;
+        foreach ($tags as $tag) {
+
+            if($contador == 1)
+            {
+                $keywords = $tag->keyword;
+            }else {
+                $keywords = $keywords.",".$tag->keyword;
+            }
+
+            $contador++;
+        }
+
+
     	$categorias = BlogCategorie::all();
-    	return view('cms.blog.articulos.editar_articulo', compact('articulo', 'categorias'));
+    	return view('cms.blog.articulos.editar_articulo', compact('articulo', 'categorias', 'keywords'));
     }
 
     public function actualizarArticulo(Request $request, $id)
@@ -84,7 +125,6 @@ class ArticleController extends Controller
     				'content' => $request->content,
     				'category_id' => $request->category_id,
     				'date' => $request->date,
-    				'keywords' => 'vacio',
     				'picture' => $file,
     			]);
     		}else {
@@ -101,6 +141,31 @@ class ArticleController extends Controller
     			'keywords' => 'vacio',
     		]);
     	}
+
+
+        //agsinación de keywords
+        $keywords = $request->clave;
+
+        $tags = explode(",", $keywords);
+
+        $keywords = [];
+
+        foreach ($tags as $tag) {
+            $verificar = Keyword::where('keyword', $tag)->first();
+
+            if(isset($verificar))
+            {  
+                $keywords[] = $verificar->id;
+            }else {
+                $keyword = Keyword::create([
+                    'keyword' => $tag,
+                ]);
+
+                $keywords[] = $keyword->id;
+            }
+        }
+
+        $articulo->keywords()->sync($keywords);
 
     	return back()->with('message', 'Articulo actualizado con éxito');
     }

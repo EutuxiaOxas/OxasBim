@@ -28,7 +28,7 @@
         .acordeon_container{
             max-height: 0;
             overflow: hidden;
-            transition: all .4s linear;
+            transition: all .2s linear;
         }
 
         .acordeon_item{
@@ -38,6 +38,7 @@
 
         .nav-item:hover .acordeon_container{
           max-height: 20rem;
+          transition: all .4s linear;
         }
 
 
@@ -106,11 +107,19 @@
                             <li class="acordeon_item">
                               <a href="{{route('banners.home')}}" class="nav-link menu_hover">Home</a>
                             </li>
+                          </ul>
+                        </li>
+                        <li class="nav-item items">
+                          <a class="nav-link menu_hover"  href="#">
+                            <span data-feather="file"></span>
+                            Blog
+                          </a>
+                          <ul class="acordeon_container">
                             <li class="acordeon_item">
-                              <a href="{{route('blog.categories')}}" class="nav-link">Blog Categorias</a>
+                              <a href="{{route('blog.categories')}}" class="nav-link menu_hover">Blog Categorias</a>
                             </li>
                             <li class="acordeon_item">
-                              <a href="{{route('blog.articles')}}" class="nav-link">Blog Articulos</a>
+                              <a href="{{route('blog.articles')}}" class="nav-link menu_hover">Blog Articulos</a>
                             </li>
                           </ul>
                         </li>

@@ -48,6 +48,11 @@
 		</div>
 
 		<div class="form-group col-12">
+			<h5>Keywords <small><strong>(agregar palabras claves separadas por coma)</strong></small></h5>
+			<input class="form-control" id="title" maxlength="191" required type="text" name="clave" autocomplete="off" value="{{$keywords}}">
+		</div>
+
+		<div class="form-group col-12">
 			<h5>Contenido</h5>
 			<textarea class="ckeditor" id="content" name="content">{{$articulo->content}}</textarea>
 		</div>

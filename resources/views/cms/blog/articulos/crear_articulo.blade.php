@@ -41,10 +41,16 @@
 			<input class="form-control" id="title" maxlength="191" required type="text" name="title" autocomplete="off">
 		</div>
 
+
 		<div class="form-group col-12">
-			<h5>URL final</h5>
+			<h5>URL <small>(url amigable para buscadores)</small></h5>
 			<input class="form-control" id="url" maxlength="191" type="text" autocomplete="off" name="slug">
 			<small style="display: none;" id="url_verify"></small>
+		</div>
+		
+		<div class="form-group col-12">
+			<h5>Keywords <small><strong>(agregar palabras claves separadas por coma)</strong></small></h5>
+			<input class="form-control" id="title" maxlength="191" required type="text" name="clave" autocomplete="off">
 		</div>
 
 		<div class="form-group col-12">
@@ -194,11 +200,11 @@
 
 		if(status == 'aceptado')
 		{
-			container.textContent = 'URL Permitida';
+			container.textContent = 'URL permitida para ser utilizada';
 			container.style.color = 'green';
 		}else if(status == 'negado')
 		{
-			container.textContent = 'Esta URL ya se encuentra en uso';
+			container.textContent = 'Esta URL ya se encuentra en uso, utilice un titulo diferente!';
 			container.style.color = 'red';
 		}
 

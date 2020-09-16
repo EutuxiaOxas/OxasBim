@@ -20,7 +20,7 @@ Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::get('/blog/{slug}', 'HomeController@showPost')->name('blog.show');
 
 Route::get('/categories/{name}', 'HomeController@blogByCategories')->name('blog.category.show');
-
+Route::get('/tag/{name}', 'HomeController@blogByTag')->name('blog.tag.show');
 Auth::routes();
 
 /*---------------Login --------------*/

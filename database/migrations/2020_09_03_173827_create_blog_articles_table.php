@@ -20,7 +20,6 @@ class CreateBlogArticlesTable extends Migration
             $table->text('content');
             $table->string('picture');
             $table->date('date');
-            $table->string('keywords');
             $table->foreignId('autor_id');
             $table->foreignId('category_id');
             $table->timestamps();

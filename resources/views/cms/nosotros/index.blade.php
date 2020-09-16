@@ -24,14 +24,11 @@
 	@endif
 
 
-	<section class="row my-4">
+	<section class="row mt-5 mb-3">
 		<div class="col-12	 d-flex justify-content-between">
 			<h1>
 				Nosotros
 			</h1>
-			<div>
-				<a href="{{route('nosotros.create')}}" class="btn btn-outline-success">Crear Sección</a>
-			</div>
 		</div>
 	</section>
 
@@ -44,9 +41,9 @@
 		<div class="row">
 			<div class="col-4">
 				@if(isset($banner))
-					<img src="{{asset('storage/'. $banner->image)}}" style="width: 100%; object-fit: cover;">
+					<img id="principal_image" src="{{asset('storage/'. $banner->image)}}" style="width: 100%; object-fit: cover;">
 				@else
-					<img src="" width="50">
+					<img id="principal_image" src="" style="width: 100%; object-fit: cover;">
 				@endif
 			</div>
 			<div class="col-8">
@@ -71,7 +68,7 @@
 						</div>
 						<div class="col-12 form-group">
 							<h5>Imagen</h5>
-							<input type="file" name="image">
+							<input type="file" id="file_principal" name="image">
 						</div>
 
 						<div class="col-12 form-group">
@@ -86,6 +83,17 @@
 			</div>
 		</div>
 	</div>
+
+	<section class="row my-4">
+		<div class="col-12	 d-flex justify-content-between">
+			<h3>
+				Secciones nosotros
+			</h3>
+			<div>
+				<a href="{{route('nosotros.create')}}" class="btn btn-outline-success">Crear Sección</a>
+			</div>
+		</div>
+	</section>
 
 	<section>
 		<div class="table-responsive">
@@ -148,6 +156,8 @@
 	<script type="text/javascript">
 		let eliminarButtons = document.querySelectorAll('.eliminar');
 		let deleteSubmit = document.getElementById('eliminar_submit');
+		let image = document.getElementById('principal_image'),
+			file = document.getElementById('file_principal');
 
 
 
@@ -159,7 +169,15 @@
 		});
 
 
+		file.onchange = function(e) {
 
+			let reader = new FileReader();
+			reader.readAsDataURL(e.target.files[0]);
+
+			reader.onload = function() {
+			    image.src = reader.result;
+			}
+		}
 
 		//modal eliminar
 		if(eliminarButtons)

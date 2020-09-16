@@ -14,10 +14,12 @@
   }    
 </style>
 
-<section class="banner_principal" style="background: url({{asset('storage/'. $principal->image)}})">
+@if(isset($principal))
+<section class="banner_principal" style="background: url({{asset('storage/'. $principal->image)}});background-repeat: no-repeat;background-size: cover;">
     <h1>{{$principal->title}}</h1>
     <p>{{$principal->description}}</p>
 </section>
+@endif
 
 <section class="container ">
     @php $contador = 1 @endphp

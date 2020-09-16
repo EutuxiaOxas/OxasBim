@@ -35,6 +35,8 @@ class HomeController extends Controller
 
         $secciones = Nosotro::where('tipo', 'seccion')->get();
         
-        return view('nosotros', compact('principal', 'secciones'));
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+
+        return view('nosotros', compact('principal', 'secciones', 'logo'));
     }
 }

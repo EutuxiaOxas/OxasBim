@@ -63,6 +63,7 @@
         </ul>
     </nav>
     <div class="container-fluid">
+        <input type="hidden" id="seccion_name" value="{{$secName}}">
         <div class="row">
 
             <!-- Navbar movil -->
@@ -90,7 +91,7 @@
                     <ul class="nav flex-column">
                         @if(auth()->user()->roles->title == 'administrador')
                         <li class="nav-item">
-                            <a class="nav-link menu_hover" href="{{ route('cms.users') }}">
+                            <a class="nav-link menu_hover secciones usuarios" href="{{ route('cms.users') }}">
                                 <span data-feather="file"></span>
                                 Usuarios
                             </a>
@@ -99,7 +100,7 @@
 
                         @if(auth()->user()->roles->title == 'editor' || auth()->user()->roles->title == 'administrador')
                         <li class="nav-item items">
-                          <a class="nav-link menu_hover"  href="#">
+                          <a class="nav-link menu_hover secciones web"  href="#">
                             <span data-feather="file"></span>
                             Pagina web
                           </a>
@@ -123,6 +124,30 @@
             </section>
         </div>
     </div>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            let name = document.getElementById('seccion_name'),
+                enlaces =document.querySelectorAll('.secciones');
+
+            changeColor(name.value, enlaces)
+
+        });
+
+
+
+        function changeColor(name, enlaces)
+        {
+            enlaces.forEach(enlace => {
+                if(enlace.classList.contains(name))
+                {
+                    enlace.style.color = 'blue';
+                }
+            });
+        }
+    </script>
+
+
 
     <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>

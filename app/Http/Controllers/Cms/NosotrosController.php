@@ -16,7 +16,8 @@ class NosotrosController extends Controller
     {
     	$secciones = Nosotro::where('tipo', 'seccion')->get();
         $banner = Nosotro::where('tipo', 'banner')->first();
-    	return view('cms.nosotros.index', compact('secciones', 'banner'));
+        $secName = 'web';
+    	return view('cms.nosotros.index', compact('secciones', 'banner', 'secName'));
     }
 
     public function guardarBanner(Request $request)
@@ -84,7 +85,8 @@ class NosotrosController extends Controller
 
     public function crearNosotros()
     {
-    	return view('cms.nosotros.crear_nosotros');
+        $secName = 'web';
+    	return view('cms.nosotros.crear_nosotros', compact('secName'));
     }
 
     public function guardarNosotros(Request $request)
@@ -109,8 +111,8 @@ class NosotrosController extends Controller
     public function editarNosotros($id)
     {
     	$banner = Nosotro::find($id);
-
-    	return view('cms.nosotros.editar_nosotros', compact('banner'));
+        $secName = 'web';
+    	return view('cms.nosotros.editar_nosotros', compact('banner', 'secName'));
     }
 
     public function actualizarNosotros(Request $request, $id)

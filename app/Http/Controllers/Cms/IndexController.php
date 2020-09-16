@@ -12,13 +12,15 @@ class IndexController extends Controller
 {
     public function index()
     {
-    	return view('cms.index');
+        $secName = '';
+    	return view('cms.index', compact('secName'));
     }
 
     public function adminUsers()
     {
     	$roles = Role::all();
+        $secName = 'usuarios';
     	$usuarios = User::all();
-    	return view('cms.usuarios.index', compact('roles', 'usuarios'));
+    	return view('cms.usuarios.index', compact('roles', 'usuarios', 'secName'));
     }
 }

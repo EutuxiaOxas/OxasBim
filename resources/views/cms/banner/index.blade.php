@@ -34,6 +34,9 @@
 					@if (isset($logo))
                     <img id="logo_image" src="{{ asset('storage/' . $logo->image) }}"
                         style="width: 100%; height: 100%; object-fit: cover;">
+                    @else
+                    <img id="logo_image" src=""
+                        style="width: 100%; height: 100%; object-fit: cover;">
                 	@endif
                 </div>
 				<div class="col-10">

@@ -13,8 +13,8 @@ class BlogCategorieController extends Controller
     public function index()
     {
     	$categorias = BlogCategorie::all();
-
-    	return view('cms.blog.categorias.index', compact('categorias'));
+        $secName = 'blog';
+    	return view('cms.blog.categorias.index', compact('categorias', 'secName'));
     }
 
 

@@ -15,7 +15,8 @@ class ArticleController extends Controller
     public function index()
     {
     	$articulos = BlogArticle::all();
-    	return view('cms.blog.articulos.index', compact('articulos'));
+        $secName = 'blog';
+    	return view('cms.blog.articulos.index', compact('articulos', 'secName'));
     }
 
 
@@ -36,7 +37,8 @@ class ArticleController extends Controller
     public function crearArticulo()
     {
     	$categorias = BlogCategorie::all();
-    	return view('cms.blog.articulos.crear_articulo', compact('categorias'));
+        $secName = 'blog';
+    	return view('cms.blog.articulos.crear_articulo', compact('categorias', 'secName'));
     }
 
     public function guardarArticulo(Request $request)
@@ -86,6 +88,7 @@ class ArticleController extends Controller
     {
     	$articulo = BlogArticle::find($id);
         $tags = $articulo->keywords;
+        $secName = 'blog';
 
         $keywords = null;
         $contador = 1;
@@ -103,7 +106,7 @@ class ArticleController extends Controller
 
 
     	$categorias = BlogCategorie::all();
-    	return view('cms.blog.articulos.editar_articulo', compact('articulo', 'categorias', 'keywords'));
+    	return view('cms.blog.articulos.editar_articulo', compact('articulo', 'categorias', 'keywords', 'secName'));
     }
 
     public function actualizarArticulo(Request $request, $id)

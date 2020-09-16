@@ -111,7 +111,7 @@
                           </ul>
                         </li>
                         <li class="nav-item items">
-                          <a class="nav-link menu_hover"  href="#">
+                          <a class="nav-link menu_hover secciones blog"  href="#">
                             <span data-feather="file"></span>
                             Blog
                           </a>

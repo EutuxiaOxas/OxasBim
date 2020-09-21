@@ -34,7 +34,7 @@
 			<h3>Comentarios</h3>
 			<div id="comment_main">
 				@foreach($comments as $comment)
-					<p>{{$comment->comment}}</p>
+					<p>{{$comment->comment}} <small>- {{$comment->created_at->diffForHumans()}}</small></p>
 				@endforeach
 			</div>
 		</div>

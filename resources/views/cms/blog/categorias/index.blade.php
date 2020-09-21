@@ -46,8 +46,8 @@
 	                    <td>{{$categoria->name}}</td>
 	                    <td>{{$categoria->description}}</td>
 	                    <td>
-	                    	<button id="{{$categoria->id}}" type="button" class="btn btn-outline-success editar_button" data-toggle="modal" data-target="#modalEditar">Editar</button>
-	                    	<button id="{{$categoria->id}}" type="button" class="btn btn-outline-danger eliminar_button" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
+	                    	<button id="{{$categoria->id}}" type="button" class="btn btn-sm btn-outline-success editar_button" data-toggle="modal" data-target="#modalEditar">Editar</button>
+	                    	<button id="{{$categoria->id}}" type="button" class="btn btn-sm btn-outline-danger eliminar_button" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
 	                    </td>
 	                </tr>
 	            @endforeach

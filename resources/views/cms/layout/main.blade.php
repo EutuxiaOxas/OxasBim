@@ -110,6 +110,9 @@
                             </li>
                           </ul>
                         </li>
+                        @endif
+
+                        @if(auth()->user()->roles->title == 'blogger' || auth()->user()->roles->title == 'administrador')
                         <li class="nav-item items">
                           <a class="nav-link menu_hover secciones blog"  href="#">
                             <span data-feather="file"></span>

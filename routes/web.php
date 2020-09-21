@@ -64,7 +64,9 @@ Route::middleware('landing')->group(function () {
 	//ocultar/activar banners
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
+});
 
+Route::middleware('blog')->group(function () {
 	/*--------------- BLOG --------------*/
 
 
@@ -102,8 +104,8 @@ Route::middleware('landing')->group(function () {
 
 	Route::post('/delete/comment/{id}', 'Cms\blog\BlogCommentController@deleteComment');
 
-
 });
+
 
 /*--------------- ENVIO DE COMENTARIOS --------------*/
 

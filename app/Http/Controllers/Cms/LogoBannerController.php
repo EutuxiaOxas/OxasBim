@@ -17,7 +17,8 @@ class LogoBannerController extends Controller
     {
     	$banners = Logo_Banner::where('tipo', 'banner')->get();
     	$logo = Logo_Banner::where('tipo', 'logo')->first();
-    	return view('cms.banner.index')->with(compact('banners', 'logo'));
+        $secName = 'web';
+    	return view('cms.banner.index')->with(compact('banners', 'logo', 'secName'));
     }
 
 
@@ -26,7 +27,6 @@ class LogoBannerController extends Controller
     {
 
         $logo = Logo_Banner::where('tipo', 'logo')->first();
-
         if(isset($logo))
         {
 
@@ -89,7 +89,8 @@ class LogoBannerController extends Controller
 
     public function crearBanner()
     {
-    	return view('cms.banner.crear_banner');
+        $secName = 'web';
+    	return view('cms.banner.crear_banner', compact('secName'));
     }
 
 
@@ -115,8 +116,8 @@ class LogoBannerController extends Controller
     public function editarBanner($id)
     {
         $banner = Logo_Banner::find($id);
-
-        return view('cms.banner.editar_banner', compact('banner'));
+        $secName = 'web';
+        return view('cms.banner.editar_banner', compact('banner', 'secName'));
     }
 
     public function actualizarBanner(Request $request, $id)

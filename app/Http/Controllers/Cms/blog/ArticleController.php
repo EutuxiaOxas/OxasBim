@@ -20,10 +20,19 @@ class ArticleController extends Controller
     }
 
 
-    public function verifySlug($slug)
+    public function verifySlug(Request $request, $slug)
     {
-
         $url = BlogArticle::where('slug', $slug)->first();
+        
+        if(isset($request->article_id))
+        {
+            $article = BlogArticle::find($request->article_id);
+
+            if( isset($url) && $url->id == $article->id)
+            {
+                return 1;
+            }
+        }
 
         if(isset($url))
         {

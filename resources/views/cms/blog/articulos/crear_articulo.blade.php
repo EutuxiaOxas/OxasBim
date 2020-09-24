@@ -33,20 +33,17 @@
 	@endif
 	
 	<div style="display: none;" id="error_div" class="alert alert-danger"></div>
-
+	<input type="hidden" id="verify_access">
 	<form method="POST" id="form" action="{{route('blog.article.store')}}" enctype="multipart/form-data">
 		@csrf
 		<div class="form-group col-12">
 			<h5>Titulo</h5>
 			<input class="form-control" id="title" maxlength="191" required type="text" name="title" autocomplete="off">
-		</div>
-
-
-		<div class="form-group col-12">
-			<h5>URL <small>(url amigable para buscadores)</small></h5>
-			<input class="form-control" id="url" maxlength="191" type="text" autocomplete="off" name="slug">
 			<small style="display: none;" id="url_verify"></small>
 		</div>
+
+
+		
 		
 		<div class="form-group col-12">
 			<h5>Keywords <small><strong>(agregar palabras claves separadas por coma)</strong></small></h5>
@@ -80,6 +77,9 @@
 		<div class="col-12">
 			<input type="submit" id="form_submit" class="btn btn-primary" value="Crear Articulo">
 		</div>
+		<div class="form-group col-12" style="visibility: hidden;">
+			<input class="form-control" id="url" maxlength="191" type="text" autocomplete="off" name="slug">
+		</div>
 	</form>
 </section>
 
@@ -112,6 +112,7 @@
 			content = document.getElementById('content'),
 			categoria = document.getElementById('categoria'),
 			fecha = document.getElementById('date'),
+			verify_access = document.getElementById('verify_access'),
 			imagen = document.getElementById('picture');
 
 		container.innerHTML = ''
@@ -133,6 +134,9 @@
 		}if(fecha.value == "")
 		{
 			errors.push('Debes agregar una fecha')
+		}if(verify_access.value == 0)
+		{
+			errors.push('Debes agregar un titulo valido')
 		}
 
 		if(errors.length > 0)
@@ -182,7 +186,7 @@
 
 	function verifySlug(url)
 	{
-		axios.get(`/cms/blog/verify/${url}`)
+		axios.post(`/cms/blog/verify/${url}`)
 		.then(res => {
 			if(res.data == 1)
 			{
@@ -196,16 +200,19 @@
 
 	function verifyMessage(status)
 	{
-		let container = document.getElementById('url_verify');
+		let container = document.getElementById('url_verify'),
+		verify_access = document.getElementById('verify_access');
 
 		if(status == 'aceptado')
 		{
-			container.textContent = 'URL permitida para ser utilizada';
+			container.textContent = 'titulo permitido para ser utilizado';
 			container.style.color = 'green';
+			verify_access.value = 1;
 		}else if(status == 'negado')
 		{
-			container.textContent = 'Esta URL ya se encuentra en uso, utilice un titulo diferente!';
+			container.textContent = 'Este titulo ya se encuentra en uso, utilice un titulo diferente!';
 			container.style.color = 'red';
+			verify_access.value = 0;
 		}
 
 		container.style.display = 'block';

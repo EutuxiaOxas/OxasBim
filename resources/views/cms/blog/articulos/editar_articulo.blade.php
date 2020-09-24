@@ -33,17 +33,13 @@
 	@endif
 
 	<div style="display: none;" id="error_div" class="alert alert-danger"></div>
-
+	<input type="hidden" id="articulo_id" value="{{$articulo->id}}">
+	<input type="hidden" id="verify_access">
 	<form method="POST" id="form" action="{{route('blog.article.update', $articulo->id)}}" enctype="multipart/form-data">
 		@csrf
 		<div class="form-group col-12">
 			<h5>Titulo</h5>
 			<input class="form-control" id="title" maxlength="191" value="{{$articulo->title}}" required type="text" name="title">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>URL final</h5>
-			<input class="form-control" id="url" maxlength="191" type="text" value="{{$articulo->slug}}" autocomplete="off" name="slug">
 			<small style="display: none;" id="url_verify"></small>
 		</div>
 
@@ -79,6 +75,9 @@
 		<div class="col-12">
 			<input type="submit" id="form_submit" class="btn btn-primary" value="Actualizar Articulo">
 		</div>
+		<div class="form-group col-12" style="visibility: hidden;">
+			<input class="form-control" id="url" maxlength="191" type="text" value="{{$articulo->slug}}" autocomplete="off" name="slug">
+		</div>
 	</form>
 </section>
 
@@ -109,6 +108,7 @@
 			content = document.getElementById('content'),
 			categoria = document.getElementById('categoria'),
 			fecha = document.getElementById('date'),
+			verify_access = document.getElementById('verify_access'),
 			imagen = document.getElementById('picture');
 
 		container.innerHTML = ''
@@ -127,6 +127,9 @@
 		}if(fecha.value == "")
 		{
 			errors.push('Debes agregar una fecha')
+		}if(verify_access.value == 0)
+		{
+			errors.push('Debes agregar un titulo valido')
 		}
 
 		if(errors.length > 0)
@@ -174,7 +177,10 @@
 	//llamada ajax para verificar
 	function verifySlug(url)
 	{
-		axios.get(`/cms/blog/verify/${url}`)
+		let articulo_id = document.getElementById('articulo_id');
+		axios.post(`/cms/blog/verify/${url}`, {
+			article_id: articulo_id.value,
+		})
 		.then(res => {
 			if(res.data == 1)
 			{
@@ -188,16 +194,19 @@
 	//cambio en el mensaje de verificacion
 	function verifyMessage(status)
 	{
-		let container = document.getElementById('url_verify');
+		let container = document.getElementById('url_verify')
+		verify_access = document.getElementById('verify_access');
 
 		if(status == 'aceptado')
 		{
-			container.textContent = 'URL Permitida';
+			container.textContent = 'Titulo Permitido';
 			container.style.color = 'green';
+			verify_access.value = 1;
 		}else if(status == 'negado')
 		{
-			container.textContent = 'Esta URL ya se encuentra en uso';
+			container.textContent = 'Este titulo ya se encuentra en uso, escoja uno diferente';
 			container.style.color = 'red';
+			verify_access.value = 0;
 		}
 
 		container.style.display = 'block';

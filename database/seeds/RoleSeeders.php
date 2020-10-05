@@ -22,6 +22,11 @@ class RoleSeeders extends Seeder
         ]);
 
         DB::table('roles')->insert([
+            'title' => 'comprador',
+            'description' => 'Este usuario cuenta con permisos para comprar dentro de la página web.'
+        ]);
+
+        DB::table('roles')->insert([
             'title' => 'blogger',
             'description' => 'Este usuario cuenta con permisos para crear/editar/eliminar los distintos posts que pertenecen al blog.'
         ]);

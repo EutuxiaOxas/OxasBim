@@ -66,15 +66,17 @@
         @endif
         <hr>
         <section class="mt-4">
-            <table>
+            <table class="table table-striped table-sm">
                 <th>Nombre</th>
                 <th>Correo</th>
+                <th>Rol</th>
                 <th>Acciones</th>
                 <tbody>
                     @foreach ($usuarios as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->roles->title}}</td>
                             <td>
                                 <button type="button" id="{{ $user->id }}" class="btn btn-sm btn-info change_pass" data-toggle="modal"
                                     data-target="#modalContraseña">Editar Contraseña</button>

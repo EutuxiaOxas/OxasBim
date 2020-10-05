@@ -18,9 +18,9 @@ class IndexController extends Controller
 
     public function adminUsers()
     {
-    	$roles = Role::all();
+    	$roles = Role::where('title', '!=', 'comprador')->get();
         $secName = 'usuarios';
-    	$usuarios = User::all();
+    	$usuarios = User::where('cms', '1')->get();
     	return view('cms.usuarios.index', compact('roles', 'usuarios', 'secName'));
     }
 }

@@ -20,5 +20,10 @@ class RoleSeeders extends Seeder
             'title' => 'editor',
             'description' => 'Este usuario cuenta con permisos para crear/editar/eliminar configuraciones de la sección Página Web.'
         ]);
+
+        DB::table('roles')->insert([
+            'title' => 'comprador',
+            'description' => 'Este usuario cuenta con permisos para comprar dentro de la página web.'
+        ]);
     }
 }

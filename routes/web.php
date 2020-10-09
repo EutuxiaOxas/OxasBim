@@ -160,3 +160,8 @@ Route::post('/cms/actualizar/cuenta/{id}', 'Cms\BankUserController@actualizarCue
 Route::get('/cms/pagos', 'PagosController@index')->name('pagos.home');
 Route::get('/pago', 'PagosController@agregarPago');
 Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
+
+//---------- PAYPAL --------
+
+Route::post('/paypal/pay', 'PaypalController@pagarConPaypal')->name('paypal.pay');
+Route::get('/paypal/status', 'PaypalController@paypalStatus');

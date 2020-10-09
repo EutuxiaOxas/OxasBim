@@ -16,7 +16,7 @@
         <div class="col-md-8 mt-3">
             <div class="card">
                 <div class="card-header">{{ __('Confirmación de pago') }}</div>
-
+                
                 <div class="card-body">
                     <form method="POST" action="{{route('pagos.store')}}">
                         @csrf
@@ -130,6 +130,11 @@
                                 </button>
                             </div>
                         </div>
+                    </form>
+                    <form action="{{route('paypal.pay')}}" class="" method="POST">
+                        @csrf
+                        <input type="hidden" name="total_pay" value="{{$orden->total_amount}}">
+                        <input type="submit" class="btn btn-primary" value="Pagar con Paypal">
                     </form>
                 </div>
             </div>

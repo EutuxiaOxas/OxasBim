@@ -21,9 +21,13 @@
 		  	</div>
 		  @endforeach
 		</div>
-		<div class="text-center">
+		<div class="d-flex justify-content-center">
 			<a href="/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
-			<a href="#" class="btn btn-success">Pagar con PayPal</a>
+			<form action="{{route('paypal.pay')}}" class="" method="POST">
+			    @csrf
+			    <input type="hidden" name="total_pay" value="{{$orden->total_amount}}">
+			    <input type="submit" class="btn btn-success" value="Pagar con Paypal">
+			</form>
 		</div>
 	</div>
 @endsection

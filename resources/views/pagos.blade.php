@@ -131,11 +131,6 @@
                             </div>
                         </div>
                     </form>
-                    <form action="{{route('paypal.pay')}}" class="" method="POST">
-                        @csrf
-                        <input type="hidden" name="total_pay" value="{{$orden->total_amount}}">
-                        <input type="submit" class="btn btn-primary" value="Pagar con Paypal">
-                    </form>
                 </div>
             </div>
         </div>

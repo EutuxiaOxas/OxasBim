@@ -19,6 +19,28 @@ class PagosController extends Controller
 		return view('cms.pagos.index', compact('pagos', 'secName'));
 	}
 
+    public function cuentasBancarias(Request $request)
+    {  
+        $user = auth()->user();
+        $cuentas = Banks_User::all();
+        if($user)
+        {
+            if(isset($request->orden))
+            {
+                
+                $orden = Order::find($request->orden);
+                
+                if($user->id == $orden->user->id)
+                {
+                    $user_id = $user->id;
+                    return view('cuentas', compact('orden', 'cuentas'));
+                }
+            }
+        }
+
+        return redirect('/');
+    }
+
 
     public function agregarPago(Request $request)
     {	

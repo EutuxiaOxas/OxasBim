@@ -21,7 +21,7 @@ class CreatePagosTable extends Migration
             $table->date('fecha');
             $table->foreignId('id_banco_emisor');
             $table->foreignId('id_banco_receptor');
-            $table->integer('referencia');
+            $table->text('referencia');
             $table->string('titular_cuenta');
             $table->string('documento_identidad_titular');
             $table->timestamps();

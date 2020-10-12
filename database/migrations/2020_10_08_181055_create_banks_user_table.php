@@ -16,7 +16,7 @@ class CreateBanksUserTable extends Migration
         Schema::create('banks_user', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('number_account');
+            $table->text('number_account');
             $table->string('titular');
             $table->timestamps();
         });

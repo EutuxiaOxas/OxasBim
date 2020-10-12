@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Banks_User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +33,11 @@ Route::get('/cart/delete', 'CartController@vaciarCarrito')->name('cart.destroy')
 Route::post('/cart/change/count', 'CartController@updateCount');
 
 Auth::routes();
+
+Route::get('/test', function (){
+	$cuentas = Banks_User::all();
+	return view('cuentas', compact('cuentas'));
+});
 
 /*---------------Login --------------*/
 Route::get('/admin', 'Cms\LoginController@index');
@@ -158,6 +163,7 @@ Route::post('/cms/actualizar/cuenta/{id}', 'Cms\BankUserController@actualizarCue
 
 //-------------- PAGOS -----------
 Route::get('/cms/pagos', 'PagosController@index')->name('pagos.home');
+Route::get('/cuentas', 'PagosController@cuentasBancarias');
 Route::get('/pago', 'PagosController@agregarPago');
 Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
 

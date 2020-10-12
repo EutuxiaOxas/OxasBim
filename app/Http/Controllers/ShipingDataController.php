@@ -40,7 +40,7 @@ class ShipingDataController extends Controller
     {
     	Shiping_data::create($request->all());
 
-    	return redirect("/pago?orden=".$request->orden_id);
+    	return redirect("/cuentas?orden=".$request->orden_id);
     }
 
     public function getShipingData(Request $request, $id){

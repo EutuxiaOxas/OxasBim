@@ -22,7 +22,7 @@ class PagosController extends Controller
     public function cuentasBancarias(Request $request)
     {  
         $user = auth()->user();
-        $cuentas = Banks_User::all();
+        $cuentas = Banks_User::where('title', '!=', 'PayPal')->get();
         if($user)
         {
             if(isset($request->orden))
@@ -59,8 +59,8 @@ class PagosController extends Controller
      				if($user->id == $orden->user->id)
      				{
      	                $user_id = $user->id;
-     	                $banks = Bank::all();
-     	                $banksUsers = Banks_User::all();
+     	                $banks = Bank::where('title', '!=', 'Otros')->get();
+     	                $banksUsers = Banks_User::where('title', '!=', 'PayPal')->get();
      					
      	                return view('pagos', compact('user_id', 'orden', 'banks', 'banksUsers'));
      				}

@@ -34,11 +34,6 @@ Route::post('/cart/change/count', 'CartController@updateCount');
 
 Auth::routes();
 
-Route::get('/test', function (){
-	$cuentas = Banks_User::all();
-	return view('cuentas', compact('cuentas'));
-});
-
 /*---------------Login --------------*/
 Route::get('/admin', 'Cms\LoginController@index');
 

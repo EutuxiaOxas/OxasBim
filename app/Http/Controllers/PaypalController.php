@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
+
+use App\Bank;
+use App\Banks_User;
+use App\Pago;
+use App\Order;
+use Carbon\Carbon;
+
 class PaypalController extends Controller
 {
 	private $apiContext;
@@ -76,7 +83,51 @@ class PaypalController extends Controller
 
     	$result = $payment->execute($execution, $this->apiContext);
 
+
+        //pago completado
     	if($result->getState() === 'approved'){
+
+            $user = auth()->user();
+            $orden = Order::latest('id')->where('user_id', $user->id)->first();
+
+
+            $banco = Bank::where('title', 'Otros')->first();
+            $cuenta = Banks_User::where('title', 'PayPal')->first();
+
+            // Identidad comprador
+            $nombre = $result->payer->payer_info->first_name;
+            $apellido = $result->payer->payer_info->last_name;
+            $nombreCompleto = $nombre." ".$apellido;
+
+            if(!$banco)
+            {
+                $banco = Bank::create([
+                    'title' => 'Otros'
+                ]); 
+            }
+
+            if(!$cuenta)
+            {
+                $cuenta = Banks_User::create([
+                    'title' => 'PayPal',
+                    'number_account' => 0000,
+                    'titular' => 'Admin',
+                ]);
+            }
+
+
+            Pago::create([
+                'user_id' => $user->id,
+                'orden_id' => $orden->id,
+                'monto' => $orden->total_amount,
+                'fecha' => Carbon::now(),
+                'id_banco_emisor' => $banco->id,
+                'id_banco_receptor' => $cuenta->id,
+                'referencia' => $result->id,
+                'titular_cuenta' => $nombreCompleto,
+                'documento_identidad_titular' => $result->payer->payer_info->payer_id,
+            ]);
+
     		return redirect('/home')->with('message', 'Pago realizado con éxito, su orden está en proceso!');
     	}
     	

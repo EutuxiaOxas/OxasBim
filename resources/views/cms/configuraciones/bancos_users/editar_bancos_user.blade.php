@@ -26,8 +26,8 @@
 
 <form method="POST" action="{{route('bank.user.update', $cuenta->id)}}">
 	@csrf
-	<div class="form-group">
-		<h5>Titulo del banco</h5>
+	<div class="form-group" id="title_container">
+		<h5>Titulo del banco (<small>191</small>)</h5>
 		<input class="form-control" type="text" value="{{$cuenta->title}}" maxlength="191" required name="title">
 	</div>
 
@@ -45,4 +45,24 @@
 		<input type="submit" class="btn btn-primary" value="Actualizar cuenta">
 	</div>
 </form>
+
+<script src="{{asset('js/string_length.js')}}"></script>
+
+<script type="text/javascript">
+	let padre = document.getElementById('title_container'),
+		title = padre.children[1],
+		contador = padre.children[0].children[0];
+	
+	document.addEventListener('DOMContentLoaded', () => {
+		contador.textContent = changeCount(title.textLength, 191)
+	})
+
+	title.addEventListener('keyup', () => {
+		let count = 191;
+
+		contador.textContent = changeCount(title.textLength, count)
+	});
+
+</script>
+
 @endsection

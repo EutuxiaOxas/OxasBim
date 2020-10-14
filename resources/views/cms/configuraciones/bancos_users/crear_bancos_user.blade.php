@@ -26,14 +26,14 @@
 
 <form method="POST" action="{{route('bank.user.store')}}">
 	@csrf
-	<div class="form-group">
-		<h5>Titulo del banco</h5>
+	<div class="form-group" id="title_container">
+		<h5>Titulo del banco (<small>191</small>)</h5>
 		<input class="form-control" type="text" maxlength="191" required name="title">
 	</div>
 
 	<div class="form-group">
 		<h5>Número de cuenta</h5>
-		<input class="form-control" type="number" required name="number_account">
+		<input class="form-control" type="text" maxlength="20" oninput="this.value=this.value.replace(/[^0-9]/g,'');" required name="number_account">
 	</div>
 
 	<div class="form-group">
@@ -45,4 +45,20 @@
 		<input type="submit" class="btn btn-primary" value="Agregar cuenta">
 	</div>
 </form>
+
+<script src="{{asset('js/string_length.js')}}"></script>
+
+<script type="text/javascript">
+	let padre = document.getElementById('title_container'),
+		title = padre.children[1],
+		contador = padre.children[0].children[0];
+	
+	title.addEventListener('keyup', () => {
+		let count = 191;
+
+		contador.textContent = changeCount(title.textLength, count)
+	});
+
+</script>
+
 @endsection

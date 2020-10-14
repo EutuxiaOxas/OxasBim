@@ -19,7 +19,7 @@ class ShipingDataController extends Controller
     			$ordenProducts = $orden->orderProduct;
                 $formulario = Shiping_data::where('user_id', $user->id)->first();
 
-    			if($user->id == $orden->user->id)
+    			if($user->id == $orden->user->id && $orden->status === 'ACTIVO')
     			{
                     $user_id = $user->id;
     				if(isset($formulario))
@@ -35,13 +35,33 @@ class ShipingDataController extends Controller
     	return redirect('/');
     }
 
-
     public function guardarDatosEnvio(Request $request)
     {
-    	Shiping_data::create($request->all());
+        
+        if($request->wantsJson()){
+            
+            $user = auth()->user();
+            Shiping_data::create([
+                'orden_id' => $request->orden_id,
+                'user_id' => $user->id,
+                'documento_de_identidad' => $request->documento_de_identidad,
+                'direccion_1' => $request->direccion_1,
+                'direccion_2' => $request->direccion_2,
+                'telefono' => $request->telefono,
+                'codigo_postal' => $request->codigo_postal,
+            ]);
 
-    	return redirect("/cuentas?orden=".$request->orden_id);
+            return response()->json('', 204);
+        }
+
+        Shiping_data::create($request->all());
+
+
+        return redirect("/cuentas?orden=".$request->orden_id);
     }
+    
+
+
 
     public function getShipingData(Request $request, $id){
 

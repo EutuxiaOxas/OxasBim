@@ -88,7 +88,7 @@ class PaypalController extends Controller
     	if($result->getState() === 'approved'){
 
             $user = auth()->user();
-            $orden = Order::latest('id')->where('user_id', $user->id)->first();
+            $orden = Order::latest('id')->where('user_id', $user->id)->where('status', 'ACTIVO')->first();
 
 
             $banco = Bank::where('title', 'Otros')->first();
@@ -127,6 +127,9 @@ class PaypalController extends Controller
                 'titular_cuenta' => $nombreCompleto,
                 'documento_identidad_titular' => $result->payer->payer_info->payer_id,
             ]);
+
+            $orden->status = 'COMPLETADO';
+            $orden->save();
 
     		return redirect('/home')->with('message', 'Pago realizado con éxito, su orden está en proceso!');
     	}

@@ -165,6 +165,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Continuar') }}
                                 </button>
+                                
+                                <a href="{{route('orden.cancelar', $orden->id)}}" class="btn btn-outline-danger">Cancelar orden</a>
                             </div>
                         </div>
                     </form>

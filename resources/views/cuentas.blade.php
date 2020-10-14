@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@php
+	if(isset($_GET['nuevo_pago']))
+	{
+		$nuevo_pago = $_GET['nuevo_pago'];
+	}
+@endphp
+
+
 @section('title')
 	Cuentas Bancarias
 @endsection
@@ -22,12 +30,18 @@
 		  @endforeach
 		</div>
 		<div class="d-flex justify-content-center">
-			<a href="/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
-			<form action="{{route('paypal.pay')}}" class="" method="POST">
-			    @csrf
-			    <input type="hidden" name="total_pay" value="{{$orden->total_amount}}">
-			    <input type="submit" class="btn btn-success" value="Pagar con Paypal">
-			</form>
+			@if(isset($nuevo_pago))
+				<a href="/nuevo/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
+			@else
+				<a href="/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
+				<form action="{{route('paypal.pay')}}" class="mr-3" method="POST">
+				    @csrf
+				    <input type="hidden" name="total_pay" value="{{$orden->total_amount}}">
+				    <input type="submit" class="btn btn-success" value="Pagar con Paypal">
+				</form>
+				<a href="{{route('orden.cancelar', $orden->id)}}" class="btn btn-outline-danger">Cancelar orden</a>
+			@endif
+
 		</div>
 	</div>
 @endsection

@@ -22,4 +22,9 @@ class Order extends Model
     {
     	return $this->hasOne('App\Shiping_data', 'orden_id');
     }
+
+    public function pagos()
+    {
+        return $this->hasMany('App\Pago', 'orden_id');
+    }
 }

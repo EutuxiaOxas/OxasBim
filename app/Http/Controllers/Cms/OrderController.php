@@ -18,14 +18,29 @@ class OrderController extends Controller
 
 
     public function nuevaOrden(){
+
     	$user = auth()->user();
+
+
+        $oldOrder = Order::where('status', 'ACTIVO')
+                        ->where('user_id', $user->id)
+                        ->first();
+    	
+        if(isset($oldOrder))
+        {
+            $oldOrder->status = 'CANCELADO';
+            $oldOrder->save();
+        }
+
     	$cart = $user->cartVerify();
     	$total = $cart->cartAmount();
+
+
 
     	$order = Order::create([
     		'user_id' => $user->id,
     		'total_amount' => $total,
-    		'status' => 'PROCESS',
+    		'status' => 'ACTIVO',
     	]);
 
     	$id = $order->id;
@@ -74,5 +89,15 @@ class OrderController extends Controller
 
     	return redirect('/');
     	
+    }
+
+
+    public function cancelarOrden($id)
+    {
+        $orden = Order::find($id);
+        $orden->status = 'CANCELADO';
+        $orden->save();
+
+        return redirect('/home')->with('message', 'Orden cancelada con éxito');
     }
 }

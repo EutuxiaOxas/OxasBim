@@ -142,6 +142,7 @@
     function getOrdenInfo(id){
       axios.get(`/get/shiping-info/${id}`)
         .then(res => {
+          console.log(res.data)
           modalEnvioInfo(res.data)
         })
     }

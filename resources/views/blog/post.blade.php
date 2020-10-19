@@ -18,6 +18,14 @@
 	  </div>
 	</div>
 
+	<div>
+		<div id="texto_blog" style="position: absolute; visibility: hidden;">
+			{{$post->title}}
+			{!!$post->content!!}
+		</div>
+		<button id="boton_reproducir" style="display: none;" class="btn btn-outline-primary">Reproducir post</button>
+	</div>
+
 	<div class="mt-2">
 		<form action="" method="POST" class="mb-2">
 			<input type="hidden" id="post_id" value="{{$post->id}}" name="article_id">
@@ -40,6 +48,7 @@
 		</div>
 	</div>
 </section>
+
 
 <script type="text/javascript">
 	let submitButton = document.getElementById('submit_button'),
@@ -81,6 +90,26 @@
 			<p>${comment}</p>
 		`
 	}
+</script>
+
+<script type="text/javascript">
+	let botonReproducir
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const texto = document.getElementById('texto_blog')
+		botonReproducir = document.getElementById('boton_reproducir')
+		boton_reproducir.style.display = 'block'
+
+		boton_reproducir.addEventListener('click', () => {
+			let mensaje = new SpeechSynthesisUtterance();
+			mensaje.text = texto.textContent
+			mensaje.pitch = 1
+			mensaje.rate = 1
+			mensaje.volume = 1
+			speechSynthesis.speak(mensaje)
+
+		})
+	})
 </script>
 
 @endsection

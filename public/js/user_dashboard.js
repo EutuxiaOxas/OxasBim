@@ -178,7 +178,7 @@ function modalPagoInfo(data){
     container_info.innerHTML = `
         <div>
             <h5>Pago total de la orden #${data.orden_id}: ${data.total_pago} $</h5>
-            <p>Restante por pagar: ${data.restante <= 0 ? '0' : ''} $</p>
+            <p>Restante por pagar: ${data.restante <= 0 ? '0' : data.restante} $</p>
         </div>
     `
 

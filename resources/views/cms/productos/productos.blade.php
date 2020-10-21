@@ -7,7 +7,7 @@
 <div class="d-flex justify-content-between">
     <h2>Productos tienda virtual</h2>
     <div>
-        <a class="btn btn-outline-success" href="{{route('tienda.product.create')}}">Crear Producto</a>
+        <a class="btn btn-outline-primary" href="{{route('tienda.product.create')}}">Crear Producto</a>
     </div>
 </div>
 <hr>
@@ -43,7 +43,7 @@
             <td>{{substr($producto->description,0, 60)}}</td>
             <td>{{$producto->category->title}}</td>
             <td>
-            	<a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-success">Editar</a>
+            	<a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>
             	<button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>	
             </td>
           </tr>

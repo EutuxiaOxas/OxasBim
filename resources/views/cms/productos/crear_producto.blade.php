@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-between mt-4 mb-3">
 	<h1 class="">Crear Producto</h1>
 	<div>
-		<a class="btn btn-outline-success" href="{{route('tienda.product.home')}}">Volver</a>
+		<a class="btn btn-outline-primary" href="{{route('tienda.product.home')}}">Volver</a>
 	</div>
 </div>
 @if (session('message'))
@@ -73,7 +73,7 @@
 			</div>
 		</div>
 		<div class="form-group col-12">
-			<input type="submit" id="submitForm" class="btn btn-success" value="Crear producto">
+			<input type="submit" id="submitForm" class="btn btn-primary" value="Crear producto">
 		</div>
 	</div>
 	<div class="col-12" style="visibility:  hidden;">

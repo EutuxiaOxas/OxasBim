@@ -44,7 +44,7 @@
 						@csrf
 						<input type="file" name="image" class="image_file" id="file_image">
 					</form>
-					<button type="button" id="guardar_submit" class="btn btn-success btn-sm px-5 mt-3">Guardar</button>
+					<button type="button" id="guardar_submit" class="btn btn-primary btn-sm px-5 mt-3">Guardar</button>
 				</div>
             </div>
         </section>
@@ -53,7 +53,7 @@
             <div class="my-3 d-flex justify-content-between">
                 <h2>Imagenes del banner principal</h2>
                 <div>
-                    <a class="btn btn-success btn-sm px-4" href="{{ route('banners.create') }}">Nuevo Banner</a>
+                    <a class="btn btn-outline-primary btn-sm px-4" href="{{ route('banners.create') }}">Nuevo Banner</a>
                 </div>
 			</div>
 

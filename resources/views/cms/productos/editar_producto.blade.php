@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-between mt-4 mb-3">
 	<h1 class="">Editar Producto</h1>
 	<div>
-		<a class="btn btn-outline-success" href="{{route('tienda.product.home')}}">Volver</a>
+		<a class="btn btn-outline-primary" href="{{route('tienda.product.home')}}">Volver</a>
 	</div>
 </div>
 @if (session('message'))
@@ -79,7 +79,7 @@
 		</div>
 
 		<div class="form-group col-12">
-			<input type="submit" id="submitForm" class="btn btn-success" value="Actualizar producto">
+			<input type="submit" id="submitForm" class="btn btn-primary" value="Actualizar producto">
 		</div>
 		<div class="form-group col-12" style="visibility: hidden;">
 			<input class="form-control" id="slug" type="text" value="{{$product->slug}}" name="slug">
@@ -117,7 +117,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" id="actualizar_modal" class="btn btn-success">Actualizar imagen</button>
+                <button type="button" id="actualizar_modal" class="btn btn-primary">Actualizar imagen</button>
             </div>
         </div>
     </div>

@@ -141,7 +141,7 @@
                 enctype="multipart/form-data">
                 @csrf
                 <div class="d-flex">
-                    <button type="button" class="btn btn-success button_select px-3">
+                    <button type="button" class="btn btn-primary button_select px-3">
                         Agregar Imagen
                     </button>
                 </div>
@@ -156,7 +156,7 @@
         </div>
 
         <div class="d-flex justify-content-center my-3 ">
-            <button type="button" id="button_submit" class="btn btn-success mr-5 px-5">Actualizar</button>
+            <button type="button" id="button_submit" class="btn btn-primary mr-5 px-5">Actualizar</button>
             <a href="{{ route('banners.home') }}" class="btn btn-outline-danger">Cancelar</a>
         </div>
     </section>

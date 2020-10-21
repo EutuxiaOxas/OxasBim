@@ -59,7 +59,9 @@ class OrderController extends Controller
     		]);
     	}
 
+
     	return redirect("/shiping-data?orden=".$id);
+
     }
 
     public function getOrderDetail(Request $request, $id)

@@ -9,7 +9,7 @@
 	<div class="d-flex justify-content-between">
 		<h1>Blog Articulos</h1>
 		<div>
-			<a href="{{route('blog.article.create')}}"  class="btn btn-outline-success">Crear Articulo</a>
+			<a href="{{route('blog.article.create')}}"  class="btn btn-outline-primary">Crear Articulo</a>
 		</div>
 	</div>
 
@@ -52,8 +52,8 @@
 	                	<td>{{$articulo->category->name}}</td>
 	                	<td>{{$articulo->date}}</td>
 	                	<td>
-	                		<a href="{{route('blog.article.show', $articulo->id)}}" class="btn btn-sm btn-outline-success">Editar</a>
-	                		<button type="button" id="{{$articulo->id}}" class="btn btn-sm btn-outline-success comentarios" data-toggle="modal" data-target="#modalComentarios">Comentarios</button>
+	                		<a href="{{route('blog.article.show', $articulo->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>
+	                		<button type="button" id="{{$articulo->id}}" class="btn btn-sm btn-outline-primary comentarios" data-toggle="modal" data-target="#modalComentarios">Comentarios</button>
 	                		<button type="button" id="{{$articulo->id}}" class="btn btn-sm btn-outline-danger eliminar_button" data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
 	                	</td>
 	                </tr>

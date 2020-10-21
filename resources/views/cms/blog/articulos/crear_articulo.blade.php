@@ -9,7 +9,7 @@
 	<div class="d-flex justify-content-between">
 		<h1>Crear Articulo</h1>
 		<div>
-			<a href="{{route('blog.articles')}}" class="btn btn-outline-success">Volver</a>
+			<a href="{{route('blog.articles')}}" class="btn btn-outline-primary">Volver</a>
 		</div>
 	</div>
 

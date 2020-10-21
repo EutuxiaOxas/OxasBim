@@ -178,13 +178,13 @@ function modalPagoInfo(data){
     container_info.innerHTML = `
         <div>
             <h5>Pago total de la orden #${data.orden_id}: ${data.total_pago} $</h5>
-            <p>Restante por pagar: ${data.restante} $</p>
+            <p>Restante por pagar: ${data.restante <= 0 ? '0' : ''} $</p>
         </div>
     `
 
     container_detalles.innerHTML = '';
 
-    if(data.restante === 0){
+    if(data.restante <= 0){
         data.pagos.forEach(({titular, monto, banco_emisor, banco_receptor, referencia, fecha, identidad_titular,numero}) => {
             container_detalles.innerHTML += `
                 <div class="mr-2 p-2" style="flex: 1 0 50; border: 1px solid #333;">

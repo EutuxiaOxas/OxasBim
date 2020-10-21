@@ -95,9 +95,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Registrarse') }}
                                 </button>
-
+                                <a href="{{route('google.login')}}" class="btn btn-outline-primary">Registrarse con google</a>
                                 <hr>
                                 <h5>¿Ya tienes una cuenta? Inicia sesión aquí</h4>
+                                <hr>
                                 <a href="/login" class="btn btn-outline-secondary">Iniciar sesión</a>
                             </div>
                         </div>

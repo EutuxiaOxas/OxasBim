@@ -65,9 +65,16 @@ class ShipingDataController extends Controller
 
     public function getShipingData(Request $request, $id){
 
+        $user = auth()->user();
+        $orden= Order::find($id);
+
+
         if($request->wantsJson()){
-            $info = Order::find($id)->shiping;
-            return response()->json($info, 200);
+            if($user->id === $orden->user_id || $user->roles->rol === 'inventario' || $user->roles->rol === 'administrador') 
+            {
+                $info = $orden->shiping;
+                return response()->json($info, 200);
+            }
         }
 
         return redirect('/');

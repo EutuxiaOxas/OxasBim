@@ -119,13 +119,15 @@ Route::middleware('tienda')->group(function () {
 	/*--------------- VISTA ORDENES --------------*/
 
 	Route::get('/cms/ventas', 'Cms\OrderController@index')->name('order.home');
-	Route::get('/get/shiping-info/{id}', 'ShipingDataController@getShipingData');
+	
 
 	/*--------------- VISTA COMPRADORES --------------*/
 
 	Route::get('/cms/compradores', 'Cms\IndexController@compradores')->name('compradores.home');
 
 });
+//--------INFORMACION DE ENVIO-----
+Route::get('/get/shiping-info/{id}', 'ShipingDataController@getShipingData');
 
 //-------------- ORDENES -----------
 Route::get('/make/order', 'Cms\OrderController@nuevaOrden')

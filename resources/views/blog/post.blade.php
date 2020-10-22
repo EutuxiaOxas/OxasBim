@@ -24,6 +24,9 @@
 			{!!$post->content!!}
 		</div>
 		<button id="boton_reproducir" style="display: none;" class="btn btn-outline-primary">Reproducir post</button>
+		<div id="reproductor_container" class="reproductor align-items-center">
+			<audio src=""  id="reproductor" controls="true" style="display: none;"></audio>
+		</div>
 	</div>
 
 	<div class="mt-2">
@@ -93,23 +96,30 @@
 </script>
 
 <script type="text/javascript">
+	const reproductor = document.getElementById('reproductor')
+
 	let botonReproducir
+		
 
 	document.addEventListener('DOMContentLoaded', () => {
-		const texto = document.getElementById('texto_blog')
+		let texto = document.getElementById('texto_blog')
 		botonReproducir = document.getElementById('boton_reproducir')
-		boton_reproducir.style.display = 'block'
+		botonReproducir.style.display = 'block'
+
 
 		boton_reproducir.addEventListener('click', () => {
-			let mensaje = new SpeechSynthesisUtterance();
-			mensaje.text = texto.textContent
-			mensaje.pitch = 1
-			mensaje.rate = 1
-			mensaje.volume = 1
-			speechSynthesis.speak(mensaje)
+			let changeText = encodeURIComponent(texto.textContent)
+				url = `https://audio1.spanishdict.com/audio?lang=es&text=${changeText}`
+
+			botonReproducir.style.display = 'none'
+			reproductor.style.display = 'block'
+			
+			reproductor.src = url
+			reproductor.play()
 
 		})
 	})
+
 </script>
 
 @endsection

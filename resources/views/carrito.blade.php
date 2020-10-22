@@ -79,6 +79,7 @@
         			<input id="modal_login_password" class="form-control" type="password" name="password" autocomplete="off">
         		</div>
         		<input type="submit" id="modal_login_submit" class="btn btn-primary" value="Iniciar sesion">
+        		<a href="{{route('google.login')}}" class="btn btn-outline-primary">Iniciar sesion con google</a>
         		</div>
         	</form>
         </div>

@@ -55,6 +55,13 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="total" class="col-md-4 col-form-label text-md-right">{{ __('Total a pagar') }}</label>
+                                <div class="col-md-6">
+                                    <input id="total" class="form-control" type="text" disabled value="{{$orden->total_amount}} $">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="monto" class="col-md-4 col-form-label text-md-right">{{ __('Monto') }}</label>
 
                                 <div class="col-md-6">

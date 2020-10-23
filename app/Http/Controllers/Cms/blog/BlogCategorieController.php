@@ -39,6 +39,7 @@ class BlogCategorieController extends Controller
 
 		$categoria->update([
 			'name' => $request->name,
+            'padre_id' => $request->padre_id,
 			'description' => $request->description,
 		]);
 
@@ -54,5 +55,11 @@ class BlogCategorieController extends Controller
 
 		return back()->with('error', 'Categoria eliminada con éxito');
 
+    }
+
+
+    public function obtenerCategoria($id)
+    {
+        return BlogCategorie::where('padre_id', 0)->get();
     }
 }

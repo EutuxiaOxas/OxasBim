@@ -73,6 +73,7 @@ Route::middleware('blog')->group(function () {
 		/*--------------- CATEGORIAS --------------*/
 
 	Route::get('/cms/blog/categorias', 'Cms\blog\BlogCategorieController@index')->name('blog.categories');
+	Route::get('/cms/get-category/{id}', 'Cms\blog\BlogCategorieController@obtenerCategoria');
 
 	//métodos posts
 

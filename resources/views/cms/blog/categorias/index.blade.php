@@ -35,6 +35,8 @@
 	            <tr>
 	                <th>#</th>
 	                <th>Titulo</th>
+	                <th>Categoria Padre</th>
+	                <th>Estatus</th>
 	                <th>Descripción</th>
 	                <th>Acciones</th>
 	            </tr>
@@ -44,6 +46,11 @@
 	                <tr>
 	                	<td>{{$categoria->id}}</td>
 	                    <td>{{$categoria->name}}</td>
+	                    <td>
+	                    	@php $padre = $categoria->getFatherName() @endphp
+	                    	{{$padre ? $padre->name : 'No tiene categoria padre'}}
+	                    </td>
+	                    <td>{{$categoria->status}}</td>
 	                    <td>{{$categoria->description}}</td>
 	                    <td>
 	                    	<button id="{{$categoria->id}}" type="button" class="btn btn-sm btn-outline-primary editar_button" data-toggle="modal" data-target="#modalEditar">Editar</button>
@@ -76,7 +83,7 @@
                     <div class="form-group">
                     	<h5>Categoría padre <small>(opcional)</small></h5>
                     	<select class="form-control" name="padre_id">
-                    		<option>Seleccionar categoría</option>
+                    		<option value="0">Seleccionar categoría</option>
                     		@foreach($categorias as $categoria)
                     		<option value="{{$categoria->id}}">{{$categoria->name}}</option>
                     		@endforeach
@@ -112,6 +119,12 @@
                     <div class="form-group">
                     	<h5>Titulo</h5>
                     	<input class="form-control" id="title_editar" required type="text" maxlength="191" name="name">
+                    </div>
+                    <div class="form-group">
+                    	<h5>Categoria padre <small>(opcional</small></h5>
+                    	<select id="categoria_padre_edit" class="form-control" name="padre_id">
+                    		
+                    	</select>
                     </div>
                     <div class="form-group">
                     	<h5>Descripción</h5>
@@ -213,9 +226,14 @@
 				let form = document.getElementById('editar_form'),
 					id = e.target.id,
 					title = e.target.parentNode.parentNode.cells[1].textContent,
-					description = e.target.parentNode.parentNode.cells[2].textContent;
-
-				modalEditar(form,title,description,id)
+					padre = e.target.parentNode.parentNode.cells[2].innerText,
+					description = e.target.parentNode.parentNode.cells[4].textContent;
+					console.log(padre)
+				axios.get(`/cms/get-category/${id}`)
+					.then(res => {
+						let categorias = res.data
+						modalEditar(form,title,description,id,categorias,padre)
+					})
 			});
 		});
 	}
@@ -295,9 +313,18 @@
 
 //------------ FUNCIONES PARA MODALES --------------
 
-	function modalEditar(form,title,description,id){
+	function modalEditar(form,title,description,id, categorias, padre){
 		let title_editar = document.getElementById('title_editar'),
+			cat_padre = document.getElementById('categoria_padre_edit'),
 			description_editar = document.getElementById('description_editar');
+
+		cat_padre.innerHTML = `<option value="0">Seleccionar categoria padre</option>`
+
+		categorias.forEach(categoria => {
+			cat_padre.innerHTML += `
+				<option value="${categoria.id}" ${categoria.name === padre ? 'selected' : ''}>${categoria.name}</option>
+			`
+		})
 
 		title_editar.value = title
 		description_editar.value = description

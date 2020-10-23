@@ -14,13 +14,14 @@ use Str;
 
 class ProductController extends Controller
 {
+    //--------- PAGINA PRINCIPAL TIENDA/PRODUCTOS -------
     public function index()
     {
     	$productos = Product::all();
         $secName = 'tienda';
     	return view('cms.productos.productos', compact('productos', 'secName'));
     }
-
+    //--------- VERIFICACIÓN SLUG PRODUCTO -------
     public function verifySlug(Request $request, $slug)
     {
 
@@ -46,7 +47,7 @@ class ProductController extends Controller
         $secName = 'tienda';
     	return view('cms.productos.crear_producto', compact('categorias', 'secName'));
     }
-
+    //--------- GUARDAR PRODUCTO -------
     public function guardarProducto(Request $request)
     {
 
@@ -65,7 +66,7 @@ class ProductController extends Controller
 	    ]);
         
 
-
+        //--------- GUARDAR IMAGENES SECUNDARIOS EN CASO DE EXISTIR -------
         if($request->file('second_image'))
         {
             foreach ($request->file('second_image') as $file) {
@@ -98,6 +99,7 @@ class ProductController extends Controller
 
     	$product = Product::find($id);
 
+        //--------- ACTUALIZAR DATOS Y IMAGEN PRINCIPAL DEL PRODUCTO -------
     	if($request->file('image'))
     	{
     	    $deleted = Storage::disk('public')->delete($product->image);
@@ -129,6 +131,7 @@ class ProductController extends Controller
     	    ]);
     	}
 
+        //--------- AGREGAR IMAGENES SECUNDARIAS A PRODUCTO EXISTENTE -------
         if($request->file('second_image'))
         {
             foreach ($request->file('second_image') as $file) {

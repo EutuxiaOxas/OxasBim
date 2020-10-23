@@ -18,6 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
+            $table->integer('padre_id')->default(0);
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

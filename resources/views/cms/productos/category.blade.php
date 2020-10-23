@@ -40,6 +40,15 @@
                 <small id="slug_alert"></small>
             </div>
             <div class="col-md-12 form-group px-1">
+                <h5>Categoria padre <small>(opcional)</small></h5>
+                <select class="form-control" name="padre_id">
+                  <option value="0">Seleccionar categoria padre</option>
+                  @foreach($categorias as $categoria)
+                    <option value="{{$categoria->id}}">{{$categoria->title}}</option>
+                  @endforeach
+                </select>
+            </div>
+            <div class="col-md-12 form-group px-1">
                 <h5>Descripción</h5>
                 <textarea class="form-control" id="create_category_description" name="description" placeholder="Descripción"></textarea>
             </div>
@@ -61,6 +70,8 @@
           <tr>
           	<th>#</th>
           	<th>Titulo</th>
+            <th>Categoria padre</th>
+            <th>estatus</th>
           	<th>Descripción</th>
           	<th>Acciones</th>
           </tr>
@@ -70,6 +81,13 @@
           <tr>
             <td>{{$categoria->id}}</td>
             <td>{{$categoria->title}}</td>
+            <td>
+
+              @php $padre = $categoria->getFatherName() @endphp 
+              {{$padre ? $padre->title : 'No tiene categoria padre'}}
+
+            </td>
+            <td>{{$categoria->status}}</td>
             <td>{{$categoria->description}}</td>
             <td>
             	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-primary editar_category">Editar</button>
@@ -100,6 +118,13 @@
                         <h5>Nombre</h5>
                         <input id="editar_title" class="form-control" type="text" name="title"  autocomplete="off">
                         <small id="slug_alert_edit"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <h5>Categoria padre <small>(opcional)</small></h5>
+                        <select id="cat_padre_editar" class="form-control" name="padre_id">
+                          <option value="0">Seleccionar categoria</option>
+                        </select>
                     </div>
                     
                     <div class="form-group">
@@ -272,13 +297,16 @@
     editarButtons.forEach(button => {
       button.addEventListener('click', (e) => {
         let title = e.target.parentNode.parentNode.children[1].textContent,
-            description = e.target.parentNode.parentNode.children[2].textContent,
+            catPadre = e.target.parentNode.parentNode.children[2].innerText,
+            description = e.target.parentNode.parentNode.children[3].textContent,
             id = e.target.id;
 
             axios.get(`/cms/tienda/get/category/${id}`)
               .then(res => {
-                let slug = res.data
-                modalEditar(id,title,description, slug);
+                let slug = res.data.slug,
+                    categorias = res.data.categorias;
+
+                modalEditar(id,title,description, slug, categorias, catPadre);
               })
 
             
@@ -298,11 +326,21 @@
   }
 
 
-  function modalEditar(id, title, description, slug){
+  function modalEditar(id, title, description, slug, categorias, padre){
     let input_title = document.getElementById('editar_title'),
         input_description = document.getElementById('editar_description'),
         edit_slug = document.getElementById('slug_edit'),
+        cat_padre = document.getElementById('cat_padre_editar'),
         form = document.getElementById('editar_form');
+    
+
+    cat_padre.innerHTML = '<option value="0">Seleccionar categoria padre</option>'
+
+    categorias.forEach(categoria => {
+        cat_padre.innerHTML += `
+          <option value="${categoria.id}" ${categoria.title == padre ? 'selected' : ''}>${categoria.title}</option>
+        `
+    })
 
     form.action = `/cms/tienda/actualizar/categoria/${id}`
     input_title.value = title

@@ -9,6 +9,7 @@ use App\Category;
 
 class CategoryController extends Controller
 {
+    //--------- PAGINA PRINCIPAL TIENDA/CATEGORIAS ------- 
     public function index()
     {
     	$categorias = Category::all();
@@ -16,7 +17,7 @@ class CategoryController extends Controller
     	return view('cms.productos.category', compact('categorias', 'secName'));
     }
 
-
+    //--------- VERIFICACIÓN SLUG DE TIENDA CATEGORIA A TAVÉS DE AJAX -------
     public function verifySlug($slug)
     {
         $slug = Category::where('slug', $slug)->first();
@@ -28,20 +29,24 @@ class CategoryController extends Controller
             return 'aceptado';
         }
     }
-
+    //--------- OBTENER CATEGORIA A TRAVÉS DE AJAX -------
     public function getCategory($id)
     {
         $category = Category::find($id);
-        return $category->slug;
+        $data = [
+            'slug' => $category->slug,
+            'categorias' => Category::where('padre_id', 0)->get(),
+        ];
+        return $data;
     }
-
+    //--------- GUARDAR -------
     public function guardarCategoria(Request $request)
     {
     	Category::create($request->all());
 
     	return back()->with('message', 'Categoría creada con éxito');
     }
-
+    //--------- ACTUALIZAR -------
     public function atualizarCategoria(Request $request, $id)
     {
     	$categoria = Category::find($id);
@@ -50,7 +55,7 @@ class CategoryController extends Controller
 
     	return back()->with('message', 'Categoria actualizada con éxito');
     }
-
+    //--------- ELIMINAR -------
     public function eliminarCategoria($id)
     {
     	$categoria = Category::find($id);

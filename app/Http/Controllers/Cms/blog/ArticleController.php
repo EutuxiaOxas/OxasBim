@@ -12,6 +12,7 @@ use Storage;
 use Str;
 class ArticleController extends Controller
 {
+    //--------- PAGINA PRINCIPAL DE BLOG ARTICULOS -----------
     public function index()
     {
     	$articulos = BlogArticle::all();
@@ -19,7 +20,7 @@ class ArticleController extends Controller
     	return view('cms.blog.articulos.index', compact('articulos', 'secName'));
     }
 
-
+    //--------- VERIFICACION DE SLUG VIA AJAX -----------
     public function verifySlug(Request $request, $slug)
     {
         $url = BlogArticle::where('slug', $slug)->first();
@@ -66,6 +67,7 @@ class ArticleController extends Controller
     		'picture' => $file,
     	]);
 
+        //--------- CREAR Y SINCRONIZAR KEYWORDS -----------
         $keywords = $request->clave;
 
         $tags = explode(",", $keywords);
@@ -99,6 +101,7 @@ class ArticleController extends Controller
         $tags = $articulo->keywords;
         $secName = 'blog';
 
+        //--------- RECONSTRUIR KEYWORDS EN UN STRING -----------
         $keywords = null;
         $contador = 1;
         foreach ($tags as $tag) {

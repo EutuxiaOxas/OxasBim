@@ -10,6 +10,7 @@ use Storage;
 use Str;
 class BlogCategorieController extends Controller
 {
+    //--------- PAGINA PRINCIPAL DE BLOG CATEGORIAS -----------
     public function index()
     {
     	$categorias = BlogCategorie::all();
@@ -57,7 +58,7 @@ class BlogCategorieController extends Controller
 
     }
 
-
+    //--------- OBTENER CATEGORIA POR AJAX -----------
     public function obtenerCategoria($id)
     {
         return BlogCategorie::where('padre_id', 0)->get();

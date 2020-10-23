@@ -71,7 +71,16 @@
                     @csrf
                     <div class="form-group">
                     	<h5>Titulo</h5>
-                    	<input class="form-control" id="title_crear" required type="text" maxlength="191" name="name">
+                    	<input class="form-control" id="title_crear"  type="text" maxlength="191" name="name" required>
+                    </div>
+                    <div class="form-group">
+                    	<h5>Categoría padre <small>(opcional)</small></h5>
+                    	<select class="form-control" name="padre_id">
+                    		<option>Seleccionar categoría</option>
+                    		@foreach($categorias as $categoria)
+                    		<option value="{{$categoria->id}}">{{$categoria->name}}</option>
+                    		@endforeach
+                    	</select>
                     </div>
                     <div class="form-group">
                     	<h5>Descripción</h5>

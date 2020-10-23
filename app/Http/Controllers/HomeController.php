@@ -35,14 +35,16 @@ class HomeController extends Controller
         $posts = BlogArticle::orderBy('id', 'DESC')->paginate(15);
         $categorias = BlogCategorie::all();
         $keywords = Keyword::all();
-        return view('blog.index', compact('posts', 'categorias', 'keywords'));
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+        return view('blog.index', compact('posts', 'categorias', 'keywords', 'logo'));
     }
 
     public function showPost($slug)
     {
         $post = BlogArticle::where('slug', $slug)->first();
         $comments = $post->comments;
-        return view('blog.post', compact('post', 'comments'));
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+        return view('blog.post', compact('post', 'comments', 'logo'));
     }
 
     public function blogByCategories($name)
@@ -52,7 +54,8 @@ class HomeController extends Controller
         $posts = BlogArticle::where('category_id', $categoria->id)->orderBy('id', 'DESC')->paginate(15);
         $categorias = BlogCategorie::all();
         $keywords = Keyword::all();
-        return view('blog.index', compact('posts', 'categorias', 'keywords'));
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+        return view('blog.index', compact('posts', 'categorias', 'keywords', 'logo'));
     }
 
     public function blogByTag($name)
@@ -61,7 +64,8 @@ class HomeController extends Controller
         $posts = $tag->articles()->orderBy('id', 'DESC')->paginate(15);
         $categorias = BlogCategorie::all();
         $keywords = Keyword::all();
-        return view('blog.index', compact('posts', 'categorias', 'keywords'));
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+        return view('blog.index', compact('posts', 'categorias', 'keywords', 'logo'));
     }
 
 }

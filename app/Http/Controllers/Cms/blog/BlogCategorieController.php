@@ -23,6 +23,7 @@ class BlogCategorieController extends Controller
     	BlogCategorie::create([
     		'name' => $request->name,
     		'description' => $request->description,
+            'padre_id' => $request->padre_id
     	]);
 
     	return back()->with('message', 'Categoria creada con éxito');

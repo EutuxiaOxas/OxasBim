@@ -4,7 +4,12 @@
 @endsection
 
 @section('content')
-<h2>Categoria de productos</h2>
+<div class="d-flex justify-content-between">
+  <h2>Categoria de productos</h2>
+  <div>
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalCrear">Crear Categoria</a>
+  </div>
+</div>
 <hr>
 <section class="container-fluid">
     @if (session('message'))
@@ -25,43 +30,7 @@
         </div>
     @endif
 
-    <div id="errors_container" style="display: none;" class="alert alert-danger" role="alert">
-    </div>
-
-    <input type="hidden" id="url_access" name=""> 
-    <input type="hidden" id="url_access_modal" value="nada" name=""> 
-    <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off">
-        @csrf
-        <div class="row">
-            
-            <div class="col-md-12 form-group px-1 mt-3">
-                <h5>Nombre</h5>
-                <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Nombre" autocomplete="off" required>
-                <small id="slug_alert"></small>
-            </div>
-            <div class="col-md-12 form-group px-1">
-                <h5>Categoria padre <small>(opcional)</small></h5>
-                <select class="form-control" name="padre_id">
-                  <option value="0">Seleccionar categoria padre</option>
-                  @foreach($categorias as $categoria)
-                    <option value="{{$categoria->id}}">{{$categoria->title}}</option>
-                  @endforeach
-                </select>
-            </div>
-            <div class="col-md-12 form-group px-1">
-                <h5>Descripción</h5>
-                <textarea class="form-control" id="create_category_description" name="description" placeholder="Descripción"></textarea>
-            </div>
- 
-        </div>
-        <div class="row form-group px-1">
-            <input type="submit" id="crear_category_submit" class="btn btn-sm btn-primary px-5" value="Crear">
-        </div>
-        <div class="form-group px-1 col-md-12" style="visibility: hidden;">
-          <h5>URL</h5>
-          <input class="form-control" id="slug" type="text" name="slug">
-        </div>
-    </form>
+   
 
     <h2 class="mt-4 mb-3">Categorias</h2>
     <div class="table-responsive">
@@ -99,6 +68,63 @@
       </table>
     </div>
 </section>
+
+
+<div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="errors_container" style="display: none;" class="alert alert-danger" role="alert">
+                </div>
+
+                <input type="hidden" id="url_access" name=""> 
+                <input type="hidden" id="url_access_modal" value="nada" name=""> 
+                <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off">
+                    @csrf
+                    <div class="row">
+                        
+                        <div class="col-md-12 form-group px-1 mt-3">
+                            <h5>Nombre</h5>
+                            <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Nombre" autocomplete="off" required>
+                            <small id="slug_alert"></small>
+                        </div>
+                        <div class="col-md-12 form-group px-1">
+                            <h5>Categoria padre <small>(opcional)</small></h5>
+                            <select class="form-control" name="padre_id">
+                              <option value="0">Seleccionar categoria padre</option>
+                              <option value="0">Principal</option>
+                              @foreach($categorias as $categoria)
+                                @if($categoria->padre_id == 0)
+                                  <option value="{{$categoria->id}}">{{$categoria->title}}</option>
+                                @endif
+                              @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-12 form-group px-1">
+                            <h5>Descripción</h5>
+                            <textarea class="form-control" id="create_category_description" name="description" placeholder="Descripción"></textarea>
+                        </div>
+                
+                    </div>
+                    <div class="form-group px-1 col-md-12" style="visibility: hidden; position: absolute;">
+                      <h5>URL</h5>
+                      <input class="form-control" id="slug" type="text" name="slug">
+                    </div>
+                </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="crear_category_submit" class="btn btn-primary">Actualizar Categoria</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

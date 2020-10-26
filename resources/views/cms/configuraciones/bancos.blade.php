@@ -7,7 +7,7 @@
 <div class="d-flex justify-content-between">
     <h2>Bancos</h2>
     <div>
-      <a href="#" class="btn btn-outline-success" data-toggle="modal" data-target="#modalCrearBanco">Agregar banco</a>
+      <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalCrearBanco">Agregar banco</a>
     </div>
 </div>
 <hr>

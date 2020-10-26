@@ -7,7 +7,7 @@
 <div class="d-flex justify-content-between mt-4 mb-3">
 	<h1 class="">Agregar cuenta de banco</h1>
 	<div>
-		<a class="btn btn-outline-success" href="{{route('bank.user.home')}}">Volver</a>
+		<a class="btn btn-outline-primary" href="{{route('bank.user.home')}}">Volver</a>
 	</div>
 </div>
 

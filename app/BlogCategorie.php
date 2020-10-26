@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BlogCategorie extends Model
 {
-    protected $fillable = ['name', 'description', 'padre_id'];
+    protected $fillable = ['name', 'description', 'padre_id', 'slug'];
 
     public function getFatherName()
     {

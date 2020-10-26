@@ -17,6 +17,7 @@ class CreateBlogCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->text('slug');
             $table->integer('padre_id')->default(0);
             $table->string('status')->default('active');
             $table->timestamps();

@@ -47,10 +47,10 @@ class HomeController extends Controller
         return view('blog.post', compact('post', 'comments', 'logo'));
     }
 
-    public function blogByCategories($name)
+    public function blogByCategories($slug)
     {
         
-        $categoria = BlogCategorie::where('name', $name)->first();
+        $categoria = BlogCategorie::where('slug', $slug)->first();
         $posts = BlogArticle::where('category_id', $categoria->id)->orderBy('id', 'DESC')->paginate(15);
         $categorias = BlogCategorie::all();
         $keywords = Keyword::all();

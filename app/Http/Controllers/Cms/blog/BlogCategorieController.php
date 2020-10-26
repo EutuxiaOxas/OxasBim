@@ -24,7 +24,8 @@ class BlogCategorieController extends Controller
     	BlogCategorie::create([
     		'name' => $request->name,
     		'description' => $request->description,
-            'padre_id' => $request->padre_id
+            'padre_id' => $request->padre_id,
+            'slug' => $request->slug,
     	]);
 
     	return back()->with('message', 'Categoria creada con éxito');
@@ -42,6 +43,7 @@ class BlogCategorieController extends Controller
 			'name' => $request->name,
             'padre_id' => $request->padre_id,
 			'description' => $request->description,
+            'slug' => $request->slug,
 		]);
 
     	return back()->with('message', 'Categoria actualizada con éxito');
@@ -58,9 +60,34 @@ class BlogCategorieController extends Controller
 
     }
 
-    //--------- OBTENER CATEGORIA POR AJAX -----------
+    //--------- OBTENER CATEGORIAS POR AJAX -----------
     public function obtenerCategoria($id)
     {
-        return BlogCategorie::where('padre_id', 0)->get();
+        $categoria = BlogCategorie::find($id);
+
+        $datos = [
+            'categorias' =>BlogCategorie::where('padre_id', 0)->get(),
+            'slug' => $categoria->slug
+        ];
+
+        return $datos;
+    }
+
+    public function verificarSlugCategoria(Request $request)
+    {
+        $verificador = BlogCategorie::where('slug', $request->slug)->first();
+        
+        if(isset($request->id)){
+            if(isset($verificador) && $verificador->id == $request->id){
+                return response()->json('pertence el slug', 200);
+            }
+        }
+
+        if(isset($verificador))
+        {
+            return response()->json('', 204);
+        }else {
+            return response()->json('', 200);
+        }   
     }
 }

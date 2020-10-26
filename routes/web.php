@@ -19,7 +19,7 @@ Route::get('/', 'HomeController@lading')->name('home');
 Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::get('/blog/{slug}', 'HomeController@showPost')->name('blog.show');
 
-Route::get('/blog-categorias/{name}', 'HomeController@blogByCategories')->name('blog.category.show');
+Route::get('/blog-categorias/{slug}', 'HomeController@blogByCategories')->name('blog.category.show');
 Route::get('/blog-keywords/{name}', 'HomeController@blogByTag')->name('blog.tag.show');
 Auth::routes();
 
@@ -74,7 +74,7 @@ Route::middleware('blog')->group(function () {
 
 	Route::get('/cms/blog/categorias', 'Cms\blog\BlogCategorieController@index')->name('blog.categories');
 	Route::get('/cms/get-category/{id}', 'Cms\blog\BlogCategorieController@obtenerCategoria');
-
+	Route::post('/cms/verificar/slug', 'Cms\blog\BlogCategorieController@verificarSlugCategoria');
 	//métodos posts
 
 	Route::post('/cms/crear/categoria', 'Cms\blog\BlogCategorieController@crearCategoria')->name('blog.categories.create');

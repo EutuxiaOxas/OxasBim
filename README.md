@@ -58,53 +58,54 @@ La rama Blog contiene:
 ##  Rama Productos
 La rama Productos contiene: 
 
-    - Sección en el administrador para crear/editar/eliminar categorias y productos
-    - Rol de usuario para edicion de la tienda
-    - Vitrina de productos
+   - Sección en el administrador para crear/editar/eliminar categorias y productos
+   - Rol de usuario para edicion de la tienda
+   - Vitrina de productos
+    
 ## Rama Carrito de compras
 La rama de Carrito contiene: 
     
-    - Carrito de compras funcional
-    - complementación directa con la rama Productos
-    - Vista de carrito de compras completo
-    - Observar contenido del carrito desde el menu principal
+   - Carrito de compras funcional
+   - complementación directa con la rama Productos
+   - Vista de carrito de compras completo
+   - Observar contenido del carrito desde el menu principal
     
 ## Rama Compradores
 La rama compradores contiene:
     
-    - Vista de registro y inicio de sesión para usuarios comunes
-    - Inicio de sesion con google
-    - Vista de dashboard para el usuario
+   - Vista de registro y inicio de sesión para usuarios comunes
+   - Inicio de sesion con google
+   - Vista de dashboard para el usuario
 
 ## Rama Ordenes
 La rama Ordenes contiene: 
     
-    - Sección en el administrador para observar las ordenes realizadas y los detalles de estas
-    - Complementación directa con la rama carrito de compras
-    - Funcionalidad del boton comprar para realizar una orden
-    - Sección en el dashboard de usuario para ver las ordenes realizadas
+   - Sección en el administrador para observar las ordenes realizadas y los detalles de estas
+   - Complementación directa con la rama carrito de compras
+   - Funcionalidad del boton comprar para realizar una orden
+   - Sección en el dashboard de usuario para ver las ordenes realizadas
     
 ## Rama Métodos de envios
 La rama Metodos de envio contiene:
     
-    - Complementación directa con la rama ordenes
-    - Agregar dirección de envio al realizar una orden
-    - permitir cancelar una orden
+   - Complementación directa con la rama ordenes
+   - Agregar dirección de envio al realizar una orden
+   - permitir cancelar una orden
 
 ## Rama Método de Pagos
 La rama Métodos de pagos contiene: 
 
-    - Sección en el administrador para crear/eliminar/editar bancos y cuentas bancarias disponibles
-    - Sección en el administrador para ver los pagos realizados
-    - complementación directa con la rama Métodos de envios
-    - Vista con las cuentas disponibles
-    - Vista para registrar pagos por transferencia bancaria
+   - Sección en el administrador para crear/eliminar/editar bancos y cuentas bancarias disponibles
+   - Sección en el administrador para ver los pagos realizados
+   - complementación directa con la rama Métodos de envios
+   - Vista con las cuentas disponibles
+   - Vista para registrar pagos por transferencia bancaria
     
 ## Rama Paypal
 La rama Paypal contiene:
     
-    - Funcionalidad para realizar pagos con paypal
-    - complementación directa con rama Métodos de Pagos
+   - Funcionalidad para realizar pagos con paypal
+   - complementación directa con rama Métodos de Pagos
 
 ## CONFIGURACIÓN DE LOS MERGES
 ------------------------------------
@@ -112,19 +113,27 @@ La rama Paypal contiene:
 jerarquia de las ramas de la tienda virtual: productos-> carrito de compras-> compradores -> ordenes -> metodos de envio -> metodos de pago -> paypal
 
     - Paso 1-) Haber agregado las ramas principales administrador y landing page
+    
     - Paso 2-) Si se va a utilizar una tienda virtual completa o parcial, hacer primero merge de la rama productos y de todas las ramas dependiente de esta que se vayan a utilizar en el orden anotado arriba
+    
     - Paso 3-) Hacer merge de la rama contactanos y reparar los conflictos que surjan (conflictos especificados mas abajo) 
+    
     - Paso 4-) Agregar rama blog en caso de ser utilizada y reparar conflictos
     
 ## CONFLICTOS 
 (Aclaración al unir la rama productos con las ramas dependientes no provocará conflictos por ello realizar eso primero)
     
-    - Al agregar la rama contactanos se crearan conflictos en el archivo web, mover las rutas de contactanos dentro del bloque de código de Landing page, al final de este.
+    - Al agregar la rama contactanos se crearan conflictos en el archivo web, mover las rutas de contactanos dentro del bloque de código de Landing page, al final de este
+    
     - Reparar conflictos en HomeController, agregar la funcion de contactanos al final y cerrar las llaves incompletas
-    - En la carpeta Layout/app.blade.php reparar el navbar agregando el enlace a la vista contactanos en un li aparte y quitando los cierre de etiquetas extras que se pudieron haber creado.
+    
+    - En la carpeta Layout/app.blade.php reparar el navbar agregando el enlace a la vista contactanos en un li aparte y quitando los cierre de etiquetas extras que se pudieron haber creado
+    
     - Al agregar la rama de blog, en el archivo web agregar el bloque de blog hasta el final y quitar los avisos de conflictos de git
     - Reparar conflicto en HomeController de igual forma que con la rama contactanos
-    - Reparar de igual forma conflictos en el app.blade.php como se mencionó anteriormente.
+    
+    - Reparar de igual forma conflictos en el app.blade.php como se mencionó anteriormente
+    
     - Reparar conflicto en la carpeta middleware -> Kernel.php quitando los avisos de conflicto de git y agregando el middleware de blog
     
 -------------------------------------
@@ -132,7 +141,9 @@ jerarquia de las ramas de la tienda virtual: productos-> carrito de compras-> co
 ## CONFIGURACIÓN SIN TIENDA VIRTUAL
     
     - Paso 1-) Haber agregado las ramas principales administrador y landing page
+    
     - Paso 2-) Agregar rama de contactanos de primero en caso de ser utilizada
+    
     - Paso 3-) Agregar rama de blog en caso de ser utilizada y reparar conflictos de Web, HomeController y App.blade.php como se mencionó en los conflictos de Tienda virtual
     
 -------------------------------------

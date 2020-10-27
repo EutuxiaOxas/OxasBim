@@ -50,10 +50,10 @@ Para realizar el merge a la master es necesario:
 ## Rama blog
 La rama Blog contiene:
     
-    - Sección en el  administrador para crear/editar/eliminar categorias y articulos
-    - cuenta con sistema de categorias principales y sub categorias (categorias hijos)
-    - Nuevo perfil de usuario para edición del blog
-    - Vista de blog y post individuales
+   - Sección en el  administrador para crear/editar/eliminar categorias y articulos
+   - cuenta con sistema de categorias principales y sub categorias (categorias hijos)
+   - Nuevo perfil de usuario para edición del blog
+   - Vista de blog y post individuales
 
 ##  Rama Productos
 La rama Productos contiene: 
@@ -108,7 +108,7 @@ La rama Paypal contiene:
    - complementación directa con rama Métodos de Pagos
 
 ## CONFIGURACIÓN DE LOS MERGES
-------------------------------------
+---------------------------------------
 ## CONFIGURACION CON TIENDA VIRTUAL
 jerarquia de las ramas de la tienda virtual: productos-> carrito de compras-> compradores -> ordenes -> metodos de envio -> metodos de pago -> paypal
 
@@ -136,7 +136,7 @@ jerarquia de las ramas de la tienda virtual: productos-> carrito de compras-> co
     
     - Reparar conflicto en la carpeta middleware -> Kernel.php quitando los avisos de conflicto de git y agregando el middleware de blog
     
--------------------------------------
+---------------------------------------
 
 ## CONFIGURACIÓN SIN TIENDA VIRTUAL
     

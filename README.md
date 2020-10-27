@@ -1,4 +1,4 @@
-## Manual de uso de plantilla de Desarrollo basada en Laravel 7.0
+## Manual de uso de plantilla de Desarrollo basada en Laravel 7
 
 El siguiente manual tiene como finalidad explicar paso a paso como usar correctamente la plantilla de desarrollo.
 
@@ -103,3 +103,16 @@ La rama Paypal contiene:
     
     - Funcionalidad para realizar pagos con paypal
     - complementación directa con rama Métodos de Pagos
+
+## CONFIGURACIÓN DE LOS MERGES
+------------------------------------
+## CONFIGURACION CON TIENDA VIRTUAL
+jerarquia de las ramas de la tienda virtual: productos-> carrito de compras-> compradores -> ordenes -> metodos de envio -> metodos de pago -> paypal
+
+    - Paso 1-) Haber agregado las ramas principales administrador y landing page
+    - Paso 2-) Si se va a utilizar una tienda virtual completa o parcial, hacer primero merge de la rama productos y de todas las ramas dependiente de esta que se vayan a utilizar en el orden anotado arriba
+    - Paso 3-) Hacer merge de la rama contactanos y reparar los conflictos que surjan (conflictos especificados mas abajo) 
+    - Paso 4-) Agregar rama blog en caso de ser utilizada y reparar conflictos
+    
+## CONFLICTOS 
+    (Aclaración al unir la rama productos con 

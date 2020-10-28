@@ -107,3 +107,5 @@ Route::middleware('tienda')->group(function () {
 		/*--------------- PRODUCTOS IMAGENES --------------*/
 	Route::post('/cms/update/product/image/{id}', 'Cms\ProductImageController@editImage');
 });
+
+Route::post('/ir/whatsapp', 'WhatsappController@irAWhatsapp');

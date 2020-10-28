@@ -5,16 +5,25 @@ class CarritoUI {
   constructor(carrito, cart_body) {
     this.cart_body = cart_body;
     this.carrito = carrito;
+    this.total = 0;
+    this.urlProductos = ''
   }
 
 
   agregarCarrito(productos)
   {
-  	
   	if(productos.length > 0)
   	{
   		this.cart_body.innerHTML = '';
+  		let contador = 0;
   		productos.forEach(producto => {
+  			this.total = this.total + onlyPrice(producto.price)
+  			if(contador === 0) {
+  				this.urlProductos = `${producto.cantidad} x ${producto.title} - ${producto.price}`
+  			}else {
+  				this.urlProductos = `${this.urlProductos}%0A%0A${producto.cantidad} x ${producto.title} - ${producto.price}`
+  			}
+
   			let template = ''
   			if(producto.producto){
   				template = `
@@ -43,13 +52,25 @@ class CarritoUI {
   			}
   			this.cart_body.innerHTML+= template;
   			
+  			contador++
   		})
   		this.cart_body.innerHTML+= `
   				<div class="text-center">
-  					<a href="/cart/ver" class="btn btn-sm btn-primary">Ver Carrito</a>
+  					<a href="#" id="boton_modal" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalIrAWhatsapp">Ir a whatsapp</a>
   				</div>
   			`
+  		this.boton_modal = document.getElementById('boton_modal');
+
+  		this.boton_modal.addEventListener('click', () => {
+  			let productosUrl = document.getElementById('productos_modal')
+  			let totalProductos = document.getElementById('total_modal')
+
+  			productosUrl.value =  this.urlProductos
+
+  			totalProductos.value = this.total
+  		})
   		this.carrito.children[0].children[0].classList.add('cart_on')
+
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
   		this.carrito.children[0].children[0].classList.remove('cart_on')
@@ -540,4 +561,9 @@ function loadEventsCartView(){
 	//-------------------- FUNCIONES DE LOS EVENTOS EN LA VISTA CARRITO.BLADE -----------------
 }
 
+// ------------- FUNCION PARA OBTENER PRECIO SIN SOMBOLO -----------------
 
+function onlyPrice(price){
+	let test = price.split("$")
+	return parseFloat(test[0].trim())
+}

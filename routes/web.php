@@ -21,7 +21,7 @@ Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory
 
 
 Route::get('/cart', 'CartController@getCart');
-Route::get('/cart/ver', 'HomeController@verCarrito');
+// Route::get('/cart/ver', 'HomeController@verCarrito'); ---- VISTA CARRITO ----
 Route::post('/cart/add', 'CartController@addToCart');
 Route::post('/cart/storage', 'CartController@addStorageToCart');
 Route::post('/cart/item/delete/{id}', 'CartController@eliminarDetalle')->name('cart.detail.destroy');

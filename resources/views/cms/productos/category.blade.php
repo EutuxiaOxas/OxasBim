@@ -7,7 +7,7 @@
 <div class="d-flex justify-content-between">
   <h2>Categoria de productos</h2>
   <div>
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalCrear">Crear Categoria</a>
+    <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalCrear">Crear Categoria</a>
   </div>
 </div>
 <hr>
@@ -119,7 +119,7 @@
                 </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                <button type="submit" id="crear_category_submit" class="btn btn-primary">Actualizar Categoria</button>
+                <button type="submit" id="crear_category_submit" class="btn btn-primary">Crear Categoria</button>
             </div>
         </div>
     </div>

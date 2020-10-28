@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+
+
 	<style type="text/css">
 		.acordeon_container{
             max-height: 0;
@@ -30,6 +32,7 @@
         }
 
 	</style>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-2" id="categories_container">
@@ -59,7 +62,9 @@
 			<h1 class="my-3">Productos en categoria: <small>{{$product_categorie->title}}</small></h1>
 			@else
 			<h1 class="my-3">Productos</h1>
+
 			@endif
+			<div id="add_alert" style="display: none;" class="alert alert-success">Producto Agregado con éxito!</div>
 			<div class="d-flex" style="flex-wrap: wrap;">
 				@foreach($productos as $producto)
 					<div class="card mb-4 mr-1" style="width: 15rem;">
@@ -73,7 +78,16 @@
 					    @endif
 					    <p><small>{{$producto->price}} $</small></p>
 					    <input type="text" value="{{$producto->slug}}" style="visibility: hidden;">
-					    <a href="{{route('producto.show', $producto->slug)}}" class="btn btn-primary">Ver producto</a>
+					    <div class="text-center mb-3">
+					    	<a href="{{route('producto.show', $producto->slug)}}" class="btn btn-primary">Ver producto</a>
+					    </div>
+					    <div class="text-center">
+					    	@if(auth()->user())
+					    		<button id="{{$producto->id}}" class="btn btn-outline-success to_server">Agregar al carrito</button>
+					    	@else
+					    		<button id="{{$producto->id}}" class="btn btn-outline-success to_storage">Agregar al carrito</button>
+					    	@endif
+					    </div>
 					  </div>
 
 					</div>
@@ -103,7 +117,9 @@
 		}
 	})
 
+
 	
 </script>
+
 
 @endsection

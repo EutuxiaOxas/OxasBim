@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Cart;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -40,5 +42,24 @@ class User extends Authenticatable
     public function roles()
     {
        return $this->belongsTo('App\Role', 'role_id');
+    }
+
+
+    //verificar que el carrito exista
+    public function cartVerify()
+    {
+        $cart = Cart::where('user_id', $this->id)->where('status', 'ACTIVE')->first();
+
+        if(isset($cart))
+        {
+            return $cart;
+        } else {
+            $cart = Cart::create([
+                'user_id' => $this->id,
+                'status' => 'ACTIVE',
+            ]);
+
+            return $cart;
+        }
     }
 }

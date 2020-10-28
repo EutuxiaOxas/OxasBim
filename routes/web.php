@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@lading')->name('home');
 
+Route::get('/productos', 'HomeController@products')->name('productos');
+Route::get('/producto/{slug}', 'HomeController@showProduct')->name('producto.show');
+Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory')->name('product.category.show');
+
 Auth::routes();
 
 /*---------------Login --------------*/
@@ -58,4 +62,39 @@ Route::middleware('landing')->group(function () {
 	//ocultar/activar banners
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
+
+});
+
+Route::middleware('tienda')->group(function () {
+	
+	/*--------------- VISTA TIENDA VIRTUAL --------------*/
+	Route::get('/cms/tienda', 'Cms\CmsController@tiendaVirtual')->name('tienda.home');
+
+		/*--------------- CATEGORIAS --------------*/
+	Route::get('/cms/tienda/categorias', 'Cms\CategoryController@index')->name('tienda.category.home');
+	Route::get('/cms/tienda/get/category/{id}', 'Cms\CategoryController@getCategory');
+		//metodos posts
+	Route::post('/cms/categoria/verify/{slug}', 'Cms\CategoryController@verifySlug');
+	Route::post('/cms/tienda/guardar/categoria', 'Cms\CategoryController@guardarCategoria')->name('tienda.category.store');
+	Route::post('/cms/tienda/actualizar/categoria/{id}', 'Cms\CategoryController@atualizarCategoria');
+	Route::post('/cms/tienda/eliminar/categoria/{id}', 'Cms\CategoryController@eliminarCategoria');
+
+
+		/*--------------- PRODUCTOS --------------*/
+	Route::get('/cms/tienda/productos', 'Cms\ProductController@index')->name('tienda.product.home');
+
+	Route::get('/cms/tienda/crear/producto', 'Cms\ProductController@crearProducto')->name('tienda.product.create');
+
+	Route::get('/cms/tienda/editar/producto/{id}', 'Cms\ProductController@editarProducto')->name('tienda.product.show');
+
+	Route::post('/cms/productos/verify/{slug}', 'Cms\ProductController@verifySlug');
+
+	Route::post('/cms/tienda/guardar/producto', 'Cms\ProductController@guardarProducto')->name('tienda.product.store');
+
+	Route::post('/cms/tienda/actualizar/producto/{id}', 'Cms\ProductController@actualizarProducto')->name('tienda.product.update');
+
+	Route::post('/cms/tienda/eliminar/producto/{id}', 'Cms\ProductController@eliminarProducto');
+
+		/*--------------- PRODUCTOS IMAGENES --------------*/
+	Route::post('/cms/update/product/image/{id}', 'Cms\ProductImageController@editImage');
 });

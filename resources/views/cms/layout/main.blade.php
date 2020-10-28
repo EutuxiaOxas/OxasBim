@@ -111,6 +111,22 @@
                           </ul>
                         </li>
                         @endif
+                        @if(auth()->user()->roles->title == 'inventario' || auth()->user()->roles->title == 'administrador')
+                        <li class="nav-item items">
+                          <a class="nav-link menu_hover secciones tienda"  href="#">
+                            <span data-feather="file"></span>
+                            Tienda
+                          </a>
+                          <ul class="acordeon_container">
+                            <li class="acordeon_item">
+                              <a href="{{route('tienda.category.home')}}" class="nav-link menu_hover">Categorias</a>
+                            </li>
+                            <li class="acordeon_item">
+                              <a href="{{route('tienda.product.home')}}" class="nav-link menu_hover">Productos</a>
+                            </li>
+                          </ul>
+                        </li>
+                        @endif
                     </ul>
                 </div>
             </nav>

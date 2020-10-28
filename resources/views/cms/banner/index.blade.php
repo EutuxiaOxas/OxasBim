@@ -14,11 +14,17 @@
         @if (session('error'))
             <div class="alert alert-danger my-4" role="alert">
                 {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
         @endif
         @if (session('message'))
             <div class="alert alert-success my-4" role="alert">
                 {{ session('message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
         @endif
         <section class="my-4">
@@ -28,6 +34,9 @@
 					@if (isset($logo))
                     <img id="logo_image" src="{{ asset('storage/' . $logo->image) }}"
                         style="width: 100%; height: 100%; object-fit: cover;">
+                    @else
+                    <img id="logo_image" src=""
+                        style="width: 100%; height: 100%; object-fit: cover;">
                 	@endif
                 </div>
 				<div class="col-10">
@@ -35,7 +44,7 @@
 						@csrf
 						<input type="file" name="image" class="image_file" id="file_image">
 					</form>
-					<button type="button" id="guardar_submit" class="btn btn-success btn-sm px-5 mt-3">Guardar</button>
+					<button type="button" id="guardar_submit" class="btn btn-primary btn-sm px-5 mt-3">Guardar</button>
 				</div>
             </div>
         </section>
@@ -44,7 +53,7 @@
             <div class="my-3 d-flex justify-content-between">
                 <h2>Imagenes del banner principal</h2>
                 <div>
-                    <a class="btn btn-success btn-sm px-4" href="{{ route('banners.create') }}">Nuevo Banner</a>
+                    <a class="btn btn-outline-primary btn-sm px-4" href="{{ route('banners.create') }}">Nuevo Banner</a>
                 </div>
 			</div>
 

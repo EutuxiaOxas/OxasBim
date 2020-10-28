@@ -122,9 +122,12 @@
     @if (session('message'))
         <div class="alert alert-success my-4" role="alert">
             {{ session('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
 	@endif
-	<section class="containet">
+	<section class="container">
 		<div class="row">
 			<div class="col-auto"><h3>Editar Banner</h3></div>
 			<div class="col-auto ml-auto"><a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a></div>
@@ -138,7 +141,7 @@
                 enctype="multipart/form-data">
                 @csrf
                 <div class="d-flex">
-                    <button type="button" class="btn btn-success button_select px-3">
+                    <button type="button" class="btn btn-primary button_select px-3">
                         Agregar Imagen
                     </button>
                 </div>
@@ -153,10 +156,30 @@
         </div>
 
         <div class="d-flex justify-content-center my-3 ">
-            <button type="button" id="button_submit" class="btn btn-success mr-5 px-5">Actualizar</button>
+            <button type="button" id="button_submit" class="btn btn-primary mr-5 px-5">Actualizar</button>
             <a href="{{ route('banners.home') }}" class="btn btn-outline-danger">Cancelar</a>
         </div>
     </section>
+
+
+    <div class="modal fade" id="modalBanner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modal_body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="button_modal">Actualizar banner</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <script type="text/javascript">
@@ -167,6 +190,7 @@
             inputFile = document.querySelectorAll('.input_file'),
             form = document.getElementById('form'),
             file = document.getElementById('file'),
+            button_modal = document.getElementById('button_modal'),
             container = document.getElementById('container');
 
         inputFile.forEach(input => {
@@ -183,6 +207,11 @@
         });
 
 
+        button_modal.addEventListener('click', () => {
+            form.submit();
+        });
+
+
         submit.addEventListener('click', (e) => {
 
             let errors = []
@@ -190,14 +219,6 @@
 
             container_errors.innerHTML = '';
             container_errors.style.display = 'none';
-
-            if (title.value === '') {
-                errors.push('Debes agregar un titulo');
-            }
-
-            if (description.value === '') {
-                errors.push('Debes agregar una descripción');
-            }
 
 
             if (errors.length > 0) {
@@ -212,9 +233,35 @@
                 container_errors.appendChild(alerta_main)
                 container_errors.style.display = 'block';
             } else {
-                form.submit();
+                modalBanner()
             }
         });
 
+
+        function modalBanner()
+        {
+            let message = '',
+                modal_body = document.getElementById('modal_body');
+
+            if(title.value == '')
+            {
+                message = '¿Seguro que desea crear el banner sin un titulo?'
+            }if(description.value == '')
+            {
+                message = '¿Seguro que desea crear el banner sin una descripción?'
+            }if(title.value == '' &&  description.value == '')
+            {
+                message = '¿Seguro que desea crear el banner sin un titulo y una descripción?'
+            }
+
+
+            if(message == '')
+            {
+                form.submit();
+            }else {
+                modal_body.innerHTML = `${message}`
+                $('#modalBanner').modal('show')
+            }
+        }
     </script>
 @endsection

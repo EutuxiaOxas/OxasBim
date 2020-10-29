@@ -188,7 +188,6 @@
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="{{ asset('js/cart.js') }}"></script>
     <script type="text/javascript">
         const botonEnviarWhatsapp = document.getElementById('whatsapp_submit')
 

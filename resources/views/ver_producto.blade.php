@@ -17,6 +17,15 @@
 	    		<p class="card-text"><small class="text-muted">{{$product->price}}$</small></p>
 	    		<p>Categoria: <strong>{{$product->category->title}}</strong></p>
 	    		<input type="hidden" value="{{$product->slug}}">
+	    		<p>Referencial: {{$product->price_reference}} $</p>
+	    		<select class="form-control mb-3">
+	    			<option value="1">Seleccionar cantidad</option>
+	    			<option value="1">1</option>
+	    			<option value="2">2</option>
+	    			<option value="3">3</option>
+	    			<option value="4">4</option>
+	    			<option value="5">5</option>
+	    		</select>
 	    	</div>
 	    	<div class="col-6">
 	    		<h5>Imagenes</h5>

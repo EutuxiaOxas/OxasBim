@@ -77,7 +77,17 @@
 					    	<p class="card-text">{{substr($producto->description, 0, 70)}} ...</p>
 					    @endif
 					    <p><small>{{$producto->price}} $</small></p>
-					    <input type="text" value="{{$producto->slug}}" style="visibility: hidden;">
+					    <input type="text" value="{{$producto->slug}}" style="visibility: hidden; position: absolute;">
+					    <p>Referencial:{{$producto->price_reference}} $</p>
+					    <p>Categoria: {{$producto->category->title}}</p>
+					    <select class="form-control mb-3">
+					    	<option value="1">Seleccionar cantidad</option>
+					    	<option value="1">1</option>
+					    	<option value="2">2</option>
+					    	<option value="3">3</option>
+					    	<option value="4">4</option>
+					    	<option value="5">5</option>
+					    </select>
 					    <div class="text-center mb-3">
 					    	<a href="{{route('producto.show', $producto->slug)}}" class="btn btn-primary">Ver producto</a>
 					    </div>

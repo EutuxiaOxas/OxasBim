@@ -41,13 +41,25 @@ class CarritoUI {
   				`;
   			}else{
   				template = `
-  					<div class="d-flex pl-2 mb-2">
+  					<div class="d-flex pl-2 mb-2" style="flex-wrap: wrap">
+  						<input type="hidden" value="${producto.id}">
   						<img src='${producto.image}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
   						<p>	
   							${producto.title} 
 
   							<span>(${producto.cantidad})</span>
   						</p>
+
+  						<div style="flex: 1 0 100%;">
+  							<select class="form-control cantidad_producto_cart">
+  								<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+  								<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+  								<option ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+  								<option ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+  								<option ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+  								${producto.cantidad > 5 ? `<option value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
+  							</select>
+  						</div>
 
   					</div>
   				`;
@@ -60,8 +72,13 @@ class CarritoUI {
   				<div class="text-center">
   					<a href="#" id="boton_modal" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalIrAWhatsapp">Ir a whatsapp</a>
   				</div>
+  				<div class="text-center my-2">
+  					<a href="#" id="vaciar_carrito_cart" class="btn btn-sm btn-outline-danger"> Vaciar carrito</a>
+  				</div>
   			`
   		this.boton_modal = document.getElementById('boton_modal');
+  		this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
+  		this.botones_cantidad = document.querySelectorAll('.cantidad_producto_cart');
 
   		this.boton_modal.addEventListener('click', () => {
   			let productosUrl = document.getElementById('productos_modal')
@@ -71,6 +88,17 @@ class CarritoUI {
 
   			totalProductos.value = this.total
   		})
+
+  		this.boton_vaciar.addEventListener('click', function() {
+  			vaciarCarrito()
+  		})
+
+  		this.botones_cantidad.forEach(boton => {
+  			boton.addEventListener('change', function(e){
+  			 	carritoCantidad(e.target)
+  			})
+  		})
+
   		this.carrito.children[0].children[0].classList.add('cart_on')
 
   	}else {
@@ -168,6 +196,7 @@ class CarritoUI {
   		`
   	}
   }
+
 
 
 }
@@ -313,9 +342,11 @@ function events(value, elements)
 					price = e.target.parentNode.parentNode.children[2].textContent,
 					image = e.target.parentNode.parentNode.parentNode.children[0].src,
 					slug = e.target.parentNode.parentNode.children[3].value,
+					cantidad = parseInt(e.target.parentNode.parentNode.children[6].value),
 					alert = document.getElementById('add_alert');
 
-				let producto = {title: name, id: id, image: image, price: price, cantidad: 1, link: slug}
+
+				let producto = {title: name, id: id, image: image, price: price, cantidad: cantidad, link: slug}
 
 				let verify = verifyProduct(producto);
 				if(verify){
@@ -342,10 +373,10 @@ function events(value, elements)
 					price = padre.children[2].textContent,
 					image = e.target.parentNode.parentNode.parentNode.children[0].src,
 					slug = padre.children[4].value,
+					cantidad = parseInt(padre.children[6].value),
 					alert = document.getElementById('add_alert');
 
-				console.log(padre)
-				let producto = {title: name, id: id, image: image, price: price, cantidad: 1, link: slug}
+				let producto = {title: name, id: id, image: image, price: price, cantidad: cantidad, link: slug}
 
 				
 				let verify = verifyProduct(producto);
@@ -393,7 +424,7 @@ function verifyProduct(producto){
 
 		productos.forEach(element => {
 			if(element.id == producto.id){
-				element.cantidad = element.cantidad + 1;
+				element.cantidad += producto.cantidad;
 				variable = false;
 				encontrado = 'encontrado';
 			}
@@ -450,118 +481,118 @@ function loadTotalProducts(elements,value){
 }
 
 
-//-------------------- Llenar productos vista carrito -----------------
-function loadProducts(productos){
-	let container_products = document.getElementById('product_container');
-	if(container_products){
-		let boton_comprar = document.getElementById('boton_comprar');
-		container_products.innerHTML = ''
-		if(productos.length > 0){
-			productos.forEach(producto => {
+// //-------------------- Llenar productos vista carrito -----------------
+// function loadProducts(productos){
+// 	let container_products = document.getElementById('product_container');
+// 	if(container_products){
+// 		let boton_comprar = document.getElementById('boton_comprar');
+// 		container_products.innerHTML = ''
+// 		if(productos.length > 0){
+// 			productos.forEach(producto => {
 				
-				let menorque = `
-				<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
-				<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
-				<option ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
-				<option ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
-				<option ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
-				<option ${producto.cantidad == 6 ? 'selected' : ''}>6</option>
-				<option ${producto.cantidad == 7 ? 'selected' : ''}>7</option>
-				<option ${producto.cantidad == 8 ? 'selected' : ''}>8</option>
-				<option ${producto.cantidad == 9 ? 'selected' : ''}>9</option>
-				<option ${producto.cantidad == 10 ? 'selected' : ''}>10</option>
-				`;
+// 				let menorque = `
+// 				<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+// 				<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+// 				<option ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+// 				<option ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+// 				<option ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+// 				<option ${producto.cantidad == 6 ? 'selected' : ''}>6</option>
+// 				<option ${producto.cantidad == 7 ? 'selected' : ''}>7</option>
+// 				<option ${producto.cantidad == 8 ? 'selected' : ''}>8</option>
+// 				<option ${producto.cantidad == 9 ? 'selected' : ''}>9</option>
+// 				<option ${producto.cantidad == 10 ? 'selected' : ''}>10</option>
+// 				`;
 
-				let mayorque = `
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-					<option>8</option>
-					<option>9</option>
-					<option>10</option>
-					<option selected>${producto.cantidad}</option>
-				`;
+// 				let mayorque = `
+// 					<option>1</option>
+// 					<option>2</option>
+// 					<option>3</option>
+// 					<option>4</option>
+// 					<option>5</option>
+// 					<option>6</option>
+// 					<option>7</option>
+// 					<option>8</option>
+// 					<option>9</option>
+// 					<option>10</option>
+// 					<option selected>${producto.cantidad}</option>
+// 				`;
 
-				container_products.innerHTML += `
-					<div class="mb-4">
-						<div class="row">
-							<div class="col-5">
-								<img src="/storage/${producto.imagen}" style="width: 250px; height: 150px">
-							</div>
-							<div class="col-4 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
-								<h5><a href="/producto/${producto.producto.slug}">${producto.producto.title}</a></h5>
-								<p>Costo: <strong>${producto.producto.price}</strong></p>
-								<button id="${producto.producto.id}" class="btn btn-sm btn-outline-primary carrito_eliminar_storage">Eliminar producto</button>
-							</div>
-							<div class="col-3 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
-								<h5>Cantidad</h5>
-								<select id="${producto.producto.id}" class="form-control selector_carrito">
-										${producto.cantidad <= 10 ? menorque : mayorque}
-								</select>
-							</div>
-						</div>
-					</div>
-				`
-			});
+// 				container_products.innerHTML += `
+// 					<div class="mb-4">
+// 						<div class="row">
+// 							<div class="col-5">
+// 								<img src="/storage/${producto.imagen}" style="width: 250px; height: 150px">
+// 							</div>
+// 							<div class="col-4 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
+// 								<h5><a href="/producto/${producto.producto.slug}">${producto.producto.title}</a></h5>
+// 								<p>Costo: <strong>${producto.producto.price}</strong></p>
+// 								<button id="${producto.producto.id}" class="btn btn-sm btn-outline-primary carrito_eliminar_storage">Eliminar producto</button>
+// 							</div>
+// 							<div class="col-3 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
+// 								<h5>Cantidad</h5>
+// 								<select id="${producto.producto.id}" class="form-control selector_carrito">
+// 										${producto.cantidad <= 10 ? menorque : mayorque}
+// 								</select>
+// 							</div>
+// 						</div>
+// 					</div>
+// 				`
+// 			});
 
-			container_products.innerHTML += `
-				<div class="col-12 my-3">
-					<a href="#" id="vaciar_carrito" class="btn btn-danger btn-block">Vaciar carrito</a>
-				</div>
-			`
-			boton_comprar.style.display = 'block';
-			loadEventsCartView()
-		}else{
-			container_products.innerHTML = `
-				<h2>No hay productos en el carrito</h2>
-			`
-			boton_comprar.style.display = 'none';
-		}
-	}
-}
+// 			container_products.innerHTML += `
+// 				<div class="col-12 my-3">
+// 					<a href="#" id="vaciar_carrito" class="btn btn-danger btn-block">Vaciar carrito</a>
+// 				</div>
+// 			`
+// 			boton_comprar.style.display = 'block';
+// 			loadEventsCartView()
+// 		}else{
+// 			container_products.innerHTML = `
+// 				<h2>No hay productos en el carrito</h2>
+// 			`
+// 			boton_comprar.style.display = 'none';
+// 		}
+// 	}
+// }
 
-//-------------------- carga de eventos después de cargar productos -----------------
-function loadEventsCartView(){
-	let cantidadSelect = document.querySelectorAll('.selector_carrito'),
-		vaciar_carrito = document.getElementById('vaciar_carrito'),
-		eliminarProduct = document.querySelectorAll('.carrito_eliminar_storage');
+// //-------------------- carga de eventos después de cargar productos -----------------
+// function loadEventsCartView(){
+// 	let cantidadSelect = document.querySelectorAll('.selector_carrito'),
+// 		vaciar_carrito = document.getElementById('vaciar_carrito'),
+// 		eliminarProduct = document.querySelectorAll('.carrito_eliminar_storage');
 
 
-	//-------------------- Cambiar cantidad del producto -----------------
+// 	//-------------------- Cambiar cantidad del producto -----------------
 
-	if(cantidadSelect){
-		cantidadSelect.forEach(cantidad => {
-			cantidad.addEventListener('change', (e) =>{
-				let id = e.target.id,
-					count = e.target.value;
+// 	if(cantidadSelect){
+// 		cantidadSelect.forEach(cantidad => {
+// 			cantidad.addEventListener('change', (e) =>{
+// 				let id = e.target.id,
+// 					count = e.target.value;
 
-				changeCount(id, count)
-			});
-		})
-	}
+// 				changeCount(id, count)
+// 			});
+// 		})
+// 	}
 
-	//-------------------- Eliminar producto del carrito -----------------
-	if(eliminarProduct){
-		eliminarProduct.forEach(button => {
-			button.addEventListener('click', e =>{
-				deleteProduct(e.target.id)
-			})
-		})
-	}
+// 	//-------------------- Eliminar producto del carrito -----------------
+// 	if(eliminarProduct){
+// 		eliminarProduct.forEach(button => {
+// 			button.addEventListener('click', e =>{
+// 				deleteProduct(e.target.id)
+// 			})
+// 		})
+// 	}
 
-	//-------------------- Vaciar carrito -----------------
-	if(vaciar_carrito){
-		vaciar_carrito.addEventListener('click', () =>{
-			vaciarCarrito()
-		})
-	}
+// 	//-------------------- Vaciar carrito -----------------
+// 	if(vaciar_carrito){
+// 		vaciar_carrito.addEventListener('click', () =>{
+// 			//vaciarCarrito()
+// 		})
+// 	}
 
-	//-------------------- FUNCIONES DE LOS EVENTOS EN LA VISTA CARRITO.BLADE -----------------
-}
+// 	//-------------------- FUNCIONES DE LOS EVENTOS EN LA VISTA CARRITO.BLADE -----------------
+// }
 
 // ------------- FUNCION PARA OBTENER PRECIO SIN SOMBOLO -----------------
 
@@ -569,3 +600,48 @@ function onlyPrice(price){
 	let test = price.split("$")
 	return parseFloat(test[0].trim())
 }
+
+// ------------- FUNCION PARA VACIAR EL CARRITO -----------------
+function vaciarCarrito(){
+	productos = []
+	storage.addStorage(productos)
+		.then(res => {
+			carrito.agregarCarrito(productos);
+		})
+}
+
+// ------------- FUNCION PARA AUMENTAR CANTIDAD -----------------
+function carritoCantidad(e) {
+	const cantidad = parseInt(e.value),
+		  id = e.parentNode.parentNode.children[0].value;
+
+
+	if(actualizarCantidad({cantidad, id})){
+		storage.addStorage(productos)
+			.then(res => {
+				carrito.agregarCarrito(productos);
+			})
+	}
+}
+
+// ------------- FUNCION PARA ACTUALIZAR CANTIDAD EN EL LOCAL STORAGE -----------------
+function actualizarCantidad(producto) {
+
+	let variable = false
+
+	if(productos.length > 0){
+		productos.forEach(element => {
+			if(element.id == producto.id){
+				element.cantidad = producto.cantidad;
+				variable = true;
+			}
+		});
+
+	}
+
+	return variable
+}
+
+
+
+

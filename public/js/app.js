@@ -38060,6 +38060,7 @@ var CarritoUI = /*#__PURE__*/function () {
 
     this.cart_body = cart_body;
     this.carrito = carrito;
+    this.badge_main = document.getElementById('carritoDropdown');
     this.total = 0;
     this.urlProductos = '';
   }
@@ -38084,9 +38085,9 @@ var CarritoUI = /*#__PURE__*/function () {
           var template = '';
 
           if (producto.producto) {
-            template = "\n  \t\t\t\t\t<div class=\"d-flex pl-2 mb-2\">\n  \t\t\t\t\t\t<img src='/storage/".concat(producto.imagen, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t").concat(producto.producto.title, " \n\n  \t\t\t\t\t\t\t<span>(").concat(producto.cantidad, ")</span>\n  \t\t\t\t\t\t</p>\n\n  \t\t\t\t\t</div>\n  \t\t\t\t");
+            template = "\n  \t\t\t\t\t<div class=\"d-flex pl-2 mb-2\">\n  \t\t\t\t\t\t<img src='/storage/".concat(producto.imagen, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t").concat(producto.producto.title, " \n\n  \t\t\t\t\t\t\t<span>(").concat(producto.cantidad, "</span>\n  \t\t\t\t\t\t</p>\n\n  \t\t\t\t\t</div>\n  \t\t\t\t");
           } else {
-            template = "\n  \t\t\t\t\t<div class=\"d-flex pl-2 mb-2\" style=\"flex-wrap: wrap\">\n  \t\t\t\t\t\t<input type=\"hidden\" value=\"".concat(producto.id, "\">\n  \t\t\t\t\t\t<img src='").concat(producto.image, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t").concat(producto.title, " \n\n  \t\t\t\t\t\t\t<span>(").concat(producto.cantidad, ")</span>\n  \t\t\t\t\t\t</p>\n\n  \t\t\t\t\t\t<div style=\"flex: 1 0 100%;\">\n  \t\t\t\t\t\t\t<select class=\"form-control cantidad_producto_cart\">\n  \t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n  \t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n  \t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n  \t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n  \t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n  \t\t\t\t\t\t\t\t").concat(producto.cantidad > 5 ? "<option value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n  \t\t\t\t\t\t\t</select>\n  \t\t\t\t\t\t</div>\n\n  \t\t\t\t\t</div>\n  \t\t\t\t");
+            template = "\n  \t\t\t\t\t<div class=\"product_main d-flex\" position:relative;\">\n  \t\t\t\t\t\t<div class=\"eliminar_container\">\n  \t\t\t\t\t\t\t<i class=\"fas fa-times eliminar_producto\" id=\"".concat(producto.id, "\" style=\"color: red; cursor: pointer;\"></i>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t\t<div class=\"d-flex pl-2 mb-2 move-on-left\" style=\"flex-wrap: wrap\">\n  \t\t\t\t\t\t\t<input type=\"hidden\" value=\"").concat(producto.id, "\">\n  \t\t\t\t\t\t\t<img src='").concat(producto.image, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t\t").concat(producto.title, " \n\n  \t\t\t\t\t\t\t\t<span>(").concat(producto.cantidad, " x ").concat(producto.price, ")</span>\n  \t\t\t\t\t\t\t</p>\n\n  \t\t\t\t\t\t\t<div style=\"flex: 1 0 100%;\">\n  \t\t\t\t\t\t\t\t<select class=\"form-control cantidad_producto_cart\">\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n  \t\t\t\t\t\t\t\t\t").concat(producto.cantidad > 5 ? "<option value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n  \t\t\t\t\t\t\t\t</select>\n  \t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t</div>\n  \t\t\t\t");
           }
 
           _this.cart_body.innerHTML += template;
@@ -38096,6 +38097,7 @@ var CarritoUI = /*#__PURE__*/function () {
         this.boton_modal = document.getElementById('boton_modal');
         this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
         this.botones_cantidad = document.querySelectorAll('.cantidad_producto_cart');
+        this.boton_eliminar = document.querySelectorAll('.eliminar_producto');
         this.boton_modal.addEventListener('click', function () {
           var productosUrl = document.getElementById('productos_modal');
           var totalProductos = document.getElementById('total_modal');
@@ -38110,10 +38112,18 @@ var CarritoUI = /*#__PURE__*/function () {
             carritoCantidad(e.target);
           });
         });
+        this.boton_eliminar.forEach(function (boton) {
+          boton.addEventListener('click', function (e) {
+            eliminarDelCarrito(e.target.id);
+          });
+        });
+        this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
+        this.badge_main.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -10px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(productos.length, "</span>\n\t\t\t</div>\n\t\t");
         this.carrito.children[0].children[0].classList.add('cart_on');
       } else {
         this.cart_body.innerHTML = 'No hay productos en el carrito';
         this.carrito.children[0].children[0].classList.remove('cart_on');
+        this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
       }
     }
   }, {
@@ -38601,6 +38611,20 @@ function actualizarCantidad(producto) {
   }
 
   return variable;
+} // ------------- FUNCION PARA ELIMINAR PRODUCTO DEL CARRITO -----------------
+
+
+function eliminarDelCarrito(id) {
+  productos = destroyProduct(productos, id);
+  storage.addStorage(productos).then(function (res) {
+    carrito.agregarCarrito(productos);
+  });
+}
+
+function destroyProduct(productos, id) {
+  return productos.filter(function (producto) {
+    return producto.id !== id;
+  });
 }
 
 /***/ }),

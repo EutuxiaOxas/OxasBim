@@ -7,6 +7,7 @@ class CarritoUI {
   constructor(carrito, cart_body) {
     this.cart_body = cart_body;
     this.carrito = carrito;
+    this.badge_main = document.getElementById('carritoDropdown')
     this.total = 0;
     this.urlProductos = ''
   }
@@ -34,33 +35,37 @@ class CarritoUI {
   						<p>	
   							${producto.producto.title} 
 
-  							<span>(${producto.cantidad})</span>
+  							<span>(${producto.cantidad}</span>
   						</p>
 
   					</div>
   				`;
   			}else{
   				template = `
-  					<div class="d-flex pl-2 mb-2" style="flex-wrap: wrap">
-  						<input type="hidden" value="${producto.id}">
-  						<img src='${producto.image}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
-  						<p>	
-  							${producto.title} 
-
-  							<span>(${producto.cantidad})</span>
-  						</p>
-
-  						<div style="flex: 1 0 100%;">
-  							<select class="form-control cantidad_producto_cart">
-  								<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
-  								<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
-  								<option ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
-  								<option ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
-  								<option ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
-  								${producto.cantidad > 5 ? `<option value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
-  							</select>
+  					<div class="product_main d-flex" position:relative;">
+  						<div class="eliminar_container">
+  							<i class="fas fa-times eliminar_producto" id="${producto.id}" style="color: red; cursor: pointer;"></i>
   						</div>
+  						<div class="d-flex pl-2 mb-2 move-on-left" style="flex-wrap: wrap">
+  							<input type="hidden" value="${producto.id}">
+  							<img src='${producto.image}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
+  							<p>	
+  								${producto.title} 
 
+  								<span>(${producto.cantidad} x ${producto.price})</span>
+  							</p>
+
+  							<div style="flex: 1 0 100%;">
+  								<select class="form-control cantidad_producto_cart">
+  									<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+  									<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+  									<option ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+  									<option ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+  									<option ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+  									${producto.cantidad > 5 ? `<option value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
+  								</select>
+  							</div>
+  						</div>
   					</div>
   				`;
   			}
@@ -79,6 +84,7 @@ class CarritoUI {
   		this.boton_modal = document.getElementById('boton_modal');
   		this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
   		this.botones_cantidad = document.querySelectorAll('.cantidad_producto_cart');
+  		this.boton_eliminar = document.querySelectorAll('.eliminar_producto');
 
   		this.boton_modal.addEventListener('click', () => {
   			let productosUrl = document.getElementById('productos_modal')
@@ -99,11 +105,28 @@ class CarritoUI {
   			})
   		})
 
+  		this.boton_eliminar.forEach(boton => {
+  			boton.addEventListener('click', function(e){
+  			 	eliminarDelCarrito(e.target.id)
+  			})
+  		})
+
+  		
+  		this.badge_main.innerHTML = `<i class="fas fa-shopping-cart"></i>`
+  		
+  		
+		this.badge_main.innerHTML += `
+			<div id="carrito_badge" style="position: absolute; top: -10px; right: 0;">
+			  	<span class="badge badge-dark">${productos.length}</span>
+			</div>
+		`
+
   		this.carrito.children[0].children[0].classList.add('cart_on')
 
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
   		this.carrito.children[0].children[0].classList.remove('cart_on')
+  		this.badge_main.innerHTML = `<i class="fas fa-shopping-cart"></i>`
   	}
 
   }
@@ -640,6 +663,25 @@ function actualizarCantidad(producto) {
 	}
 
 	return variable
+}
+
+// ------------- FUNCION PARA ELIMINAR PRODUCTO DEL CARRITO -----------------
+
+function eliminarDelCarrito(id){
+	
+	productos = destroyProduct(productos, id)
+
+	storage.addStorage(productos)
+		.then(res => {
+			carrito.agregarCarrito(productos);
+		})
+}
+
+
+function destroyProduct(productos, id) {
+	return productos.filter(producto => {
+		return producto.id !== id
+	})
 }
 
 

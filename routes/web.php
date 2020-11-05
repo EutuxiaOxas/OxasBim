@@ -21,7 +21,7 @@ Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory
 
 
 Route::get('/cart', 'CartController@getCart');
-Route::get('/cart/ver', 'HomeController@verCarrito');
+// Route::get('/cart/ver', 'HomeController@verCarrito'); ---- VISTA CARRITO ----
 Route::post('/cart/add', 'CartController@addToCart');
 Route::post('/cart/storage', 'CartController@addStorageToCart');
 Route::post('/cart/item/delete/{id}', 'CartController@eliminarDetalle')->name('cart.detail.destroy');
@@ -107,3 +107,5 @@ Route::middleware('tienda')->group(function () {
 		/*--------------- PRODUCTOS IMAGENES --------------*/
 	Route::post('/cms/update/product/image/{id}', 'Cms\ProductImageController@editImage');
 });
+
+Route::post('/ir/whatsapp', 'WhatsappController@irAWhatsapp');

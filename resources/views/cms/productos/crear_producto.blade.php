@@ -25,14 +25,18 @@
 <form action="{{route('tienda.product.store')}}" id="formulario_producto" method="POST" enctype="multipart/form-data">
 	@csrf
 	<div class="row mt-5">
-		<div class="form-group col-6">
+		<div class="form-group col-12">
 			<h5>Titulo</h5>
 			<input class="form-control" id="title" type="text" maxlength="191" autocomplete="off" name="title">
 			<small id="slug_alert"></small>
 		</div>
-		<div class="form-group col-6">
+		<div class="form-group col-12">
 			<h5>Precio</h5>
 			<input class="form-control" id="price" type="number" name="price">
+		</div>
+		<div class="form-group col-12">
+			<h5>Precio Referencial</h5>
+			<input class="form-control" id="price" type="number" name="price_reference">
 		</div>
 		<div class="form-group col-12">
 			<h5>Descripción</h5>

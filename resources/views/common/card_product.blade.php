@@ -53,7 +53,7 @@
         font-size: 1.2rem;
         font-family: 'Rubik', sans-serif;
         font-weight: 400;
-        color: #373f50;
+        color: #4e54c8 ;
     }
     .referencial_price_card_product{
         color:#7d879c;
@@ -72,18 +72,26 @@
         <div class="card-body" style="padding: 0.6rem 0.8rem 0 0.8rem;">
             <div class="row px-3">
                 <div class="col-12 px-0 mt-0 pt-0">
-                    <a class="text_categorie_card" href="#">Categoria</a>
+                    <a class="text_categorie_card" href="{{route('product.category.show', $producto->category->slug)}}">{{$producto->category->title}}</a>
                 </div>
                 <div class="col-12 px-0">
                     <a class="text_title_card_product" href="{{route('producto.show', $producto->slug)}}">{{$producto->title}}</a>
                 </div>
                 <div class="col-12 px-0 mb-2">
                     <span class="price_card_product">${{$producto->price}}</span>
-                    <span class="referencial_price_card_product pl-2">${{$producto->price}}</span>
+                    <span class="referencial_price_card_product pl-2">${{$producto->price_reference}}</span>
                 </div>
             </div>
             
             <div class="row px-3">
+                <select class="form-control mb-1">
+                    <option value="1">Seleccionar cantidad</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 @if(auth()->user())
                     <button id="{{$producto->id}}" class="col-12 btn btn-secondary text-rubik to_server">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>

@@ -27,6 +27,21 @@
         .cart_on {
             color: blue;
         }
+
+        .product_main{
+            transform: translateX(-.8rem);
+            transition: transform .3s; 
+        }
+
+        .product_main:hover {
+            transform: translateX(10px);
+        }
+
+
+        .eliminar_container{
+            position: relative;
+            transform: translateY(25%);
+        }
     </style>
 </head>
 <body>
@@ -57,12 +72,14 @@
                         <li class="nav-item">
                             <a href="{{route('productos')}}" class="nav-link">Productos</a>
                         </li>
-                        <li class="nav-item dropdown" id="cart_main">
+                        <li class="nav-item dropdown" id="cart_main" style="position: relative;">
                             <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <i class="fas fa-shopping-cart"></i>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" id="cart_body" aria-labelledby="carritoDropdown">
+                            <div>
+                                <div class="dropdown-menu dropdown-menu-right" id="cart_body" aria-labelledby="carritoDropdown">
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -101,7 +118,7 @@
                                 <i class="fas fa-shopping-cart"></i>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" id="cart_body" aria-labelledby="carritoDropdown">
+                            <div class="dropdown-menu dropdown-menu-right" id="cart_body" style="overflow: hidden;" aria-labelledby="carritoDropdown">
                             </div>
                         </li>
                     </ul>

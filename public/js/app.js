@@ -38060,6 +38060,7 @@ var CarritoUI = /*#__PURE__*/function () {
 
     this.cart_body = cart_body;
     this.carrito = carrito;
+    this.badge_main = document.getElementById('carritoDropdown');
     this.total = 0;
     this.urlProductos = '';
   }
@@ -38084,26 +38085,45 @@ var CarritoUI = /*#__PURE__*/function () {
           var template = '';
 
           if (producto.producto) {
-            template = "\n  \t\t\t\t\t<div class=\"d-flex pl-2 mb-2\">\n  \t\t\t\t\t\t<img src='/storage/".concat(producto.imagen, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t").concat(producto.producto.title, " \n\n  \t\t\t\t\t\t\t<span>(").concat(producto.cantidad, ")</span>\n  \t\t\t\t\t\t</p>\n\n  \t\t\t\t\t</div>\n  \t\t\t\t");
+            template = "\n  \t\t\t\t\t<div class=\"d-flex pl-2 mb-2\">\n  \t\t\t\t\t\t<img src='/storage/".concat(producto.imagen, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t").concat(producto.producto.title, " \n\n  \t\t\t\t\t\t\t<span>(").concat(producto.cantidad, "</span>\n  \t\t\t\t\t\t</p>\n\n  \t\t\t\t\t</div>\n  \t\t\t\t");
           } else {
-            template = "\n  \t\t\t\t\t<div class=\"d-flex pl-2 mb-2\">\n  \t\t\t\t\t\t<img src='".concat(producto.image, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t").concat(producto.title, " \n\n  \t\t\t\t\t\t\t<span>(").concat(producto.cantidad, ")</span>\n  \t\t\t\t\t\t</p>\n\n  \t\t\t\t\t</div>\n  \t\t\t\t");
+            template = "\n  \t\t\t\t\t<div class=\"product_main d-flex\" position:relative;\">\n  \t\t\t\t\t\t<div class=\"eliminar_container\">\n  \t\t\t\t\t\t\t<i class=\"fas fa-times eliminar_producto\" id=\"".concat(producto.id, "\" style=\"color: red; cursor: pointer;\"></i>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t\t<div class=\"d-flex pl-2 mb-2 move-on-left\" style=\"flex-wrap: wrap\">\n  \t\t\t\t\t\t\t<input type=\"hidden\" value=\"").concat(producto.id, "\">\n  \t\t\t\t\t\t\t<img src='").concat(producto.image, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t\t").concat(producto.title, " \n\n  \t\t\t\t\t\t\t\t<span>(").concat(producto.cantidad, " x ").concat(producto.price, ")</span>\n  \t\t\t\t\t\t\t</p>\n\n  \t\t\t\t\t\t\t<div style=\"flex: 1 0 100%;\">\n  \t\t\t\t\t\t\t\t<select class=\"form-control cantidad_producto_cart\">\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n  \t\t\t\t\t\t\t\t\t<option ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n  \t\t\t\t\t\t\t\t\t").concat(producto.cantidad > 5 ? "<option value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n  \t\t\t\t\t\t\t\t</select>\n  \t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t</div>\n  \t\t\t\t");
           }
 
           _this.cart_body.innerHTML += template;
           contador++;
         });
-        this.cart_body.innerHTML += "\n  \t\t\t\t<div class=\"text-center\">\n  \t\t\t\t\t<a href=\"#\" id=\"boton_modal\" class=\"btn btn-sm btn-primary\" data-toggle=\"modal\" data-target=\"#modalIrAWhatsapp\">Ir a whatsapp</a>\n  \t\t\t\t</div>\n  \t\t\t";
+        this.cart_body.innerHTML += "\n  \t\t\t\t<div class=\"text-center\">\n  \t\t\t\t\t<a href=\"#\" id=\"boton_modal\" class=\"btn btn-sm btn-primary\" data-toggle=\"modal\" data-target=\"#modalIrAWhatsapp\">Ir a whatsapp</a>\n  \t\t\t\t</div>\n  \t\t\t\t<div class=\"text-center my-2\">\n  \t\t\t\t\t<a href=\"#\" id=\"vaciar_carrito_cart\" class=\"btn btn-sm btn-outline-danger\"> Vaciar carrito</a>\n  \t\t\t\t</div>\n  \t\t\t";
         this.boton_modal = document.getElementById('boton_modal');
+        this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
+        this.botones_cantidad = document.querySelectorAll('.cantidad_producto_cart');
+        this.boton_eliminar = document.querySelectorAll('.eliminar_producto');
         this.boton_modal.addEventListener('click', function () {
           var productosUrl = document.getElementById('productos_modal');
           var totalProductos = document.getElementById('total_modal');
           productosUrl.value = _this.urlProductos;
           totalProductos.value = _this.total;
         });
+        this.boton_vaciar.addEventListener('click', function () {
+          vaciarCarrito();
+        });
+        this.botones_cantidad.forEach(function (boton) {
+          boton.addEventListener('change', function (e) {
+            carritoCantidad(e.target);
+          });
+        });
+        this.boton_eliminar.forEach(function (boton) {
+          boton.addEventListener('click', function (e) {
+            eliminarDelCarrito(e.target.id);
+          });
+        });
+        this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
+        this.badge_main.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -10px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(productos.length, "</span>\n\t\t\t</div>\n\t\t");
         this.carrito.children[0].children[0].classList.add('cart_on');
       } else {
         this.cart_body.innerHTML = 'No hay productos en el carrito';
         this.carrito.children[0].children[0].classList.remove('cart_on');
+        this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
       }
     }
   }, {
@@ -38317,13 +38337,14 @@ function events(value, elements) {
             price = e.target.parentNode.parentNode.children[2].textContent,
             image = e.target.parentNode.parentNode.parentNode.children[0].src,
             slug = e.target.parentNode.parentNode.children[3].value,
+            cantidad = parseInt(e.target.parentNode.parentNode.children[6].value),
             alert = document.getElementById('add_alert');
         var producto = {
           title: name,
           id: id,
           image: image,
           price: price,
-          cantidad: 1,
+          cantidad: cantidad,
           link: slug
         };
         var verify = verifyProduct(producto);
@@ -38350,14 +38371,14 @@ function events(value, elements) {
             price = padre.children[2].textContent,
             image = e.target.parentNode.parentNode.parentNode.children[0].src,
             slug = padre.children[4].value,
+            cantidad = parseInt(padre.children[6].value),
             alert = document.getElementById('add_alert');
-        console.log(padre);
         var producto = {
           title: name,
           id: id,
           image: image,
           price: price,
-          cantidad: 1,
+          cantidad: cantidad,
           link: slug
         };
         var verify = verifyProduct(producto);
@@ -38399,7 +38420,7 @@ function verifyProduct(producto) {
   if (productos.length > 0) {
     productos.forEach(function (element) {
       if (element.id == producto.id) {
-        element.cantidad = element.cantidad + 1;
+        element.cantidad += producto.cantidad;
         variable = false;
         encontrado = 'encontrado';
       }
@@ -38445,70 +38466,165 @@ function loadTotalProducts(elements, value) {
   if (total_container) {
     carrito.totalCart(elements, total_container, value);
   }
-} //-------------------- Llenar productos vista carrito -----------------
-
-
-function loadProducts(productos) {
-  var container_products = document.getElementById('product_container');
-
-  if (container_products) {
-    var boton_comprar = document.getElementById('boton_comprar');
-    container_products.innerHTML = '';
-
-    if (productos.length > 0) {
-      productos.forEach(function (producto) {
-        var menorque = "\n\t\t\t\t<option ".concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n\t\t\t\t<option ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n\t\t\t\t<option ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n\t\t\t\t<option ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n\t\t\t\t<option ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n\t\t\t\t<option ").concat(producto.cantidad == 6 ? 'selected' : '', ">6</option>\n\t\t\t\t<option ").concat(producto.cantidad == 7 ? 'selected' : '', ">7</option>\n\t\t\t\t<option ").concat(producto.cantidad == 8 ? 'selected' : '', ">8</option>\n\t\t\t\t<option ").concat(producto.cantidad == 9 ? 'selected' : '', ">9</option>\n\t\t\t\t<option ").concat(producto.cantidad == 10 ? 'selected' : '', ">10</option>\n\t\t\t\t");
-        var mayorque = "\n\t\t\t\t\t<option>1</option>\n\t\t\t\t\t<option>2</option>\n\t\t\t\t\t<option>3</option>\n\t\t\t\t\t<option>4</option>\n\t\t\t\t\t<option>5</option>\n\t\t\t\t\t<option>6</option>\n\t\t\t\t\t<option>7</option>\n\t\t\t\t\t<option>8</option>\n\t\t\t\t\t<option>9</option>\n\t\t\t\t\t<option>10</option>\n\t\t\t\t\t<option selected>".concat(producto.cantidad, "</option>\n\t\t\t\t");
-        container_products.innerHTML += "\n\t\t\t\t\t<div class=\"mb-4\">\n\t\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t\t<div class=\"col-5\">\n\t\t\t\t\t\t\t\t<img src=\"/storage/".concat(producto.imagen, "\" style=\"width: 250px; height: 150px\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-4 d-flex\" style=\"flex-direction: column;flex:1; justify-content: center;\">\n\t\t\t\t\t\t\t\t<h5><a href=\"/producto/").concat(producto.producto.slug, "\">").concat(producto.producto.title, "</a></h5>\n\t\t\t\t\t\t\t\t<p>Costo: <strong>").concat(producto.producto.price, "</strong></p>\n\t\t\t\t\t\t\t\t<button id=\"").concat(producto.producto.id, "\" class=\"btn btn-sm btn-outline-primary carrito_eliminar_storage\">Eliminar producto</button>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-3 d-flex\" style=\"flex-direction: column;flex:1; justify-content: center;\">\n\t\t\t\t\t\t\t\t<h5>Cantidad</h5>\n\t\t\t\t\t\t\t\t<select id=\"").concat(producto.producto.id, "\" class=\"form-control selector_carrito\">\n\t\t\t\t\t\t\t\t\t\t").concat(producto.cantidad <= 10 ? menorque : mayorque, "\n\t\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t");
-      });
-      container_products.innerHTML += "\n\t\t\t\t<div class=\"col-12 my-3\">\n\t\t\t\t\t<a href=\"#\" id=\"vaciar_carrito\" class=\"btn btn-danger btn-block\">Vaciar carrito</a>\n\t\t\t\t</div>\n\t\t\t";
-      boton_comprar.style.display = 'block';
-      loadEventsCartView();
-    } else {
-      container_products.innerHTML = "\n\t\t\t\t<h2>No hay productos en el carrito</h2>\n\t\t\t";
-      boton_comprar.style.display = 'none';
-    }
-  }
-} //-------------------- carga de eventos después de cargar productos -----------------
-
-
-function loadEventsCartView() {
-  var cantidadSelect = document.querySelectorAll('.selector_carrito'),
-      vaciar_carrito = document.getElementById('vaciar_carrito'),
-      eliminarProduct = document.querySelectorAll('.carrito_eliminar_storage'); //-------------------- Cambiar cantidad del producto -----------------
-
-  if (cantidadSelect) {
-    cantidadSelect.forEach(function (cantidad) {
-      cantidad.addEventListener('change', function (e) {
-        var id = e.target.id,
-            count = e.target.value;
-        changeCount(id, count);
-      });
-    });
-  } //-------------------- Eliminar producto del carrito -----------------
-
-
-  if (eliminarProduct) {
-    eliminarProduct.forEach(function (button) {
-      button.addEventListener('click', function (e) {
-        deleteProduct(e.target.id);
-      });
-    });
-  } //-------------------- Vaciar carrito -----------------
-
-
-  if (vaciar_carrito) {
-    vaciar_carrito.addEventListener('click', function () {
-      vaciarCarrito();
-    });
-  } //-------------------- FUNCIONES DE LOS EVENTOS EN LA VISTA CARRITO.BLADE -----------------
-
-} // ------------- FUNCION PARA OBTENER PRECIO SIN SOMBOLO -----------------
+} // //-------------------- Llenar productos vista carrito -----------------
+// function loadProducts(productos){
+// 	let container_products = document.getElementById('product_container');
+// 	if(container_products){
+// 		let boton_comprar = document.getElementById('boton_comprar');
+// 		container_products.innerHTML = ''
+// 		if(productos.length > 0){
+// 			productos.forEach(producto => {
+// 				let menorque = `
+// 				<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+// 				<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+// 				<option ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+// 				<option ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+// 				<option ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+// 				<option ${producto.cantidad == 6 ? 'selected' : ''}>6</option>
+// 				<option ${producto.cantidad == 7 ? 'selected' : ''}>7</option>
+// 				<option ${producto.cantidad == 8 ? 'selected' : ''}>8</option>
+// 				<option ${producto.cantidad == 9 ? 'selected' : ''}>9</option>
+// 				<option ${producto.cantidad == 10 ? 'selected' : ''}>10</option>
+// 				`;
+// 				let mayorque = `
+// 					<option>1</option>
+// 					<option>2</option>
+// 					<option>3</option>
+// 					<option>4</option>
+// 					<option>5</option>
+// 					<option>6</option>
+// 					<option>7</option>
+// 					<option>8</option>
+// 					<option>9</option>
+// 					<option>10</option>
+// 					<option selected>${producto.cantidad}</option>
+// 				`;
+// 				container_products.innerHTML += `
+// 					<div class="mb-4">
+// 						<div class="row">
+// 							<div class="col-5">
+// 								<img src="/storage/${producto.imagen}" style="width: 250px; height: 150px">
+// 							</div>
+// 							<div class="col-4 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
+// 								<h5><a href="/producto/${producto.producto.slug}">${producto.producto.title}</a></h5>
+// 								<p>Costo: <strong>${producto.producto.price}</strong></p>
+// 								<button id="${producto.producto.id}" class="btn btn-sm btn-outline-primary carrito_eliminar_storage">Eliminar producto</button>
+// 							</div>
+// 							<div class="col-3 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
+// 								<h5>Cantidad</h5>
+// 								<select id="${producto.producto.id}" class="form-control selector_carrito">
+// 										${producto.cantidad <= 10 ? menorque : mayorque}
+// 								</select>
+// 							</div>
+// 						</div>
+// 					</div>
+// 				`
+// 			});
+// 			container_products.innerHTML += `
+// 				<div class="col-12 my-3">
+// 					<a href="#" id="vaciar_carrito" class="btn btn-danger btn-block">Vaciar carrito</a>
+// 				</div>
+// 			`
+// 			boton_comprar.style.display = 'block';
+// 			loadEventsCartView()
+// 		}else{
+// 			container_products.innerHTML = `
+// 				<h2>No hay productos en el carrito</h2>
+// 			`
+// 			boton_comprar.style.display = 'none';
+// 		}
+// 	}
+// }
+// //-------------------- carga de eventos después de cargar productos -----------------
+// function loadEventsCartView(){
+// 	let cantidadSelect = document.querySelectorAll('.selector_carrito'),
+// 		vaciar_carrito = document.getElementById('vaciar_carrito'),
+// 		eliminarProduct = document.querySelectorAll('.carrito_eliminar_storage');
+// 	//-------------------- Cambiar cantidad del producto -----------------
+// 	if(cantidadSelect){
+// 		cantidadSelect.forEach(cantidad => {
+// 			cantidad.addEventListener('change', (e) =>{
+// 				let id = e.target.id,
+// 					count = e.target.value;
+// 				changeCount(id, count)
+// 			});
+// 		})
+// 	}
+// 	//-------------------- Eliminar producto del carrito -----------------
+// 	if(eliminarProduct){
+// 		eliminarProduct.forEach(button => {
+// 			button.addEventListener('click', e =>{
+// 				deleteProduct(e.target.id)
+// 			})
+// 		})
+// 	}
+// 	//-------------------- Vaciar carrito -----------------
+// 	if(vaciar_carrito){
+// 		vaciar_carrito.addEventListener('click', () =>{
+// 			//vaciarCarrito()
+// 		})
+// 	}
+// 	//-------------------- FUNCIONES DE LOS EVENTOS EN LA VISTA CARRITO.BLADE -----------------
+// }
+// ------------- FUNCION PARA OBTENER PRECIO SIN SOMBOLO -----------------
 
 
 function onlyPrice(price) {
   var test = price.split("$");
   return parseFloat(test[0].trim());
+} // ------------- FUNCION PARA VACIAR EL CARRITO -----------------
+
+
+function vaciarCarrito() {
+  productos = [];
+  storage.addStorage(productos).then(function (res) {
+    carrito.agregarCarrito(productos);
+  });
+} // ------------- FUNCION PARA AUMENTAR CANTIDAD -----------------
+
+
+function carritoCantidad(e) {
+  var cantidad = parseInt(e.value),
+      id = e.parentNode.parentNode.children[0].value;
+
+  if (actualizarCantidad({
+    cantidad: cantidad,
+    id: id
+  })) {
+    storage.addStorage(productos).then(function (res) {
+      carrito.agregarCarrito(productos);
+    });
+  }
+} // ------------- FUNCION PARA ACTUALIZAR CANTIDAD EN EL LOCAL STORAGE -----------------
+
+
+function actualizarCantidad(producto) {
+  var variable = false;
+
+  if (productos.length > 0) {
+    productos.forEach(function (element) {
+      if (element.id == producto.id) {
+        element.cantidad = producto.cantidad;
+        variable = true;
+      }
+    });
+  }
+
+  return variable;
+} // ------------- FUNCION PARA ELIMINAR PRODUCTO DEL CARRITO -----------------
+
+
+function eliminarDelCarrito(id) {
+  productos = destroyProduct(productos, id);
+  storage.addStorage(productos).then(function (res) {
+    carrito.agregarCarrito(productos);
+  });
+}
+
+function destroyProduct(productos, id) {
+  return productos.filter(function (producto) {
+    return producto.id !== id;
+  });
 }
 
 /***/ }),

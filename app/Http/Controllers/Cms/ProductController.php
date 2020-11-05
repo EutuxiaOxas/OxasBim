@@ -60,6 +60,7 @@ class ProductController extends Controller
 	        'title' => $request->title,
 	        'description' =>$request->description,
 	        'price' => $request->price,
+            'price_reference' => $request->price_reference,
 	        'category_id' => $request->category_id,
             'slug' => $request->slug,
 	        'image' => $file,
@@ -115,6 +116,7 @@ class ProductController extends Controller
     	            'description' =>$request->description,
     	            'price' => $request->price,
     	            'category_id' => $request->category_id,
+                    'price_reference' => $request->price_reference,
                     'slug' => $request->slug,
     	            'image' => $file,
     	        ]);
@@ -126,6 +128,7 @@ class ProductController extends Controller
     	        'title' => $request->title,
     	        'price' => $request->price,
     	        'category_id' => $request->category_id,
+                'price_reference' => $request->price_reference,
                 'slug' => $request->slug,
     	        'description' =>$request->description,
     	    ]);

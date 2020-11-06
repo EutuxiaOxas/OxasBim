@@ -20,10 +20,21 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.theme.default.min.css')}}">
+    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
+    <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
+    
 
     @yield('captcha')
 
     <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         .cart_on {
             color: blue;
         }
@@ -37,6 +48,9 @@
             transform: translateX(10px);
         }
 
+        .meme {
+            border: 1px solid red;
+        }
 
         .eliminar_container{
             position: relative;
@@ -205,6 +219,7 @@
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script type="text/javascript">
         const botonEnviarWhatsapp = document.getElementById('whatsapp_submit')
 
@@ -217,5 +232,6 @@
 
         })
     </script>
+
 </body>
 </html>

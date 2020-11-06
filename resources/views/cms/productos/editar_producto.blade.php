@@ -33,11 +33,11 @@
 		</div>
 		<div class="form-group col-12">
 			<h5>Precio</h5>
-			<input class="form-control" id="price" type="number" value="{{$product->price}}" name="price">
+			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price}}" name="price">
 		</div>
 		<div class="form-group col-12">
 			<h5>Precio Referencial</h5>
-			<input class="form-control" id="price" type="number" value="{{$product->price_reference}}" name="price_reference">
+			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price_reference}}" name="price_reference">
 		</div>
 		<div class="form-group col-12">
 			<h5>Descripción</h5>

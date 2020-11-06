@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
-            $table->integer('price');
-            $table->integer('price_reference');
+            $table->float('price');
+            $table->float('price_reference');
             $table->string('image');
             $table->foreignId('category_id');
             $table->timestamps();

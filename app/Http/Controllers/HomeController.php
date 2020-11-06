@@ -47,8 +47,9 @@ class HomeController extends Controller
     {
         $product = Product::where('slug', $slug)->with('images')->first();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
+        $otros_products = Product::inRandomOrder()->take(6)->get();
 
-        return view('ver_producto', compact('product', 'logo'));
+        return view('ver_producto', compact('product', 'logo', 'otros_products'));
     }
 
     public function showProductsByCategory($slug)

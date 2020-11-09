@@ -64,7 +64,7 @@
     }
     
 </style>
-<div class="col-12 col-sm-6 col-md-4 col-lg-4 px-2 mb-4 pb-0">
+<div class="col-12 col-sm-6 col-md-6 col-lg-4 px-2 mb-4 pb-0">
     <div class="card" style="border: 0px;">
         <a class="card_product" href="{{route('producto.show', $producto->slug)}}">
             <img class="img_product" src="{{asset('storage/'. $producto->image)}}" alt="{{$producto->title}}">

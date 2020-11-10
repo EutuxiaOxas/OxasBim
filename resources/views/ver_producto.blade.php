@@ -138,13 +138,13 @@
 		<div class="col-1">
 			<div class="row mb-2">
 				<div class="container_img_second">
-					<img class="img_second_detail" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}">
+					<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}">
 				</div>					
 			</div>
 			@foreach($product->images as $image)
 				<div class="row mb-2">
 					<div class="container_img_second">
-						<img class="img_second_detail" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}">
+						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}">
 					</div>					
 				</div>
 	    	@endforeach
@@ -152,7 +152,7 @@
 		<div class="col-6">
 			<div class="row">
 				<div class="container_img_product_principal">
-					<img class="img_product_detail" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
+					<img class="img_product_detail" id="producto_imagen_principal" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
 				</div>
 			</div>					
 		</div>
@@ -306,8 +306,20 @@
 	//-------- COMPARTIR CON REDES SOCIALES ------------
 		const facebook = document.getElementById('facebook'),
 		whastapp = document.getElementById('whastapp'),
-		twitter = document.getElementById('twitter')
+		twitter = document.getElementById('twitter'),
+		subImagenes = document.querySelectorAll('.sub_image');
 	
+
+		if(subImagenes){
+			subImagenes.forEach(imagen => {
+				imagen.addEventListener('click', e => {
+					const imgPrincipal = document.getElementById('producto_imagen_principal')
+					imgPrincipal.src = e.target.src
+				})
+			})
+		}
+
+
 		let dir = window.location;
 		let dir2 = encodeURIComponent(dir);
 		let tit = window.document.title;

@@ -12,7 +12,7 @@ class WhatsappController extends Controller
     	
     	$mensaje_main = 'https://wa.me/send?phone=584260486086';
 
-    	$mensaje_datos_comprador ="&text="."Compra por sitio web%0A%0A".$request->nombre."%0A%0A"."CI. ".$request->documento_identidad."%0A%0A-------------%0A%0A";
+    	$mensaje_datos_comprador ="&text="."Compra por sitio web%0A%0A".$request->nombre."%0A%0A"."CI: ".$request->documento_identidad."%0A%0A-------------%0A%0A";
 
     	$mensaje_productos = $request->productos."%0A%0A-------------%0A";
 

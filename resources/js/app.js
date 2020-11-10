@@ -15,12 +15,13 @@ class CarritoUI {
 
   agregarCarrito(productos)
   {
+  	this.total = 0;
   	if(productos.length > 0)
   	{
   		this.cart_body.innerHTML = '';
   		let contador = 0;
   		productos.forEach(producto => {
-  			this.total = this.total + onlyPrice(producto.price)
+  			this.total = this.total + (onlyPrice(producto.price) * producto.cantidad)
   			if(contador === 0) {
   				this.urlProductos = `${producto.cantidad} x ${producto.title} - ${producto.price}`
   			}else {
@@ -290,6 +291,7 @@ class Storage{
 
 //-------------------- Declaracion de variables -----------------
 const total_container = document.getElementById('total_container');
+const botonEnviarWhatsapp = document.getElementById('whatsapp_submit');
 let cart_main = document.getElementById('cart_main'),
     cart_body = document.getElementById('cart_body'),
     session = document.getElementById('sesion');
@@ -305,7 +307,16 @@ let apiCart = new CartApi();
 
 
 //-------------------- inicio de script -----------------
-	
+
+botonEnviarWhatsapp.addEventListener('click', () => {
+    const form = document.getElementById('form_modal_whatsapp')
+    productos = []
+    storage.addStorage(productos)
+
+    form.submit();
+
+})
+
 	//-------------------- Sesion no iniciada-----------------
 if(session.value == 0)
 {
@@ -360,15 +371,15 @@ function events(value, elements)
 	{
 		elements.forEach(element => {
 			element.addEventListener('click', (e) => {
-				let name = e.target.parentNode.parentNode.children[0].textContent,
+				let name = e.target.parentNode.parentNode.children[0].children[1].children[0].textContent,
 					id = e.target.id,
-					price = e.target.parentNode.parentNode.children[2].textContent,
-					image = e.target.parentNode.parentNode.parentNode.children[0].src,
+					price = e.target.parentNode.parentNode.children[0].children[2].children[0].textContent,
+					image = e.target.parentNode.parentNode.parentNode.children[0].children[0].src,
 					slug = e.target.parentNode.parentNode.children[3].value,
-					cantidad = parseInt(e.target.parentNode.parentNode.children[6].value),
+					cantidad = parseFloat(e.target.parentNode.children[0].value),
 					alert = document.getElementById('add_alert');
 
-
+				
 				let producto = {title: name, id: id, image: image, price: price, cantidad: cantidad, link: slug}
 
 				let verify = verifyProduct(producto);
@@ -391,16 +402,15 @@ function events(value, elements)
 		elements.forEach(element => {
 			element.addEventListener('click', (e) => {
 				let id = e.target.id,
-					padre = e.target.parentNode.parentNode.children[0].children[0],
-					name = padre.children[0].textContent,
-					price = padre.children[2].textContent,
-					image = e.target.parentNode.parentNode.parentNode.children[0].src,
-					slug = padre.children[4].value,
-					cantidad = parseInt(padre.children[6].value),
+					name = e.target.parentNode.parentNode.parentNode.children[1].textContent,
+					price = e.target.parentNode.parentNode.parentNode.children[2].children[0].textContent,
+					image = e.target.parentNode.parentNode.parentNode.parentNode.children[1].children[0].children[0].children[0].src,
+					slug = e.target.parentNode.parentNode.parentNode.children[3].value,
+					cantidad = parseFloat(e.target.parentNode.parentNode.children[0].children[0].children[0].value),
 					alert = document.getElementById('add_alert');
 
-				let producto = {title: name, id: id, image: image, price: price, cantidad: cantidad, link: slug}
 
+				let producto = {title: name, id: id, image: image, price: price, cantidad: cantidad, link: slug}
 				
 				let verify = verifyProduct(producto);
 				if(verify){
@@ -621,7 +631,7 @@ function loadTotalProducts(elements,value){
 
 function onlyPrice(price){
 	let test = price.split("$")
-	return parseFloat(test[0].trim())
+	return parseFloat(test[1].trim())
 }
 
 // ------------- FUNCION PARA VACIAR EL CARRITO -----------------
@@ -683,7 +693,3 @@ function destroyProduct(productos, id) {
 		return producto.id !== id
 	})
 }
-
-
-
-

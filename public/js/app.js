@@ -38070,11 +38070,13 @@ var CarritoUI = /*#__PURE__*/function () {
     value: function agregarCarrito(productos) {
       var _this = this;
 
+      this.total = 0;
+
       if (productos.length > 0) {
         this.cart_body.innerHTML = '';
         var contador = 0;
         productos.forEach(function (producto) {
-          _this.total = _this.total + onlyPrice(producto.price);
+          _this.total = _this.total + onlyPrice(producto.price) * producto.cantidad;
 
           if (contador === 0) {
             _this.urlProductos = "".concat(producto.cantidad, " x ").concat(producto.title, " - ").concat(producto.price);
@@ -38286,6 +38288,7 @@ var Storage = /*#__PURE__*/function () {
 
 
 var total_container = document.getElementById('total_container');
+var botonEnviarWhatsapp = document.getElementById('whatsapp_submit');
 var cart_main = document.getElementById('cart_main'),
     cart_body = document.getElementById('cart_body'),
     session = document.getElementById('sesion');
@@ -38294,7 +38297,13 @@ var productos = []; //-------------------- Inicio de clases -----------------
 var storage = new Storage();
 var carrito = new CarritoUI(cart_main, cart_body);
 var apiCart = new CartApi(); //-------------------- inicio de script -----------------
-//-------------------- Sesion no iniciada-----------------
+
+botonEnviarWhatsapp.addEventListener('click', function () {
+  var form = document.getElementById('form_modal_whatsapp');
+  productos = [];
+  storage.addStorage(productos);
+  form.submit();
+}); //-------------------- Sesion no iniciada-----------------
 
 if (session.value == 0) {
   productos = storage.getStorage();
@@ -38332,12 +38341,12 @@ function events(value, elements) {
   if (value == 0) {
     elements.forEach(function (element) {
       element.addEventListener('click', function (e) {
-        var name = e.target.parentNode.parentNode.children[0].textContent,
+        var name = e.target.parentNode.parentNode.children[0].children[1].children[0].textContent,
             id = e.target.id,
-            price = e.target.parentNode.parentNode.children[2].textContent,
-            image = e.target.parentNode.parentNode.parentNode.children[0].src,
+            price = e.target.parentNode.parentNode.children[0].children[2].children[0].textContent,
+            image = e.target.parentNode.parentNode.parentNode.children[0].children[0].src,
             slug = e.target.parentNode.parentNode.children[3].value,
-            cantidad = parseInt(e.target.parentNode.parentNode.children[6].value),
+            cantidad = parseFloat(e.target.parentNode.children[0].value),
             alert = document.getElementById('add_alert');
         var producto = {
           title: name,
@@ -38366,12 +38375,11 @@ function events(value, elements) {
     elements.forEach(function (element) {
       element.addEventListener('click', function (e) {
         var id = e.target.id,
-            padre = e.target.parentNode.parentNode.children[0].children[0],
-            name = padre.children[0].textContent,
-            price = padre.children[2].textContent,
-            image = e.target.parentNode.parentNode.parentNode.children[0].src,
-            slug = padre.children[4].value,
-            cantidad = parseInt(padre.children[6].value),
+            name = e.target.parentNode.parentNode.parentNode.children[1].textContent,
+            price = e.target.parentNode.parentNode.parentNode.children[2].children[0].textContent,
+            image = e.target.parentNode.parentNode.parentNode.parentNode.children[1].children[0].children[0].children[0].src,
+            slug = e.target.parentNode.parentNode.parentNode.children[3].value,
+            cantidad = parseFloat(e.target.parentNode.parentNode.children[0].children[0].children[0].value),
             alert = document.getElementById('add_alert');
         var producto = {
           title: name,
@@ -38571,7 +38579,7 @@ function loadTotalProducts(elements, value) {
 
 function onlyPrice(price) {
   var test = price.split("$");
-  return parseFloat(test[0].trim());
+  return parseFloat(test[1].trim());
 } // ------------- FUNCION PARA VACIAR EL CARRITO -----------------
 
 

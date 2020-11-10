@@ -327,8 +327,8 @@
 	
 		whastapp.addEventListener('click', (e) => {
 			e.preventDefault();
-	
-			window.open(`http://www.linkedin.com/shareArticle?url='+${encodeURIComponent(window.location)}`, '', 'width=600,height=400,left=50,top=50')
+
+			location.href = `https://wa.me/?text=${encodeURIComponent(window.location)}`
 		})
 	
 	

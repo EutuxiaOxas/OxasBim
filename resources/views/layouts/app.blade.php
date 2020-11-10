@@ -114,19 +114,5 @@
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <script type="text/javascript">
-        const botonEnviarWhatsapp = document.getElementById('whatsapp_submit')
-
-        botonEnviarWhatsapp.addEventListener('click', () => {
-            const form = document.getElementById('form_modal_whatsapp')
-            productos = []
-            storage.addStorage(productos)
-
-            form.submit();
-
-        })
-    </script>
-
 </body>
 </html>

@@ -26,7 +26,7 @@
         max-height: 100%;
         min-width: auto;
         max-width: 100%;
-		opacity: 0.75;
+		opacity: 0.6;
 	}
 	.img_second_detail:hover{
 		cursor: pointer;
@@ -168,7 +168,6 @@
 					</span>
 				</div>
 			</div>
-			
 			<h5 class="title_product_detail text-rubik mt-2">{{$product->title}}</h5>
 			<div class="text-rubik mt-3 mb-4">
 				<span class="price_product_detail">${{$product->price}}</span>
@@ -286,13 +285,18 @@
 	<div class="row justify-content-center mt-4">
 		<div class="col-10">
 			<h5 class="title-description text-rubik">Descripcion</h5>
-			<p class="">{{$product->description}}.</p>
+			<p class="mt-4 text-rubik">{{$product->description}}.</p>
 		</div>
 		
 	</div>
 
 </div>
 <hr>
+<div class="contanier">
+	<div class="row justify-content-center py-3">
+		<h3 class="text-rubik">Tambien te podría interesar</h3>
+	</div>
+</div>
 
 @include('common.other_products')
 

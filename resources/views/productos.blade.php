@@ -31,39 +31,42 @@
         	padding: 0;
         }
 
+		/*Stilos Navbar lateral*/
+		.span-circle{
+			background-color: #f3f5f9;
+			border-radius: 50%;
+			width: 25px!important;
+			height: 25px!important;
+			padding: 0.3rem;
+			cursor: pointer;
+		}
+		.acordeon_container{
+			padding-left: 1rem;
+		}
+		.acordeon_container li{
+			padding-top: 0.5rem;
+		}
+		#categories_container a{
+			color: #222;
+		}
+		#categories_container a:hover{
+			text-decoration: none;
+		}
 	</style>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-12 col-md-2" id="categories_container">
-			<h3 class="my-4">Categorias</h3>
-			@foreach($categorias as $categoria)
-				@if($categoria->padre_id == 0)
-					<div>
-						<div class="d-flex justify-content-between" style="width: 70%">
-							<a href="{{route('product.category.show', $categoria->slug)}}">{{$categoria->title}}</a>
-							<img src="/icons/flecha.svg" class="arrow_class" width="15" style="cursor: pointer;">
-						</div>
-						<ul class="acordeon_container">
-							@foreach($categorias as $cat_hijo)
-								@if($cat_hijo->padre_id == $categoria->id)
-									<li class="sub_categorie_item">
-										<a href="{{route('product.category.show', $cat_hijo->slug)}}">{{$cat_hijo->title}}</a>
-									</li>
-								@endif
-							@endforeach
-						</ul>
-					</div>
-				@endif
-			@endforeach
-		</div>
-		<div class="col-12 col-md-10">
+<div class="container-fluid px-5">
+	<div class="row pt-2">
+
+		@include('common.navbar_left')
+		<div class="col-12 col-md-10 pl-4">
 			<div class="row">
-				@if(isset($product_categorie))
-				<h1 class="my-3">Productos en categoria: <small>{{$product_categorie->title}}</small></h1>
-				@else
-				<h1 class="my-3">Productos</h1>
-				@endif
+				<div class="col-12 my-3">
+					@if(isset($product_categorie))
+					<h1 class="text-rubik">Productos en categoria: <small>{{$product_categorie->title}}</small></h1>
+					@else
+					<h1 class="text-rubik">Productos</h1>
+					@endif
+				</div>				
 				<div id="add_alert" style="display: none;" class="alert alert-success">Producto Agregado con éxito!</div>
 			</div>
 			<section class="row">
@@ -80,26 +83,7 @@
 	</div>
 </div>
 
-<script type="text/javascript">
 
-	function openCloseSubCategories(container, arrow){
-		container.classList.toggle('active')
-		arrow.classList.toggle('active')
-	}
-
-	const categoryContainer = document.getElementById('categories_container')
-
-	categoryContainer.addEventListener('click', e => {
-		if(e.target.classList.contains('arrow_class')){
-			let subCategoriesContainer = e.target.parentNode.parentNode.children[1]
-
-			openCloseSubCategories(subCategoriesContainer, e.target)
-		}
-	})
-
-
-	
-</script>
 
 
 @endsection

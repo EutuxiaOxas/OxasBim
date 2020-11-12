@@ -122,7 +122,7 @@
                                         <td>
                                             <img src="{{ asset('storage/' . $publicidad->image) }}" width="50">
                                         </td>
-                                        <td>{{ $publicidad->title }}</td>
+                                        <td>{{ $publicidad->link }}</td>
                                         <td class="d-flex">
                                             <a href="{{route('publicidad.show', $publicidad->id)}}" class="btn btn-outline-success btn-sm mr-1">Editar</a>
                                             <button type="button" id="{{ $publicidad->id }}" class="btn btn-outline-danger btn-sm eliminar"

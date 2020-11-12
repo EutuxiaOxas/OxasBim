@@ -72,6 +72,14 @@ Route::middleware('landing')->group(function () {
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
 
+
+	//----------------- PUBLICIDADES ----------------
+	
+	Route::get('/crear/publicidad', 'Cms\PublicidadController@crearPublicidad')->name('publicidad.create');
+	Route::get('/editar/publicidad/{id}', 'Cms\PublicidadController@editarPublicidad')->name('publicidad.show');
+
+	Route::post('/guardar/publicidad', 'Cms\PublicidadController@guardarPublicidad')->name('publicidad.store');
+	Route::post('/actualizar/publicidad/{id}', 'Cms\PublicidadController@actualizarPublicidad')->name('publicidad.update');
 });
 
 Route::middleware('tienda')->group(function () {

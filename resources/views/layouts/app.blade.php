@@ -39,23 +39,7 @@
             color: blue;
         }
 
-        .product_main{
-            transform: translateX(-.8rem);
-            transition: transform .3s; 
-        }
-
-        .product_main:hover {
-            transform: translateX(10px);
-        }
-
-        .meme {
-            border: 1px solid red;
-        }
-
-        .eliminar_container{
-            position: relative;
-            transform: translateY(25%);
-        }
+        
     </style>
 </head>
 <body>

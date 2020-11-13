@@ -97,6 +97,44 @@
             </div>
         </section>
 
+                <section>
+                    <div class="my-3 d-flex justify-content-between">
+                        <h2>Imagenes publicidades</h2>
+                        <div>
+                            <a class="btn btn-outline-primary btn-sm px-4" href="{{route('publicidad.create')}}">Nueva publicidad</a>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Imagen</th>
+                                    <th>Enlace</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($publicidades as $publicidad)
+                                    <tr>
+                                        <td>{{ $publicidad->id }}</td>
+                                        <td>
+                                            <img src="{{ asset('storage/' . $publicidad->image) }}" width="50">
+                                        </td>
+                                        <td>{{ $publicidad->link }}</td>
+                                        <td class="d-flex">
+                                            <a href="{{route('publicidad.show', $publicidad->id)}}" class="btn btn-outline-success btn-sm mr-1">Editar</a>
+                                            <button type="button" id="{{ $publicidad->id }}" class="btn btn-outline-danger btn-sm eliminar"
+                                                data-toggle="modal" data-target="#">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
         <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

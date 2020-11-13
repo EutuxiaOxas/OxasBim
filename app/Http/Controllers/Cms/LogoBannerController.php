@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Logo_Banner;
+use App\Publicidad;
 
 use Storage; 
 use Str;
@@ -17,8 +18,9 @@ class LogoBannerController extends Controller
     {
     	$banners = Logo_Banner::where('tipo', 'banner')->get();
     	$logo = Logo_Banner::where('tipo', 'logo')->first();
+        $publicidades = Publicidad::all();
         $secName = 'web';
-    	return view('cms.banner.index')->with(compact('banners', 'logo', 'secName'));
+    	return view('cms.banner.index')->with(compact('banners', 'logo', 'secName', 'publicidades'));
     }
 
 

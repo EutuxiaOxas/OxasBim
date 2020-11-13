@@ -81,4 +81,9 @@
             </div>
         </div>
     </section>
+    <section class="py-5">
+        @foreach($categorias->take(4) as $categoria)
+            @include('common.other_products', ['otros_products' => $categoria->products])
+        @endforeach
+    </section>
 @endsection

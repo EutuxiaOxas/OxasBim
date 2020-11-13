@@ -13,6 +13,46 @@
         -moz-box-shadow: none;
         -webkit-box-shadow: none;
      }
+
+
+     .cart_dropdown{
+        position: relative;
+     }
+
+     .cart_dropdown_menu{
+        position: absolute;
+        background-color: white;
+        width: 270px;
+        top: 100%;
+        left: -10rem;
+        display: none;
+        z-index: 999;
+     }
+
+     .cart_dropdown_menu.vacio {
+        height: auto;
+     }
+
+     .cart_dropdown_menu.active {
+        display: block;
+     }
+
+     .eliminar_container{
+        position: relative;
+        left: 3%;
+        top: 3%;
+     }
+
+     .eliminar_producto {
+        font-size: 1.5rem;
+
+     }
+
+     .cantidad_producto_cart{
+        width: 90%;
+     }
+
+
 </style>
 @if(isset($navbar_null))
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="display: none;">
@@ -35,7 +75,7 @@
                 <li class="nav-item">
                     <a href="{{route('productos')}}" class="nav-link">Productos</a>
                 </li>
-                <li class="nav-item dropdown" id="cart_main" style="position: relative;">
+                <li class="nav-item" id="cart_main" style="position: relative;">
                     <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <i class="fas fa-shopping-cart"></i>
                     </a>
@@ -85,11 +125,11 @@
                 <li class="nav-item">
                     <a href="{{route('productos')}}" class="nav-link">Productos</a>
                 </li>
-                <li class="nav-item dropdown" id="cart_main">
-                    <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <i class="fas fa-shopping-cart"></i>
+                <li class="nav-item cart_dropdown" id="cart_main">
+                    <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
+                        <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" id="cart_body" style="overflow: hidden;" aria-labelledby="carritoDropdown">
+                    <div class="cart_dropdown_menu" id="cart_body">
                     </div>
                 </li>
             </ul>

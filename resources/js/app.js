@@ -4,20 +4,25 @@ require('./bootstrap');
 
 
 class CarritoUI {
-  constructor(carrito, cart_body) {
+  constructor(carrito, cart_body, dom) {
     this.cart_body = cart_body;
     this.carrito = carrito;
     this.badge_main = document.getElementById('carritoDropdown')
     this.total = 0;
+    this.totalCantidades = 0
     this.urlProductos = ''
+    this.mainDom= dom
+    this.carritoEventos()
   }
 
 
   agregarCarrito(productos)
   {
+    this.totalCantidades = 0;
   	this.total = 0;
   	if(productos.length > 0)
   	{
+      this.cart_body.classList.remove('vacio')
   		this.cart_body.innerHTML = '';
   		let contador = 0;
   		productos.forEach(producto => {
@@ -27,6 +32,8 @@ class CarritoUI {
   			}else {
   				this.urlProductos = `${this.urlProductos}%0A%0A${producto.cantidad} x ${producto.title} - ${producto.price}`
   			}
+
+        this.totalCantidades += producto.cantidad
 
   			let template = ''
   			if(producto.producto){
@@ -43,11 +50,11 @@ class CarritoUI {
   				`;
   			}else{
   				template = `
-  					<div class="product_main d-flex" position:relative;">
-  						<div class="eliminar_container">
-  							<i class="fas fa-times eliminar_producto" id="${producto.id}" style="color: red; cursor: pointer;"></i>
+  					<div class="product_main d-flex" style="position:relative;">
+  						<div class="eliminar_container d-flex mr-3">
+  							<i class="far fa-times-circle eliminar_producto" id="${producto.id}" style="color: red; cursor: pointer;"></i>
   						</div>
-  						<div class="d-flex pl-2 mb-2 move-on-left" style="flex-wrap: wrap">
+  						<div class="d-flex mb-2 move-on-left" style="flex-wrap: wrap">
   							<input type="hidden" value="${producto.id}">
   							<img src='${producto.image}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
   							<p>	
@@ -58,12 +65,12 @@ class CarritoUI {
 
   							<div style="flex: 1 0 100%;">
   								<select class="form-control cantidad_producto_cart">
-  									<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
-  									<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
-  									<option ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
-  									<option ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
-  									<option ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
-  									${producto.cantidad > 5 ? `<option value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
+  									<option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+  									<option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+  									<option class="cantidad_opcion" ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+  									<option class="cantidad_opcion" ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+  									<option class="cantidad_opcion" ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+  									${producto.cantidad > 5 ? `<option class="cantidad_opcion" value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
   								</select>
   							</div>
   						</div>
@@ -75,12 +82,14 @@ class CarritoUI {
   			contador++
   		})
   		this.cart_body.innerHTML+= `
-  				<div class="text-center">
-  					<a href="#" id="boton_modal" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalIrAWhatsapp">Ir a whatsapp</a>
-  				</div>
-  				<div class="text-center my-2">
-  					<a href="#" id="vaciar_carrito_cart" class="btn btn-sm btn-outline-danger"> Vaciar carrito</a>
-  				</div>
+  				<div class="my-2 d-flex justify-content-center">
+            <div class="text-center mr-2">
+              <a href="#" id="boton_modal" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalIrAWhatsapp">Ir a whatsapp</a>
+            </div>
+            <div class="text-center">
+              <a href="#" id="vaciar_carrito_cart" class="btn btn-sm btn-outline-danger"> Vaciar carrito</a>
+            </div>
+          </div>
   			`
   		this.boton_modal = document.getElementById('boton_modal');
   		this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
@@ -118,7 +127,7 @@ class CarritoUI {
   		
 		this.badge_main.innerHTML += `
 			<div id="carrito_badge" style="position: absolute; top: -10px; right: 0;">
-			  	<span class="badge badge-dark">${productos.length}</span>
+			  	<span class="badge badge-dark">${this.totalCantidades}</span>
 			</div>
 		`
 
@@ -126,6 +135,7 @@ class CarritoUI {
 
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
+      this.cart_body.classList.add('vacio')
   		this.carrito.children[0].children[0].classList.remove('cart_on')
   		this.badge_main.innerHTML = `<i class="fas fa-shopping-cart"></i>`
   	}
@@ -221,7 +231,18 @@ class CarritoUI {
   	}
   }
 
+  carritoEventos(){
+    this.mainDom.addEventListener('click', (e) => {
+      let main = e.target
 
+      if(main.classList.contains('fa-shopping-cart') || main.id === 'carritoDropdown')
+      {
+        this.cart_body.classList.toggle('active')
+      }else if(!main.classList.contains('eliminar_producto') && !main.classList.contains('cantidad_opcion') && !main.classList.contains('cantidad_producto_cart') ){
+        this.cart_body.classList.remove('active')
+      }
+    })
+  }
 
 }
 
@@ -301,7 +322,7 @@ let productos = [];
 //-------------------- Inicio de clases -----------------
 
 let storage = new Storage();
-let carrito = new CarritoUI(cart_main, cart_body);
+let carrito = new CarritoUI(cart_main, cart_body, window);
 let apiCart = new CartApi();
 
 
@@ -316,6 +337,8 @@ botonEnviarWhatsapp.addEventListener('click', () => {
     form.submit();
 
 })
+
+
 
 	//-------------------- Sesion no iniciada-----------------
 if(session.value == 0)
@@ -693,3 +716,5 @@ function destroyProduct(productos, id) {
 		return producto.id !== id
 	})
 }
+
+

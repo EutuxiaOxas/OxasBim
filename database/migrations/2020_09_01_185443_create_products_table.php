@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->float('price');
             $table->float('price_reference');
+            $table->integer('quantity');
             $table->string('image');
             $table->foreignId('category_id');
             $table->timestamps();

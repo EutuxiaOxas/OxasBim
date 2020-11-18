@@ -114,6 +114,11 @@ Route::middleware('tienda')->group(function () {
 
 		/*--------------- PRODUCTOS IMAGENES --------------*/
 	Route::post('/cms/update/product/image/{id}', 'Cms\ProductImageController@editImage');
+
+	/*--------------- PEDIDOS --------------*/
+	Route::get('/cms/pedidos', 'PedidosController@index')->name('tienda.pedidos.home');
+	Route::get('/cms/pedidos/detalle/{id}', 'PedidosController@obtenerDetalle');
 });
 
 Route::post('/ir/whatsapp', 'WhatsappController@irAWhatsapp');
+Route::post('/crear/pedido', 'PedidosController@crearPedido');

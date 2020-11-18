@@ -12,7 +12,7 @@ class CarritoUI {
     this.totalCantidades = 0
     this.urlProductos = ''
     this.mainDom= dom
-    this.carritoEventos()
+    //this.carritoEventos()
   }
 
 
@@ -51,19 +51,21 @@ class CarritoUI {
   			}else{
   				template = `
   					<div class="product_main d-flex" style="position:relative;">
-  						<div class="eliminar_container d-flex mr-3">
+  						<div class="eliminar_container d-flex">
   							<i class="far fa-times-circle eliminar_producto" id="${producto.id}" style="color: red; cursor: pointer;"></i>
   						</div>
-  						<div class="d-flex mb-2 move-on-left" style="flex-wrap: wrap">
+  						<div class="d-flex mb-2 move-on-left justify-content-around align-items-center" style="flex-wrap: wrap; flex:1;">
   							<input type="hidden" value="${producto.id}">
-  							<img src='${producto.image}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
-  							<p>	
-  								${producto.title} 
+  							<img src='${producto.image}' class="" style="width: 50px; height: 50px ;object-fit: cover;">
+  							<div class="d-flex" style="width:40%; text-align: start;">
+                  <p class= "m-0">  
+                    ${producto.title} 
 
-  								<span>(${producto.cantidad} x ${producto.price})</span>
-  							</p>
+                    <span>(${producto.cantidad} x ${producto.price})</span>
+                  </p>
+                </div>
 
-  							<div style="flex: 1 0 100%;">
+  							<div style="width: 30%">
   								<select class="form-control cantidad_producto_cart">
   									<option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
   									<option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
@@ -81,20 +83,13 @@ class CarritoUI {
   			
   			contador++
   		})
-  		this.cart_body.innerHTML+= `
-  				<div class="my-2 d-flex justify-content-center">
-            <div class="text-center mr-2">
-              <a href="#" id="boton_modal" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalIrAWhatsapp">Ir a whatsapp</a>
-            </div>
-            <div class="text-center">
-              <a href="#" id="vaciar_carrito_cart" class="btn btn-sm btn-outline-danger"> Vaciar carrito</a>
-            </div>
-          </div>
-  			`
   		this.boton_modal = document.getElementById('boton_modal');
   		this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
   		this.botones_cantidad = document.querySelectorAll('.cantidad_producto_cart');
   		this.boton_eliminar = document.querySelectorAll('.eliminar_producto');
+
+      this.boton_modal.style.display = 'inline-block'
+      this.boton_vaciar.style.display = 'inline-block'
 
   		this.boton_modal.addEventListener('click', () => {
   			let productosUrl = document.getElementById('productos_modal')
@@ -134,10 +129,14 @@ class CarritoUI {
   		this.carrito.children[0].children[0].classList.add('cart_on')
 
   	}else {
+      this.boton_modal = document.getElementById('boton_modal');
+      this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
-      this.cart_body.classList.add('vacio')
   		this.carrito.children[0].children[0].classList.remove('cart_on')
   		this.badge_main.innerHTML = `<i class="fas fa-shopping-cart"></i>`
+
+      this.boton_modal.style.display = 'none'
+      this.boton_vaciar.style.display = 'none'
   	}
 
   }
@@ -231,19 +230,6 @@ class CarritoUI {
   	}
   }
 
-  carritoEventos(){
-    this.mainDom.addEventListener('click', (e) => {
-      let main = e.target
-
-      if(main.classList.contains('fa-shopping-cart') || main.id === 'carritoDropdown')
-      {
-        this.cart_body.classList.toggle('active')
-      }else if(!main.classList.contains('eliminar_producto') && !main.classList.contains('cantidad_opcion') && !main.classList.contains('cantidad_producto_cart') ){
-        this.cart_body.classList.remove('active')
-      }
-    })
-  }
-
 }
 
 //----------------- API CALLS class --------------
@@ -312,7 +298,7 @@ class Storage{
 
 //-------------------- Declaracion de variables -----------------
 const total_container = document.getElementById('total_container');
-const botonEnviarWhatsapp = document.getElementById('whatsapp_submit');
+const formEnviarWhatsapp = document.getElementById('form_modal_whatsapp');
 let cart_main = document.getElementById('cart_main'),
     cart_body = document.getElementById('cart_body'),
     session = document.getElementById('sesion');
@@ -329,13 +315,22 @@ let apiCart = new CartApi();
 
 //-------------------- inicio de script -----------------
 
-botonEnviarWhatsapp.addEventListener('click', () => {
-    const form = document.getElementById('form_modal_whatsapp')
-    productos = []
-    storage.addStorage(productos)
+formEnviarWhatsapp.addEventListener('submit', (e) => {
+    e.preventDefault()
 
-    form.submit();
+    let name = e.target[3].value
 
+    axios.post('/crear/pedido', {
+      name,
+      total_amount: carrito.total,
+      productos: productos
+    })
+      .then(res => {
+        if(res.status === 200)
+        productos = []
+        storage.addStorage(productos)
+        e.target.submit();
+      })
 })
 
 

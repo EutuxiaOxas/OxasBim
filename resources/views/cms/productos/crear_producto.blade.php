@@ -39,6 +39,10 @@
 			<input class="form-control" id="price" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" type="number" name="price_reference">
 		</div>
 		<div class="form-group col-12">
+			<h5>Cantidad</h5>
+			<input class="form-control" id="" type="number" min="0" name="quantity">
+		</div>
+		<div class="form-group col-12">
 			<h5>Descripción</h5>
 			<textarea class="form-control" id="description" name="description"></textarea>
 		</div>

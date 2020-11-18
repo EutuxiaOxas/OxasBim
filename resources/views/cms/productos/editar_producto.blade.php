@@ -40,6 +40,10 @@
 			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price_reference}}" name="price_reference">
 		</div>
 		<div class="form-group col-12">
+			<h5>Cantidad</h5>
+			<input class="form-control" id="" type="number" value="{{$product->quantity}}" min="0" name="quantity">
+		</div>
+		<div class="form-group col-12">
 			<h5>Descripción</h5>
 			<textarea class="form-control" id="description" name="description">{{$product->description}}</textarea>
 		</div>

@@ -64,6 +64,7 @@ class ProductController extends Controller
 	        'category_id' => $request->category_id,
             'slug' => $request->slug,
 	        'image' => $file,
+            'quantity' => $request->quantity,
 	    ]);
         
 
@@ -119,6 +120,7 @@ class ProductController extends Controller
                     'price_reference' => $request->price_reference,
                     'slug' => $request->slug,
     	            'image' => $file,
+                    'quantity' => $request->quantity,
     	        ]);
     	    } else {
     	        return back()->with('message', 'No se pudo actualizar el producto');
@@ -131,6 +133,7 @@ class ProductController extends Controller
                 'price_reference' => $request->price_reference,
                 'slug' => $request->slug,
     	        'description' =>$request->description,
+                'quantity' => $request->quantity,
     	    ]);
     	}
 

@@ -27,6 +27,7 @@
           	<th>#</th>
             <th>Image</th>
           	<th>Titulo</th>
+            <th>Cantidad</th>
           	<th>Descripción</th>
             <th>Categoria</th>
           	<th>Acciones</th>
@@ -40,6 +41,7 @@
                 <img src="{{asset('storage/'. $producto->image)}}" width="30">
             </td>
             <td>{{$producto->title}}</td>
+            <td>{{$producto->quantity}}</td>
             <td>{{substr($producto->description,0, 60)}}</td>
             <td>{{$producto->category->title}}</td>
             <td>

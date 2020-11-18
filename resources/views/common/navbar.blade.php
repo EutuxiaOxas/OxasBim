@@ -19,28 +19,12 @@
         position: relative;
      }
 
-     .cart_dropdown_menu{
-        position: absolute;
-        background-color: white;
-        width: 270px;
-        top: 100%;
-        left: -10rem;
-        display: none;
-        z-index: 999;
-     }
-
-     .cart_dropdown_menu.vacio {
-        height: auto;
-     }
-
-     .cart_dropdown_menu.active {
-        display: block;
+     .product_main{
+        align-items: center;
      }
 
      .eliminar_container{
         position: relative;
-        left: 3%;
-        top: 3%;
      }
 
      .eliminar_producto {
@@ -81,7 +65,7 @@
                     </a>
 
                     <div>
-                        <div class="dropdown-menu dropdown-menu-right" id="cart_body" aria-labelledby="carritoDropdown">
+                        <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="carritoDropdown">
                         </div>
                     </div>
                 </li>
@@ -129,7 +113,7 @@
                     <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
                         <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
                     </a>
-                    <div class="cart_dropdown_menu" id="cart_body">
+                    <div class="cart_dropdown_menu">
                     </div>
                 </li>
             </ul>

@@ -57,6 +57,28 @@
         </main>
     </div>
 
+    <div class="modal fade" id="modalCarritoCompras" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Carrito de compras</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="cart_body">
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Salir</button>
+                    <button type="button" id="vaciar_carrito_cart" class="btn btn btn-outline-danger">Vaciar Carrito</button>
+                    <button  id="boton_modal" class="btn btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#modalIrAWhatsapp">Ir a Whatsapp</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
     <div class="modal fade" id="modalIrAWhatsapp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -87,16 +109,24 @@
                             <h5>Cédula</h5>
                             <input class="form-control" type="text" required maxlength="191" name="documento_identidad" placeholder="Ingresa tu documento de identidad">
                         </div>
-                            
+                        <div class="">
+                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-primary" value="Continuar">
+                        </div>
                     </form>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" id="whatsapp_submit" class="btn btn-primary">Continuar</button>
-                </div>
             </div>
         </div>
       </div>
     </div>
+
+    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+        const modalCarrito = document.getElementById('cart_main')
+
+        modalCarrito.addEventListener('click', () => {
+            $('#modalCarritoCompras').modal('show')
+        })
+    </script>
 </body>
 </html>

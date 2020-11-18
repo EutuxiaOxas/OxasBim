@@ -38064,8 +38064,7 @@ var CarritoUI = /*#__PURE__*/function () {
     this.total = 0;
     this.totalCantidades = 0;
     this.urlProductos = '';
-    this.mainDom = dom;
-    this.carritoEventos();
+    this.mainDom = dom; //this.carritoEventos()
   }
 
   _createClass(CarritoUI, [{
@@ -38095,17 +38094,18 @@ var CarritoUI = /*#__PURE__*/function () {
           if (producto.producto) {
             template = "\n  \t\t\t\t\t<div class=\"d-flex pl-2 mb-2\">\n  \t\t\t\t\t\t<img src='/storage/".concat(producto.imagen, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t").concat(producto.producto.title, " \n\n  \t\t\t\t\t\t\t<span>(").concat(producto.cantidad, "</span>\n  \t\t\t\t\t\t</p>\n\n  \t\t\t\t\t</div>\n  \t\t\t\t");
           } else {
-            template = "\n  \t\t\t\t\t<div class=\"product_main d-flex\" style=\"position:relative;\">\n  \t\t\t\t\t\t<div class=\"eliminar_container d-flex mr-3\">\n  \t\t\t\t\t\t\t<i class=\"far fa-times-circle eliminar_producto\" id=\"".concat(producto.id, "\" style=\"color: red; cursor: pointer;\"></i>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t\t<div class=\"d-flex mb-2 move-on-left\" style=\"flex-wrap: wrap\">\n  \t\t\t\t\t\t\t<input type=\"hidden\" value=\"").concat(producto.id, "\">\n  \t\t\t\t\t\t\t<img src='").concat(producto.image, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t\t").concat(producto.title, " \n\n  \t\t\t\t\t\t\t\t<span>(").concat(producto.cantidad, " x ").concat(producto.price, ")</span>\n  \t\t\t\t\t\t\t</p>\n\n  \t\t\t\t\t\t\t<div style=\"flex: 1 0 100%;\">\n  \t\t\t\t\t\t\t\t<select class=\"form-control cantidad_producto_cart\">\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n  \t\t\t\t\t\t\t\t\t").concat(producto.cantidad > 5 ? "<option class=\"cantidad_opcion\" value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n  \t\t\t\t\t\t\t\t</select>\n  \t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t</div>\n  \t\t\t\t");
+            template = "\n  \t\t\t\t\t<div class=\"product_main d-flex\" style=\"position:relative;\">\n  \t\t\t\t\t\t<div class=\"eliminar_container d-flex\">\n  \t\t\t\t\t\t\t<i class=\"far fa-times-circle eliminar_producto\" id=\"".concat(producto.id, "\" style=\"color: red; cursor: pointer;\"></i>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t\t<div class=\"d-flex mb-2 move-on-left justify-content-around align-items-center\" style=\"flex-wrap: wrap; flex:1;\">\n  \t\t\t\t\t\t\t<input type=\"hidden\" value=\"").concat(producto.id, "\">\n  \t\t\t\t\t\t\t<img src='").concat(producto.image, "' class=\"\" style=\"width: 50px; height: 50px ;object-fit: cover;\">\n  \t\t\t\t\t\t\t<div class=\"d-flex\" style=\"width:40%; text-align: start;\">\n                  <p class= \"m-0\">  \n                    ").concat(producto.title, " \n\n                    <span>(").concat(producto.cantidad, " x ").concat(producto.price, ")</span>\n                  </p>\n                </div>\n\n  \t\t\t\t\t\t\t<div style=\"width: 30%\">\n  \t\t\t\t\t\t\t\t<select class=\"form-control cantidad_producto_cart\">\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n  \t\t\t\t\t\t\t\t\t").concat(producto.cantidad > 5 ? "<option class=\"cantidad_opcion\" value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n  \t\t\t\t\t\t\t\t</select>\n  \t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t</div>\n  \t\t\t\t");
           }
 
           _this.cart_body.innerHTML += template;
           contador++;
         });
-        this.cart_body.innerHTML += "\n  \t\t\t\t<div class=\"my-2 d-flex justify-content-center\">\n            <div class=\"text-center mr-2\">\n              <a href=\"#\" id=\"boton_modal\" class=\"btn btn-sm btn-primary\" data-toggle=\"modal\" data-target=\"#modalIrAWhatsapp\">Ir a whatsapp</a>\n            </div>\n            <div class=\"text-center\">\n              <a href=\"#\" id=\"vaciar_carrito_cart\" class=\"btn btn-sm btn-outline-danger\"> Vaciar carrito</a>\n            </div>\n          </div>\n  \t\t\t";
         this.boton_modal = document.getElementById('boton_modal');
         this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
         this.botones_cantidad = document.querySelectorAll('.cantidad_producto_cart');
         this.boton_eliminar = document.querySelectorAll('.eliminar_producto');
+        this.boton_modal.style.display = 'inline-block';
+        this.boton_vaciar.style.display = 'inline-block';
         this.boton_modal.addEventListener('click', function () {
           var productosUrl = document.getElementById('productos_modal');
           var totalProductos = document.getElementById('total_modal');
@@ -38129,10 +38129,13 @@ var CarritoUI = /*#__PURE__*/function () {
         this.badge_main.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -10px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(this.totalCantidades, "</span>\n\t\t\t</div>\n\t\t");
         this.carrito.children[0].children[0].classList.add('cart_on');
       } else {
+        this.boton_modal = document.getElementById('boton_modal');
+        this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
         this.cart_body.innerHTML = 'No hay productos en el carrito';
-        this.cart_body.classList.add('vacio');
         this.carrito.children[0].children[0].classList.remove('cart_on');
         this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
+        this.boton_modal.style.display = 'none';
+        this.boton_vaciar.style.display = 'none';
       }
     }
   }, {
@@ -38172,21 +38175,6 @@ var CarritoUI = /*#__PURE__*/function () {
 
         container.innerHTML += "\n  \t\t\t<div>\n  \t\t\t\t<h5>Total a pagar: <strong>".concat(total_amount, "$</strong></h5>\n  \t\t\t</div>\n  \t\t");
       }
-    }
-  }, {
-    key: "carritoEventos",
-    value: function carritoEventos() {
-      var _this2 = this;
-
-      this.mainDom.addEventListener('click', function (e) {
-        var main = e.target;
-
-        if (main.classList.contains('fa-shopping-cart') || main.id === 'carritoDropdown') {
-          _this2.cart_body.classList.toggle('active');
-        } else if (!main.classList.contains('eliminar_producto') && !main.classList.contains('cantidad_opcion') && !main.classList.contains('cantidad_producto_cart')) {
-          _this2.cart_body.classList.remove('active');
-        }
-      });
     }
   }]);
 
@@ -38310,7 +38298,7 @@ var Storage = /*#__PURE__*/function () {
 
 
 var total_container = document.getElementById('total_container');
-var botonEnviarWhatsapp = document.getElementById('whatsapp_submit');
+var formEnviarWhatsapp = document.getElementById('form_modal_whatsapp');
 var cart_main = document.getElementById('cart_main'),
     cart_body = document.getElementById('cart_body'),
     session = document.getElementById('sesion');
@@ -38320,11 +38308,18 @@ var storage = new Storage();
 var carrito = new CarritoUI(cart_main, cart_body, window);
 var apiCart = new CartApi(); //-------------------- inicio de script -----------------
 
-botonEnviarWhatsapp.addEventListener('click', function () {
-  var form = document.getElementById('form_modal_whatsapp');
-  productos = [];
-  storage.addStorage(productos);
-  form.submit();
+formEnviarWhatsapp.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var name = e.target[3].value;
+  axios.post('/crear/pedido', {
+    name: name,
+    total_amount: carrito.total,
+    productos: productos
+  }).then(function (res) {
+    if (res.status === 200) productos = [];
+    storage.addStorage(productos);
+    e.target.submit();
+  });
 }); //-------------------- Sesion no iniciada-----------------
 
 if (session.value == 0) {

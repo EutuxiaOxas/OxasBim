@@ -24,6 +24,7 @@
           	<th>#</th>
             <th>Nombre</th>
           	<th>Total</th>
+            <th>Fecha</th>
           	<th>Acciones</th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@
             <td>{{$pedido->id}}</td>
             <td>{{$pedido->name}}</td>
             <td>{{$pedido->total_amount}} $</td>
+            <td>{{$pedido->created_at}} </td>
             <td>
             	<button type="button" id="{{$pedido->id}}" data-toggle="modal" data-target="#modalDetallesPedidos" class="btn btn-sm btn-outline-primary pedidos_detalle">Detalles</button>	
             </td>

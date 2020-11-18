@@ -12,7 +12,7 @@ class PedidosController extends Controller
     
 	public function index()
 	{
-		$pedidos = Pedidos::all();
+		$pedidos = Pedidos::orderBy('id', 'DESC')->get();
 		$secName = 'tienda';
 		return view('cms.pedidos.index', compact('pedidos', 'secName'));
 	}

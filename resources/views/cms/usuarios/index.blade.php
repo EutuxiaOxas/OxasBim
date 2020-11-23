@@ -5,74 +5,162 @@
 
 
 @section('content')
-    <h2>Usuarios de la administración</h2>
-    <hr>
-    <section class="container-fluid">
-        <form action="{{ route('cms.users.create') }}" id="form_create_user" method="POST" autocomplete="off">
-            @csrf
-            <div class="row">
-                <h4 class="col-12">Crear usuarios</h4>
-                <div class="col-md-4 form-group px-1">
-                    <input class="form-control" id="create_user_name" type="text" name="name" placeholder="Nombre" autocomplete="off" required>
-                </div>
-                <div class="col-md-4 form-group px-1">
-                    <input class="form-control" id="create_user_email" type="email" name="email" placeholder="Email" autocomplete="off" required>
-                </div>
-                <div class="col-md-4 form-group px-1">
-                    <select id="create_rol" class="form-control" name="role_id">
-                        <option value="0">Seleccionar rol</option>
-                        @foreach ($roles as $rol)
-                            <option value="{{ $rol->id }}">{{ $rol->title }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-4 form-group px-1">
-                    <input class="form-control" type="password" id="contraseña" name="password" placeholder="Contraseña"
-                        autocomplete="off" required>
-                    <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
-                </div>
-                <div class="col-md-4 form-group px-1">
-                    <input class="form-control" type="password" id="confirmar_contraseña" name="password2" placeholder="Confirmar contraseña"
-                        autocomplete="off" required>
-                    <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
-                </div>
+    
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Usuarios de la administración</h1>
             </div>
-            <div class="row form-group px-1">
-                <input type="submit" id="crear_user_submit" class="btn btn-sm btn-primary px-5" value="Crear">
-                <small id="emailHelp" style="display: none;" class="form-text text-danger col-12 px-1">Las contraseñas no coinciden.</small>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
+                <li class="breadcrumb-item active">Usuarios</li>
+              </ol>
             </div>
-        </form>
+          </div>
+        </div>
+    </section>
 
-        <div id="errors_container" style="display: none;" class="alert alert-danger">
-            
+    @if (session('message'))
+      <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title">Éxito!</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+            {{ session('message') }}
+        </div>
+      </div>
+    @endif
+
+    @if (session('error'))
+    <div class="card card-danger">
+        <div class="card-header">
+          <h3 class="card-title">Ops!</h3>
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+            {{ session('error') }}
+        </div>
+      </div>
+    @endif
+
+    <section class="container-fluid">
+        <!-- Main content -->
+        <div class="row">
+          <div class="col-12 px-0">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Crear Usuario Administrativo</h3>
+                  <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <form action="{{ route('cms.users.create') }}" id="form_create_user" method="POST" autocomplete="off">
+                    @csrf
+                  <div class="row">
+                      <div class="col-12 col-md-4 px-1">
+                        <div class="form-group">
+                            <label for="inputName">Nombre</label>
+                            <input type="text" class="form-control" id="create_user_name" name="name" placeholder="Nombre" autocomplete="off" required>
+                          </div>
+                      </div>
+                      <div class="col-12 col-md-4 px-1">
+                        <div class="form-group">
+                            <label for="inputDescription">Correo</label>
+                            <input class="form-control" id="create_user_email" type="email" name="email" placeholder="Email" autocomplete="off" required>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-4 px-1">
+                        <div class="form-group">
+                            <label for="inputDescription">Rol del usuario</label>
+                            <select id="create_rol" class="form-control" name="role_id">
+                                <option value="0">Seleccionar rol</option>
+                                @foreach ($roles as $rol)
+                                    <option value="{{ $rol->id }}">{{ $rol->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-4 px-1">
+                        <div class="form-group">
+                            <label for="inputName">Contraseña</label>
+                            <input class="form-control" type="password" id="contraseña" name="password" placeholder="Contraseña"
+                            autocomplete="off" required>
+                            <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-4 px-1">
+                        <div class="form-group">
+                            <label for="inputName">Confirmar Contraseña</label>
+                            <input class="form-control" type="password" id="confirmar_contraseña" name="password2" placeholder="Confirmar contraseña"
+                            autocomplete="off" required>
+                            <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                            <input type="submit" id="crear_user_submit" class="btn btn-sm btn-primary px-5" value="Crear Usuario">
+                            <small id="emailHelp" style="display: none;" class="form-text text-danger col-12 px-1">Las contraseñas no coinciden.</small>
+                        </div>
+                      </div>                    
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
 
-        @if (session('message'))
-            <div class="alert alert-success" role="alert">
-                {{ session('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="row">
+            <div class="col px-0">
+                <div class="card card-warning" id="errors_container" style="display: none;">
+                    <div class="card-header">
+                      <h3 class="card-title">Hey!</h3>
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      The body of the card
+                    </div>
+                </div>
             </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-        <hr>
-        <section class="mt-4">
-            <table class="table table-striped table-sm">
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Rol</th>
-                <th>Acciones</th>
-                <tbody>
-                    @foreach ($usuarios as $user)
+        </div>
+        
+      <div class="row">
+        <div class="col px-0">
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Usuarios administrativos registrados</h3>
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                      <i class="fas fa-minus"></i></button>
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <table class="table table-striped projects">
+                      <thead>
+                          <tr>
+                            <th style="width: 25%">Nombre</th>
+                            <th style="width: 25%">Correo</th>
+                            <th style="width: 20%">Rol</th>
+                            <th style="width: 30%">Acciones</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($usuarios as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
@@ -86,11 +174,13 @@
                                     data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
                             </td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </section>
-    </section>
+                        @endforeach
+                      </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+      </div>
 
     <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -181,23 +271,10 @@
     </div>
 
     <script type="text/javascript">
-
-
-
-
-
-
-
     //---------------Permitir mostrar la contraseña escrita------------
-
-
         let passChange = document.querySelectorAll('.pass_watcher');
 
         let modalPassChange = document.querySelectorAll('.modal_change_input');
-
-
-
-
         //---------------Funcion permitir mostrar la contraseña escrita del modal cambio de contraseña------------
         modalPassChange.forEach(button => {
             button.addEventListener('click', (e) => {
@@ -206,8 +283,6 @@
                 let inputPass = e.target.parentNode.parentNode.children[1];
                 let accion = e.target;
 
-
-
                 if(accion.classList.contains('inactive'))
                 {
                     inputPass.type = "text"
@@ -224,8 +299,6 @@
                 }
             });
         });
-
-
 
         //---------------Funcion para permitir mostrar la contraseña escrita------------
         passChange.forEach(button => {
@@ -234,7 +307,6 @@
                 let inputPass = e.target.parentNode.parentNode.children[0];
                 let accion = e.target;
 
-
                 if(accion.classList.contains('inactive'))
                 {
                     inputPass.type = "text"
@@ -251,16 +323,7 @@
                 }
             });
         });
-
     </script>
-
-
-
-
-
-
-
-
 
     <script type="text/javascript">
 
@@ -273,7 +336,6 @@
         let editarSubmit = document.getElementById('editar_submit');
         let passSubmit = document.getElementById('contraseña_submit');
         let deleteSubmit = document.getElementById('eliminar_submit');
-
 
         //--------------SUBMIT CREAR USUARIOS ------------
 
@@ -293,13 +355,12 @@
 
             let container = document.getElementById('errors_container');
             let errors = [];
-
+            console.log(container);
             container.style.display = 'none';
-            container.innerHTML = '';
-
+            container.lastElementChild.innerHTML = '';
+            
 
             //----------VERIFICACION CAMPOS FORM--------------
-
 
             if(password.value != password_confirm.value)
             {
@@ -327,18 +388,15 @@
                     `;
                 });
 
-                container.appendChild(errors_main);
+                container.lastElementChild.appendChild(errors_main);
                 container.style.display = 'block'
             }
 
         });
 
-
         //--------------- SUBMIT MODAL ELIMINAR ------------
-
         deleteSubmit.addEventListener('click', (e) => {
             let form = document.getElementById('eliminar_form');
-
             form.submit();
         });
 
@@ -349,7 +407,6 @@
             let password_modal = document.getElementById('modal_password')
             let password_confirm_modal = document.getElementById('modal_password_confirm');
             let verify_modal_password = document.getElementById('modal_password_verify')
-
 
             if(password_modal.value === password_confirm_modal.value){
                 form.submit();
@@ -362,10 +419,8 @@
 
         editarSubmit.addEventListener('click', (e) => {
             let form = document.getElementById('editar_form')
-
             form.submit();
         });
-
 
         //--------------- BOTON LLAMADO AL MODAL DE EDITAR ------------
 

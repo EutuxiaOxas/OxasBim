@@ -4,13 +4,22 @@
 @endsection
 
 @section('content')
-<div class="d-flex justify-content-between">
-  <h2>Categoria de productos</h2>
-  <div>
-    <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalCrear">Crear Categoria</a>
-  </div>
-</div>
-<hr>
+  <section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Categorias de productos</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
+            <li class="breadcrumb-item active">Tienda</li>
+            <li class="breadcrumb-item active">Categorias</li>
+        </ol>
+        </div>
+        </div>
+    </div>
+</section>
 <section class="container-fluid">
     @if (session('message'))
         <div class="alert alert-success" role="alert">
@@ -30,42 +39,52 @@
         </div>
     @endif
 
-   
+    <div class="row">
+      <div class="col px-0">
+          <div class="card">
 
-    <h2 class="mt-4 mb-3">Categorias</h2>
-    <div class="table-responsive">
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-          	<th>#</th>
-          	<th>Titulo</th>
-            <th>Categoria padre</th>
-            <th>estatus</th>
-          	<th>Descripción</th>
-          	<th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($categorias as $categoria)
-          <tr>
-            <td>{{$categoria->id}}</td>
-            <td>{{$categoria->title}}</td>
-            <td>
-
-              @php $padre = $categoria->getFatherName() @endphp 
-              {{$padre ? $padre->title : 'No tiene categoria padre'}}
-
-            </td>
-            <td>{{$categoria->status}}</td>
-            <td>{{$categoria->description}}</td>
-            <td>
-            	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-primary editar_category">Editar</button>
-            	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_category">Eliminar</button>	
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+              <div class="card-header">
+                <h3 class="card-title">Imagenes de publicidades</h3>
+                <button class="btn btn-primary btn-sm px-4 ml-5" data-toggle="modal" data-target="#modalCrear">Nueva Categoria</button>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                          <th style="width: 3%">#</th>
+                          <th style="width: 15%">Titulo</th>
+                          <th style="width: 20%">Categoria padre</th>
+                          <th style="width: 7%">Estatus</th>
+                          <th style="width: 30%">Descripción</th>
+                          <th style="width: 25%">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($categorias as $categoria)
+                      <tr>
+                        <td>{{$categoria->id}}</td>
+                        <td>{{$categoria->title}}</td>
+                        <td>
+                          @php $padre = $categoria->getFatherName() @endphp 
+                          {{$padre ? $padre->title : 'No tiene categoria padre'}}
+                        </td>
+                        <td>{{$categoria->status}}</td>
+                        <td>{{$categoria->description}}</td>
+                        <td>
+                          <button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-primary editar_category">Editar</button>
+                          <button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_category">Eliminar</button>	
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                </table>
+              </div>
+          </div>
+      </div>
     </div>
 </section>
 
@@ -87,15 +106,14 @@
                 <input type="hidden" id="url_access_modal" value="nada" name=""> 
                 <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off">
                     @csrf
-                    <div class="row">
-                        
+                    <div class="row px-3">
                         <div class="col-md-12 form-group px-1 mt-3">
                             <h5>Nombre</h5>
                             <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Nombre" autocomplete="off" required>
                             <small id="slug_alert"></small>
                         </div>
                         <div class="col-md-12 form-group px-1">
-                            <h5>Categoria padre <small>(opcional)</small></h5>
+                            <h5>Categoria padre </h5>
                             <select class="form-control" name="padre_id">
                               <option value="0">Seleccionar categoria padre</option>
                               <option value="0">Principal</option>
@@ -147,7 +165,7 @@
                     </div>
 
                     <div class="form-group">
-                        <h5>Categoria padre <small>(opcional)</small></h5>
+                        <h5>Categoria padre </h5>
                         <select id="cat_padre_editar" class="form-control" name="padre_id">
                           <option value="0">Seleccionar categoria</option>
                         </select>

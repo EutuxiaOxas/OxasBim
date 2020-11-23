@@ -5,12 +5,18 @@
 
 
 @section('content')
-<div class="d-flex justify-content-between mt-4 mb-3">
-	<h1 class="">Editar Producto</h1>
-	<div>
-		<a class="btn btn-outline-primary" href="{{route('tienda.product.home')}}">Volver</a>
-	</div>
-</div>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-sm-6">
+        <h1>Editar Producto</h1>
+        </div>
+        <div class="col-auto ml-auto">
+			<a class="btn btn-outline-primary btn-sm px-5" href="{{route('tienda.product.home')}}">Volver</a>
+        </div>
+        </div>
+    </div>
+</section>
 @if (session('message'))
     <div class="alert alert-success" role="alert">
         {{ session('message') }}
@@ -25,29 +31,13 @@
 <input type="hidden" value="{{$product->id}}" id="product_id">
 <form action="{{route('tienda.product.update', $product->id)}}" id="formulario_producto" method="POST" enctype="multipart/form-data">
 	@csrf
-	<div class="row mt-5">
-		<div class="form-group col-12">
+	<div class="row mt-4">
+		<div class="form-group col-12 col-md-8">
 			<h5>Titulo</h5>
 			<input class="form-control" id="title" type="text" value="{{$product->title}}" autocomplete="off" maxlength="191" name="title">
 			<small id="slug_alert"></small>
 		</div>
-		<div class="form-group col-12">
-			<h5>Precio</h5>
-			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price}}" name="price">
-		</div>
-		<div class="form-group col-12">
-			<h5>Precio Referencial</h5>
-			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price_reference}}" name="price_reference">
-		</div>
-		<div class="form-group col-12">
-			<h5>Cantidad</h5>
-			<input class="form-control" id="" type="number" value="{{$product->quantity}}" min="0" name="quantity">
-		</div>
-		<div class="form-group col-12">
-			<h5>Descripción</h5>
-			<textarea class="form-control" id="description" name="description">{{$product->description}}</textarea>
-		</div>
-		<div class="form-group col-6">
+		<div class="form-group col-12 col-md-4">
 			<h5>Categoria</h5>
 			<select id="categoria" class="form-control" name="category_id">
 				<option value="0">Selecciona una categoria</option>
@@ -55,6 +45,22 @@
 					<option value="{{$categoria->id}}" <?php if($product->category_id == $categoria->id) echo 'selected' ?> >{{$categoria->title}}</option>
 				@endforeach
 			</select>
+		</div>
+		<div class="form-group col-12 col-md-4">
+			<h5>Precio</h5>
+			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price}}" name="price">
+		</div>
+		<div class="form-group col-12 col-md-4">
+			<h5>Precio Referencial</h5>
+			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price_reference}}" name="price_reference">
+		</div>
+		<div class="form-group col-12 col-md-4">
+			<h5>Cantidad</h5>
+			<input class="form-control" id="" type="number" value="{{$product->quantity}}" min="0" name="quantity">
+		</div>
+		<div class="form-group col-12">
+			<h5>Descripción</h5>
+			<textarea class="form-control" id="description" name="description">{{$product->description}}</textarea>
 		</div>
 		<div class="form-group col-6">
 			<h5>Imagen principal</h5>

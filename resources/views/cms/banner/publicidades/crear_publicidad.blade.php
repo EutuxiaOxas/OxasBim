@@ -16,12 +16,18 @@
         </div>
     @endif
 	</div>
-	<div class="d-flex justify-content-between">
-		<h2>Crear publicidad</h2>
-		<div>
-			<a href="{{route('banners.home')}}" class="btn btn-outline-primary">Volver</a>
-		</div>
-	</div>
+	<section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Configuración del home del sitio web</h1>
+            </div>
+            <div class="col-auto ml-auto">
+                <a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a>
+            </div>
+            </div>
+        </div>
+    </section>
 	<form action="{{route('publicidad.store')}}" method="POST" enctype="multipart/form-data">
 		@csrf
 		@include('cms.banner.publicidades.formulario', ['form_name' => 'Crear publicidad'])

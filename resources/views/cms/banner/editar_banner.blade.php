@@ -127,12 +127,18 @@
             </button>
         </div>
 	@endif
-	<section class="container">
-		<div class="row">
-			<div class="col-auto"><h3>Editar Banner</h3></div>
-			<div class="col-auto ml-auto"><a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a></div>
-		</div>
-	</section>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Configuración del home del sitio web</h1>
+            </div>
+            <div class="col-auto ml-auto">
+                <a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a>
+            </div>
+            </div>
+        </div>
+    </section>
     
     <section class="my-3" id="container">
         <div class="banner_container">
@@ -140,8 +146,8 @@
             <form action="{{ route('banners.update', $banner->id) }}" class="inputs" id="form" method="POST"
                 enctype="multipart/form-data">
                 @csrf
-                <div class="d-flex">
-                    <button type="button" class="btn btn-primary button_select px-3">
+                <div class="d-flex mr-2 mt-2">
+                    <button type="button" class="btn btn-primary btn-sm button_select px-3">
                         Agregar Imagen
                     </button>
                 </div>

@@ -5,10 +5,22 @@
 
 
 @section('content')
-        <section>
-            <h3>Configuración de la página de incio del sitio web</h3>
-            <hr>
-        </section>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Configuración del home del sitio web</h1>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
+                <li class="breadcrumb-item active">Página Web</li>
+                <li class="breadcrumb-item active">Home</li>
+            </ol>
+            </div>
+            </div>
+        </div>
+    </section>
         <div class="alert alert-danger" style="display: none;" id="error_container">
         </div>
         @if (session('error'))
@@ -27,52 +39,75 @@
                   </button>
             </div>
         @endif
-        <section class="my-4">
-            <h3>Logo del menu superior</h3>
             <div class="row">
-                <div class="col-2">
-					@if (isset($logo))
-                    <img id="logo_image" src="{{ asset('storage/' . $logo->image) }}"
-                        style="width: 100%; height: 100%; object-fit: cover;">
-                    @else
-                    <img id="logo_image" src=""
-                        style="width: 100%; height: 100%; object-fit: cover;">
-                	@endif
-                </div>
-				<div class="col-10">
-					<form action="{{ route('banners.logo') }}" method="POST" id="form_logo" enctype="multipart/form-data">
-						@csrf
-						<input type="file" name="image" class="image_file" id="file_image">
-					</form>
-					<button type="button" id="guardar_submit" class="btn btn-primary btn-sm px-5 mt-3">Guardar</button>
-				</div>
+                <div class="col-12 col-md-6 px-0">
+                    <div class="card card-widget">
+                      <div class="card-header">
+                        <div class="user-block">
+                          <span class="username">Logo del menu superior</span>
+                        </div>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                            </button>
+                          </div>
+                      </div>
+                      <div class="card-body">
+                          <div class="row align-items-center">
+                            <div class="col-4">
+                                @if (isset($logo))
+                                <img id="logo_image" src="{{ asset('storage/' . $logo->image) }}"
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                @else
+                                <img id="logo_image" src=""
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                @endif
+                              </div>
+                              <div class="col-8 text-center">
+                                <form action="{{ route('banners.logo') }}" method="POST" id="form_logo" enctype="multipart/form-data">
+                                    @csrf
+                                    <label class="label_img" for="file_image">Seleccionar Imagen</label>
+                                    <input type="file" name="image" class="image_file" id="file_image" hidden>
+                                </form>
+                                <button type="button" id="guardar_submit" class="btn btn-primary btn-sm px-5 mt-3">Guardar</button>
+                              </div> 
+                          </div>
+                                         
+                      </div>
+                      <div class="card-footer">
+                      </div>
+                    </div>
+                  </div>
             </div>
-        </section>
-        <hr>
-        <section>
-            <div class="my-3 d-flex justify-content-between">
-                <h2>Imagenes del banner principal</h2>
-                <div>
-                    <a class="btn btn-outline-primary btn-sm px-4" href="{{ route('banners.create') }}">Nuevo Banner</a>
-                </div>
-			</div>
-
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Imagen</th>
-                            <th>Titulo</th>
-                            <th>Descripción</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($banners as $banner)
-                            <tr>
-                                <td>{{ $banner->id }}</td>
-                                <td>
+    
+            <div class="row">
+                <div class="col px-0">
+                    <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Imagenes del banner principal</h3>
+                          <a class="btn btn-primary btn-sm px-4 ml-5" href="{{ route('banners.create') }}">Nuevo Banner</a>
+                          <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                              <i class="fas fa-minus"></i></button>
+                          </div>
+                        </div>
+                        <div class="card-body p-0">
+                          <table class="table table-striped projects">
+                              <thead>
+                                  <tr>
+                                    <th style="width: 5%">#</th>
+                                    <th style="width: 10%">Imagen</th>
+                                    <th style="width: 25%">Titulo</th>
+                                    <th style="width: 30%">Descripción</th>
+                                    <th style="width: 30%">Acciones</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                @foreach ($banners as $banner)
+                                    <tr>
+                                        <td>{{ $banner->id }}</td>
+                                    <td>
                                     <img src="{{ asset('storage/' . $banner->image) }}" width="50">
                                 </td>
                                 <td>{{ $banner->title }}</td>
@@ -89,33 +124,38 @@
                                     @endif
                                     <button type="button" id="{{ $banner->id }}" class="btn btn-outline-danger btn-sm eliminar"
                                         data-toggle="modal" data-target="#modalEliminar">Eliminar</button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-                <section>
-                    <div class="my-3 d-flex justify-content-between">
-                        <h2>Imagenes publicidades</h2>
-                        <div>
-                            <a class="btn btn-outline-primary btn-sm px-4" href="{{route('publicidad.create')}}">Nueva publicidad</a>
+                                    </td>
+                                    </tr>
+                                @endforeach
+                              </tbody>
+                          </table>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Imagen</th>
-                                    <th>Enlace</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+              <div class="row">
+                <div class="col px-0">
+                    <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Imagenes de publicidades</h3>
+                          <a class="btn btn-primary btn-sm px-4 ml-5" href="{{ route('publicidad.create') }}">Nueva publicidad</a>
+                          <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                              <i class="fas fa-minus"></i></button>
+                          </div>
+                        </div>
+                        <div class="card-body p-0">
+                          <table class="table table-striped projects">
+                              <thead>
+                                  <tr>
+                                    <th style="width: 5%">#</th>
+                                    <th style="width: 10%">Imagen</th>
+                                    <th style="width: 55%">Enlace</th>
+                                    <th style="width: 35%">Acciones</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
                                 @foreach ($publicidades as $publicidad)
                                     <tr>
                                         <td>{{ $publicidad->id }}</td>
@@ -130,11 +170,13 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
+                              </tbody>
+                          </table>
+                        </div>
                     </div>
-                </section>
-
+                </div>
+              </div>
+        
         <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

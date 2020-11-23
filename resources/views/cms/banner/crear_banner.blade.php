@@ -131,10 +131,19 @@
             </button>
         </div>
     @endif
-    <div class="row">
-        <h3 class="col-auto">Crear Nuevo Banner</h3>
-        <div class="col-auto ml-auto"><a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a></div>
-    </div>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Configuración del home del sitio web</h1>
+            </div>
+            <div class="col-auto ml-auto">
+                <a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a>
+            </div>
+            </div>
+        </div>
+    </section>
+
     <section class="my-3" id="container">
         <div class="banner_container">
             <img class="banner_imagen" id="image_fondo" src="">
@@ -143,8 +152,8 @@
                 @csrf
                 <input type="hidden" name="tipo" value="banner">
                 <input type="hidden" name="status" value="1">
-                <div class="d-flex">
-                    <button type="button" class="btn btn-primary button_select px-4">
+                <div class="d-flex mr-2 mt-2">
+                    <button type="button" class="btn btn-primary btn-sm button_select px-4">
                         Agregar Imagen
                     </button>
                 </div>

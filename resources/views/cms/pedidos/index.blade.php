@@ -4,47 +4,71 @@
 @endsection
 
 @section('content')
-<div class="d-flex justify-content-between">
-    <h2>Pedidos</h2>
-</div>
-<hr>
-<section class="container-fluid">
-    @if(session('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Pedidos</h1>
         </div>
-    @endif
-    <div class="table-responsive">
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-          	<th>#</th>
-            <th>Nombre</th>
-          	<th>Total</th>
-            <th>Fecha</th>
-          	<th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($pedidos as $pedido)
-          <tr>
-            <td>{{$pedido->id}}</td>
-            <td>{{$pedido->name}}</td>
-            <td>{{$pedido->total_amount}} $</td>
-            <td>{{$pedido->created_at}} </td>
-            <td>
-            	<button type="button" id="{{$pedido->id}}" data-toggle="modal" data-target="#modalDetallesPedidos" class="btn btn-sm btn-outline-primary pedidos_detalle">Detalles</button>	
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
+            <li class="breadcrumb-item active">Tienda</li>
+            <li class="breadcrumb-item active">Pedidos</li>
+        </ol>
+        </div>
+        </div>
     </div>
 </section>
 
+@if(session('error'))
+<div class="alert alert-danger" role="alert">
+    {{ session('error') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+@endif
+
+<div class="row">
+  <div class="col px-0">
+      <div class="card">
+  <div class="card-header">
+      <h3 class="card-title">Pedidos Creados</h3>
+      <div class="card-tools">
+    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+      <i class="fas fa-minus"></i></button>
+  </div>
+</div>
+<div class="card-body p-0">
+  <table class="table table-striped projects">
+      <thead>
+          <tr>
+              <th style="width: 3%">#</th>
+              <th style="width: 25%">Nombre</th>
+              <th style="width: 10%">Total</th>
+              <th style="width: 15%">Fecha</th>
+              <th style="width: 30%">Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+        @foreach($pedidos as $pedido)
+        <tr>
+          <td>{{$pedido->id}}</td>
+          <td>{{$pedido->name}}</td>
+          <td>{{$pedido->total_amount}} $</td>
+          <td>{{$pedido->created_at}} </td>
+          <td>
+            <button type="button" id="{{$pedido->id}}" data-toggle="modal" data-target="#modalDetallesPedidos" class="btn btn-sm btn-outline-primary pedidos_detalle">Detalles</button>	
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
 
 
 <div class="modal fade" id="modalDetallesPedidos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

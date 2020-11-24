@@ -38310,15 +38310,19 @@ var apiCart = new CartApi(); //-------------------- inicio de script -----------
 
 formEnviarWhatsapp.addEventListener('submit', function (e) {
   e.preventDefault();
-  var name = e.target[3].value;
+  var name = document.getElementById('form_name').value;
+  var pedidoId = document.getElementById('pedido_id');
   axios.post('/crear/pedido', {
     name: name,
     total_amount: carrito.total,
     productos: productos
   }).then(function (res) {
-    if (res.status === 200) productos = [];
-    storage.addStorage(productos);
-    e.target.submit();
+    if (res.status === 200) {
+      pedidoId.value = res.data;
+      productos = [];
+      storage.addStorage(productos);
+      e.target.submit();
+    }
   });
 }); //-------------------- Sesion no iniciada-----------------
 

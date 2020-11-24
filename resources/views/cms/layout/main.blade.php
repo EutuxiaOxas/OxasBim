@@ -147,6 +147,12 @@
                   <p>Pedidos</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('tienda.compradores')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Compradores</p>
+                </a>
+              </li>
             </ul>
           </li> 
           @endif

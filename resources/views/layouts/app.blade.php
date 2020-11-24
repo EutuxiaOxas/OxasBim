@@ -43,11 +43,7 @@
     </style>
 </head>
 <body>
-    @if(isset(auth()->user()->id))
-        <input type="hidden" id="sesion" value="1">
-    @else 
-        <input type="hidden" id="sesion" value="0">
-    @endif
+    <input type="hidden" id="sesion" value="0">
     <div id="app">
 
         @include('common.navbar')
@@ -96,9 +92,10 @@
                         @csrf
                         <input type="hidden" id="productos_modal" name="productos">
                         <input type="hidden" id="total_modal" name="total">
+                        <input type="hidden" id="pedido_id" name="pedido_id">
                         <div class="form-group">
                             <h5>Nombre y apellido</h5>
-                            <input class="form-control" type="text" required maxlength="191" name="nombre" placeholder="Ingresa tu nombre y apellido">
+                            <input class="form-control" type="text" id="form_name" required maxlength="191" name="nombre" placeholder="Ingresa tu nombre y apellido">
                         </div>
                         <div class="form-group">
                             <h5>Telefono</h5>

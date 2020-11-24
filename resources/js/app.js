@@ -318,18 +318,20 @@ let apiCart = new CartApi();
 formEnviarWhatsapp.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    let name = e.target[3].value
-
+    let name = document.getElementById('form_name').value;
+    let pedidoId = document.getElementById('pedido_id');
     axios.post('/crear/pedido', {
       name,
       total_amount: carrito.total,
       productos: productos
     })
       .then(res => {
-        if(res.status === 200)
-        productos = []
-        storage.addStorage(productos)
-        e.target.submit();
+        if(res.status === 200){
+          pedidoId.value = res.data;
+          productos = []
+          storage.addStorage(productos)
+          e.target.submit();
+        }
       })
 })
 

@@ -16,6 +16,7 @@ class CreateCompradoresTable extends Migration
         Schema::create('compradores', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->foreignId('pedido_id');
             $table->string('telefono');
             $table->string('documento_identidad');
             $table->timestamps();

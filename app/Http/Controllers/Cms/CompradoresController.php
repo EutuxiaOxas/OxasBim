@@ -10,7 +10,7 @@ class CompradoresController extends Controller
     public function index()
     {
     	$secName = 'tienda';
-    	$compradores = Compradores::orderBy('id', 'DESC')->get();
+    	$compradores = Compradores::orderBy('id', 'DESC')->paginate(25);
     	return view('cms.compradores.index', compact('compradores', 'secName'));
     }
 

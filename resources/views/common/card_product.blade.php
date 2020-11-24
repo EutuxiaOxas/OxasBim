@@ -78,8 +78,8 @@
                     <a class="text_title_card_product" href="{{route('producto.show', $producto->slug)}}">{{$producto->title}}</a>
                 </div>
                 <div class="col-12 px-0 mb-2">
-                    <span class="price_card_product">${{$producto->price}}</span>
-                    <span class="referencial_price_card_product pl-2">${{$producto->price_reference}}</span>
+                    <span class="price_card_product">${{number_format($producto->price, 2)}}</span>
+                    <span class="referencial_price_card_product pl-2">${{number_format($producto->price_reference, 2)}}</span>
                 </div>
             </div>
             
@@ -122,7 +122,7 @@
                         </button>
                     @endif
                 @else
-                    <button class="col-12 btn btn-secondary">Agotado</button>
+                    <button class="col-12 btn btn-secondary text-rubik">Agotado</button>
                 @endif
             </div>
             <div class="row px-3 mt-1">

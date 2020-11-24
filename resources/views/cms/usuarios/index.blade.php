@@ -181,7 +181,7 @@
             </div>
         </div>
       </div>
-
+      {{$usuarios->links()}}
     <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

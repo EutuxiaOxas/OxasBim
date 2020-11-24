@@ -69,7 +69,7 @@
 </div>
 </div>
 </div>
-
+{{$pedidos->links()}}
 
 <div class="modal fade" id="modalDetallesPedidos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -20,7 +20,7 @@ class IndexController extends Controller
     {
     	$roles = Role::where('title', '!=', 'comprador')->get();
         $secName = 'usuarios';
-    	$usuarios = User::where('cms', '1')->get();
+    	$usuarios = User::where('cms', '1')->orderBy('id', 'DESC')->paginate(25);
     	return view('cms.usuarios.index', compact('roles', 'usuarios', 'secName'));
     }
 }

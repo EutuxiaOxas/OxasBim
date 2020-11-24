@@ -100,6 +100,15 @@
 	.btn-primary-product:hover{
 		background-color: #2480e9!important;
 	}
+
+	.btn-secondary-product{
+		background-color: grey!important;
+		border-radius: 3px;
+		width: 100%;
+		color: #fff!important;
+		font-weight: 400!important;
+		padding: 0.75rem 0!important;
+	}
 	.tag-available{
 		background-color: #42d697;
 		border-radius: 2px;
@@ -170,27 +179,48 @@
 			</div>
 			<h5 class="title_product_detail text-rubik mt-2">{{$product->title}}</h5>
 			<div class="text-rubik mt-3 mb-4">
-				<span class="price_product_detail">${{$product->price}}</span>
-				<span class="price_product_detail_reference ml-2">${{$product->price_reference}}</span>
+				<span class="price_product_detail">${{number_format($product->price, 2)}}</span>
+				<span class="price_product_detail_reference ml-2">${{number_format($product->price_reference, 2)}}</span>
 			</div>	
 			<input type="hidden" value="{{$product->slug}}">
 			<div class="row">
 				<div class="col-2 pr-0">
 					<div class="">
-						<select class="mb-3 mr-2 select_quantity">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
+						@if($product->quantity >= 10)
+						    <select class="form-control mb-1">
+						        <option value="1">Seleccionar cantidad</option>
+						        <option value="1">1</option>
+						        <option value="2">2</option>
+						        <option value="3">3</option>
+						        <option value="4">4</option>
+						        <option value="5">5</option>
+						        <option value="6">6</option>
+						        <option value="7">7</option>
+						        <option value="8">8</option>
+						        <option value="9">9</option>
+						        <option value="10">10</option>
+						    </select>
+						@else
+						    @php $contador = 1 @endphp
+						    <select class="form-control mb-1">
+						        <option value="1">Seleccionar cantidad</option>
+						        @while($contador <= $product->quantity)
+						            <option value="{{$contador}}">{{$contador}}</option>
+						            @php $contador += 1 @endphp
+						        @endwhile
+						    </select>
+						@endif
 					</div>					
 				</div>
 				<div class="col-10">
-					@if(auth()->user())
-					<button id="{{$product->id}}" class="btn btn-primary-product text-rubik to_server">Agregar al carrito</button>
+					@if($product->quantity > 0)
+						@if(auth()->user())
+						<button id="{{$product->id}}" class="btn btn-primary-product text-rubik to_server">Agregar al carrito</button>
+						@else
+						<button id="{{$product->id}}" class="btn btn-primary-product text-rubik ver_storage">Agregar al carrito</button>
+						@endif
 					@else
-					<button id="{{$product->id}}" class="btn btn-primary-product text-rubik ver_storage">Agregar al carrito</button>
+						<button class="btn btn-secondary-product text-rubik">Producto Agotado</button>
 					@endif
 				</div>
 			</div>			
@@ -292,7 +322,7 @@
 
 </div>
 <hr>
-<div class="contanier">
+<div class="container">
 	<div class="row justify-content-center py-3">
 		<h3 class="text-rubik">Tambien te podría interesar</h3>
 	</div>

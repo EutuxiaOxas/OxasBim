@@ -118,6 +118,12 @@ Route::middleware('tienda')->group(function () {
 	/*--------------- PEDIDOS --------------*/
 	Route::get('/cms/pedidos', 'PedidosController@index')->name('tienda.pedidos.home');
 	Route::get('/cms/pedidos/detalle/{id}', 'PedidosController@obtenerDetalle');
+
+
+	/*--------------- COMPRADORES --------------*/
+
+	Route::get('/cms/compradores', 'Cms\CompradoresController@index')->name('tienda.compradores');
+	Route::get('/cms/comprador/detail/{id}', 'Cms\CompradoresController@compradorDetalle');
 });
 
 Route::post('/ir/whatsapp', 'WhatsappController@irAWhatsapp');

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Pedidos;
 use App\PedidoProductos;
-
+use App\Product;
 class PedidosController extends Controller
 {
     
@@ -19,7 +19,21 @@ class PedidosController extends Controller
 
     public function crearPedido(Request $request)
     {
+        foreach ($request->productos as $p) {
 
+            $producto = Product::find($p['id']);
+
+            if($producto->quantity > 0)
+            {
+                $cantidad = $producto->quantity - $p['cantidad'];
+
+                if($cantidad === 0 || $cantidad > 0)
+                {
+                    $producto->quantity = $cantidad;
+                    $producto->save();
+                }
+            }
+        }
 
     	$pedido = Pedidos::create([
     		'name' 			=> $request->name,
@@ -39,7 +53,7 @@ class PedidosController extends Controller
     		]);
     	}
 
-    	return response()->json('', 200);
+    	return response()->json($pedido->id, 200);
     }
 
 

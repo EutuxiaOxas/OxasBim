@@ -16,9 +16,9 @@ class LogoBannerController extends Controller
 {
     public function index()
     {
-    	$banners = Logo_Banner::where('tipo', 'banner')->orderBy('id','DESC')->paginate(25);
+    	$banners = Logo_Banner::where('tipo', 'banner')->paginate(25);
     	$logo = Logo_Banner::where('tipo', 'logo')->first();
-        $publicidades = Publicidad::orderBy('id','DESC')->paginate(25);
+        $publicidades = Publicidad::paginate(25);
         $secName = 'web';
     	return view('cms.banner.index')->with(compact('banners', 'logo', 'secName', 'publicidades'));
     }

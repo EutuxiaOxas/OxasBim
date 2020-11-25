@@ -156,6 +156,14 @@
             </ul>
           </li> 
           @endif
+          <li class="nav-item ">
+            <a href="{{ route('config.home') }}" class="nav-link secciones configuraciones ">
+              <i class="nav-icon fas fa-wrench"></i>
+              <p>
+                Configuraciones
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

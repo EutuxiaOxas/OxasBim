@@ -168,7 +168,7 @@
 		<div class="col-5">
 			<div class="row alings-itmes-center">
 				<div class="col-auto">
-					<div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href=""><strong class="text-secondary">{{$product->category->title}}</strong></a></div>
+					<div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href="{{route('product.category.show', $product->category->slug)}}"><strong class="text-secondary">{{$product->category->title}}</strong></a></div>
 				</div>
 				<div class="col-auto ml-auto">
 					<span class="tag-available text-rubik">
@@ -188,7 +188,6 @@
 					<div class="">
 						@if($product->quantity >= 10)
 						    <select class="form-control mb-1">
-						        <option value="1">Seleccionar cantidad</option>
 						        <option value="1">1</option>
 						        <option value="2">2</option>
 						        <option value="3">3</option>
@@ -203,7 +202,6 @@
 						@else
 						    @php $contador = 1 @endphp
 						    <select class="form-control mb-1">
-						        <option value="1">Seleccionar cantidad</option>
 						        @while($contador <= $product->quantity)
 						            <option value="{{$contador}}">{{$contador}}</option>
 						            @php $contador += 1 @endphp

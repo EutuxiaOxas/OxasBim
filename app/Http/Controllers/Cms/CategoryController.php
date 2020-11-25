@@ -12,7 +12,7 @@ class CategoryController extends Controller
     //--------- PAGINA PRINCIPAL TIENDA/CATEGORIAS ------- 
     public function index()
     {
-    	$categorias = Category::orderBy('id', 'DESC')->paginate(25);
+    	$categorias = Category::paginate(25);
         $secName = 'tienda';
     	return view('cms.productos.category', compact('categorias', 'secName'));
     }

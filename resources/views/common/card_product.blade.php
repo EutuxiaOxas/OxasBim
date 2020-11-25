@@ -86,7 +86,6 @@
             <div class="row px-3">
                 @if($producto->quantity >= 10)
                     <select class="form-control mb-1">
-                        <option value="1">Seleccionar cantidad</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -101,7 +100,6 @@
                 @else
                     @php $contador = 1 @endphp
                     <select class="form-control mb-1">
-                        <option value="1">Seleccionar cantidad</option>
                         @while($contador <= $producto->quantity)
                             <option value="{{$contador}}">{{$contador}}</option>
                             @php $contador += 1 @endphp

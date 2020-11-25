@@ -38,8 +38,45 @@
         .cart_on {
             color: blue;
         }
+    /*Estilos Modal carrito de compras*/
+    .container_img_modal_cart{
+		display: flex;
+		flex-direction:row;
+	    justify-content: center;
+	    align-items: center;
+        max-height: 13vh;
+        min-height: 13vh;
+        max-width:100%;
 
-        
+		border-radius: 4px;
+		border: #ddd solid 1px;
+        overflow: hidden;
+	}
+	.img_modal_cart{
+		min-height: auto;
+        max-height: 100%;
+        min-width: auto;
+        max-width: 100%;
+	}
+    .title_modal_cart{
+        font-size: 1.25rem;
+		font-weight: bold;
+		color: #222;
+    }
+    .price_modal_cart{
+		font-size: 1.15rem;
+		color:#4e54c8;
+		font-weight: 400;
+	}
+    .cantidad_modal_cart{
+        font-size: 1rem;
+		font-weight: bold;
+		color: #222;
+    }
+    .cantidad_producto_cart{
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+    }
     </style>
 </head>
 <body>
@@ -66,7 +103,6 @@
                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Salir</button>
                     <button type="button" id="vaciar_carrito_cart" class="btn btn btn-outline-danger">Vaciar Carrito</button>
                     <button  id="boton_modal" class="btn btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#modalIrAWhatsapp">Ir a Whatsapp</button>
                 </div>

@@ -33,50 +33,72 @@ class CarritoUI {
   				this.urlProductos = `${this.urlProductos}%0A%0A${producto.cantidad} x ${producto.title} - ${producto.price}`
   			}
 
-        this.totalCantidades += producto.cantidad
+        	this.totalCantidades += producto.cantidad
 
   			let template = ''
   			if(producto.producto){
   				template = `
-  					<div class="d-flex pl-2 mb-2">
-  						<img src='/storage/${producto.imagen}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
-  						<p>	
-  							${producto.producto.title} 
-
-  							<span>(${producto.cantidad}</span>
-  						</p>
-
-  					</div>
+				  <div class="product_main row">
+				  <div class="col-2">
+					  <div class="container_img_modal_cart">
+						  <img class="img_modal_cart" src="${producto.image}" alt="Imagen Producto en carrito">
+					  </div>
+				  </div>
+				  <div class="col-7">
+					  <div class="row align-items-center">
+						  <span class="title_modal_cart mr-3">${producto.title} </span> 
+						  <span class="price_modal_cart"> ${producto.price} $</span>
+					  </div>
+					  <div class="row align-items-center mt-2">
+						  <div class="col-auto mr-3 px-0">
+							  <span class="cantidad_modal_cart">Cantidad:</span>
+						  </div>
+						  <div class="col-auto">
+							  <select class="form-control cantidad_producto_cart">
+								  <option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+								  <option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+								  <option class="cantidad_opcion" ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+								  <option class="cantidad_opcion" ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+								  <option class="cantidad_opcion" ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+								  ${producto.cantidad > 5 ? `<option class="cantidad_opcion" value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
+							  </select>
+						  </div>
+					  </div>  
+					  <input type="hidden" value="${producto.id}">          
+				  </div>
+			  </div>
   				`;
   			}else{
   				template = `
-  					<div class="product_main d-flex" style="position:relative;">
-  						<div class="eliminar_container d-flex">
-  							<i class="far fa-times-circle eliminar_producto" id="${producto.id}" style="color: red; cursor: pointer;"></i>
-  						</div>
-  						<div class="d-flex mb-2 move-on-left justify-content-around align-items-center" style="flex-wrap: wrap; flex:1;">
-  							<input type="hidden" value="${producto.id}">
-  							<img src='${producto.image}' class="" style="width: 50px; height: 50px ;object-fit: cover;">
-  							<div class="d-flex" style="width:40%; text-align: start;">
-                  <p class= "m-0">  
-                    ${producto.title} 
-
-                    <span>(${producto.cantidad} x ${producto.price})</span>
-                  </p>
-                </div>
-
-  							<div style="width: 30%">
-  								<select class="form-control cantidad_producto_cart">
-  									<option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
-  									<option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
-  									<option class="cantidad_opcion" ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
-  									<option class="cantidad_opcion" ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
-  									<option class="cantidad_opcion" ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
-  									${producto.cantidad > 5 ? `<option class="cantidad_opcion" value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
-  								</select>
-  							</div>
-  						</div>
-  					</div>
+				  <div class="product_main row">
+				  <div class="col-2">
+					  <div class="container_img_modal_cart">
+						  <img class="img_modal_cart" src="${producto.image}" alt="Imagen Producto en carrito">
+					  </div>
+				  </div>
+				  <div class="col-7">
+					  <div class="row align-items-center">
+						  <span class="title_modal_cart mr-3">${producto.title} </span> 
+						  <span class="price_modal_cart"> ${producto.price} $</span>
+					  </div>
+					  <div class="row align-items-center mt-2">
+						  <div class="col-auto mr-3 px-0">
+							  <span class="cantidad_modal_cart">Cantidad:</span>
+						  </div>
+						  <div class="col-auto">
+							  <select class="form-control cantidad_producto_cart">
+								  <option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+								  <option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+								  <option class="cantidad_opcion" ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+								  <option class="cantidad_opcion" ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+								  <option class="cantidad_opcion" ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+								  ${producto.cantidad > 5 ? `<option class="cantidad_opcion" value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
+							  </select>
+						  </div>
+					  </div>  
+					  <input type="hidden" value="${producto.id}">          
+				  </div>
+			  </div>
   				`;
   			}
   			this.cart_body.innerHTML+= template;
@@ -88,8 +110,8 @@ class CarritoUI {
   		this.botones_cantidad = document.querySelectorAll('.cantidad_producto_cart');
   		this.boton_eliminar = document.querySelectorAll('.eliminar_producto');
 
-      this.boton_modal.style.display = 'inline-block'
-      this.boton_vaciar.style.display = 'inline-block'
+		this.boton_modal.style.display = 'inline-block'
+		this.boton_vaciar.style.display = 'inline-block'
 
   		this.boton_modal.addEventListener('click', () => {
   			let productosUrl = document.getElementById('productos_modal')
@@ -129,14 +151,14 @@ class CarritoUI {
   		this.carrito.children[0].children[0].classList.add('cart_on')
 
   	}else {
-      this.boton_modal = document.getElementById('boton_modal');
-      this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
+      	this.boton_modal = document.getElementById('boton_modal');
+      	this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
   		this.carrito.children[0].children[0].classList.remove('cart_on')
   		this.badge_main.innerHTML = `<i class="fas fa-shopping-cart"></i>`
 
-      this.boton_modal.style.display = 'none'
-      this.boton_vaciar.style.display = 'none'
+      	this.boton_modal.style.display = 'none'
+      	this.boton_vaciar.style.display = 'none'
   	}
 
   }

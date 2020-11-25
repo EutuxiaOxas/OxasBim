@@ -60,14 +60,9 @@
                     <a href="{{route('productos')}}" class="nav-link">Productos</a>
                 </li>
                 <li class="nav-item" id="cart_main" style="position: relative;">
-                    <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="carritoDropdown" class="nav-link" href="#">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
-
-                    <div>
-                        <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="carritoDropdown">
-                        </div>
-                    </div>
                 </li>
             </ul>
         </div>
@@ -110,7 +105,7 @@
                     <a href="{{route('productos')}}" class="nav-link">Productos</a>
                 </li>
                 <li class="nav-item cart_dropdown" id="cart_main">
-                    <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="carritoDropdown" class="nav-link " href="#" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
                         <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
                     </a>
                     <div class="cart_dropdown_menu">

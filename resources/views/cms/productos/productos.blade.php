@@ -68,7 +68,7 @@
               <td>{{$producto->title}}</td>
               <td>{{$producto->quantity}}</td>              
               <td>{{$producto->category->title}}</td>
-              <td>{{$producto->price}}</td>
+              <td>{{number_format($producto->price, 2)}} $</td>
               <td>
                   <a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>
                   <button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>	
@@ -81,8 +81,7 @@
 </div>
 </div>
 </div>
-
-
+{{$productos->links()}}
 
 <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

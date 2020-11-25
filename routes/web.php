@@ -41,6 +41,10 @@ Route::post('/admin/logout', 'Cms\LoginController@logout')->name('login.logout')
 
 Route::middleware('cms')->group(function () {
 	Route::get('/cms', 'Cms\IndexController@index')->name('cms.home');
+	/*---------------Configuraciones --------------*/
+	Route::get('/cms/configuraciones', 'Cms\ConfiguracionesController@index')->name('config.home');
+
+	Route::post('/cms/configuraciones/agregar', 'Cms\ConfiguracionesController@agregarConfiguracion')->name('config.add');
 });
 
 /*---------------ADMINISTRADORES --------------*/

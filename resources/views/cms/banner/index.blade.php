@@ -134,6 +134,7 @@
                 </div>
             </div>
 
+
               <div class="row">
                 <div class="col px-0">
                     <div class="card">
@@ -176,7 +177,7 @@
                     </div>
                 </div>
               </div>
-        
+            {{$banners->links()}}
         <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -10,7 +10,7 @@ class CompradoresController extends Controller
     public function index()
     {
     	$secName = 'tienda';
-    	$compradores = Compradores::orderBy('id', 'DESC')->get();
+    	$compradores = Compradores::paginate(25);
     	return view('cms.compradores.index', compact('compradores', 'secName'));
     }
 
@@ -24,7 +24,7 @@ class CompradoresController extends Controller
 
 	    	foreach ($productos as $producto) {
 	    		$data[] = [
-	    			'id'		=> $producto->id,
+	    			'id'		=> $producto->product->id,
 	    			'image' 	=> $producto->product->image,
 	    			'nombre' 	=> $producto->product->title,
 	    			'cantidad' 	=> $producto->quantity,

@@ -2,7 +2,7 @@
     <h5 class="my-4 text-rubik">Categorias</h5>
     @foreach($categorias as $categoria)
         @if($categoria->padre_id == 0)
-            <div>
+            <div class="categories_card">
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <a class="text-rubik" href="{{route('product.category.show', $categoria->slug)}}">{{$categoria->title}}</a>
@@ -26,6 +26,20 @@
 </div>
 
 <script type="text/javascript">
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const categorieCards = document.querySelectorAll('.categories_card')
+
+        if(categorieCards){
+            categorieCards.forEach(card => {
+                let arrow = card.children[0].children[1];
+
+                if(card.children[1].children.length === 0){
+                    arrow.style.display  = 'none'
+                }
+            })
+        }
+    })
 
 	function openCloseSubCategories(container, arrow){
 		container.classList.toggle('active')

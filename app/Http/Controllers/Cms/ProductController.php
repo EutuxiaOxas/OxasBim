@@ -17,7 +17,7 @@ class ProductController extends Controller
     //--------- PAGINA PRINCIPAL TIENDA/PRODUCTOS -------
     public function index()
     {
-    	$productos = Product::all();
+    	$productos = Product::with(['category'])->paginate(25);
         $secName = 'tienda';
     	return view('cms.productos.productos', compact('productos', 'secName'));
     }

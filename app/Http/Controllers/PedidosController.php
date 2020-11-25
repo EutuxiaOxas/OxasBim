@@ -12,7 +12,7 @@ class PedidosController extends Controller
     
 	public function index()
 	{
-		$pedidos = Pedidos::orderBy('id', 'DESC')->get();
+		$pedidos = Pedidos::paginate(25);
 		$secName = 'tienda';
 		return view('cms.pedidos.index', compact('pedidos', 'secName'));
 	}
@@ -66,7 +66,7 @@ class PedidosController extends Controller
 
     		foreach ($pedido->pedidoProductos as $producto) {
     			$data[] = [
-    				'id'		=> $producto->id,
+    				'id'		=> $producto->product->id,
     				'image' 	=> $producto->product->image,
     				'nombre' 	=> $producto->product->title,
     				'cantidad' 	=> $producto->quantity,

@@ -78,15 +78,14 @@
                     <a class="text_title_card_product" href="{{route('producto.show', $producto->slug)}}">{{$producto->title}}</a>
                 </div>
                 <div class="col-12 px-0 mb-2">
-                    <span class="price_card_product">${{$producto->price}}</span>
-                    <span class="referencial_price_card_product pl-2">${{$producto->price_reference}}</span>
+                    <span class="price_card_product">${{number_format($producto->price, 2)}}</span>
+                    <span class="referencial_price_card_product pl-2">${{number_format($producto->price_reference, 2)}}</span>
                 </div>
             </div>
             
             <div class="row px-3">
                 @if($producto->quantity >= 10)
                     <select class="form-control mb-1">
-                        <option value="1">Seleccionar cantidad</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -101,7 +100,6 @@
                 @else
                     @php $contador = 1 @endphp
                     <select class="form-control mb-1">
-                        <option value="1">Seleccionar cantidad</option>
                         @while($contador <= $producto->quantity)
                             <option value="{{$contador}}">{{$contador}}</option>
                             @php $contador += 1 @endphp
@@ -122,7 +120,7 @@
                         </button>
                     @endif
                 @else
-                    <button class="col-12 btn btn-secondary">Agotado</button>
+                    <button class="col-12 btn btn-secondary text-rubik">Agotado</button>
                 @endif
             </div>
             <div class="row px-3 mt-1">

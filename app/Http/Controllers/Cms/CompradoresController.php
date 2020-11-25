@@ -24,7 +24,7 @@ class CompradoresController extends Controller
 
 	    	foreach ($productos as $producto) {
 	    		$data[] = [
-	    			'id'		=> $producto->id,
+	    			'id'		=> $producto->product->id,
 	    			'image' 	=> $producto->product->image,
 	    			'nombre' 	=> $producto->product->title,
 	    			'cantidad' 	=> $producto->quantity,

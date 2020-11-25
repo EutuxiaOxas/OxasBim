@@ -66,7 +66,7 @@ class PedidosController extends Controller
 
     		foreach ($pedido->pedidoProductos as $producto) {
     			$data[] = [
-    				'id'		=> $producto->id,
+    				'id'		=> $producto->product->id,
     				'image' 	=> $producto->product->image,
     				'nombre' 	=> $producto->product->title,
     				'cantidad' 	=> $producto->quantity,

@@ -16,7 +16,7 @@ class WhatsappController extends Controller
 
     	$mensaje_productos = $request->productos."%0A%0A-------------%0A";
 
-    	$mensaje_total = "Total a pagar%0A%0A".$request->total." $";
+    	$mensaje_total = "Total a pagar%0A%0A".number_format($request->total,2)." $";
 
     	$mensaje_final = $mensaje_main.$mensaje_datos_comprador.$mensaje_productos.$mensaje_total;
     	

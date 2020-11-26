@@ -13,35 +13,25 @@
         -moz-box-shadow: none;
         -webkit-box-shadow: none;
      }
-
-
      .cart_dropdown{
         position: relative;
      }
-
      .product_main{
         align-items: center;
      }
-
      .eliminar_container{
         position: relative;
      }
-
      .eliminar_producto {
         font-size: 1.5rem;
-
      }
-
      .cantidad_producto_cart{
         width: 90%;
      }
-
-
 </style>
 @if(isset($navbar_null))
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="display: none;">
     <div class="container">
-
         <a class="navbar-brand" href="{{ url('/') }}">
             @if(isset($logo))
                 <img src="{{asset('storage/'.$logo->image)}}" width="40" height="40" alt="logo">

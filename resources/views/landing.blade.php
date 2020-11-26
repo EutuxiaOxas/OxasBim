@@ -23,9 +23,11 @@
             justify-content: center;
         }
 
+
+
     </style>
     <?php $contador = 1; ?>
-    <section class="slider_container">
+    <!--section class="slider_container">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($sliders as $slider)
@@ -81,9 +83,84 @@
             </div>
         </div>
     </section>
-    <section class="py-5">
+    <section-- class="py-5">
         @foreach($categorias->take(4) as $categoria)
             @include('common.other_products', ['otros_products' => $categoria->products])
         @endforeach
+    </section-->
+    <section class="container mx-5 px-5">
+
+        <!-- Este es el componente para agregar a Modal 
+        Se agregara por cada producto añadido al carrito
+        -->
+        <div class="product_main row mb-3">
+            <span class="close_product_modal">
+                <svg class="eliminar_producto" id="${producto.id}" width="18px" height="18px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+            </span>
+            <div class="col-1">
+                <div class="row">
+                    <div class="container_img_modal_cart">
+                        <img class="img_modal_cart" src="{{asset('61.jpg')}}" alt="Imagen Producto en carrito"> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto ml-3">
+                <div class="row align-items-center">
+                    <span class="title_modal_cart mr-3">Smart Speaker with Voice Control</span> 
+                    <span class="price_modal_cart"> 58,99 $</span>
+                </div>
+                <div class="row align-items-center mt-2">
+                    <div class="col-auto mr-3 px-0">
+                        <span class="cantidad_modal_cart">Cantidad:</span>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-control cantidad_producto_cart">
+                            <option class="cantidad_opcion">1</option>
+                            <option class="cantidad_opcion">1</option>
+                            <option class="cantidad_opcion">1</option>
+                        </select> 
+                    </div>
+                </div>  
+                <input type="hidden" value="${producto.id}">          
+            </div>
+        </div>
+        <!-- Fin de Componente para agregar a Modal -->
+
+        <!-- Repeticion a modo de ejemplo -->
+        <div class="product_main row mb-3">
+            <span class="close_product_modal">
+                <svg class="eliminar_producto" id="${producto.id}" width="18px" height="18px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+            </span>
+            <div class="col-1">
+                <div class="row">
+                    <div class="container_img_modal_cart">
+                        <img class="img_modal_cart" src="{{asset('61.jpg')}}" alt="Imagen Producto en carrito"> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto ml-3">
+                <div class="row align-items-center">
+                    <span class="title_modal_cart mr-3">Smart Speaker with Voice Control</span> 
+                    <span class="price_modal_cart"> 58,99 $</span>
+                </div>
+                <div class="row align-items-center mt-2">
+                    <div class="col-auto mr-3 px-0">
+                        <span class="cantidad_modal_cart">Cantidad:</span>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-control cantidad_producto_cart">
+                            <option class="cantidad_opcion">1</option>
+                            <option class="cantidad_opcion">1</option>
+                            <option class="cantidad_opcion">1</option>
+                        </select> 
+                    </div>
+                </div>  
+                <input type="hidden" value="${producto.id}">          
+            </div>
+        </div>
+        <!-- Fin de ejemplo -->
     </section>
+    
 @endsection
+
+

@@ -38092,9 +38092,9 @@ var CarritoUI = /*#__PURE__*/function () {
           var template = '';
 
           if (producto.producto) {
-            template = "\n  \t\t\t\t\t<div class=\"d-flex pl-2 mb-2\">\n  \t\t\t\t\t\t<img src='/storage/".concat(producto.imagen, "' class=\"mr-2\" style=\"width: 25px; height: 25px ;object-fit: cover;\">\n  \t\t\t\t\t\t<p>\t\n  \t\t\t\t\t\t\t").concat(producto.producto.title, " \n\n  \t\t\t\t\t\t\t<span>(").concat(producto.cantidad, "</span>\n  \t\t\t\t\t\t</p>\n\n  \t\t\t\t\t</div>\n  \t\t\t\t");
+            template = "\n\t\t\t\t  <div class=\"product_main row\">\n\t\t\t\t  <div class=\"col-2\">\n\t\t\t\t\t  <div class=\"container_img_modal_cart\">\n\t\t\t\t\t\t  <img class=\"img_modal_cart\" src=\"".concat(producto.image, "\" alt=\"Imagen Producto en carrito\">\n\t\t\t\t\t  </div>\n\t\t\t\t  </div>\n\t\t\t\t  <div class=\"col-7\">\n\t\t\t\t\t  <div class=\"row align-items-center\">\n\t\t\t\t\t\t  <span class=\"title_modal_cart mr-3\">").concat(producto.title, " </span> \n\t\t\t\t\t\t  <span class=\"price_modal_cart\"> ").concat(producto.price, " $</span>\n\t\t\t\t\t  </div>\n\t\t\t\t\t  <div class=\"row align-items-center mt-2\">\n\t\t\t\t\t\t  <div class=\"col-auto mr-3 px-0\">\n\t\t\t\t\t\t\t  <span class=\"cantidad_modal_cart\">Cantidad:</span>\n\t\t\t\t\t\t  </div>\n\t\t\t\t\t\t  <div class=\"col-auto\">\n\t\t\t\t\t\t\t  <select class=\"form-control cantidad_producto_cart\">\n\t\t\t\t\t\t\t\t  <option class=\"cantidad_opcion\" ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n\t\t\t\t\t\t\t\t  <option class=\"cantidad_opcion\" ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n\t\t\t\t\t\t\t\t  <option class=\"cantidad_opcion\" ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n\t\t\t\t\t\t\t\t  <option class=\"cantidad_opcion\" ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n\t\t\t\t\t\t\t\t  <option class=\"cantidad_opcion\" ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n\t\t\t\t\t\t\t\t  ").concat(producto.cantidad > 5 ? "<option class=\"cantidad_opcion\" value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n\t\t\t\t\t\t\t  </select>\n\t\t\t\t\t\t  </div>\n\t\t\t\t\t  </div>  \n\t\t\t\t\t  <input type=\"hidden\" value=\"").concat(producto.id, "\">          \n\t\t\t\t  </div>\n\t\t\t  </div>\n  \t\t\t\t");
           } else {
-            template = "\n  \t\t\t\t\t<div class=\"product_main d-flex\" style=\"position:relative;\">\n  \t\t\t\t\t\t<div class=\"eliminar_container d-flex\">\n  \t\t\t\t\t\t\t<i class=\"far fa-times-circle eliminar_producto\" id=\"".concat(producto.id, "\" style=\"color: red; cursor: pointer;\"></i>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t\t<div class=\"d-flex mb-2 move-on-left justify-content-around align-items-center\" style=\"flex-wrap: wrap; flex:1;\">\n  \t\t\t\t\t\t\t<input type=\"hidden\" value=\"").concat(producto.id, "\">\n  \t\t\t\t\t\t\t<img src='").concat(producto.image, "' class=\"\" style=\"width: 50px; height: 50px ;object-fit: cover;\">\n  \t\t\t\t\t\t\t<div class=\"d-flex\" style=\"width:40%; text-align: start;\">\n                  <p class= \"m-0\">  \n                    ").concat(producto.title, " \n\n                    <span>(").concat(producto.cantidad, " x ").concat(producto.price, ")</span>\n                  </p>\n                </div>\n\n  \t\t\t\t\t\t\t<div style=\"width: 30%\">\n  \t\t\t\t\t\t\t\t<select class=\"form-control cantidad_producto_cart\">\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n  \t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n  \t\t\t\t\t\t\t\t\t").concat(producto.cantidad > 5 ? "<option class=\"cantidad_opcion\" value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n  \t\t\t\t\t\t\t\t</select>\n  \t\t\t\t\t\t\t</div>\n  \t\t\t\t\t\t</div>\n  \t\t\t\t\t</div>\n  \t\t\t\t");
+            template = "\n\t    \t\t\t<div class=\"product_main row mb-3 mx-2\">\n\t    \t\t\t    <span class=\"close_product_modal eliminar_producto\" id=\"".concat(producto.id, "\">\n\t    \t\t\t        <i class=\"fas fa-times eliminar_producto\" id=\"").concat(producto.id, "\"></i>\n\t    \t\t\t    </span>\n\t    \t\t\t    <div class=\"col-2\">\n\t    \t\t\t        <div class=\"row\">\n\t    \t\t\t            <div class=\"container_img_modal_cart\">\n\t    \t\t\t                <img class=\"img_modal_cart\" src=\"").concat(producto.image, "\" alt=\"Imagen Producto en carrito\"> \n\t    \t\t\t            </div>\n\t    \t\t\t        </div>\n\t    \t\t\t    </div>\n\t    \t\t\t    <div class=\"col-auto ml-3\">\n\t    \t\t\t        <div class=\"row align-items-center\">\n\t    \t\t\t            <span class=\"title_modal_cart mr-3\">").concat(producto.title, "</span> \n\t    \t\t\t            <span class=\"price_modal_cart\"> ").concat(producto.price, " $</span>\n\t    \t\t\t        </div>\n\t    \t\t\t        <div class=\"row align-items-center mt-2\">\n\t    \t\t\t            <div class=\"col-auto mr-3 px-0\">\n\t    \t\t\t                <span class=\"cantidad_modal_cart\">Cantidad:</span>\n\t    \t\t\t            </div>\n\t    \t\t\t            <div class=\"col-auto\">\n\t    \t\t\t                <select class=\"form-control cantidad_producto_cart\" id=\"").concat(producto.id, "\">\n\t    \t\t\t\t              \n\t    \t\t\t                </select> \n\t    \t\t\t            </div>\n\t    \t\t\t        </div>  \n\t    \t\t\t        <input type=\"hidden\" value=\"").concat(producto.id, "\">          \n\t    \t\t\t    </div>\n\t    \t\t\t</div>\n  \t\t\t\t");
           }
 
           _this.cart_body.innerHTML += template;
@@ -38119,6 +38119,7 @@ var CarritoUI = /*#__PURE__*/function () {
           boton.addEventListener('change', function (e) {
             carritoCantidad(e.target);
           });
+          verificarCantidadProducto(boton.id, boton);
         });
         this.boton_eliminar.forEach(function (boton) {
           boton.addEventListener('click', function (e) {
@@ -38614,7 +38615,7 @@ function vaciarCarrito() {
 
 function carritoCantidad(e) {
   var cantidad = parseInt(e.value),
-      id = e.parentNode.parentNode.children[0].value;
+      id = parseInt(e.id);
 
   if (actualizarCantidad({
     cantidad: cantidad,
@@ -38654,6 +38655,70 @@ function destroyProduct(productos, id) {
   return productos.filter(function (producto) {
     return producto.id !== id;
   });
+} // ------------- FUNCION PARA VERIFICAR CANTIDAD -----------------
+
+
+function verificarCantidadProducto(_x3, _x4) {
+  return _verificarCantidadProducto.apply(this, arguments);
+}
+
+function _verificarCantidadProducto() {
+  _verificarCantidadProducto = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id, element) {
+    var producto, template, count, productQuantity;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            producto = productos.find(function (producto) {
+              return producto.id == id;
+            });
+            template = "";
+            count = 1;
+            _context4.next = 5;
+            return callProduct(id);
+
+          case 5:
+            productQuantity = _context4.sent;
+
+            while (count <= productQuantity) {
+              template += "\n\t\t\t<option class=\"cantidad_opcion\" value=\"".concat(count, "\" ").concat(producto.cantidad == count ? 'selected' : '', ">").concat(count, "</option>\n\t\t");
+              count = count + 1;
+            }
+
+            element.innerHTML = template;
+
+          case 8:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee4);
+  }));
+  return _verificarCantidadProducto.apply(this, arguments);
+}
+
+function callProduct(_x5) {
+  return _callProduct.apply(this, arguments);
+}
+
+function _callProduct() {
+  _callProduct = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            return _context5.abrupt("return", axios.get("/cantidad-producto/".concat(id)).then(function (res) {
+              return res.data;
+            }));
+
+          case 1:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _callProduct.apply(this, arguments);
 }
 
 /***/ }),

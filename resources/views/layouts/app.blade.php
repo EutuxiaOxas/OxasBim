@@ -39,6 +39,9 @@
             color: blue;
         }
     /*Estilos Modal carrito de compras*/
+    .product_main{
+        position: relative;
+    }
     .container_img_modal_cart{
 		display: flex;
 		flex-direction:row;
@@ -76,6 +79,23 @@
     .cantidad_producto_cart{
         padding-top: 0rem;
         padding-bottom: 0rem;
+        height: 30px;
+    }
+    .close_product_modal{
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        display: flex;
+		flex-direction:row;
+	    justify-content: center;
+	    align-items: center;
+        width: 22px;
+        height: 22px;
+        z-index: 40;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        border: 1px solid #dedede;
+        border-radius: 50%;
     }
     </style>
 </head>

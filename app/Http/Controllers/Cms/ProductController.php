@@ -172,4 +172,12 @@ class ProductController extends Controller
 
     }
 
+    public function obtenerProducto($id)
+    {   
+        $producto = Product::find($id);
+        return $producto->quantity;
+    }
 }
+
+
+

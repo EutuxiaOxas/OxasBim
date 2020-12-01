@@ -130,5 +130,7 @@ Route::middleware('tienda')->group(function () {
 	Route::get('/cms/comprador/detail/{id}', 'Cms\CompradoresController@compradorDetalle');
 });
 
+Route::get('/cantidad-producto/{id}', 'Cms\ProductController@obtenerProducto');
+
 Route::post('/ir/whatsapp', 'WhatsappController@irAWhatsapp');
 Route::post('/crear/pedido', 'PedidosController@crearPedido');

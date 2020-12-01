@@ -70,37 +70,40 @@ class CarritoUI {
   				`;
   			}else{
   				template = `
-				  <div class="product_main row">
-				  <div class="col-2">
-					  <div class="container_img_modal_cart">
-						  <img class="img_modal_cart" src="${producto.image}" alt="Imagen Producto en carrito">
-					  </div>
-				  </div>
-				  <div class="col-7">
-					  <div class="row align-items-center">
-						  <span class="title_modal_cart mr-3">${producto.title} </span> 
-						  <span class="price_modal_cart"> ${producto.price} $</span>
-					  </div>
-					  <div class="row align-items-center mt-2">
-						  <div class="col-auto mr-3 px-0">
-							  <span class="cantidad_modal_cart">Cantidad:</span>
-						  </div>
-						  <div class="col-auto">
-							  <select class="form-control cantidad_producto_cart">
-								  <option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
-								  <option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
-								  <option class="cantidad_opcion" ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
-								  <option class="cantidad_opcion" ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
-								  <option class="cantidad_opcion" ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
-								  ${producto.cantidad > 5 ? `<option class="cantidad_opcion" value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
-							  </select>
-						  </div>
-					  </div>  
-					  <input type="hidden" value="${producto.id}">          
-				  </div>
-			  </div>
+	    			<div class="product_main row mb-3 mx-2">
+	    			    <span class="close_product_modal eliminar_producto" id="${producto.id}">
+	    			        <i class="fas fa-times eliminar_producto" id="${producto.id}"></i>
+	    			    </span>
+	    			    <div class="col-2">
+	    			        <div class="row">
+	    			            <div class="container_img_modal_cart">
+	    			                <img class="img_modal_cart" src="${producto.image}" alt="Imagen Producto en carrito"> 
+	    			            </div>
+	    			        </div>
+	    			    </div>
+	    			    <div class="col-auto ml-3">
+	    			        <div class="row align-items-center">
+	    			            <span class="title_modal_cart mr-3">${producto.title}</span> 
+	    			            <span class="price_modal_cart"> ${producto.price} $</span>
+	    			        </div>
+	    			        <div class="row align-items-center mt-2">
+	    			            <div class="col-auto mr-3 px-0">
+	    			                <span class="cantidad_modal_cart">Cantidad:</span>
+	    			            </div>
+	    			            <div class="col-auto">
+	    			                <select class="form-control cantidad_producto_cart" id="${producto.id}">
+	    				              
+	    			                </select> 
+	    			            </div>
+	    			        </div>  
+	    			        <input type="hidden" value="${producto.id}">          
+	    			    </div>
+	    			</div>
   				`;
   			}
+
+  			
+
   			this.cart_body.innerHTML+= template;
   			
   			contador++
@@ -129,7 +132,9 @@ class CarritoUI {
   		this.botones_cantidad.forEach(boton => {
   			boton.addEventListener('change', function(e){
   			 	carritoCantidad(e.target)
+  			 	
   			})
+  			verificarCantidadProducto(boton.id, boton)
   		})
 
   		this.boton_eliminar.forEach(boton => {
@@ -688,8 +693,7 @@ function vaciarCarrito(){
 // ------------- FUNCION PARA AUMENTAR CANTIDAD -----------------
 function carritoCantidad(e) {
 	const cantidad = parseInt(e.value),
-		  id = e.parentNode.parentNode.children[0].value;
-
+		  id = parseInt(e.id);
 
 	if(actualizarCantidad({cantidad, id})){
 		storage.addStorage(productos)
@@ -736,4 +740,30 @@ function destroyProduct(productos, id) {
 	})
 }
 
+// ------------- FUNCION PARA VERIFICAR CANTIDAD DEL PRODUCTO -----------------
 
+async function verificarCantidadProducto(id, element){
+
+	let producto = productos.find(producto => producto.id == id)
+
+	let template = ``,
+		count = 1,
+		productQuantity = await callProduct(id);
+
+
+	while( count <= productQuantity){
+		template += `
+			<option class="cantidad_opcion" value="${count}" ${producto.cantidad == count ? 'selected' : ''}>${count}</option>
+		`
+		count = count + 1 ;
+	}
+
+	element.innerHTML = template
+}
+
+async function callProduct(id) {
+	return axios.get(`/cantidad-producto/${id}`)
+		.then(res => {
+			return res.data
+		})
+}

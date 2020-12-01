@@ -23,7 +23,8 @@
         position: relative;
      }
      .eliminar_producto {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
+        padding-top: 0.012rem;
      }
      .cantidad_producto_cart{
         width: 90%;

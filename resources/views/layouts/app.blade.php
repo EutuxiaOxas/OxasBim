@@ -217,7 +217,10 @@
       </div>
     </div>
 
-    
+    <!-- FOOTER -->
+
+    @include('common.footer')
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript">
         const modalCarrito = document.getElementById('cart_main')

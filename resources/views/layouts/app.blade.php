@@ -62,20 +62,65 @@
         max-width: 100%;
 	}
     .title_modal_cart{
-        font-size: 1.25rem;
-		font-weight: bold;
-		color: #222;
+        font-weight: bold;
+            color: #222;
     }
     .price_modal_cart{
-		font-size: 1.15rem;
-		color:#4e54c8;
-		font-weight: 400;
-	}
+        color:#4e54c8;
+            font-weight: 400;
+    }
     .cantidad_modal_cart{
-        font-size: 1rem;
 		font-weight: bold;
 		color: #222;
     }
+    @media only screen and (max-width: 996px) {
+        .title_modal_cart{
+            font-size: 1.1rem;
+        }
+        .price_modal_cart{
+            font-size: 1.05rem;
+        }
+        .cantidad_modal_cart{
+            font-size: 1rem;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .title_modal_cart {
+            font-size: 1rem;
+        }
+        .price_modal_cart{
+            font-size: 0.85rem;
+        }
+        .cantidad_modal_cart{
+            font-size: 0.85rem;
+        }
+    }
+    @media only screen and (max-width: 450px) {
+        .title_modal_cart {
+            font-size: 1rem;
+        }
+        .price_modal_cart{
+            font-size: 0.85rem;
+        }
+        .cantidad_modal_cart{
+            font-size: 0.85rem;
+        }
+    }
+
+
+    @media only screen and (min-width: 997px) {
+        .title_modal_cart{
+            font-size: 1.25rem;
+        }
+        .price_modal_cart{
+            font-size: 1.15rem;
+        }
+        .cantidad_modal_cart{
+            font-size: 1rem;
+        }
+    }
+
+
     .cantidad_producto_cart{
         padding-top: 0rem;
         padding-bottom: 0rem;
@@ -111,7 +156,7 @@
     </div>
 
     <div class="modal fade" id="modalCarritoCompras" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Carrito de compras</h5>
@@ -123,8 +168,8 @@
                    
                 </div>
                 <div class="modal-footer">
+                    <button  id="boton_modal" class="btn btn btn-primary px-4" data-toggle="modal" data-dismiss="modal" data-target="#modalIrAWhatsapp">Finalizar en Whatsapp</button>
                     <button type="button" id="vaciar_carrito_cart" class="btn btn btn-outline-danger">Vaciar Carrito</button>
-                    <button  id="boton_modal" class="btn btn btn-primary" data-toggle="modal" data-dismiss="modal" data-target="#modalIrAWhatsapp">Ir a Whatsapp</button>
                 </div>
             </div>
         </div>
@@ -153,10 +198,10 @@
                             <h5>Nombre y apellido</h5>
                             <input class="form-control" type="text" id="form_name" required maxlength="191" name="nombre" placeholder="Ingresa tu nombre y apellido">
                         </div>
-                        <div class="form-group">
+                        <!--div class="form-group">
                             <h5>Telefono</h5>
                             <input class="form-control" type="text" required maxlength="191" name="telefono" placeholder="Ingresa tu número de telefono">
-                        </div>
+                        </!--div-->
 
                         <div class="form-group">
                             <h5>Cédula</h5>

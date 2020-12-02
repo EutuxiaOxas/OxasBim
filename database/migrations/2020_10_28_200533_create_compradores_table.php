@@ -17,7 +17,7 @@ class CreateCompradoresTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->foreignId('pedido_id');
-            $table->string('telefono');
+            $table->string('telefono')->nullable();
             $table->string('documento_identidad');
             $table->timestamps();
         });

@@ -54,9 +54,12 @@
         </div>
     </section>
     
+    <!-- CAROUSEL DE PUBLICIDADES -->
     <section class="container my-5">
         @include('common.publicidades_carousel')
     </section>
+
+
     <section class="container ">
         <div class="row banners_content py-5">
             <div class="banner_img col-6 img-fluid">

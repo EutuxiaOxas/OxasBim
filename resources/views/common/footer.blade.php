@@ -42,7 +42,7 @@
                         <li class="nav-item">
                           <a class="nav-link primer_enlace" href="/">Home</a>
                         </li>
-                        <li class="nav-item opacity mx-3">/</li>
+                        <li class="nav-item opacity">/</li>
                         <li class="nav-item">
                           <a class="nav-link" href="{{route('productos')}}">Vitrina de productos</a>
                         </li>

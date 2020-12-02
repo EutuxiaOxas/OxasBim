@@ -755,6 +755,11 @@ async function verificarCantidadProducto(id, element){
 		template += `
 			<option class="cantidad_opcion" value="${count}" ${producto.cantidad == count ? 'selected' : ''}>${count}</option>
 		`
+
+		if(count === 10){
+			break
+		}
+
 		count = count + 1 ;
 	}
 

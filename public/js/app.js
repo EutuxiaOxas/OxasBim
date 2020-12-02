@@ -38680,14 +38680,30 @@ function _verificarCantidadProducto() {
           case 5:
             productQuantity = _context4.sent;
 
-            while (count <= productQuantity) {
-              template += "\n\t\t\t<option class=\"cantidad_opcion\" value=\"".concat(count, "\" ").concat(producto.cantidad == count ? 'selected' : '', ">").concat(count, "</option>\n\t\t");
-              count = count + 1;
+          case 6:
+            if (!(count <= productQuantity)) {
+              _context4.next = 13;
+              break;
             }
 
+            template += "\n\t\t\t<option class=\"cantidad_opcion\" value=\"".concat(count, "\" ").concat(producto.cantidad == count ? 'selected' : '', ">").concat(count, "</option>\n\t\t");
+
+            if (!(count === 10)) {
+              _context4.next = 10;
+              break;
+            }
+
+            return _context4.abrupt("break", 13);
+
+          case 10:
+            count = count + 1;
+            _context4.next = 6;
+            break;
+
+          case 13:
             element.innerHTML = template;
 
-          case 8:
+          case 14:
           case "end":
             return _context4.stop();
         }
@@ -38786,8 +38802,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\OxasBim\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\OxasBim\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/omega/coding/OxasBim/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/omega/coding/OxasBim/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

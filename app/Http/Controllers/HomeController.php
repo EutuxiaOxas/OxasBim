@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Logo_Banner;
 use App\Product;
 use App\Category;
+use App\Publicidad;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +26,8 @@ class HomeController extends Controller
         $sliders = Logo_Banner::where('tipo', 'banner')->where('status', 1)->get();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
         $categorias = Category::with(['products'])->get();
-        return view('landing', compact('sliders', 'logo', 'categorias'));
+        $publicidades = Publicidad::all();
+        return view('landing', compact('sliders', 'logo', 'categorias', 'publicidades'));
     }
 
 

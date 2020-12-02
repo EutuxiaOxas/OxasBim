@@ -13,7 +13,8 @@ class ConfiguracionSeeder extends Seeder
     {
         DB::table('configuraciones')->insert([
         	'title' => 'whatsapp',
-        	'content' => '0000',
+        	'content' => 'whatsapp',
+            'description' => '0000',
         ]);
     }
 }

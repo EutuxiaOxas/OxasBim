@@ -35,7 +35,11 @@
         <div class="container py-2">
             <div class="row">
                 <div class="col-12 py-3">
-                    <img src="{{asset('storage/'.$logo->image)}}" style="width: 60px; height: 60px;">
+                    @if(isset($logo))
+                        <img src="{{asset('storage/'.$logo->image)}}" style="width: 60px; height: 60px;" alt="LOGO">
+                    @else
+                        <img src="" style="width: 60px; height: 60px;" alt="LOGO">
+                    @endif
                 </div>
                 <div class="col-6 footer_nav my-2">
                     <ul class="nav nav-sm nav-white nav-x-sm align-items-center">

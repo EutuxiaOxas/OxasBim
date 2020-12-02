@@ -38,35 +38,35 @@ class CarritoUI {
   			let template = ''
   			if(producto.producto){
   				template = `
-				  <div class="product_main row">
-				  <div class="col-2">
-					  <div class="container_img_modal_cart">
-						  <img class="img_modal_cart" src="${producto.image}" alt="Imagen Producto en carrito">
-					  </div>
-				  </div>
-				  <div class="col-7">
-					  <div class="row align-items-center">
-						  <span class="title_modal_cart mr-3">${producto.title} </span> 
-						  <span class="price_modal_cart"> ${producto.price} $</span>
-					  </div>
-					  <div class="row align-items-center mt-2">
-						  <div class="col-auto mr-3 px-0">
-							  <span class="cantidad_modal_cart">Cantidad:</span>
-						  </div>
-						  <div class="col-auto">
-							  <select class="form-control cantidad_producto_cart">
-								  <option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
-								  <option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
-								  <option class="cantidad_opcion" ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
-								  <option class="cantidad_opcion" ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
-								  <option class="cantidad_opcion" ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
-								  ${producto.cantidad > 5 ? `<option class="cantidad_opcion" value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
-							  </select>
-						  </div>
-					  </div>  
-					  <input type="hidden" value="${producto.id}">          
-				  </div>
-			  </div>
+				<div class="product_main row">
+					<div class="col-2">
+						<div class="container_img_modal_cart">
+							<img class="img_modal_cart" src="${producto.image}" alt="Imagen Producto en carrito">
+						</div>
+					</div>
+					<div class="col-10 px-0 pl-4">
+						<div class="row align-items-center">
+							<span class="title_modal_cart mr-3">${producto.title} </span> 
+							<span class="price_modal_cart"> ${producto.price} $</span>
+						</div>
+						<div class="row align-items-center mt-2">
+							<div class="col-auto mr-3 px-0">
+								<span class="cantidad_modal_cart">Cantidad:</span>
+							</div>
+							<div class="col-auto">
+								<select class="form-control cantidad_producto_cart">
+									<option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+									<option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+									<option class="cantidad_opcion" ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+									<option class="cantidad_opcion" ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+									<option class="cantidad_opcion" ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+									${producto.cantidad > 5 ? `<option class="cantidad_opcion" value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
+								</select>
+							</div>
+						</div>  
+						<input type="hidden" value="${producto.id}">          
+					</div>
+			  	</div>
   				`;
   			}else{
   				template = `
@@ -81,7 +81,7 @@ class CarritoUI {
 	    			            </div>
 	    			        </div>
 	    			    </div>
-	    			    <div class="col-auto ml-3">
+	    			    <div class="col-10 px-0 pl-4">
 	    			        <div class="row align-items-center">
 	    			            <span class="title_modal_cart mr-3">${producto.title}</span> 
 	    			            <span class="price_modal_cart"> ${producto.price} $</span>

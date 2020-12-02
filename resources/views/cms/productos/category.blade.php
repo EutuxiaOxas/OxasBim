@@ -44,7 +44,7 @@
           <div class="card">
 
               <div class="card-header">
-                <h3 class="card-title">Imagenes de publicidades</h3>
+                <h3 class="card-title">Categorias de productos</h3>
                 <button class="btn btn-primary btn-sm px-4 ml-5" data-toggle="modal" data-target="#modalCrear">Nueva Categoria</button>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">

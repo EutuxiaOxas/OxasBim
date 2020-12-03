@@ -29,12 +29,11 @@
 
 @if(isset($navbar_null))
     
-
 @else
     <footer>
         <div class="container py-2 mt-5">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-4 footer_nav my-md-4">
+                <div class="col-12 col-md-5 col-lg-4 footer_nav my-md-4 order-2 order-md-1">
                     <ul class="nav nav-sm nav-white nav-x-sm align-items-center">
                         <li class="nav-item">
                           <a class="nav-link primer_enlace" href="https://www.instagram.com/oxas.tech/">Instagram</a>
@@ -45,14 +44,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-12 col-md-4 py-2 text-center">
+                <div class="col-12 col-md-2 col-lg-4 py-2 text-center order-1 order-md-2">
                     @if(isset($logo))
                         <img src="{{asset('storage/'.$logo->image)}}" style="width: 60px; height: 60px;" alt="LOGO">
                     @else
                         <img src="" style="width: 60px; height: 60px;" alt="LOGO">
                     @endif
                 </div>
-                <div class="col-12 col-md-auto ml-auto footer_nav my-md-4">
+                <div class="col-12 col-md-5 col-lg-auto ml-auto footer_nav my-md-4 order-3">
                     <ul class="nav nav-sm nav-white nav-x-sm align-items-center">
                         <li class="nav-item">
                           <a class="nav-link primer_enlace" href="/">Home</a>
@@ -63,6 +62,8 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-12 text-center py-3 copyring-container">
                     <h6> © Sitio desarrollado por <a href="https://oxas.tech/">oxas.tech</a></h6>
                     <p class="my-3">Sitio web desarrollado para finalizar tu compra en Whatsapp.</p>

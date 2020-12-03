@@ -33,7 +33,7 @@ $('#destacados').owlCarousel({
 loop: true,
 margin: 10,
 mouseDrag: true,
-nav: true,
+nav: false,
 dots: false,
 navText: ['<img src="{{asset('icons/flecha.svg')}}" style="width: 25px;"/>', '<img src="{{asset('icons/flecha.svg')}}" style="width: 25px; transform: rotate(-180deg);"/>'],
 responsive: {
@@ -41,10 +41,10 @@ responsive: {
     items: 2
   },
   600: {
-    items: 3
+    items: 4
   },
   992: {
-    items: 4
+    items: 5
   }
 }
 })

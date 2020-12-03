@@ -75,7 +75,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="navbar-nav ml-5">
+            <div class="navbar-nav ml-5 d-none d-md-block">
                 <form action="/productos" class="d-flex">
                     <div class="input-group">
                         <div class="input-group-prepend" >

@@ -54,7 +54,7 @@
 		}
 	</style>
 
-<div class="container-fluid px-5">
+<div class="container-fluid px-md-5">
 	<div class="row pt-2">
 
 		@include('common.navbar_left')

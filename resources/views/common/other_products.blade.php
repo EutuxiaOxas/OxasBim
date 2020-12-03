@@ -78,21 +78,21 @@
     loop: true,
     margin: 30,
     mouseDrag: true,
-    nav: true,
+    nav: false,
     dots: false,
     navText: ['<img src="{{asset('icons/flecha.svg')}}" style="width: 25px;"/>', '<img src="{{asset('icons/flecha.svg')}}" style="width: 25px; transform: rotate(-180deg);"/>'],
     responsive: {
       0: {
-        items: 1
-      },
-      500: {
         items: 2
       },
-      992: {
+      500: {
         items: 3
       },
-      1200: {
+      767: {
         items: 4
+      },
+      997: {
+        items: 5
       }
     }
   })

@@ -52,33 +52,23 @@
     </section>
     
     <!-- CAROUSEL DE PUBLICIDADES -->
-    <section class="container my-5 px-0">
+    <section class="container my-5 px-2 px-md-0">
         @include('common.publicidades_carousel')
     </section>
 
-    <!-- CAROUSEL DE PRODUCTOS CATEGORIA 1 -->
-    <section class="container my-5 px-0">
-        @include('common.publicidades_carousel')
+    <!-- CAROUSEL DE PRODUCTOS POR CATEGORIA  -->
+    <section class="container my-5 px-2 px-md-0 mb-4">
+        @php /*print_r($array_other_products);*/   @endphp
+        @php $x=0; @endphp
+        @foreach ($array_other_products as $otros_products)
+            <h2>{{$categorias[$x]->title}}</h2>
+            @include('common.products_home')
+            @php ++$x; @endphp
+        @endforeach
     </section>
-
-    <!-- CAROUSEL DE PRODUCTOS CATEGORIA 2 -->
-    <section class="container my-5 px-0">
-        @include('common.publicidades_carousel')
-    </section>
-
-    <!-- CAROUSEL DE PRODUCTOS CATEGORIA 3 -->
-    <section class="container my-5 px-0">
-        @include('common.publicidades_carousel')
-    </section>
-
-    <!-- CAROUSEL DE PRODUCTOS CATEGORIA 4 -->
-    <section class="container my-5 px-0">
-        @include('common.publicidades_carousel')
-    </section>
-
 
     <!-- CAROUSEL DE PRODUCTOS RAMDOM PEQUEÑOS -->
-    <section class="container my-5 px-0">
+    <section class="container my-5 px-2 px-md-0">
         @include('common.small_products')
     </section>
 @endsection

@@ -238,28 +238,20 @@
 						  </div>
 						  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 							<div class="card-body text-rubik">
-							  <div class="row">
-								  <div class="col-8">
-									<span class="text-rubik">Local courier shipping</span>
-								  </div>
-								  <div class="col-auto ml-auto">
-									$45.5
-								  </div>
-								  <div class="col-12">
-									  <span class="text-muted">2 - 4 days</span>
-								  </div>								
-							  </div>
-							  <hr class="my-1">
-							  <div class="row">
-								<div class="col-8">
-								  <span class="text-rubik">Local courier shipping</span>
-								</div>
-								<div class="col-auto ml-auto">
-								  $45.5
-								</div>
-								<div class="col-12">
-									<span class="text-muted">2 - 4 days</span>
-								</div>								
+							  @foreach($m_pagos as $pago)
+							  	@if($loop->iteration > 1)
+							  		<hr class="my-1"/>
+							  	@endif
+							  	  <div class="row">
+							  		  <div class="col-8">
+							  			<span class="text-rubik">{{$pago->content}}</span>
+							  		  </div>
+							  		  <div class="col-12">
+							  			  <span class="text-muted">{{$pago->description}}</span>
+							  		  </div>								
+							  	  </div>
+							  @endforeach
+							  					
 							</div>
 							</div>
 						  </div>
@@ -277,7 +269,19 @@
 						  </div>
 						  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 							<div class="card-body">
-							  
+							  @foreach($m_envios as $envio)
+							  	@if($loop->iteration > 1)
+							  		<hr class="my-1"/>
+							  	@endif
+							  	  <div class="row">
+							  		  <div class="col-8">
+							  			<span class="text-rubik">{{$envio->content}}</span>
+							  		  </div>
+							  		  <div class="col-12">
+							  			  <span class="text-muted">{{$envio->description}}</span>
+							  		  </div>								
+							  	  </div>
+							  @endforeach
 							</div>
 						  </div>
 						</div>

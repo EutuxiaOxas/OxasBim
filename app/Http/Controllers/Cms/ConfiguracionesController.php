@@ -17,19 +17,17 @@ class ConfiguracionesController extends Controller
 
     public function agregarConfiguracion(Request $request)
     {
-    	$configuraciones = Configuraciones::all();
-    	$array = $request->all();
-    	array_shift($array);
+        Configuraciones::create($request->all());
 
-    	foreach ($configuraciones as $config) {
-    		
-    		if($array[$config->title])
-    		{
-    			$config->content = $array[$config->title];
-    			$config->save();
-    		}
-    	}
+        return back();
+    }
 
-    	return back();
+    public function actualizarConfiguracion(Request $request)
+    {   
+    	$configuracion = Configuraciones::findOrFail($request->id);
+
+        $configuracion->update($request->all());
+
+        return back()->with('message', 'Configuracion actualizada con éxito!');
     }
 }

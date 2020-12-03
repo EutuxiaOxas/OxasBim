@@ -45,6 +45,7 @@ Route::middleware('cms')->group(function () {
 	Route::get('/cms/configuraciones', 'Cms\ConfiguracionesController@index')->name('config.home');
 
 	Route::post('/cms/configuraciones/agregar', 'Cms\ConfiguracionesController@agregarConfiguracion')->name('config.add');
+	Route::post('/cms/configuraciones/actualizar', 'Cms\ConfiguracionesController@actualizarConfiguracion')->name('config.update');
 });
 
 /*---------------ADMINISTRADORES --------------*/

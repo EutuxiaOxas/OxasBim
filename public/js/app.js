@@ -38366,7 +38366,7 @@ function events(value, elements) {
         var name = e.target.parentNode.parentNode.children[0].children[1].children[0].textContent,
             id = e.target.id,
             price = e.target.parentNode.parentNode.children[0].children[2].children[0].textContent,
-            image = e.target.parentNode.parentNode.parentNode.children[0].children[0].src,
+            image = e.target.parentNode.parentNode.parentNode.children[0].children[0].children[0].src,
             slug = e.target.parentNode.parentNode.children[3].value,
             cantidad = parseFloat(e.target.parentNode.children[0].value),
             alert = document.getElementById('add_alert');
@@ -38802,8 +38802,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/omega/coding/OxasBim/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/omega/coding/OxasBim/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\OxasBim\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\OxasBim\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

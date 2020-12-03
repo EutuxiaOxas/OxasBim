@@ -26,9 +26,23 @@ class HomeController extends Controller
     {
         $sliders = Logo_Banner::where('tipo', 'banner')->where('status', 1)->get();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
-        $categorias = Category::with(['products'])->get();
         $publicidades = Publicidad::all();
-        return view('landing', compact('sliders', 'logo', 'categorias', 'publicidades'));
+        $small_products = Product::paginate(21);
+        $cantidad_otros_productos = 3;
+        $categorias = Category::with(['products'])->get();
+        //array donde estaran los array de productos por categoria
+        $array_other_products = array();
+        //recorro el array de categorias 
+        for ($i = 0; $i <= $cantidad_otros_productos; $i++) {
+            if(isset($categorias[$i])){
+                //obtengo los productos por categoria
+                $product_cat = Product::where('category_id', $categorias[$i]->id)->get();
+                array_push($array_other_products,$product_cat);
+            }else{
+                break;
+            }
+        }
+        return view('landing', compact('sliders', 'logo', 'categorias', 'publicidades', 'small_products', 'array_other_products'));
     }
 
 

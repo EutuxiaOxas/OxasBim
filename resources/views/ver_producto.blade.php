@@ -140,11 +140,27 @@
 </style>
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-md-5">
 	<div id="add_alert" style="display: none;" class="alert alert-success mt-3">Producto Agregado con éxito!</div>
 
 	<div class="row">
-		<div class="col-1">
+		<div class="col-12 d-md-none order-2">
+			<div class="row px-2 mb-4">
+				<div class="col-2 container_img_second">
+					<div>
+						<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}">
+					</div>
+				</div>
+				@foreach($product->images as $image)
+				<div class="col-2 container_img_second">
+					<div>
+						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}">
+					</div>					
+				</div>
+	    		@endforeach
+			</div>
+		</div>
+		<div class="col-1 d-none d-md-block order-1">
 			<div class="row mb-2">
 				<div class="container_img_second">
 					<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}">
@@ -158,14 +174,14 @@
 				</div>
 	    	@endforeach
 		</div>
-		<div class="col-6">
-			<div class="row">
-				<div class="container_img_product_principal">
+		<div class="col-12 col-md-6 order-1 order-md-2">
+			<div class="row container_img_product_principal">
+				<div class="">
 					<img class="img_product_detail" id="producto_imagen_principal" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
 				</div>
 			</div>					
 		</div>
-		<div class="col-5">
+		<div class="col-12 col-md-5 order-3">
 			<div class="row alings-itmes-center">
 				<div class="col-auto">
 					<div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href="{{route('product.category.show', $product->category->slug)}}"><strong class="text-secondary">{{$product->category->title}}</strong></a></div>
@@ -250,11 +266,9 @@
 							  			  <span class="text-muted">{{$pago->description}}</span>
 							  		  </div>								
 							  	  </div>
-							  @endforeach
-							  					
+							  @endforeach				
 							</div>
-							</div>
-						  </div>
+						   </div>
 						</div>
 						<div class="card">
 						  <div class="card-header" id="headingTwo" style="padding: 0.5rem 1rem;">
@@ -316,10 +330,9 @@
 	
 	<div class="row justify-content-center mt-4">
 		<div class="col-10">
-			<h5 class="title-description text-rubik">Descripcion</h5>
+			<h5 class="title-description text-rubik">Descripción</h5>
 			<p class="mt-4 text-rubik">{{$product->description}}.</p>
 		</div>
-		
 	</div>
 
 </div>

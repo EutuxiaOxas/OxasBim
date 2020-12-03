@@ -250,11 +250,9 @@
 							  			  <span class="text-muted">{{$pago->description}}</span>
 							  		  </div>								
 							  	  </div>
-							  @endforeach
-							  					
+							  @endforeach				
 							</div>
-							</div>
-						  </div>
+						   </div>
 						</div>
 						<div class="card">
 						  <div class="card-header" id="headingTwo" style="padding: 0.5rem 1rem;">
@@ -316,10 +314,9 @@
 	
 	<div class="row justify-content-center mt-4">
 		<div class="col-10">
-			<h5 class="title-description text-rubik">Descripcion</h5>
+			<h5 class="title-description text-rubik">Descripción</h5>
 			<p class="mt-4 text-rubik">{{$product->description}}.</p>
 		</div>
-		
 	</div>
 
 </div>

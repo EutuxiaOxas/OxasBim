@@ -28,7 +28,8 @@ class HomeController extends Controller
         $logo = Logo_Banner::where('tipo', 'logo')->first();
         $categorias = Category::with(['products'])->get();
         $publicidades = Publicidad::all();
-        return view('landing', compact('sliders', 'logo', 'categorias', 'publicidades'));
+        $small_products = Product::paginate(21);
+        return view('landing', compact('sliders', 'logo', 'categorias', 'publicidades', 'small_products'));
     }
 
 

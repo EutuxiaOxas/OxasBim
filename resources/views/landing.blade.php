@@ -22,9 +22,6 @@
             align-items: center;
             justify-content: center;
         }
-
-
-
     </style>
     <?php $contador = 1; ?>
     <section class="slider_container">
@@ -34,7 +31,7 @@
                     <div <?php if ($contador==1) { echo 'class="carousel-item active"' ; } else {
                         echo 'class="carousel-item"' ; } ?>>
                         <img src="{{ asset('storage/' . $slider->image) }}"
-                            style="width: 100%; height: 70vh; object-fit: cover;" class="d-block w-100" alt="...">
+                            style="width: 100%; height: 60vh; object-fit: cover;" class="d-block w-100" alt="...">
                         <div class="carousel_body">
                             <h2>{{ $slider->title }}</h2>
                             <p>{{ $slider->description }}</p>
@@ -55,39 +52,34 @@
     </section>
     
     <!-- CAROUSEL DE PUBLICIDADES -->
-    <section class="container my-5">
+    <section class="container my-5 px-0">
+        @include('common.publicidades_carousel')
+    </section>
+
+    <!-- CAROUSEL DE PRODUCTOS CATEGORIA 1 -->
+    <section class="container my-5 px-0">
+        @include('common.publicidades_carousel')
+    </section>
+
+    <!-- CAROUSEL DE PRODUCTOS CATEGORIA 2 -->
+    <section class="container my-5 px-0">
+        @include('common.publicidades_carousel')
+    </section>
+
+    <!-- CAROUSEL DE PRODUCTOS CATEGORIA 3 -->
+    <section class="container my-5 px-0">
+        @include('common.publicidades_carousel')
+    </section>
+
+    <!-- CAROUSEL DE PRODUCTOS CATEGORIA 4 -->
+    <section class="container my-5 px-0">
         @include('common.publicidades_carousel')
     </section>
 
 
-    <section class="container ">
-        <div class="row banners_content py-5">
-            <div class="banner_img col-6 img-fluid">
-                <img src="https://picsum.photos/700/400" class="w-100">
-            </div>
-            <div class="banner_body col-6">
-                <h2>Titulo</h2>
-                <p>Contenido</p>
-            </div>
-        </div>
-        <div class="row banners_content py-5">
-            <div class="banner_body col-6">
-                <h2>Titulo</h2>
-                <p>Contenido</p>
-            </div>
-            <div class="banner_img col-6 img-fluid">
-                <img src="https://picsum.photos/700/400" class="w-100">
-            </div>
-        </div>
-        <div class="row banners_content py-5">
-            <div class="banner_img col-6 img-fluid">
-                <img src="https://picsum.photos/700/400" class="w-100">
-            </div>
-            <div class="banner_body col-6">
-                <h2>Titulo</h2>
-                <p>Contenido</p>
-            </div>
-        </div>
+    <!-- CAROUSEL DE PRODUCTOS RAMDOM PEQUEÑOS -->
+    <section class="container my-5 px-0">
+        @include('common.small_products')
     </section>
 @endsection
 

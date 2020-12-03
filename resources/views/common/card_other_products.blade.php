@@ -1,8 +1,10 @@
 
     <div class="card" style="border: 0px;">
-        <a class="card_product" href="{{route('producto.show', $o_product->slug)}}">
-            <img class="img_product" src="{{asset('storage/'. $o_product->image)}}" alt="{{$o_product->title}}">
-        </a>
+        <span class="card_product">
+            <a href="{{route('producto.show', $o_product->slug)}}">
+                <img class="img_product" src="{{asset('storage/'. $o_product->image)}}" alt="{{$o_product->title}}">
+            </a>
+        </span>        
         <div class="card-body" style="padding: 0.6rem 0.8rem 0 0.8rem;">
             <div class="row px-3">
                 <div class="col-12 px-0">

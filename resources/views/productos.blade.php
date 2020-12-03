@@ -76,7 +76,7 @@
 				@endforeach
 			</section>
 			<div class="mt-5">
-				{{ $productos->links() }}
+				{{ $productos->appends(request()->input())->links() }}
 			</div>
 						
 		</div>

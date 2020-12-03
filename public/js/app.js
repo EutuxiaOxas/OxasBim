@@ -38366,7 +38366,7 @@ function events(value, elements) {
         var name = e.target.parentNode.parentNode.children[0].children[1].children[0].textContent,
             id = e.target.id,
             price = e.target.parentNode.parentNode.children[0].children[2].children[0].textContent,
-            image = e.target.parentNode.parentNode.parentNode.children[0].children[0].src,
+            image = e.target.parentNode.parentNode.parentNode.children[0].children[0].children[0].src,
             slug = e.target.parentNode.parentNode.children[3].value,
             cantidad = parseFloat(e.target.parentNode.children[0].value),
             alert = document.getElementById('add_alert');

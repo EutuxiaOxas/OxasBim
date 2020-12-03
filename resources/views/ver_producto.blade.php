@@ -78,13 +78,8 @@
 		text-decoration: none;
 	}
 	.select_quantity{
-		display: inline-block!important;
-		width: 100% !important;
-		padding: .75rem 1rem !important;
+		height: 3rem !important;
 		border-radius: 3px;
-		border: solid 1px #ddd;
-		padding: 0.75rem 1!important;
-		content:"\025be";
 	}
 
 
@@ -201,9 +196,8 @@
 			<input type="hidden" value="{{$product->slug}}">
 			<div class="row">
 				<div class="col-2 pr-0">
-					<div class="">
 						@if($product->quantity >= 10)
-						    <select class="form-control mb-1">
+						    <select class="form-control select_quantity">
 						        <option value="1">1</option>
 						        <option value="2">2</option>
 						        <option value="3">3</option>
@@ -217,14 +211,13 @@
 						    </select>
 						@else
 						    @php $contador = 1 @endphp
-						    <select class="form-control mb-1">
+						    <select class="form-control select_quantity">
 						        @while($contador <= $product->quantity)
 						            <option value="{{$contador}}">{{$contador}}</option>
 						            @php $contador += 1 @endphp
 						        @endwhile
 						    </select>
-						@endif
-					</div>					
+						@endif				
 				</div>
 				<div class="col-10">
 					@if($product->quantity > 0)
@@ -306,20 +299,20 @@
 				<div class="col-12 text-rubik">
 					<strong>Compartir:</strong>
 				</div>
-				<div class="col-4">
-					<a class="btn btn-outline-success btn-share text-rubik" href="#" id="facebook">
+				<div class="col-4 px-md-1 px-lg-2">
+					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="facebook">
 						<img src="/icons/facebook.svg" style="width:16px;height:16px;">
 						Facebook
 					</a>
 				</div>
-				<div class="col-4">
-					<a class="btn btn-outline-success btn-share text-rubik" href="#" id="whastapp">
+				<div class="col-4 px-md-1 px-lg-2">
+					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="whastapp">
 						<img src="/icons/whatsapp.svg" style="width:16px;height:16px;">
 						Whatsapp
 					</a>
 				</div>
-				<div class="col-4">
-					<a class="btn btn-outline-success btn-share text-rubik" href="#" id="twitter">
+				<div class="col-4 px-md-1 px-lg-2">
+					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="twitter">
 						<img src="/icons/twitter.svg" style="width: 16px;height: 16px;">
 						Twitter
 					</a>

@@ -362,7 +362,8 @@
 	<div class="row justify-content-center mt-4">
 		<div class="col-10">
 			<h5 class="title-description text-rubik">Descripción</h5>
-			<p class="mt-4 text-rubik">{{$product->description}}.</p>
+			<p class="mt-4 text-rubik">
+				@php echo nl2br($product->description); @endphp.</p>
 		</div>
 	</div>
 

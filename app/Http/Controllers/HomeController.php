@@ -26,8 +26,12 @@ class HomeController extends Controller
     {
         $sliders = Logo_Banner::where('tipo', 'banner')->where('status', 1)->get();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
-        $categorias = Category::with(['products'])->get();
+
         $publicidades = Publicidad::all();
+        $small_products = Product::inRandomOrder()->take(21)->get();
+        $cantidad_otros_productos = 3;
+
+        $categorias = Category::with(['products'])->get();
         return view('landing', compact('sliders', 'logo', 'categorias', 'publicidades'));
     }
 

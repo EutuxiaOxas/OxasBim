@@ -27,7 +27,7 @@
         padding-top: 0.012rem;
      }
      .cantidad_producto_cart{
-        width: 90%;
+        width: 100%;
      }
 </style>
 @if(isset($navbar_null))
@@ -95,8 +95,8 @@
                 <li class="nav-item">
                     <a href="{{route('productos')}}" class="nav-link">Productos</a>
                 </li>
-                <li class="nav-item cart_dropdown" id="cart_main">
-                    <a id="carritoDropdown" class="nav-link " href="#" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
+                <li class="nav-item cart_dropdown d-none d-md-block" id="cart_main">
+                    <a id="carritoDropdown" class="nav-link " href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                         <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
                     </a>
                     <div class="cart_dropdown_menu">

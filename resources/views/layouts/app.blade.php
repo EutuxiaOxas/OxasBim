@@ -142,6 +142,41 @@
         border: 1px solid #dedede;
         border-radius: 50%;
     }
+
+    /* Boton Flotante de Carrito de Compras En Cel*/
+    .float_button_cart{
+        position: fixed!important;
+        right: 23px;
+        bottom: 23px;
+        width: 63px;
+        height: 63px;
+        border-radius: 50%;
+        background-color: #00ca00;
+        z-index: 1500;
+        cursor: pointer;
+        box-shadow: 0px 2px 6px -2px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 2px 6px -2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 2px 6px -2px rgba(0,0,0,0.75);
+    }
+    .float_button_cart i{
+        line-height: 56px;
+        font-size: 1.25rem;
+    }
+    .container_float_cart{
+        position: relative;
+        display: flex;
+          flex-direction:row;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width:100%;
+  
+          overflow: hidden;
+          padding: 0.75rem;
+    }
+    #cart_icon_id{
+        color: #fafafa;
+    }
     </style>
 </head>
 <body>
@@ -198,10 +233,10 @@
                             <h5>Nombre y apellido</h5>
                             <input class="form-control" type="text" id="form_name" required maxlength="191" name="nombre" placeholder="Ingresa tu nombre y apellido">
                         </div>
-                       <div class="form-group">
+                       <!--div-- class="form-group">
                             <h5>Telefono</h5>
                             <input class="form-control" type="text" required maxlength="191" name="telefono" placeholder="Ingresa tu número de telefono">
-                        </div>
+                        </!--div-->
 
                         <div class="form-group">
                             <h5>Cédula</h5>
@@ -216,9 +251,13 @@
             </div>
         </div>
     </div>
-
+    <!-- Boton Flotante Carrito Cel -->
+    <div class="float_button_cart d-md-none" data-toggle="modal" data-target="#modalCarritoCompras">
+        <div class="container_float_cart" id="container_float">
+            <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
+        </div>        
+    </div>
     <!-- FOOTER -->
-
     @include('common.footer')
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

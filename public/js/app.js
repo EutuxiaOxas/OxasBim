@@ -38128,13 +38128,18 @@ var CarritoUI = /*#__PURE__*/function () {
         });
         this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
         this.badge_main.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -10px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(this.totalCantidades, "</span>\n\t\t\t</div>\n\t\t");
+        this.cart_float_container = document.getElementById('container_float');
+        this.cart_float_container.innerHTML = "<i id=\"cart_icon_id\" class=\"fas fa-shopping-cart\"></i>";
+        this.cart_float_container.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -1px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(this.totalCantidades, "</span>\n\t\t\t</div>\n\t\t");
         this.carrito.children[0].children[0].classList.add('cart_on');
       } else {
         this.boton_modal = document.getElementById('boton_modal');
         this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
+        this.cart_float_container = document.getElementById('container_float');
         this.cart_body.innerHTML = 'No hay productos en el carrito';
         this.carrito.children[0].children[0].classList.remove('cart_on');
         this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
+        this.cart_float_container.innerHTML = "<i id=\"cart_icon_id\" class=\"fas fa-shopping-cart\"></i>";
         this.boton_modal.style.display = 'none';
         this.boton_vaciar.style.display = 'none';
       }
@@ -38385,8 +38390,9 @@ function events(value, elements) {
         }
 
         storage.addStorage(productos).then(function (res) {
-          carrito.agregarCarrito(productos);
-          carrito.addingAlert(alert);
+          carrito.agregarCarrito(productos); //carrito.addingAlert(alert);
+
+          window.alert('Producto agregado con éxito');
         });
       });
     });
@@ -38418,8 +38424,9 @@ function events(value, elements) {
         }
 
         storage.addStorage(productos).then(function (res) {
-          carrito.agregarCarrito(productos);
-          carrito.addingAlert(alert);
+          carrito.agregarCarrito(productos); //carrito.addingAlert(alert);
+
+          window.alert('Producto agregado con éxito');
         });
       });
     });

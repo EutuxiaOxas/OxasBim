@@ -299,7 +299,7 @@
 				<div class="col-12 text-rubik">
 					<strong>Compartir:</strong>
 				</div>
-				<div class="col-4 px-md-1 px-lg-2">
+				<div class="col-4 px-1 px-lg-2">
 					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="facebook">
 						<?xml version="1.0" encoding="iso-8859-1"?>
 						<svg version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -312,7 +312,7 @@
 						Facebook
 					</a>
 				</div>
-				<div class="col-4 px-md-1 px-lg-2">
+				<div class="col-4 px-1 px-lg-2">
 					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="whastapp">
 						<?xml version="1.0" encoding="iso-8859-1"?>
 						<svg class="icon-whastapp" width="16px" heigth="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -338,7 +338,7 @@
 						Whatsapp
 					</a>
 				</div>
-				<div class="col-4 px-md-1 px-lg-2">
+				<div class="col-4 px-1 px-lg-2">
 					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="twitter">
 						<?xml version="1.0" encoding="iso-8859-1"?>
 						<svg version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

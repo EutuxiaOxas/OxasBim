@@ -53,7 +53,7 @@ class CarritoUI {
 							<div class="col-auto mr-3 px-0">
 								<span class="cantidad_modal_cart">Cantidad:</span>
 							</div>
-							<div class="col-2">
+							<div class="col-6 col-md-2">
 								<select class="form-control cantidad_producto_cart">
 									<option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
 									<option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
@@ -90,7 +90,7 @@ class CarritoUI {
 	    			            <div class="col-auto mr-3 px-0">
 	    			                <span class="cantidad_modal_cart">Cantidad:</span>
 	    			            </div>
-	    			            <div class="col-2">
+	    			            <div class="col-6 col-md-2">
 	    			                <select class="form-control cantidad_producto_cart" id="${producto.id}">
 	    				              
 	    			                </select> 

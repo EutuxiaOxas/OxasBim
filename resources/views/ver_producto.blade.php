@@ -301,7 +301,15 @@
 				</div>
 				<div class="col-4 px-md-1 px-lg-2">
 					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="facebook">
-						<img src="{{ asset('/icons/facebook.svg') }}" style="width:16px;height:16px;">
+						<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" width="16px" heigth="16px" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 155.139 155.139" style="enable-background:new 0 0 155.139 155.139;" xml:space="preserve">
+<g>
+	<path id="f_1_" style="fill:#026ae3;" d="M89.584,155.139V84.378h23.742l3.562-27.585H89.584V39.184
+		c0-7.984,2.208-13.425,13.67-13.425l14.595-0.006V1.08C115.325,0.752,106.661,0,96.577,0C75.52,0,61.104,12.853,61.104,36.452
+		v20.341H37.29v27.585h23.814v70.761H89.584z"/>
+</g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
 						Facebook
 					</a>
 				</div>

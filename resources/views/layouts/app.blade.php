@@ -232,10 +232,10 @@
                             <h5>Nombre y apellido</h5>
                             <input class="form-control" type="text" id="form_name" required maxlength="191" name="nombre" placeholder="Ingresa tu nombre y apellido">
                         </div>
-                       <div class="form-group">
+                       <!--div-- class="form-group">
                             <h5>Telefono</h5>
                             <input class="form-control" type="text" required maxlength="191" name="telefono" placeholder="Ingresa tu número de telefono">
-                        </div>
+                        </!--div-->
 
                         <div class="form-group">
                             <h5>Cédula</h5>

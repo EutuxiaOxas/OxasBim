@@ -195,7 +195,7 @@
 			</div>	
 			<input type="hidden" value="{{$product->slug}}">
 			<div class="row">
-				<div class="col-2 pr-0">
+				<div class="col-3 col-lg-2 pr-0">
 						@if($product->quantity >= 10)
 						    <select class="form-control select_quantity">
 						        <option value="1">1</option>
@@ -219,7 +219,7 @@
 						    </select>
 						@endif				
 				</div>
-				<div class="col-10">
+				<div class="col-9 col-lg-10">
 					@if($product->quantity > 0)
 						@if(auth()->user())
 						<button id="{{$product->id}}" class="btn btn-primary-product text-rubik to_server">Agregar al carrito</button>
@@ -301,19 +301,19 @@
 				</div>
 				<div class="col-4 px-md-1 px-lg-2">
 					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="facebook">
-						<img src="/icons/facebook.svg" style="width:16px;height:16px;">
+						<img src="{{asset('icons/facebook.svg')}}" style="width:16px;height:16px;">
 						Facebook
 					</a>
 				</div>
 				<div class="col-4 px-md-1 px-lg-2">
 					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="whastapp">
-						<img src="/icons/whatsapp.svg" style="width:16px;height:16px;">
+						<img src="{{asset('icons/whatsapp.svg')}}" style="width:16px;height:16px;">
 						Whatsapp
 					</a>
 				</div>
 				<div class="col-4 px-md-1 px-lg-2">
 					<a class="btn btn-outline-success btn-share text-rubik px-2 px-md-1 px-lg-2" href="#" id="twitter">
-						<img src="/icons/twitter.svg" style="width: 16px;height: 16px;">
+						<img src="{{asset('icons/twitter.svg')}}" style="width: 16px;height: 16px;">
 						Twitter
 					</a>
 				</div>

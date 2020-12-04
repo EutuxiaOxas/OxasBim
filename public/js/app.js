@@ -38092,9 +38092,9 @@ var CarritoUI = /*#__PURE__*/function () {
           var template = '';
 
           if (producto.producto) {
-            template = "\n\t\t\t\t<div class=\"product_main row\">\n\t\t\t\t\t<div class=\"col-2\">\n\t\t\t\t\t\t<div class=\"container_img_modal_cart\">\n\t\t\t\t\t\t\t<img class=\"img_modal_cart\" src=\"".concat(producto.image, "\" alt=\"Imagen Producto en carrito\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-10 px-0 pl-4\">\n\t\t\t\t\t\t<div class=\"row align-items-center\">\n\t\t\t\t\t\t\t<span class=\"title_modal_cart mr-3\">").concat(producto.title, " </span> \n\t\t\t\t\t\t\t<span class=\"price_modal_cart\"> ").concat(producto.price, " $</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"row align-items-center mt-2\">\n\t\t\t\t\t\t\t<div class=\"col-auto mr-3 px-0\">\n\t\t\t\t\t\t\t\t<span class=\"cantidad_modal_cart\">Cantidad:</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-auto\">\n\t\t\t\t\t\t\t\t<select class=\"form-control cantidad_producto_cart\">\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n\t\t\t\t\t\t\t\t\t").concat(producto.cantidad > 5 ? "<option class=\"cantidad_opcion\" value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n\t\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>  \n\t\t\t\t\t\t<input type=\"hidden\" value=\"").concat(producto.id, "\">          \n\t\t\t\t\t</div>\n\t\t\t  \t</div>\n  \t\t\t\t");
+            template = "\n\t\t\t\t<div class=\"product_main row\">\n\t\t\t\t\t<div class=\"col-2\">\n\t\t\t\t\t\t<div class=\"container_img_modal_cart\">\n\t\t\t\t\t\t\t<img class=\"img_modal_cart\" src=\"".concat(producto.image, "\" alt=\"Imagen Producto en carrito\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-10 px-0 pl-4\">\n\t\t\t\t\t\t<div class=\"row align-items-center\">\n\t\t\t\t\t\t\t<span class=\"title_modal_cart mr-3\">").concat(producto.title, " </span> \n\t\t\t\t\t\t\t<span class=\"price_modal_cart\"> ").concat(producto.price, " $</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"row align-items-center mt-2\">\n\t\t\t\t\t\t\t<div class=\"col-auto mr-3 px-0\">\n\t\t\t\t\t\t\t\t<span class=\"cantidad_modal_cart\">Cantidad:</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"col-6 col-md-2\">\n\t\t\t\t\t\t\t\t<select class=\"form-control cantidad_producto_cart\">\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 1 ? 'selected' : '', ">1</option>\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 2 ? 'selected' : '', ">2</option>\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 3 ? 'selected' : '', ">3</option>\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 4 ? 'selected' : '', ">4</option>\n\t\t\t\t\t\t\t\t\t<option class=\"cantidad_opcion\" ").concat(producto.cantidad == 5 ? 'selected' : '', ">5</option>\n\t\t\t\t\t\t\t\t\t").concat(producto.cantidad > 5 ? "<option class=\"cantidad_opcion\" value=\"".concat(producto.cantidad, "\" selected>").concat(producto.cantidad, "</option>") : '', "\n\t\t\t\t\t\t\t\t</select>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>  \n\t\t\t\t\t\t<input type=\"hidden\" value=\"").concat(producto.id, "\">          \n\t\t\t\t\t</div>\n\t\t\t  \t</div>\n  \t\t\t\t");
           } else {
-            template = "\n\t    \t\t\t<div class=\"product_main row mb-3 mx-2\">\n\t    \t\t\t    <span class=\"close_product_modal eliminar_producto\" id=\"".concat(producto.id, "\">\n\t    \t\t\t        <i class=\"fas fa-times eliminar_producto\" id=\"").concat(producto.id, "\"></i>\n\t    \t\t\t    </span>\n\t    \t\t\t    <div class=\"col-2\">\n\t    \t\t\t        <div class=\"row\">\n\t    \t\t\t            <div class=\"container_img_modal_cart\">\n\t    \t\t\t                <img class=\"img_modal_cart\" src=\"").concat(producto.image, "\" alt=\"Imagen Producto en carrito\"> \n\t    \t\t\t            </div>\n\t    \t\t\t        </div>\n\t    \t\t\t    </div>\n\t    \t\t\t    <div class=\"col-10 px-0 pl-4\">\n\t    \t\t\t        <div class=\"row align-items-center\">\n\t    \t\t\t            <span class=\"title_modal_cart mr-3\">").concat(producto.title, "</span> \n\t    \t\t\t            <span class=\"price_modal_cart\"> ").concat(producto.price, " $</span>\n\t    \t\t\t        </div>\n\t    \t\t\t        <div class=\"row align-items-center mt-2\">\n\t    \t\t\t            <div class=\"col-auto mr-3 px-0\">\n\t    \t\t\t                <span class=\"cantidad_modal_cart\">Cantidad:</span>\n\t    \t\t\t            </div>\n\t    \t\t\t            <div class=\"col-auto\">\n\t    \t\t\t                <select class=\"form-control cantidad_producto_cart\" id=\"").concat(producto.id, "\">\n\t    \t\t\t\t              \n\t    \t\t\t                </select> \n\t    \t\t\t            </div>\n\t    \t\t\t        </div>  \n\t    \t\t\t        <input type=\"hidden\" value=\"").concat(producto.id, "\">          \n\t    \t\t\t    </div>\n\t    \t\t\t</div>\n  \t\t\t\t");
+            template = "\n\t    \t\t\t<div class=\"product_main row mb-3 mx-2\">\n\t    \t\t\t    <span class=\"close_product_modal eliminar_producto\" id=\"".concat(producto.id, "\">\n\t    \t\t\t        <i class=\"fas fa-times eliminar_producto\" id=\"").concat(producto.id, "\"></i>\n\t    \t\t\t    </span>\n\t    \t\t\t    <div class=\"col-2\">\n\t    \t\t\t        <div class=\"row\">\n\t    \t\t\t            <div class=\"container_img_modal_cart\">\n\t    \t\t\t                <img class=\"img_modal_cart\" src=\"").concat(producto.image, "\" alt=\"Imagen Producto en carrito\"> \n\t    \t\t\t            </div>\n\t    \t\t\t        </div>\n\t    \t\t\t    </div>\n\t    \t\t\t    <div class=\"col-10 px-0 pl-4\">\n\t    \t\t\t        <div class=\"row align-items-center\">\n\t    \t\t\t            <span class=\"title_modal_cart mr-3\">").concat(producto.title, "</span> \n\t    \t\t\t            <span class=\"price_modal_cart\"> ").concat(producto.price, " $</span>\n\t    \t\t\t        </div>\n\t    \t\t\t        <div class=\"row align-items-center mt-2\">\n\t    \t\t\t            <div class=\"col-auto mr-3 px-0\">\n\t    \t\t\t                <span class=\"cantidad_modal_cart\">Cantidad:</span>\n\t    \t\t\t            </div>\n\t    \t\t\t            <div class=\"col-6 col-md-2\">\n\t    \t\t\t                <select class=\"form-control cantidad_producto_cart\" id=\"").concat(producto.id, "\">\n\t    \t\t\t\t              \n\t    \t\t\t                </select> \n\t    \t\t\t            </div>\n\t    \t\t\t        </div>  \n\t    \t\t\t        <input type=\"hidden\" value=\"").concat(producto.id, "\">          \n\t    \t\t\t    </div>\n\t    \t\t\t</div>\n  \t\t\t\t");
           }
 
           _this.cart_body.innerHTML += template;
@@ -38128,13 +38128,18 @@ var CarritoUI = /*#__PURE__*/function () {
         });
         this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
         this.badge_main.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -10px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(this.totalCantidades, "</span>\n\t\t\t</div>\n\t\t");
+        this.cart_float_container = document.getElementById('container_float');
+        this.cart_float_container.innerHTML = "<i id=\"cart_icon_id\" class=\"fas fa-shopping-cart\"></i>";
+        this.cart_float_container.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -1px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(this.totalCantidades, "</span>\n\t\t\t</div>\n\t\t");
         this.carrito.children[0].children[0].classList.add('cart_on');
       } else {
         this.boton_modal = document.getElementById('boton_modal');
         this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
+        this.cart_float_container = document.getElementById('container_float');
         this.cart_body.innerHTML = 'No hay productos en el carrito';
         this.carrito.children[0].children[0].classList.remove('cart_on');
         this.badge_main.innerHTML = "<i class=\"fas fa-shopping-cart\"></i>";
+        this.cart_float_container.innerHTML = "<i id=\"cart_icon_id\" class=\"fas fa-shopping-cart\"></i>";
         this.boton_modal.style.display = 'none';
         this.boton_vaciar.style.display = 'none';
       }
@@ -38385,8 +38390,9 @@ function events(value, elements) {
         }
 
         storage.addStorage(productos).then(function (res) {
-          carrito.agregarCarrito(productos);
-          carrito.addingAlert(alert);
+          carrito.agregarCarrito(productos); //carrito.addingAlert(alert);
+
+          window.alert('Producto agregado con éxito');
         });
       });
     });
@@ -38418,8 +38424,9 @@ function events(value, elements) {
         }
 
         storage.addStorage(productos).then(function (res) {
-          carrito.agregarCarrito(productos);
-          carrito.addingAlert(alert);
+          carrito.agregarCarrito(productos); //carrito.addingAlert(alert);
+
+          window.alert('Producto agregado con éxito');
         });
       });
     });
@@ -38802,8 +38809,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\OxasBim\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\OxasBim\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/omega/coding/OxasBim/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/omega/coding/OxasBim/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

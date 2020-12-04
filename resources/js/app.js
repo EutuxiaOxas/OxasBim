@@ -53,7 +53,7 @@ class CarritoUI {
 							<div class="col-auto mr-3 px-0">
 								<span class="cantidad_modal_cart">Cantidad:</span>
 							</div>
-							<div class="col-auto">
+							<div class="col-6 col-md-2">
 								<select class="form-control cantidad_producto_cart">
 									<option class="cantidad_opcion" ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
 									<option class="cantidad_opcion" ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
@@ -90,7 +90,7 @@ class CarritoUI {
 	    			            <div class="col-auto mr-3 px-0">
 	    			                <span class="cantidad_modal_cart">Cantidad:</span>
 	    			            </div>
-	    			            <div class="col-auto">
+	    			            <div class="col-6 col-md-2">
 	    			                <select class="form-control cantidad_producto_cart" id="${producto.id}">
 	    				              
 	    			                </select> 
@@ -153,15 +153,27 @@ class CarritoUI {
 			</div>
 		`
 
+		this.cart_float_container = document.getElementById('container_float')
+		this.cart_float_container.innerHTML = `<i id="cart_icon_id" class="fas fa-shopping-cart"></i>`
+		this.cart_float_container.innerHTML += `
+			<div id="carrito_badge" style="position: absolute; top: -1px; right: 0;">
+			  	<span class="badge badge-dark">${this.totalCantidades}</span>
+			</div>
+		`
+
   		this.carrito.children[0].children[0].classList.add('cart_on')
 
   	}else {
       	this.boton_modal = document.getElementById('boton_modal');
       	this.boton_vaciar = document.getElementById('vaciar_carrito_cart');
+      	this.cart_float_container = document.getElementById('container_float');
+
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
+
   		this.carrito.children[0].children[0].classList.remove('cart_on')
   		this.badge_main.innerHTML = `<i class="fas fa-shopping-cart"></i>`
 
+  		this.cart_float_container.innerHTML = `<i id="cart_icon_id" class="fas fa-shopping-cart"></i>`
       	this.boton_modal.style.display = 'none'
       	this.boton_vaciar.style.display = 'none'
   	}
@@ -438,7 +450,8 @@ function events(value, elements)
 				storage.addStorage(productos)
 					.then(res => {
 						carrito.agregarCarrito(productos);
-						carrito.addingAlert(alert);
+						//carrito.addingAlert(alert);
+						window.alert('Producto agregado con éxito');
 					})
 			});
 		});
@@ -468,7 +481,8 @@ function events(value, elements)
 				storage.addStorage(productos)
 					.then(res => {
 						carrito.agregarCarrito(productos);
-						carrito.addingAlert(alert);
+						//carrito.addingAlert(alert);
+						window.alert('Producto agregado con éxito');
 					})
 			});
 		});

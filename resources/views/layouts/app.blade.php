@@ -163,6 +163,7 @@
         font-size: 1.25rem;
     }
     .container_float_cart{
+        position: relative;
         display: flex;
           flex-direction:row;
           justify-content: center;
@@ -252,7 +253,7 @@
     </div>
     <!-- Boton Flotante Carrito Cel -->
     <div class="float_button_cart d-md-none" data-toggle="modal" data-target="#modalCarritoCompras">
-        <div class="container_float_cart">
+        <div class="container_float_cart" id="container_float">
             <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
         </div>        
     </div>

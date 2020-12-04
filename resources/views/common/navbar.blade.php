@@ -27,7 +27,7 @@
         padding-top: 0.012rem;
      }
      .cantidad_producto_cart{
-        width: 90%;
+        width: 100%;
      }
 </style>
 @if(isset($navbar_null))

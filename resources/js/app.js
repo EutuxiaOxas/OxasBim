@@ -156,8 +156,8 @@ class CarritoUI {
 		this.cart_float_container = document.getElementById('container_float')
 		this.cart_float_container.innerHTML = `<i id="cart_icon_id" class="fas fa-shopping-cart"></i>`
 		this.cart_float_container.innerHTML += `
-			<div id="carrito_badge" style="position: absolute; top: -1px; right: 0;">
-			  	<span class="badge badge-dark">${this.totalCantidades}</span>
+			<div id="carrito_badge" style="position: absolute; top: 1px; right: 0;">
+			  	<span class="badge_button_float_quantity">${this.totalCantidades}</span>
 			</div>
 		`
 
@@ -481,8 +481,19 @@ function events(value, elements)
 				storage.addStorage(productos)
 					.then(res => {
 						carrito.agregarCarrito(productos);
+						
 						//carrito.addingAlert(alert);
-						window.alert('Producto agregado con éxito');
+						let messageSuccess = document.getElementById("message_success");
+						console.log(messageSuccess);
+						messageSuccess.style.visibility = "visible";
+						messageSuccess.style.opacity = "1";
+						messageSuccess.classList.add('transitionClean');
+						setTimeout(hiddenMessageAddProduct,2250);
+							function hiddenMessageAddProduct(){
+								messageSuccess.style.opacity = "0";
+								messageSuccess.style.visibility = "hidden";		
+								messageSuccess.classList.remove('transitionClean');
+							}
 					})
 			});
 		});

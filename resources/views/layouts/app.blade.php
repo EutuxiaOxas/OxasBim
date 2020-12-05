@@ -177,6 +177,41 @@
     #cart_icon_id{
         color: #fafafa;
     }
+    .badge_button_float_quantity{
+        display: flex;
+          flex-direction:row;
+          justify-content: center;
+          align-items: center;
+        background-color: #222;
+        width:22px;
+        height: 22px;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 0.9rem;
+    }
+
+    #message_success{
+        position: fixed;
+        top: 25px;
+        right: -55px;
+        background-color: #3ec61c;
+        font-size: 1rem;
+        width: 220px;
+        padding: 0.75rem 1.25rem;
+        border-radius: 7px;
+        z-index: 1750;
+        color:#fff;
+        text-align: center;
+        -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.29); 
+        box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.29);
+        visibility: hidden;
+        opacity: 0.5;
+   
+    }
+    .transitionClean{
+        right: 100px!important;
+        transition: all 1s !important;
+    }
     </style>
 </head>
 <body>
@@ -257,6 +292,9 @@
             <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
         </div>        
     </div>
+    <!-- Producto Agregado al carrito -->
+    <div id="message_success">¡Agregado con éxito!</div>
+
     <!-- FOOTER -->
     @include('common.footer')
 

@@ -38130,7 +38130,7 @@ var CarritoUI = /*#__PURE__*/function () {
         this.badge_main.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -10px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(this.totalCantidades, "</span>\n\t\t\t</div>\n\t\t");
         this.cart_float_container = document.getElementById('container_float');
         this.cart_float_container.innerHTML = "<i id=\"cart_icon_id\" class=\"fas fa-shopping-cart\"></i>";
-        this.cart_float_container.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: -1px; right: 0;\">\n\t\t\t  \t<span class=\"badge badge-dark\">".concat(this.totalCantidades, "</span>\n\t\t\t</div>\n\t\t");
+        this.cart_float_container.innerHTML += "\n\t\t\t<div id=\"carrito_badge\" style=\"position: absolute; top: 1px; right: 0;\">\n\t\t\t  \t<span class=\"badge_button_float_quantity\">".concat(this.totalCantidades, "</span>\n\t\t\t</div>\n\t\t");
         this.carrito.children[0].children[0].classList.add('cart_on');
       } else {
         this.boton_modal = document.getElementById('boton_modal');
@@ -38426,7 +38426,18 @@ function events(value, elements) {
         storage.addStorage(productos).then(function (res) {
           carrito.agregarCarrito(productos); //carrito.addingAlert(alert);
 
-          window.alert('Producto agregado con éxito');
+          var messageSuccess = document.getElementById("message_success");
+          console.log(messageSuccess);
+          messageSuccess.style.visibility = "visible";
+          messageSuccess.style.opacity = "1";
+          messageSuccess.classList.add('transitionClean');
+          setTimeout(hiddenMessageAddProduct, 2250);
+
+          function hiddenMessageAddProduct() {
+            messageSuccess.style.opacity = "0";
+            messageSuccess.style.visibility = "hidden";
+            messageSuccess.classList.remove('transitionClean');
+          }
         });
       });
     });
@@ -38809,8 +38820,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/omega/coding/OxasBim/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/omega/coding/OxasBim/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\OxasBim\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\OxasBim\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

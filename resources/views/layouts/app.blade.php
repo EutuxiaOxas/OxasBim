@@ -209,7 +209,7 @@
    
     }
     .transitionClean{
-        right: 10vw!important;
+        right: 7.5vw!important;
         transition: all 1s !important;
     }
     </style>

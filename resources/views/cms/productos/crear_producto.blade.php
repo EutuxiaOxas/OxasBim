@@ -142,12 +142,6 @@
 			<div>
 				<input type="file" name="second_image[]">
 			</div>
-			<div>
-				<input type="file" name="second_image[]">
-			</div>
-			<div>
-				<input type="file" name="second_image[]">
-			</div>
 		</div>
 		<div class="form-group col-12">
 			<input type="submit" id="submitForm" class="btn btn-primary" value="Crear producto">

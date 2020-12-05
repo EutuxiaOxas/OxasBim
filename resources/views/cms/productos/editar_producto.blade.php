@@ -141,8 +141,8 @@
 			@php $contador += 1 @endphp
 			@endforeach
 
-			@if($contador < 6)
-				@while($contador < 6)
+			@if($contador < 4)
+				@while($contador < 4)
 					<div class="mb-2">
 						<img src="" style="width: 40px; height: 40px; object-fit: cover;" alt="imagen">
 						<input type="file" class="secondary_img" name="second_image[]">

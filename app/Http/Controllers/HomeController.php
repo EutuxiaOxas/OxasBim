@@ -36,7 +36,7 @@ class HomeController extends Controller
         for ($i = 0; $i <= $cantidad_otros_productos; $i++) {
             if(isset($categorias[$i])){
                 //obtengo los productos por categoria
-                $product_cat = Product::where('category_id', $categorias[$i]->id)->get();
+                $product_cat = Product::inRandomOrder()->where('category_id', $categorias[$i]->id)->get();
                 array_push($array_other_products,$product_cat);
             }else{
                 break;
@@ -51,9 +51,9 @@ class HomeController extends Controller
 
         if(isset($request->search))
         {
-            $productos = Product::where('title', 'LIKE', '%'.$request->search.'%')->paginate(25);
+            $productos = Product::inRandomOrder()->where('title', 'LIKE', '%'.$request->search.'%')->paginate(25);
         }else {
-            $productos = Product::paginate(25);
+            $productos = Product::inRandomOrder()->paginate(25);
         }
         
         $categorias = Category::all();
@@ -77,7 +77,7 @@ class HomeController extends Controller
         $product_categorie = Category::where('slug', $slug)->first();
         $categorias = Category::all();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
-        $productos = $product_categorie->products()->paginate(25);
+        $productos = $product_categorie->products()->inRandomOrder()->paginate(25);
 
         return view('productos', compact('productos', 'categorias', 'logo', 'product_categorie'));
     }

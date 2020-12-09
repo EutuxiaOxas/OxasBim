@@ -8,6 +8,9 @@ use App\Product;
 use App\Category;
 use App\Publicidad;
 use App\Configuraciones;
+
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+
 class HomeController extends Controller
 {
     /**
@@ -56,7 +59,7 @@ class HomeController extends Controller
             $productos = Product::inRandomOrder()->paginate(25);
         }
         
-        $categorias = Category::all();
+        $categorias = Category::with(['products'])->get();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
         return view('productos', compact('productos', 'categorias', 'logo'));
     }
@@ -72,12 +75,41 @@ class HomeController extends Controller
         return view('ver_producto', compact('product', 'logo', 'otros_products', 'm_pagos', 'm_envios'));
     }
 
-    public function showProductsByCategory($slug)
+    public function showProductsByCategory(Request $request, $slug)
     {
         $product_categorie = Category::where('slug', $slug)->first();
-        $categorias = Category::all();
+        $categorias_hijo = Category::with(['products'])->where('padre_id', $product_categorie->id)->get();
+
+        $categorias = Category::with(['products'])->get();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
-        $productos = $product_categorie->products()->inRandomOrder()->paginate(25);
+        $productos = [];
+
+        foreach (Product::inRandomOrder()->where('category_id', $product_categorie->id)->get() as $producto) {
+            $productos[] = $producto;
+        }
+
+        foreach ($categorias_hijo as $categoria) {
+            foreach (Product::inRandomOrder()->where('category_id', $categoria->id)->get() as $producto) {
+                $productos[] = $producto;
+            }
+        }
+
+
+
+        $total= count($productos);
+        $per_page = 25;
+        $current_page = $request->input("page") ?? 1;
+
+        $starting_point = ($current_page * $per_page) - $per_page;
+
+        $productos = array_slice($productos, $starting_point, $per_page, true);
+
+        $productos = new Paginator($productos, $total, $per_page, $current_page, [
+            'path' => $request->url(),
+            'query' => $request->query(),
+        ]);
+
+
 
         return view('productos', compact('productos', 'categorias', 'logo', 'product_categorie'));
     }

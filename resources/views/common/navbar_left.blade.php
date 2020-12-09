@@ -5,7 +5,10 @@
             <div class="categories_card">
                 <div class="row align-items-center">
                     <div class="col-auto">
-                        <a class="text-rubik" href="{{route('product.category.show', $categoria->slug)}}">{{$categoria->title}}</a>
+                        <a class="text-rubik" href="{{route('product.category.show', $categoria->slug)}}">
+                            {{$categoria->title}} 
+                            <small class="ml-1">({{$categoria->products->count() ? $categoria->products->count() : ''}})</small>
+                        </a>
                     </div>
                     <div class="col-auto ml-auto">
                         <svg class="span-circle arrow_class" xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 25 25" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
@@ -15,7 +18,10 @@
                     @foreach($categorias as $cat_hijo)
                         @if($cat_hijo->padre_id == $categoria->id)
                             <li class="sub_categorie_item">
-                                <a class="text-rubik" href="{{route('product.category.show', $cat_hijo->slug)}}">{{$cat_hijo->title}}</a>
+                                <a class="text-rubik" href="{{route('product.category.show', $cat_hijo->slug)}}">
+                                    {{$cat_hijo->title}}
+                                    <small>({{$cat_hijo->products->count() ? $cat_hijo->products->count() : ''}})</small>
+                                </a>
                             </li>
                         @endif
                     @endforeach

@@ -12,7 +12,7 @@
         overflow: hidden;
   }
   .img_others_banner{
-    max-height: 100%;
+    max-height: 45vh;
     max-width: 100%; 
     min-height: auto;
     min-width: auto;    

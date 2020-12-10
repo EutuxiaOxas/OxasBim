@@ -63,14 +63,14 @@
         text-decoration: line-through;
     }
     .btn-secondary-product{
-        background-color: #fe696a!important;
+        /*cambiar para otro modelo*/
+        background-color: #009a6b!important;
 		border-radius: 3px;
 		width: 100%;
         color:#fff;
     }
     .btn-secondary-product:hover{
         color:#fff;
-        box-shadow: 0 0.5rem 1rem -0.5rem rgba(254,105,106,0.9);
     }
     .btn-outline-primary-product{
         background-color: #dadada!important;

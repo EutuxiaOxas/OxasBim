@@ -30,7 +30,8 @@
         width: 100%;
      }
      .btn-search{
-        background-color: #696dc8!important;
+         /*cambiar para otro modelo*/
+        background-color: #f95222!important;
 		border-radius: 3px;
 		width: 100%;
         color:#fff;

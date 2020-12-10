@@ -8,6 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
+    <meta name="author" content="Oxas Tech">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('logo.png')}}">
+
+    @yield('header')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

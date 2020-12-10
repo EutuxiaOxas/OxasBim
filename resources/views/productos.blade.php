@@ -1,7 +1,16 @@
 @extends('layouts.app')
 
 @section('title')
-	Productos
+	Productos Tienda Virtual Básica - Oxas Tech
+@endsection
+
+@section('header')
+	{{-- precargar imagenes --}}
+	<link rel="preload" href="{{asset('logo.png')}}" as="image">
+
+	<!-- Primary Meta Tags -->
+	<meta name="title" content="Oxas - Productos en Tienda Virtual Básica">
+	<meta name="description" content="Tienda virtual para recolectar pedidos y redirigir las ventas a Whatsapp. Perfecta para activar Instagram Shop.">
 @endsection
 
 @section('content')

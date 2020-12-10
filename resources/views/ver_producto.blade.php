@@ -156,14 +156,14 @@
 			</div>
 		</div>
 		<div class="col-1 d-none d-md-block order-1">
-			<div class="row mb-2">
-				<div class="container_img_second">
+			<div class="row mb-2 container_img_second">
+				<div class="">
 					<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}">
 				</div>					
 			</div>
 			@foreach($product->images as $image)
-				<div class="row mb-2">
-					<div class="container_img_second">
+				<div class="row mb-2 container_img_second">
+					<div class="">
 						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}">
 					</div>					
 				</div>

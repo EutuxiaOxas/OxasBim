@@ -26,7 +26,7 @@
         max-height: 13vh;
         min-width: auto;
         max-width: 100%;
-		opacity: 0.6;
+		opacity: 0.7;
 	}
 	.img_second_detail:hover{
 		cursor: pointer;

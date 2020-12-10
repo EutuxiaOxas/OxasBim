@@ -20,7 +20,7 @@
     }
     .img_product{
         min-height: auto;
-        max-height: 100%;
+        max-height: 40vh;
         min-width: auto;
         max-width: 100%;        
     }

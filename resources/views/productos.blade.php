@@ -82,7 +82,7 @@
 				@include('common.card_product')
 				@endforeach
 			</section>
-			<div class="mt-5">
+			<div class="row justify-content-center mt-5">
 				{{ $productos->appends(request()->input())->links() }}
 			</div>
 						

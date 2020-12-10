@@ -1,6 +1,6 @@
 <style type="text/css">
         footer{
-            background-color: #21325b;
+            background-color: #1a1a1a;
         }
 
         .footer_nav a{

@@ -84,16 +84,16 @@
 
 
 	.btn-primary-product{
-		background-color: #2782ea!important;
+		background-color: #fe696a!important;
 		border-radius: 3px;
 		width: 100%;
-		box-shadow: 0 0.5rem 1.125rem -0.5rem 	rgba(39, 130, 234,0.7);
+		box-shadow: 0 0.5rem 1.125rem -0.5rem rgba(254,105,106,0.9);
 		color: #fff!important;
 		font-weight: 400!important;
 		padding: 0.75rem 0!important;
 	}
 	.btn-primary-product:hover{
-		background-color: #2480e9!important;
+		background-color: #ea6061!important;
 	}
 
 	.btn-secondary-product{

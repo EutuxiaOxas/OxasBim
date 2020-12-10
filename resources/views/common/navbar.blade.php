@@ -29,6 +29,15 @@
      .cantidad_producto_cart{
         width: 100%;
      }
+     .btn-search{
+        background-color: #696dc8!important;
+		border-radius: 3px;
+		width: 100%;
+        color:#fff;
+     }
+     .btn-search:hover{
+         color:#fff;
+     }
 </style>
 @if(isset($navbar_null))
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="display: none;">
@@ -85,7 +94,7 @@
                         </div>
                         <input class="form-control search-navbar" type="search" placeholder="Buscar producto" name="search" autocomplete="off">
                         <div class="input-group-append">
-                            <input type="submit" class="btn btn-sm btn-primary px-3" value="Buscar">
+                            <input type="submit" class="btn btn-sm btn-search px-3" value="Buscar">
                         </div>
                     </div>
                 </form>

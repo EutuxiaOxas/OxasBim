@@ -451,7 +451,18 @@ function events(value, elements)
 					.then(res => {
 						carrito.agregarCarrito(productos);
 						//carrito.addingAlert(alert);
-						window.alert('Producto agregado con éxito');
+						//window.alert('Producto agregado con éxito');
+						let messageSuccess = document.getElementById("message_success");
+						console.log(messageSuccess);
+						messageSuccess.style.visibility = "visible";
+						messageSuccess.style.opacity = "1";
+						messageSuccess.classList.add('transitionClean');
+						setTimeout(hiddenMessageAddProduct,2250);
+							function hiddenMessageAddProduct(){
+								messageSuccess.style.opacity = "0";
+								messageSuccess.style.visibility = "hidden";		
+								messageSuccess.classList.remove('transitionClean');
+							}
 					})
 			});
 		});

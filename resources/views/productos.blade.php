@@ -69,9 +69,9 @@
 					@endif
 
 					@if(isset($productos) && sizeof($productos) > 0)
-						<p>Cantidad: {{sizeof($productos)}}</p>
+						<p style="font-family:Rubik">Total de productos: <strong>{{sizeof($productos)}}</strong> </p>
 					@elseif(sizeof($productos) > 0)
-						<p>Cantidad: {{sizeof($productos)}}</p>
+						<p style="font-family:Rubik">Total de productos: <strong>{{sizeof($productos)}}</strong> </p>
 					@endif
 				</div>				
 				<div id="add_alert" style="display: none;" class="alert alert-success">Producto Agregado con éxito!</div>

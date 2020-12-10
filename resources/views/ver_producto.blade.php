@@ -23,7 +23,7 @@
 	}
 	.img_second_detail{
 		min-height: auto;
-        max-height: 100%;
+        max-height: 13vh;
         min-width: auto;
         max-width: 100%;
 		opacity: 0.6;

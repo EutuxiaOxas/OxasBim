@@ -140,7 +140,7 @@
 
 	<div class="row">
 		<div class="col-12 d-md-none order-2">
-			<div class="row px-2 mb-4">
+			<div class="row px-2 mb-4 justify-content-around">
 				<div class="col-2 container_img_second">
 					<div>
 						<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}">

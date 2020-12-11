@@ -154,7 +154,7 @@
 </style>
 
 @section('content')
-<div class="container mt-md-5">
+<div class="container mt-md-5" itemscope itemtype="https://schema.org/Product">
 	<div id="add_alert" style="display: none;" class="alert alert-success mt-3">Producto Agregado con éxito!</div>
 
 	<div class="row">
@@ -162,13 +162,13 @@
 			<div class="row px-2 mb-4 justify-content-around">
 				<div class="col-2 container_img_second">
 					<div>
-						<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}">
+						<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}" itemprop="image">
 					</div>
 				</div>
 				@foreach($product->images as $image)
 				<div class="col-2 container_img_second">
 					<div>
-						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}">
+						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}" itemprop="image">
 					</div>					
 				</div>
 	    		@endforeach
@@ -177,13 +177,13 @@
 		<div class="col-1 d-none d-md-block order-1">
 			<div class="row mb-2 container_img_second">
 				<div class="">
-					<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}">
+					<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}" itemprop="image">
 				</div>					
 			</div>
 			@foreach($product->images as $image)
 				<div class="row mb-2 container_img_second">
 					<div class="">
-						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}">
+						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}" itemprop="image">
 					</div>					
 				</div>
 	    	@endforeach
@@ -191,14 +191,14 @@
 		<div class="col-12 col-md-6 order-1 order-md-2">
 			<div class="row container_img_product_principal">
 				<div class="">
-					<img class="img_product_detail" id="producto_imagen_principal" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}">
+					<img class="img_product_detail" id="producto_imagen_principal" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}" itemprop="image">
 				</div>
 			</div>					
 		</div>
 		<div class="col-12 col-md-5 order-3">
 			<div class="row alings-itmes-center">
 				<div class="col-auto">
-					<div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href="{{route('product.category.show', $product->category->slug)}}"><strong class="text-secondary">{{$product->category->title}}</strong></a></div>
+					<div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href="{{route('product.category.show', $product->category->slug)}}"><strong class="text-secondary" itemprop="category">{{$product->category->title}}</strong></a></div>
 				</div>
 				<div class="col-auto ml-auto">
 					<span class="tag-available text-rubik">
@@ -207,9 +207,9 @@
 					</span>
 				</div>
 			</div>
-			<h5 class="title_product_detail text-rubik mt-2">{{$product->title}}</h5>
-			<div class="text-rubik mt-3 mb-4">
-				<span class="price_product_detail">${{number_format($product->price, 2)}}</span>
+			<h5 class="title_product_detail text-rubik mt-2" itemprop="name">{{$product->title}}</h5>
+			<div class="text-rubik mt-3 mb-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+				<span class="price_product_detail"> <span itemprop="priceCurrency">$</span> <span itemprop="price">{{number_format($product->price, 2)}}</span></span>
 				<span class="price_product_detail_reference ml-2">${{number_format($product->price_reference, 2)}}</span>
 			</div>	
 			<input type="hidden" value="{{$product->slug}}">
@@ -381,7 +381,7 @@
 	<div class="row justify-content-center mt-4">
 		<div class="col-10">
 			<h5 class="title-description text-rubik">Descripción</h5>
-			<p class="mt-4 text-rubik">
+			<p class="mt-4 text-rubik" itemprop="description">
 				@php echo nl2br($product->description); @endphp.</p>
 		</div>
 	</div>

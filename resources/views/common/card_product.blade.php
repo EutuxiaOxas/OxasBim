@@ -82,24 +82,23 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-4 px-2 mb-4 pb-0">
     <div class="card" style="border: 0px;">
         <div class="card_product">
-            <a class="" href="{{route('producto.show', $producto->slug)}}">
-                <img class="img_product" src="{{asset('storage/'. $producto->image)}}" alt="{{$producto->title}}">
+            <a href="{{route('producto.show', $producto->slug)}}" itemprop="url">
+                <img class="img_product" src="{{asset('storage/'. $producto->image)}}" alt="{{$producto->title}}" itemprop="image">
             </a>
         </div>        
         <div class="card-body" style="padding: 0.6rem 0.8rem 0 0.8rem;">
             <div class="row px-3">
                 <div class="col-12 px-0 mt-0 pt-0">
-                    <a class="text_categorie_card" href="{{route('product.category.show', $producto->category->slug)}}">{{$producto->category->title}}</a>
+                    <a class="text_categorie_card" href="{{route('product.category.show', $producto->category->slug)}}" > <span itemprop="category">{{$producto->category->title}}</span> </a>
                 </div>
                 <div class="col-12 px-0">
-                    <a class="text_title_card_product" href="{{route('producto.show', $producto->slug)}}">{{$producto->title}}</a>
+                    <a class="text_title_card_product" href="{{route('producto.show', $producto->slug)}}" itemprop="url"> <span itemprop="name">{{$producto->title}}</span> </a>
                 </div>
-                <div class="col-12 px-0 mb-2">
-                    <span class="price_card_product">${{number_format($producto->price, 2)}}</span>
+                <div class="col-12 px-0 mb-2" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <span class="price_card_product"><span itemprop="priceCurrency" content="USD">$</span> <span itemprop="price" content="{{number_format($producto->price, 2)}}">{{number_format($producto->price, 2)}}</span> </span>
                     <span class="referencial_price_card_product pl-2">${{number_format($producto->price_reference, 2)}}</span>
                 </div>
-            </div>
-            
+            </div>            
             <div class="row px-3">
                 @if($producto->quantity >= 10)
                     <select class="form-control mb-1">
@@ -141,7 +140,7 @@
                 @endif
             </div>
             <div class="row px-3 mt-1">
-                <a href="{{route('producto.show', $producto->slug)}}" class="col-12 btn btn-outline-primary-product text-rubik">
+                <a href="{{route('producto.show', $producto->slug)}}" class="col-12 btn btn-outline-primary-product text-rubik" itemprop="image">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#222" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 6.5c3.79 0 7.17 2.13 8.82 5.5-1.65 3.37-5.02 5.5-8.82 5.5S4.83 15.37 3.18 12C4.83 8.63 8.21 6.5 12 6.5m0-2C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5 1.12-2.5 2.5-2.5m0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5 4.5-2.02 4.5-4.5-2.02-4.5-4.5-4.5z"/></svg>
                     Ver producto
                 </a>

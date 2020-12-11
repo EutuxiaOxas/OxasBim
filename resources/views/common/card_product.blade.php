@@ -64,7 +64,7 @@
     }
     .btn-secondary-product{
         /*cambiar para otro modelo*/
-        background-color: #fe696a!important;
+        background-color: #009a6b!important;
 		border-radius: 3px;
 		width: 100%;
         color:#fff;

@@ -9,8 +9,8 @@
 	<link rel="preload" href="{{asset('storage/'.$product->image)}}" as="image">
 
 	<!-- Primary Meta Tags -->
-	<meta name="title" content="{{$product->title}}">
-	<meta name="description" content="{{$product->title}} - ${{number_format($product->price, 2)}}">
+	<meta name="title" content="{{$product->title}} - ${{number_format($product->price, 2)}}">
+	<meta name="description" content="{{$product->title}} - ${{number_format($product->price, 2)}} - Categoria: {{$product->category->title}}">
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">

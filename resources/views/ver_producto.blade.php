@@ -11,6 +11,16 @@
 	<!-- Primary Meta Tags -->
 	<meta name="title" content="{{$product->title}}">
 	<meta name="description" content="{{$product->title}} - ${{number_format($product->price, 2)}}">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://store.vzla.cc/">
+	<meta property="og:title" content="{{$product->title}}">
+	<meta property="og:description" content="{{$product->title}} - ${{number_format($product->price, 2)}}">
+	<meta property="og:image" content="{{asset('storage/'.$product->image)}}">
+
+	{{-- url canonical --}}
+	<link rel="canonical" href="http://store.vzla.cc/" />
 @endsection
 <style>
 	body{

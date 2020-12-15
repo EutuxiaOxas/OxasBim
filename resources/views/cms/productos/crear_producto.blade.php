@@ -89,7 +89,7 @@
 	<div class="row mt-4">
 		<div class="form-group col-12 col-md-8">
 			<h5>Titulo</h5>
-			<input class="form-control" id="title" type="text" maxlength="191" autocomplete="off" name="title">
+			<input class="form-control" id="title" type="text" maxlength="191" required autocomplete="off" name="title">
 			<small id="slug_alert"></small>
 		</div>
 		<div class="form-group col-12 col-md-4">
@@ -103,7 +103,7 @@
 		</div>
 		<div class="form-group col-12 col-md-4">
 			<h5>Precio</h5>
-			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" name="price">
+			<input class="form-control" id="price" type="number" required onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" name="price">
 		</div>
 		<div class="form-group col-12 col-md-4">
 			<h5>
@@ -113,20 +113,20 @@
 					<span class="popuptext" id="myPopup">Este precio se mostrará tachado al lado del precio real del producto.</span>
 				  </div>				
 			</h5>
-			<input class="form-control" id="price" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" type="number" name="price_reference">
+			<input class="form-control" id="price_reference" required onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" type="number" name="price_reference">
 		</div>
 		<div class="form-group col-12 col-md-4">
 			<h5>Cantidad</h5>
-			<input class="form-control" id="" type="number" min="0" name="quantity">
+			<input class="form-control" required id="cantidad" type="number" min="0" name="quantity">
 		</div>
 		<div class="form-group col-12">
 			<h5>Descripción</h5>
-			<textarea class="form-control" id="description" name="description"></textarea>
+			<textarea class="form-control" required id="description" name="description"></textarea>
 		</div>
 
 		<div class="form-group col-6">
 			<h5>Imagen principal</h5>
-			<input id="imagen" type="file" name="image">
+			<input id="imagen" required type="file" name="image">
 		</div>
 		<div class="form-group col-12">
 			<h5>Imagenes secundarias</h5>
@@ -162,6 +162,8 @@
 		form = document.getElementById('formulario_producto'),
 		errors_container = document.getElementById('errors_container'),
 		verify_access = document.getElementById('url_access'),
+		price_reference = document.getElementById('price_reference'),
+		cantidad = document.getElementById('cantidad'),
 		submit = document.getElementById('submitForm');
 
 	submit.addEventListener('click', (e) => {
@@ -184,6 +186,10 @@
 			errors.push('Debes agregar una imagen')
 		}if(verify_access.value == 0){
 			errors.push('Debes utilizar un titulo permitido')
+		}if(price_reference.value == '') {
+			errors.push('Debes agregar un precio referencial')
+		}if(cantidad.value == '') {
+			errors.push('Debes agregar uan cantidad')
 		}
 
 

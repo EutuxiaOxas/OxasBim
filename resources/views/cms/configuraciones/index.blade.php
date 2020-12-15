@@ -33,7 +33,7 @@
 				<div class="col-4 form-group">
 					<input type="hidden" value="{{$configuracion->title}}">
 					<h5>{{$configuracion->content}}</h5>
-					<input class="form-control" type="text" disabled name="{{$configuracion->content}}" value="{{$configuracion->description}}" required>
+					<input class="form-control" disabled name="{{$configuracion->content}}" value="{{$configuracion->description}}" required>
 					<div class="mt-2">
 						<button type="button" id="{{$configuracion->id}}" class="btn btn-sm btn-outline-primary b-update" data-toggle="modal" data-dismiss="modal" data-target="#modalConfiguracionUpdate">Actualizar</button>
 					</div>
@@ -140,12 +140,14 @@
 		if(elemento.tipo === 'whatsapp'){
 			tipo.parentNode.style.display = 'none'
 			tipo.innerHTML = ''
+            descripcion.type = 'number'
 		}else {
 			tipo.parentNode.style.display = 'block'
 			tipo.innerHTML = `
 				<option value="PAGO" ${elemento.tipo === 'PAGO' ? 'selected' : ''}>Método de Pago</option>
 				<option value="ENVIO" ${elemento.tipo === 'ENVIO' ? 'selected' : ''}>Método de Envio</option>
 			`
+            descripcion.type = 'text'
 		}
 
 		titulo.value = elemento.titulo

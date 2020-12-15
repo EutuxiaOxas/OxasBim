@@ -113,11 +113,11 @@
 					<span class="popuptext" id="myPopup">Este precio se mostrará tachado al lado del precio real del producto.</span>
 				  </div>
 			</h5>
-			<input class="form-control" id="price" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price_reference}}" name="price_reference">
+			<input class="form-control" id="price_reference" type="number" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" value="{{$product->price_reference}}" name="price_reference">
 		</div>
 		<div class="form-group col-12 col-md-4">
 			<h5>Cantidad</h5>
-			<input class="form-control" id="" type="number" value="{{$product->quantity}}" min="0" name="quantity">
+			<input class="form-control" id="cantidad" type="number" value="{{$product->quantity}}" min="0" name="quantity">
 		</div>
 		<div class="form-group col-12">
 			<h5>Descripción</h5>
@@ -209,6 +209,8 @@
 		errors_container = document.getElementById('errors_container'),
 		modal_submit = document.getElementById('actualizar_modal'),
 		verify_access = document.getElementById('url_access'),
+		price_reference = document.getElementById('price_reference'),
+		cantidad = document.getElementById('cantidad'),
 		submit = document.getElementById('submitForm');
 
 
@@ -235,6 +237,10 @@
 			errors.push('Debes escoger una categoria')
 		}if(verify_access.value == 0){
 			errors.push('Debes escoger un titulo diferente')
+		}if(price_reference.value == '') {
+			errors.push('Debes agregar un precio referencial')
+		}if(cantidad.value == '') {
+			errors.push('Debes agregar uan cantidad')
 		}
 
 

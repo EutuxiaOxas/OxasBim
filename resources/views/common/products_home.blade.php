@@ -83,7 +83,7 @@
       navText: ['<img src="{{asset('icons/flecha.svg')}}" style="width: 25px;"/>', '<img src="{{asset('icons/flecha.svg')}}" style="width: 25px; transform: rotate(-180deg);"/>'],
       responsive: {
         0: {
-          items: 1
+          items: 2
         },
         500: {
           items: 2

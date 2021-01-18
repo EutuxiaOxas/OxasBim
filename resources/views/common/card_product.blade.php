@@ -79,7 +79,7 @@
     }
     
 </style>
-<div class="col-12 col-sm-6 col-md-6 col-lg-4 px-2 mb-4 pb-0">
+<div class="col-6 col-sm-6 col-md-6 col-lg-4 px-2 mb-4 pb-0">
     <div class="card" style="border: 0px;">
         <div class="card_product">
             <a href="{{route('producto.show', $producto->slug)}}" itemprop="url">

@@ -31,7 +31,7 @@
      }
      .btn-search{
          /*cambiar para otro modelo*/
-        background-color: #28ba9b !important;
+        background-color: #2b77ba !important;
 		border-radius: 3px;
 		width: 100%;
         color:#fff;

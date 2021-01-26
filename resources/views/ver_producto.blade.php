@@ -102,16 +102,16 @@
 
 	/*Editar para cambiar los estilo*/
 	.btn-primary-product{
-		background-color: #fe4344  !important;
+		background-color: #393fb7  !important;
 		border-radius: 3px;
 		width: 100%;
-		box-shadow: 0 0.5rem 1.125rem -0.5rem rgba(254,67,68,0.9);
+		box-shadow: 0 0.5rem 1.125rem -0.5rem rgba(57,63,183,0.9);
     	color: #fff!important;
 		font-weight: 400!important;
 		padding: 0.75rem 0!important;
 	}
 	.btn-primary-product:hover{
-		background-color: #fe4344 !important;
+		background-color: #393fb7 !important;
 	}
 	/*Editar para cambiar los estilo*/
 

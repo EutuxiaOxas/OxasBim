@@ -35,7 +35,7 @@ class HomeController extends Controller
         $categorias = Category::with(['products'])->get();
         //array donde estaran los array de productos por categoria
         $array_other_products = array();
-        //recorro el array de categorias 
+        //recorro el array de categorias
         for ($i = 0; $i <= $cantidad_otros_productos; $i++) {
             if(isset($categorias[$i])){
                 //obtengo los productos por categoria
@@ -58,7 +58,7 @@ class HomeController extends Controller
         }else {
             $productos = Product::inRandomOrder()->paginate(25);
         }
-        
+
         $categorias = Category::with(['products'])->get();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
         return view('productos', compact('productos', 'categorias', 'logo'));

@@ -46,7 +46,7 @@ class CarritoUI {
 					</div>
 					<div class="col-10 px-0 pl-4">
 						<div class="row align-items-center">
-							<span class="title_modal_cart mr-3">${producto.title} </span> 
+							<span class="title_modal_cart mr-3">${producto.title} </span>
 							<span class="price_modal_cart"> ${producto.price} $</span>
 						</div>
 						<div class="row align-items-center mt-2">
@@ -63,8 +63,8 @@ class CarritoUI {
 									${producto.cantidad > 5 ? `<option class="cantidad_opcion" value="${producto.cantidad}" selected>${producto.cantidad}</option>` : '' }
 								</select>
 							</div>
-						</div>  
-						<input type="hidden" value="${producto.id}">          
+						</div>
+						<input type="hidden" value="${producto.id}">
 					</div>
 			  	</div>
   				`;
@@ -77,13 +77,13 @@ class CarritoUI {
 	    			    <div class="col-2">
 	    			        <div class="row">
 	    			            <div class="container_img_modal_cart">
-	    			                <img class="img_modal_cart" src="${producto.image}" alt="Imagen Producto en carrito"> 
+	    			                <img class="img_modal_cart" src="${producto.image}" alt="Imagen Producto en carrito">
 	    			            </div>
 	    			        </div>
 	    			    </div>
 	    			    <div class="col-10 px-0 pl-4">
 	    			        <div class="row align-items-center">
-	    			            <span class="title_modal_cart mr-3">${producto.title}</span> 
+	    			            <span class="title_modal_cart mr-3">${producto.title}</span>
 	    			            <span class="price_modal_cart"> ${producto.price} $</span>
 	    			        </div>
 	    			        <div class="row align-items-center mt-2">
@@ -92,20 +92,18 @@ class CarritoUI {
 	    			            </div>
 	    			            <div class="col-6 col-md-2">
 	    			                <select class="form-control cantidad_producto_cart" id="${producto.id}">
-	    				              
-	    			                </select> 
+
+	    			                </select>
 	    			            </div>
-	    			        </div>  
-	    			        <input type="hidden" value="${producto.id}">          
+	    			        </div>
+	    			        <input type="hidden" value="${producto.id}">
 	    			    </div>
 	    			</div>
   				`;
   			}
 
-  			
-
   			this.cart_body.innerHTML+= template;
-  			
+
   			contador++
   		})
   		this.boton_modal = document.getElementById('boton_modal');
@@ -132,7 +130,7 @@ class CarritoUI {
   		this.botones_cantidad.forEach(boton => {
   			boton.addEventListener('change', function(e){
   			 	carritoCantidad(e.target)
-  			 	
+
   			})
   			verificarCantidadProducto(boton.id, boton)
   		})
@@ -143,10 +141,10 @@ class CarritoUI {
   			})
   		})
 
-  		
+
   		this.badge_main.innerHTML = `<i class="fas fa-shopping-cart"></i>`
-  		
-  		
+
+
 		this.badge_main.innerHTML += `
 			<div id="carrito_badge" style="position: absolute; top: -10px; right: 0;">
 			  	<span class="badge badge-dark">${this.totalCantidades}</span>
@@ -195,14 +193,14 @@ class CarritoUI {
   	container.innerHTML = '';
 
   	if(productos.length > 0){
-  		
+
   		if(value == 1){
   			productos.forEach(producto => {
   				let precio = producto.producto.price,
   					precio_total = precio * producto.cantidad;
 
-  				total_amount = total_amount + precio_total 
-  				
+  				total_amount = total_amount + precio_total
+
 
   				container.innerHTML += `
   					<div class="d-flex mb-3">
@@ -220,7 +218,7 @@ class CarritoUI {
   								<h5 class="outspacing">Total: <small>${precio_total} $</small></h5>
   							</div>
   						</div>
-  						
+
   					</div>
   				`
   			})
@@ -236,8 +234,8 @@ class CarritoUI {
 
   				precio = cadena[0] * producto.cantidad;
 
-  				total_amount = total_amount + precio 
-  				
+  				total_amount = total_amount + precio
+
 
   				container.innerHTML += `
   					<div class="d-flex mb-3">
@@ -255,7 +253,7 @@ class CarritoUI {
   								<h5 class="outspacing">Total: <small>${precio} $</small></h5>
   							</div>
   						</div>
-  						
+
   					</div>
   				`
   			})
@@ -275,7 +273,7 @@ class CarritoUI {
 
 class CartApi {
 	async getCart(){
-		return axios.get('/cart')	 
+		return axios.get('/cart')
 	}
 
 	async addToCart(id){
@@ -283,7 +281,7 @@ class CartApi {
 		return axios.post(`/cart/add`, {
 			product_id: id,
 		})
-		
+
 	}
 }
 
@@ -316,7 +314,7 @@ class Storage{
 			let cartBody = [];
 
 			localStorage.setItem('carrito', JSON.stringify(cartBody));
-			
+
 			cart = localStorage.getItem('carrito');
 			this.storage = JSON.parse(cart)
 			return this.storage
@@ -382,9 +380,9 @@ if(session.value == 0)
 	productos = storage.getStorage();
 	let buttonsStorage = document.querySelectorAll('.to_storage'),
 		buttonsVerStorage = document.querySelectorAll('.ver_storage');
-	
+
 	carrito.agregarCarrito(productos);
-	
+
 	if(buttonsStorage)
 	{
 		events(session.value, buttonsStorage);
@@ -394,12 +392,12 @@ if(session.value == 0)
 		events(2, buttonsVerStorage);
 	}
 }
-	
+
 	//-------------------- Sesion iniciada -----------------
 
 if(session.value == 1){
 	let	buttonsServer = document.querySelectorAll('.to_server');
-	
+
 	productos = storage.getStorage();
 	addingStorageToServer(productos);
 
@@ -422,7 +420,7 @@ if(session.value == 1){
 //-------------------- Agregar productos -----------------
 
 function events(value, elements)
-{	
+{
 
 	//-------------------- LocalStorage -----------------
 
@@ -438,7 +436,7 @@ function events(value, elements)
 					cantidad = parseFloat(e.target.parentNode.children[0].value),
 					alert = document.getElementById('add_alert');
 
-				
+
 				let producto = {title: name, id: id, image: image, price: price, cantidad: cantidad, link: slug}
 
 				let verify = verifyProduct(producto);
@@ -460,7 +458,7 @@ function events(value, elements)
 						setTimeout(hiddenMessageAddProduct,2250);
 							function hiddenMessageAddProduct(){
 								messageSuccess.style.opacity = "0";
-								messageSuccess.style.visibility = "hidden";		
+								messageSuccess.style.visibility = "hidden";
 								messageSuccess.classList.remove('transitionClean');
 							}
 					})
@@ -482,7 +480,7 @@ function events(value, elements)
 
 
 				let producto = {title: name, id: id, image: image, price: price, cantidad: cantidad, link: slug}
-				
+
 				let verify = verifyProduct(producto);
 				if(verify){
 					productos.push(producto);
@@ -492,7 +490,7 @@ function events(value, elements)
 				storage.addStorage(productos)
 					.then(res => {
 						carrito.agregarCarrito(productos);
-						
+
 						//carrito.addingAlert(alert);
 						let messageSuccess = document.getElementById("message_success");
 						console.log(messageSuccess);
@@ -502,7 +500,7 @@ function events(value, elements)
 						setTimeout(hiddenMessageAddProduct,2250);
 							function hiddenMessageAddProduct(){
 								messageSuccess.style.opacity = "0";
-								messageSuccess.style.visibility = "hidden";		
+								messageSuccess.style.visibility = "hidden";
 								messageSuccess.classList.remove('transitionClean');
 							}
 					})
@@ -519,7 +517,7 @@ function events(value, elements)
 				let id = e.target.id,
 					alert = document.getElementById('add_alert');
 
-				
+
 				apiCart.addToCart(id)
 					.then(res => {
 						if(res.status == 200){
@@ -605,7 +603,7 @@ function loadTotalProducts(elements,value){
 // 		container_products.innerHTML = ''
 // 		if(productos.length > 0){
 // 			productos.forEach(producto => {
-				
+
 // 				let menorque = `
 // 				<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
 // 				<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
@@ -760,7 +758,7 @@ function actualizarCantidad(producto) {
 // ------------- FUNCION PARA ELIMINAR PRODUCTO DEL CARRITO -----------------
 
 function eliminarDelCarrito(id){
-	
+
 	productos = destroyProduct(productos, id)
 
 	storage.addStorage(productos)

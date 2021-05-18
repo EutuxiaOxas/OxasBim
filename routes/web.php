@@ -46,6 +46,7 @@ Route::middleware('cms')->group(function () {
 
 	Route::post('/cms/configuraciones/agregar', 'Cms\ConfiguracionesController@agregarConfiguracion')->name('config.add');
 	Route::post('/cms/configuraciones/actualizar', 'Cms\ConfiguracionesController@actualizarConfiguracion')->name('config.update');
+    Route::post('/cms/configuraciones/delete', 'Cms\ConfiguracionesController@deleteConfiguracion')->name('config.delete');
 });
 
 /*---------------ADMINISTRADORES --------------*/
@@ -62,7 +63,7 @@ Route::middleware('admin')->group(function () {
 
 /*---------------EDITORES LANDING PAGE CMS--------------*/
 Route::middleware('landing')->group(function () {
-	
+
 	Route::get('/cms/banners', 'Cms\LogoBannerController@index')->name('banners.home');
 	Route::get('/cms/crear/banner', 'Cms\LogoBannerController@crearBanner')->name('banners.create');
 	Route::get('/cms/editar/banner/{id}', 'Cms\LogoBannerController@editarBanner')->name('banners.show');
@@ -79,7 +80,7 @@ Route::middleware('landing')->group(function () {
 
 
 	//----------------- PUBLICIDADES ----------------
-	
+
 	Route::get('/crear/publicidad', 'Cms\PublicidadController@crearPublicidad')->name('publicidad.create');
 	Route::get('/editar/publicidad/{id}', 'Cms\PublicidadController@editarPublicidad')->name('publicidad.show');
 
@@ -88,7 +89,7 @@ Route::middleware('landing')->group(function () {
 });
 
 Route::middleware('tienda')->group(function () {
-	
+
 	/*--------------- VISTA TIENDA VIRTUAL --------------*/
 	Route::get('/cms/tienda', 'Cms\CmsController@tiendaVirtual')->name('tienda.home');
 

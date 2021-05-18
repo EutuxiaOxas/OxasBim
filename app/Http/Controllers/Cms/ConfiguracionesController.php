@@ -23,15 +23,29 @@ class ConfiguracionesController extends Controller
     {
         Configuraciones::create($request->all());
 
-        return back();
+        return back()->with('message', 'Creado con éxito!');
     }
 
     public function actualizarConfiguracion(Request $request)
-    {   
+    {
+        // return $request;
     	$configuracion = Configuraciones::findOrFail($request->id);
 
         $configuracion->update($request->all());
 
         return back()->with('message', 'Configuracion actualizada con éxito!');
+    }
+
+    public function deleteConfiguracion(Request $request){
+
+        $registro = Configuraciones::find($request->id);
+        if(isset($registro))
+        {
+            $registro->delete();
+            return back()->with('message', 'Eliminado con éxito');
+        }
+
+        return back()->with('error', 'No se pudo eliminar. Intentalo de nuevo!.');
+
     }
 }

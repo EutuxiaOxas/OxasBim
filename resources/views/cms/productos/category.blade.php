@@ -68,9 +68,9 @@
                       <tr>
                         <td>{{$categoria->id}}</td>
                         <td>{{$categoria->title}}</td>
-                        <td>
+                        <td class="text-success">
                           @php $padre = $categoria->getFatherName() @endphp 
-                          {{$padre ? $padre->title : 'No tiene categoria padre'}}
+                          {{$padre ? $padre->title : 'Categoria Principal'}}
                         </td>
                         <td>{{$categoria->status}}</td>
                         <td>{{$categoria->description}}</td>

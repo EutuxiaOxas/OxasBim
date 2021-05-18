@@ -17,9 +17,9 @@
     @endif
 	</div>
 	<div class="d-flex justify-content-between">
-		<h2>Editar publicidada</h2>
+		<h2 class="font-light">Editar publicidad</h2>
 		<div>
-			<a href="{{route('banners.home')}}" class="btn btn-outline-primary">Volver</a>
+			<a href="{{route('banners.home')}}" class="btn btn-outline-info px-5">Volver</a>
 		</div>
 	</div>
 	<form action="{{route('publicidad.update', $publicidad->id)}}" method="POST" enctype="multipart/form-data">

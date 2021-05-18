@@ -6,11 +6,11 @@
 
 @section('content')
     
-    <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
+    <section class="content-header px-0">
+        <div class="container-fluid px-0">
+          <div class="row mb-2 px-0">
             <div class="col-sm-6">
-              <h1>Usuarios de la administración</h1>
+              <h1 class="font-light">Usuarios de la administración</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -58,7 +58,7 @@
           <div class="col-12 px-0">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Crear Usuario Administrativo</h3>
+                <h3 class="card-title ">Crear Usuario Administrativo</h3>
                   <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>
@@ -271,7 +271,7 @@
     </div>
 
     <script type="text/javascript">
-    //---------------Permitir mostrar la contraseña escrita------------
+        //---------------Permitir mostrar la contraseña escrita------------
         let passChange = document.querySelectorAll('.pass_watcher');
 
         let modalPassChange = document.querySelectorAll('.modal_change_input');
@@ -463,7 +463,7 @@
                 });
             });
         }
-//--------------- FUCIONES DE LOS MODALES ------------
+        //--------------- FUCIONES DE LOS MODALES ------------
 
 
         //--------------- FUNCION PARA OBTENER DATOS DEL USUARIO ------------

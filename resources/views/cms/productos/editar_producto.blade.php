@@ -62,9 +62,9 @@
 @section('content')
 <section class="content-header">
     <div class="container-fluid">
-        <div class="row">
-        <div class="col-sm-6">
-        <h1>Editar Producto</h1>
+        <div class="row pl-0">
+        <div class="col-sm-6 pl-0">
+        <h1 class="font-light">Editar Producto</h1>
         </div>
         <div class="col-auto ml-auto">
 			<a class="btn btn-outline-primary btn-sm px-5" href="{{route('tienda.product.home')}}">Volver</a>

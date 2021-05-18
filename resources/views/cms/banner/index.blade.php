@@ -6,18 +6,18 @@
 
 @section('content')
     <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-            <div class="col-sm-6">
-            <h1>Configuración del home del sitio web</h1>
-            </div>
-            <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
-                <li class="breadcrumb-item active">Página Web</li>
-                <li class="breadcrumb-item active">Home</li>
-            </ol>
-            </div>
+        <div class="container-fluid pl-0">
+            <div class="row mb-2 pl-0">
+                <div class="col-sm-6 pl-0">
+                    <h1 class="font-light">Configuración del home del sitio web</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
+                        <li class="breadcrumb-item active">Página Web</li>
+                        <li class="breadcrumb-item active">Home</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </section>
@@ -44,12 +44,10 @@
                     <div class="card card-widget">
                       <div class="card-header">
                         <div class="user-block">
-                          <span class="username">Logo del menu superior</span>
+                          <span class="username ml-0">Logo del menu superior</span>
                         </div>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
                             </button>
                           </div>
                       </div>

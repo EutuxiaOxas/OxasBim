@@ -4,24 +4,22 @@
 @endsection
 
 @section('content')
-
-
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-        <div class="col-sm-6">
-        <h1>Productos</h1>
+    <section class="content-header px-0">
+        <div class="container-fluid px-0">
+            <div class="row mb-2 px-0">
+                <div class="col-sm-6">
+                    <h1 class="font-light">Productos</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
+                        <li class="breadcrumb-item active">Tienda</li>
+                        <li class="breadcrumb-item active">Productos</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
-            <li class="breadcrumb-item active">Tienda</li>
-            <li class="breadcrumb-item active">Productos</li>
-        </ol>
-        </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 <section class="container-fluid">
     @if(session('error'))
@@ -34,50 +32,50 @@
     @endif
 </section>
 
-<div class="row">
-    <div class="col px-0">
-        <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Productos del sitio</h3>
-        <a class="btn btn-primary btn-sm ml-5 px-5" href="{{route('tienda.product.create')}}">Nuevo Producto</a>
-        <div class="card-tools">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-        <i class="fas fa-minus"></i></button>
+    <div class="row">
+        <div class="col px-0">
+            <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Productos del sitio</h3>
+            <a class="btn btn-primary btn-sm ml-5 px-5" href="{{route('tienda.product.create')}}">Nuevo Producto</a>
+            <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <i class="fas fa-minus"></i></button>
+        </div>
     </div>
-  </div>
-  <div class="card-body p-0">
-    <table class="table table-striped projects">
-        <thead>
-            <tr>
-                <th style="width: 3%">#</th>
-                <th style="width: 7%">Image</th>
-                <th style="width: 40%">Titulo</th>
-                <th style="width: 5%">Cantidad</th>
-                <th style="width: 15%">Categoria</th>
-                <th style="width: 10%">Precio</th>
-                <th style="width: 20%">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($productos as $producto)
-            <tr>
-              <td><b>{{$producto->id}}</b> </td>
-              <td>
-                  <img src="{{asset('storage/'. $producto->image)}}" width="30">
-              </td>
-              <td>{{$producto->title}}</td>
-              <td>{{$producto->quantity}}</td>              
-              <td>{{$producto->category->title}}</td>
-              <td>{{number_format($producto->price, 2)}} $</td>
-              <td>
-                  <a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>
-                  <button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>	
-              </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-  </div>
+    <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th style="width: 3%">#</th>
+                    <th style="width: 7%">Image</th>
+                    <th style="width: 40%">Titulo</th>
+                    <th style="width: 5%">Cantidad</th>
+                    <th style="width: 15%">Categoria</th>
+                    <th style="width: 10%">Precio</th>
+                    <th style="width: 20%">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($productos as $producto)
+                <tr>
+                <td><b>{{$producto->id}}</b> </td>
+                <td>
+                    <img src="{{asset('storage/'. $producto->image)}}" width="30">
+                </td>
+                <td>{{$producto->title}}</td>
+                <td>{{$producto->quantity}}</td>              
+                <td>{{$producto->category->title}}</td>
+                <td>{{number_format($producto->price, 2)}} $</td>
+                <td>
+                    <a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>
+                    <button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>	
+                </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 </div>
 </div>

@@ -33,6 +33,12 @@
     cursor: pointer;
     color: #007bff;
   }
+  .font-light{
+      font-weight: 300!important;
+  }
+  .font-semibold{
+      font-weight: 4s0!important;
+  }
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

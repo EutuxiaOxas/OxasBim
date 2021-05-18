@@ -62,10 +62,10 @@
 
 @section('content')
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row">
-        <div class="col-sm-6">
-        <h1>Crear Producto</h1>
+    <div class="container-fluid pl-0">
+        <div class="row pl-0 mt-3">
+        <div class="col-sm-6 pl-0">
+        <h1 class="font-light">Crear Producto</h1>
         </div>
         <div class="col-auto ml-auto">
 			<a class="btn btn-outline-primary btn-sm px-5" href="{{route('tienda.product.home')}}">Volver</a>
@@ -86,7 +86,7 @@
 <input type="hidden" id="url_access" name="">	
 <form action="{{route('tienda.product.store')}}" id="formulario_producto" method="POST" enctype="multipart/form-data">
 	@csrf
-	<div class="row mt-4">
+	<div class="row mt-2">
 		<div class="form-group col-12 col-md-8">
 			<h5>Titulo</h5>
 			<input class="form-control" id="title" type="text" maxlength="191" autocomplete="off" name="title">

@@ -9,9 +9,13 @@ class ConfiguracionesController extends Controller
 {
     public function index()
     {
-    	$configuraciones = Configuraciones::all();
+    	$whatsapp = Configuraciones::where('title', 'whatsapp')->first();
     	$secName = 'configuraciones';
-    	return view('cms.configuraciones.index', compact('configuraciones', 'secName'));
+
+        $metodos_pago = Configuraciones::where('title', 'PAGO')->get();
+        $metodos_envio = Configuraciones::where('title', 'ENVIO')->get();
+
+    	return view('cms.configuraciones.index', compact('whatsapp', 'secName', 'metodos_pago', 'metodos_envio'));
     }
 
 

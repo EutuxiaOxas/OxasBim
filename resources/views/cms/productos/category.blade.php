@@ -4,22 +4,22 @@
 @endsection
 
 @section('content')
-  <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-        <div class="col-sm-6">
-        <h1>Categorias de productos</h1>
+    <section class="content-header px-0">
+        <div class="container-fluid px-0">
+            <div class="row mb-2 px-0">
+                <div class="col-sm-6">
+                    <h1 class="font-light">Categorias de productos</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
+                        <li class="breadcrumb-item active">Tienda</li>
+                        <li class="breadcrumb-item active">Categorias</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{route('cms.home')}}">Home</a></li>
-            <li class="breadcrumb-item active">Tienda</li>
-            <li class="breadcrumb-item active">Categorias</li>
-        </ol>
-        </div>
-        </div>
-    </div>
-</section>
+    </section>
 <section class="container-fluid">
     @if (session('message'))
         <div class="alert alert-success" role="alert">

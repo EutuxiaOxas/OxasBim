@@ -216,6 +216,18 @@
         right: 7.5vw!important;
         transition: all 1s !important;
     }
+    .button_whatsapp{
+            position: fixed;
+            bottom: 2.5rem;
+            right: 1.5rem;
+            width: 80px;
+            z-index: 50;
+        }
+        @media (max-width: 600px) {
+            .button_whatsapp {
+                width: 70px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -301,6 +313,9 @@
 
     <!-- FOOTER -->
     @include('common.footer')
+
+    <!-- FOOTER -->
+    @include('common.whatsapp')
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript">

@@ -22,220 +22,25 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendor/owlcarousel/assets/owl.theme.default.min.css')}}">
     <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
     <script src="{{asset('vendor/owlcarousel/owl.carousel.min.js')}}"></script>
-    
+
 
     @yield('captcha')
 
-    <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        .cart_on {
-            color: blue;
-        }
-    /*Estilos Modal carrito de compras*/
-    .product_main{
-        position: relative;
-    }
-    .container_img_modal_cart{
-		display: flex;
-		flex-direction:row;
-	    justify-content: center;
-	    align-items: center;
-        max-height: 13vh;
-        min-height: 13vh;
-        max-width:100%;
-
-		border-radius: 4px;
-		border: #ddd solid 1px;
-        overflow: hidden;
-	}
-	.img_modal_cart{
-		min-height: auto;
-        max-height: 100%;
-        min-width: auto;
-        max-width: 100%;
-	}
-    .title_modal_cart{
-        font-weight: bold;
-            color: #222;
-    }
-    .price_modal_cart{
-        color:#4e54c8;
-            font-weight: 400;
-    }
-    .cantidad_modal_cart{
-		font-weight: bold;
-		color: #222;
-    }
-    @media only screen and (max-width: 996px) {
-        .title_modal_cart{
-            font-size: 1.1rem;
-        }
-        .price_modal_cart{
-            font-size: 1.05rem;
-        }
-        .cantidad_modal_cart{
-            font-size: 1rem;
-        }
-    }
-    @media only screen and (max-width: 600px) {
-        .title_modal_cart {
-            font-size: 1rem;
-        }
-        .price_modal_cart{
-            font-size: 0.85rem;
-        }
-        .cantidad_modal_cart{
-            font-size: 0.85rem;
-        }
-    }
-    @media only screen and (max-width: 450px) {
-        .title_modal_cart {
-            font-size: 1rem;
-        }
-        .price_modal_cart{
-            font-size: 0.85rem;
-        }
-        .cantidad_modal_cart{
-            font-size: 0.85rem;
-        }
-    }
-
-
-    @media only screen and (min-width: 997px) {
-        .title_modal_cart{
-            font-size: 1.25rem;
-        }
-        .price_modal_cart{
-            font-size: 1.15rem;
-        }
-        .cantidad_modal_cart{
-            font-size: 1rem;
-        }
-    }
-
-
-    .cantidad_producto_cart{
-        padding-top: 0rem;
-        padding-bottom: 0rem;
-        height: 30px;
-    }
-    .close_product_modal{
-        position: absolute;
-        top: -8px;
-        left: -8px;
-        display: flex;
-		flex-direction:row;
-	    justify-content: center;
-	    align-items: center;
-        width: 22px;
-        height: 22px;
-        z-index: 40;
-        background-color: #f1f1f1;
-        cursor: pointer;
-        border: 1px solid #dedede;
-        border-radius: 50%;
-    }
-
-    /* Boton Flotante de Carrito de Compras En Cel*/
-    .float_button_cart{
-        position: fixed!important;
-        right: 23px;
-        bottom: 23px;
-        width: 63px;
-        height: 63px;
-        border-radius: 50%;
-        background-color: #00ca00;
-        z-index: 1500;
-        cursor: pointer;
-        box-shadow: 0px 2px 6px -2px rgba(0,0,0,0.75);
-        -webkit-box-shadow: 0px 2px 6px -2px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 2px 6px -2px rgba(0,0,0,0.75);
-    }
-    .float_button_cart i{
-        line-height: 56px;
-        font-size: 1.25rem;
-    }
-    .container_float_cart{
-        position: relative;
-        display: flex;
-          flex-direction:row;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-          width:100%;
-  
-          overflow: hidden;
-          padding: 0.75rem;
-    }
-    #cart_icon_id{
-        color: #fafafa;
-    }
-    .badge_button_float_quantity{
-        display: flex;
-          flex-direction:row;
-          justify-content: center;
-          align-items: center;
-        background-color: #222;
-        width:22px;
-        height: 22px;
-        border-radius: 50%;
-        color: #fff;
-        font-size: 0.9rem;
-    }
-
-    #message_success{
-        position: fixed;
-        top: 25px;
-        right: -55px;
-        background-color: #3ec61c;
-        font-size: 1rem;
-        width: 220px;
-        padding: 0.75rem 1.25rem;
-        border-radius: 7px;
-        z-index: 1750;
-        color:#fff;
-        text-align: center;
-        -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.29); 
-        box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.29);
-        visibility: hidden;
-        opacity: 0.5;
-   
-    }
-    .transitionClean{
-        right: 7.5vw!important;
-        transition: all 1s !important;
-    }
-    .button_whatsapp{
-            position: fixed;
-            bottom: 2.5rem;
-            right: 1.5rem;
-            width: 80px;
-            z-index: 50;
-        }
-        @media (max-width: 600px) {
-            .button_whatsapp {
-                width: 70px;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="bg-white">
     <input type="hidden" id="sesion" value="0">
     <div id="app">
 
         @include('common.navbar')
-        
+
         <main class="">
             @yield('content')
         </main>
@@ -251,7 +56,7 @@
                     </button>
                 </div>
                 <div class="modal-body" id="cart_body">
-                   
+
                 </div>
                 <div class="modal-footer">
                     <button  id="boton_modal" class="btn btn btn-primary px-4" data-toggle="modal" data-dismiss="modal" data-target="#modalIrAWhatsapp">Finalizar en Whatsapp</button>
@@ -306,7 +111,7 @@
     <div class="float_button_cart d-md-none" data-toggle="modal" data-target="#modalCarritoCompras">
         <div class="container_float_cart" id="container_float">
             <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
-        </div>        
+        </div>
     </div>
     <!-- Producto Agregado al carrito -->
     <div id="message_success">¡Agregado con éxito!</div>

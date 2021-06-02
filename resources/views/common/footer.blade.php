@@ -1,34 +1,5 @@
-<style type="text/css">
-        footer{
-            background-color: #1a1a1a;
-        }
-
-        .footer_nav a{
-            color: rgba(255,255,255, .7);
-            font-size: 1rem;
-        }
-
-        .copyring-container{
-            color: #fff;
-            opacity: .4;
-        }
-        .copyring-container p {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .primer_enlace{
-            position: relative;
-        }
-        
-        .opacity{
-            opacity: .4 ;
-            color: #fff;
-        }
-    </style>
-
 @if(isset($navbar_null))
-    
+
 @else
     <footer>
         <div class="container py-2 mt-5">
@@ -46,9 +17,9 @@
                 </div>
                 <div class="col-12 col-md-2 col-lg-4 py-2 text-center order-1 order-md-2">
                     @if(isset($logo))
-                        <img src="{{asset('storage/'.$logo->image)}}" style="width: 60px; height: 60px;" alt="LOGO">
+                        <img src="{{asset('storage/'.$logo->image)}}" style="width: 70px; height: 70px;" alt="LOGO">
                     @else
-                        <img src="" style="width: 60px; height: 60px;" alt="LOGO">
+                        <img src="" style="width: 70px; height: 70px;" alt="LOGO">
                     @endif
                 </div>
                 <div class="col-12 col-md-5 col-lg-auto ml-auto footer_nav my-md-4 order-3">
@@ -65,8 +36,8 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center py-3 copyring-container">
-                    <h6> © Sitio desarrollado por <a href="https://oxas.tech/">oxas.tech</a></h6>
-                    <p class="my-3">Sitio web desarrollado para finalizar tu compra en Whatsapp.</p>
+                    <p class="my-3">Construganga VLN CA. Todos los derechos reservados @php echo date('Y'); @endphp </p>
+                    <small> © Sitio desarrollado por <a href="https://oxas.tech/">oxas.tech</a></small>
                 </div>
             </div>
         </div>

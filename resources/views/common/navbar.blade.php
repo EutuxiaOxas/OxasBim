@@ -1,45 +1,4 @@
-<style>
-     .search-navbar{
-        width: 40vw!important;
-        border-left: none;
-        display: inline-block;
-        padding: 1.25rem 1.25rem;
-        outline: none!important;
-     }
-     .search-navbar:focus{
-        outline:none !important;
-        outline-width: 0 !important;
-        box-shadow: none;
-        -moz-box-shadow: none;
-        -webkit-box-shadow: none;
-     }
-     .cart_dropdown{
-        position: relative;
-     }
-     .product_main{
-        align-items: center;
-     }
-     .eliminar_container{
-        position: relative;
-     }
-     .eliminar_producto {
-        font-size: 1.1rem;
-        padding-top: 0.012rem;
-     }
-     .cantidad_producto_cart{
-        width: 100%;
-     }
-     .btn-search{
-         /*cambiar para otro modelo*/
-        background-color: #92a597 !important;
-		border-radius: 3px;
-		width: 100%;
-        color:#fff;
-     }
-     .btn-search:hover{
-         color:#fff;
-     }
-</style>
+
 @if(isset($navbar_null))
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="display: none;">
     <div class="container">
@@ -75,7 +34,7 @@
 
         <a class="navbar-brand" href="{{ url('/') }}">
             @if(isset($logo))
-                <img src="{{asset('storage/'.$logo->image)}}" width="40" height="40" alt="logo">
+                <img src="{{asset('storage/'.$logo->image)}}" width="55" height="55" alt="logo">
             @else
                 LOGO
             @endif
@@ -95,7 +54,7 @@
                         </div>
                         <input class="form-control search-navbar" type="search" placeholder="Buscar producto" name="search" autocomplete="off">
                         <div class="input-group-append">
-                            <input type="submit" class="btn btn-sm btn-search px-3" value="Buscar">
+                            <input type="submit" class="btn btn-sm btn-search px-3 text-white" value="Buscar">
                         </div>
                     </div>
                 </form>

@@ -1,4 +1,4 @@
-<div class="container d-lg-none">
+<div class="container d-md-none">
     <div class="row align-items-center" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
         <span class="col-auto" style="font-family: Rubik;font-size:1.25rem;">
             Categorias
@@ -31,8 +31,8 @@
                 @endif
             @endforeach
         </div>
-    </div> 
-    <hr>   
+    </div>
+    <hr>
 </div>
 
 <div class="d-none d-md-block col-md-2 px-2" id="categories_container" style="position:relative;">
@@ -43,7 +43,7 @@
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <a class="text-rubik" href="{{route('product.category.show', $categoria->slug)}}">
-                            {{$categoria->title}} 
+                            {{$categoria->title}}
                             <small class="ml-1">({{$categoria->products->count() ? $categoria->products->count() : ''}})</small>
                         </a>
                     </div>

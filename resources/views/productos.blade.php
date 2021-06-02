@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-	Productos Tienda Virtual Básica - Oxas Tech
+	Productos Tienda Virtual - Contruganga
 @endsection
 
 @section('header')
@@ -9,65 +9,17 @@
 	<link rel="preload" href="{{asset('logo.png')}}" as="image">
 
 	<!-- Primary Meta Tags -->
-	<meta name="title" content="Oxas - Productos en Tienda Virtual Básica">
+	<meta name="title" content="Contruganga - Productos en Tienda Virtual Básica">
 	<meta name="description" content="Tienda virtual para recolectar pedidos y redirigir las ventas a Whatsapp. Perfecta para activar Instagram Shop.">
 @endsection
 
 @section('content')
 
-
-	<style type="text/css">
-		.acordeon_container{
-            max-height: 0;
-            overflow: hidden;
-            transition: all .1s linear;
-        }
-
-        .acordeon_container.active{
-        	max-height: 10rem;
-        }
-
-        .arrow_class {
-        	transition: all .1s ease;
-        }
-
-        .arrow_class.active{
-        	transform: rotate(-90deg);
-        }
-
-        .sub_categorie_item{
-        	list-style: none;
-        	padding: 0;
-        }
-
-		/*Stilos Navbar lateral*/
-		.span-circle{
-			background-color: #f3f5f9;
-			border-radius: 50%;
-			width: 25px!important;
-			height: 25px!important;
-			padding: 0.3rem;
-			cursor: pointer;
-		}
-		.acordeon_container{
-			padding-left: 1rem;
-		}
-		.acordeon_container li{
-			padding-top: 0.5rem;
-		}
-		#categories_container a{
-			color: #222;
-		}
-		#categories_container a:hover{
-			text-decoration: none;
-		}
-	</style>
-
 <div class="container-fluid px-md-5">
 	<div class="row pt-2">
-		
+
 		@include('common.navbar_left')
-				
+
 		<div class="col-12 col-md-10 pl-4 ">
 			<div class="row">
 				<div class="col-12 my-3">
@@ -82,19 +34,20 @@
 					@elseif(sizeof($productos) > 0)
 						<p style="font-family:Rubik">Total de productos: <strong>{{sizeof($productos)}}</strong> </p>
 					@endif
-				</div>				
+				</div>
 				<div id="add_alert" style="display: none;" class="alert alert-success">Producto Agregado con éxito!</div>
 			</div>
 			<section class="row">
 				@foreach($productos as $producto)
-				{{-- Product Card --}}
-				@include('common.card_product')
+
+                    @include('common.card_product')
+
 				@endforeach
 			</section>
 			<div class="row justify-content-center mt-5">
 				{{ $productos->appends(request()->input())->links() }}
 			</div>
-						
+
 		</div>
 	</div>
 </div>

@@ -20,138 +20,8 @@
 	<meta property="og:image" content="{{asset('storage/'.$product->image)}}">
 
 	{{-- url canonical --}}
-	<link rel="canonical" href="http://store.vzla.cc/" />
+	<link rel="canonical" href="https://construgangavalencia.com/" />
 @endsection
-<style>
-	body{
-		background-color: #fff !important;
-	}
-	.container_img_second{
-		display: flex;
-		flex-direction:row;
-	    justify-content: center;
-	    align-items: center;
-        max-height: 13vh;
-        min-height: 13vh;
-        max-width:100%;
-
-		border-radius: 4px;
-		border: #ddd solid 1px;
-        overflow: hidden;
-	}
-	.img_second_detail{
-		min-height: auto;
-        max-height: 13vh;
-        min-width: auto;
-        max-width: 100%;
-		opacity: 0.7;
-	}
-	.img_second_detail:hover{
-		cursor: pointer;
-		opacity: 1;
-		transition: opacity 1s;
-	}
-	.container_img_product_principal{
-		display: flex;
-		flex-direction:row;
-	    justify-content:center;
-	    align-items: center;
-        max-height: 95vh;
-        min-height: 95vh;
-        max-width:100%;
-
-        overflow: hidden;
-	}
-	.img_product_detail{
-		min-height: auto;
-        max-height: 100%;
-        min-width: auto;
-        max-width: 100%;
-	}
-	.text-rubik{
-        font-family: 'Rubik', sans-serif;
-        font-weight: 300;
-    }
-	.categorie_product_detail{
-		font-size: .8rem;
-		color: #7d879c;
-	}
-	.title_product_detail{
-		font-size: 2rem;
-		font-weight: bold;
-		color: #222;
-	}
-	.price_product_detail{
-		font-size: 1.5rem;
-		color:#4e54c8;
-		font-weight: 400;
-	}
-	.price_product_detail_reference{
-		font-size: 1.25rem;
-		color:#7d879c;
-		font-weight: 400;
-		text-decoration: line-through;
-	}
-	.text_no_decoration:hover{
-		text-decoration: none;
-	}
-	.select_quantity{
-		height: 3rem !important;
-		border-radius: 3px;
-	}
-
-	/*Editar para cambiar los estilo*/
-	.btn-primary-product{
-		background-color: #393fb7  !important;
-		border-radius: 3px;
-		width: 100%;
-		box-shadow: 0 0.5rem 1.125rem -0.5rem rgba(57,63,183,0.9);
-    	color: #fff!important;
-		font-weight: 400!important;
-		padding: 0.75rem 0!important;
-	}
-	.btn-primary-product:hover{
-		background-color: #393fb7 !important;
-	}
-	/*Editar para cambiar los estilo*/
-
-	.btn-secondary-product{
-		background-color: grey!important;
-		border-radius: 3px;
-		width: 100%;
-		color: #fff!important;
-		font-weight: 400!important;
-		padding: 0.75rem 0!important;
-	}
-	.tag-available{
-		background-color: #42d697;
-		border-radius: 2px;
-		color: #fff;
-		padding: 0.35rem 1rem;
-		font-weight: 400;
-		box-shadow: 0 0.25rem 0.5rem -0.5rem rgba(66, 214, 151, 0.7);
-	}
-	.btn-collapse{
-		outline: none!important;
-		width: 100%;
-		color:#222!important;
-	}
-	.btn-collapse:hover{
-		text-decoration: none!important;
-	}
-	.btn-share{
-		color:#4e54c8;
-		width: 100%;
-	}
-	.btn-share:hover{
-		text-decoration: none;
-	}
-	.title-description{
-		font-size: 1.5rem;
-	}
-
-
-</style>
 
 @section('content')
 <div class="container mt-md-5" itemscope itemtype="https://schema.org/Product">
@@ -169,7 +39,7 @@
 				<div class="col-2 container_img_second">
 					<div>
 						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}" itemprop="image">
-					</div>					
+					</div>
 				</div>
 	    		@endforeach
 			</div>
@@ -178,13 +48,13 @@
 			<div class="row mb-2 container_img_second">
 				<div class="">
 					<img class="img_second_detail sub_image" src="{{asset('storage/'.$product->image)}}" alt="Imagen {{$product->title}}" itemprop="image">
-				</div>					
+				</div>
 			</div>
 			@foreach($product->images as $image)
 				<div class="row mb-2 container_img_second">
 					<div class="">
 						<img class="img_second_detail sub_image" src="{{asset('storage/'.$image->image)}}" alt="Imagen Secundaria {{$product->title}}" itemprop="image">
-					</div>					
+					</div>
 				</div>
 	    	@endforeach
 		</div>
@@ -193,7 +63,7 @@
 				<div class="">
 					<img class="img_product_detail" id="producto_imagen_principal" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}" itemprop="image">
 				</div>
-			</div>					
+			</div>
 		</div>
 		<div class="col-12 col-md-5 order-3">
 			<div class="row alings-itmes-center">
@@ -211,7 +81,7 @@
 			<div class="text-rubik mt-3 mb-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 				<span class="price_product_detail"> <span itemprop="priceCurrency">$</span> <span itemprop="price">{{number_format($product->price, 2)}}</span></span>
 				<span class="price_product_detail_reference ml-2">${{number_format($product->price_reference, 2)}}</span>
-			</div>	
+			</div>
 			<input type="hidden" value="{{$product->slug}}">
 			<div class="row">
 				<div class="col-3 col-lg-2 pr-0">
@@ -236,7 +106,7 @@
 						            @php $contador += 1 @endphp
 						        @endwhile
 						    </select>
-						@endif				
+						@endif
 				</div>
 				<div class="col-9 col-lg-10">
 					@if($product->quantity > 0)
@@ -249,7 +119,7 @@
 						<button class="btn btn-secondary-product text-rubik">Producto Agotado</button>
 					@endif
 				</div>
-			</div>			
+			</div>
 			<div class="row mt-4">
 				<div class="col-12">
 					<div class="accordion" id="accordionExample" style="width:100%;">
@@ -276,9 +146,9 @@
 							  		  </div>
 							  		  <div class="col-12">
 							  			  <span class="text-muted">{{$pago->description}}</span>
-							  		  </div>								
+							  		  </div>
 							  	  </div>
-							  @endforeach				
+							  @endforeach
 							</div>
 						   </div>
 						</div>
@@ -305,7 +175,7 @@
 							  		  </div>
 							  		  <div class="col-12">
 							  			  <span class="text-muted">{{$envio->description}}</span>
-							  		  </div>								
+							  		  </div>
 							  	  </div>
 							  @endforeach
 							</div>
@@ -370,14 +240,14 @@
 							c13.6,41.568,52.192,72.128,98.08,73.12c-35.712,27.936-81.056,44.768-130.144,44.768c-8.608,0-16.864-0.384-25.12-1.44
 							C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
 							C480.224,136.96,497.728,118.496,512,97.248z"/>
-						<g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>						
+						<g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
 						Twitter
 					</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="row justify-content-center mt-4">
 		<div class="col-10">
 			<h5 class="title-description text-rubik">Descripción</h5>
@@ -404,7 +274,7 @@
 		whastapp = document.getElementById('whastapp'),
 		twitter = document.getElementById('twitter'),
 		subImagenes = document.querySelectorAll('.sub_image');
-	
+
 
 		if(subImagenes){
 			subImagenes.forEach(imagen => {
@@ -420,26 +290,26 @@
 		let dir2 = encodeURIComponent(dir);
 		let tit = window.document.title;
 		let tit2 = encodeURIComponent(tit);
-	
+
 		facebook.addEventListener('click', (e) => {
 			e.preventDefault()
 			url = `http://www.facebook.com/share.php?u=${dir2}&t=${tit2}`
 			window.open(url, '','width=600,height=400,left=50,top=50')
 		})
-	
+
 		twitter.addEventListener('click', (e) => {
 			url= `http://twitter.com/?status=${tit2}%20${dir}`
 			window.open(url, '', 'width=600,height=400,left=50,top=50')
 		})
-	
-	
+
+
 		whastapp.addEventListener('click', (e) => {
 			e.preventDefault();
 
 			location.href = `https://wa.me/?text=${encodeURIComponent(window.location)}`
 		})
-	
-	
+
+
 	</script>
 
 @endsection

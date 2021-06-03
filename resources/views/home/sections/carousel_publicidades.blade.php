@@ -1,6 +1,6 @@
-<section class="container my-5 px-2 px-md-0">
+<section class="container my-3 px-2 px-md-0">
     <div class="mb-2">
-        <h5 class="text-rubik text-lg ">Disfruta de las mejores promociones</h5>
+        <h5 class="text-rubik text-lg font-semibold">Disfruta de las mejores promociones</h5>
         <p class="text-rubik">Conoce lo que traemos para tí</p>
     </div>
     <div class="owl-carousel owl-theme" id="destacados_banners">

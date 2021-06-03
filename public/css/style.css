@@ -5,7 +5,18 @@
 }
 .text-rubik {
     font-family: "Rubik", sans-serif;
+}
+.font-light{
     font-weight: 300;
+}
+.font-medium{
+    font-weight: 500;
+}
+.font-semibold{
+    font-weight: 600;
+}
+.font-bold{
+    font-weight: 700;
 }
 .text-sm{
     font-size: 0.875rem;

@@ -95,6 +95,9 @@
 <div class="float_button_cart d-md-none openModalCar" data-toggle="modal" data-target="#modalCarritoCompras">
     <div class="container_float_cart" id="container_float">
         <i id="cart_icon_id" class="fas fa-shopping-cart"></i>
+        <div id="carrito_badge" hidden style="position: absolute; top: -5px; right: -5px;">
+            <span class="badge_button_float_quantity"></span>
+      </div>
     </div>
 </div>
 <!-- Producto Agregado al carrito -->

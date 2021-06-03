@@ -26,11 +26,10 @@ if(addProduct != null){
 
                 ProductsLocalStorage = '['+JSON.stringify(newProduct)+']';
 
-                // Muestro el span que indica que hay producots en el carrito
-                updateTotalProductsShoppingCar(JSON.parse(ProductsLocalStorage));
-
                 // Almaceno el producot en el localStorage
                 localStorage.setItem('productsShoppingCar',ProductsLocalStorage);
+
+                updateBadgeQuantityShoppingcar();
 
             }else{
                 // Llevo el string al formato JSON
@@ -149,6 +148,7 @@ const vaciar_carrito_cart = document.getElementById('vaciar_carrito_cart')
 vaciar_carrito_cart.addEventListener('click', event => {
     localStorage.removeItem('productsShoppingCar');
     $('#modalCarritoCompras').modal('hide')
+    updateBadgeQuantityShoppingcar();
 })
 
 
@@ -175,11 +175,38 @@ function updateShoppingCar (arrayProductsLocalStorage, productId, quantity){
         arrayProductsLocalStorage.push(newProduct);
 
     }
-    // Muestro el span que indica que hay producots en el carrito
-    // shownHideCompareFloatButton(arrayProductsLocalStorage);
     // Almaceno el producot en el localStorage
     localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
+    // Actualizo el span de cantidad de productos en el carrito
+    updateBadgeQuantityShoppingcar();
 
+}
+
+function updateBadgeQuantityShoppingcar(){
+    // Obtengo los datos del localstorage
+    let ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+
+    // obtengo el span
+    const carrito_badge = document.getElementById('carrito_badge');
+    console.log(carrito_badge)
+
+    if( ProductsLocalStorage !== null ){
+        // Llevo el string al formato JSON
+        arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+        let quantityTotal = 0;
+        arrayProductsLocalStorage.forEach(product => {
+            quantityTotal+= parseInt(product.quantity) ;
+        });
+
+        if( quantityTotal > 0 ){
+            carrito_badge.removeAttribute('hidden')
+            carrito_badge.firstElementChild.textContent = quantityTotal
+        }else{
+            carrito_badge.setAttribute('hidden', '')
+        }
+    }else{
+        carrito_badge.setAttribute('hidden', '')
+    }
 }
 
 // Funcion para notificacion de producto agregado exitosamente
@@ -195,3 +222,8 @@ function successProductAdd(){
         messageSuccess.classList.remove('transitionClean');
     }
 }
+
+// Al cargar el sitio web
+$(window).on('load', function () {
+    updateBadgeQuantityShoppingcar()
+})

@@ -37285,11 +37285,10 @@ if (addProduct != null) {
           id: productId,
           quantity: quantity
         };
-        ProductsLocalStorage = '[' + JSON.stringify(newProduct) + ']'; // Muestro el span que indica que hay producots en el carrito
-
-        updateTotalProductsShoppingCar(JSON.parse(ProductsLocalStorage)); // Almaceno el producot en el localStorage
+        ProductsLocalStorage = '[' + JSON.stringify(newProduct) + ']'; // Almaceno el producot en el localStorage
 
         localStorage.setItem('productsShoppingCar', ProductsLocalStorage);
+        updateBadgeQuantityShoppingcar();
       } else {
         // Llevo el string al formato JSON
         arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage); // Actulaizo el localstorage
@@ -37384,6 +37383,7 @@ var vaciar_carrito_cart = document.getElementById('vaciar_carrito_cart');
 vaciar_carrito_cart.addEventListener('click', function (event) {
   localStorage.removeItem('productsShoppingCar');
   $('#modalCarritoCompras').modal('hide');
+  updateBadgeQuantityShoppingcar();
 });
 
 function updateShoppingCar(arrayProductsLocalStorage, productId, quantity) {
@@ -37402,12 +37402,38 @@ function updateShoppingCar(arrayProductsLocalStorage, productId, quantity) {
       quantity: quantity
     };
     arrayProductsLocalStorage.push(newProduct);
-  } // Muestro el span que indica que hay producots en el carrito
-  // shownHideCompareFloatButton(arrayProductsLocalStorage);
-  // Almaceno el producot en el localStorage
+  } // Almaceno el producot en el localStorage
 
 
-  localStorage.setItem('productsShoppingCar', JSON.stringify(arrayProductsLocalStorage));
+  localStorage.setItem('productsShoppingCar', JSON.stringify(arrayProductsLocalStorage)); // Actualizo el span de cantidad de productos en el carrito
+
+  updateBadgeQuantityShoppingcar();
+}
+
+function updateBadgeQuantityShoppingcar() {
+  // Obtengo los datos del localstorage
+  var ProductsLocalStorage = localStorage.getItem('productsShoppingCar'); // obtengo el span
+
+  var carrito_badge = document.getElementById('carrito_badge');
+  console.log(carrito_badge);
+
+  if (ProductsLocalStorage !== null) {
+    // Llevo el string al formato JSON
+    arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+    var quantityTotal = 0;
+    arrayProductsLocalStorage.forEach(function (product) {
+      quantityTotal += parseInt(product.quantity);
+    });
+
+    if (quantityTotal > 0) {
+      carrito_badge.removeAttribute('hidden');
+      carrito_badge.firstElementChild.textContent = quantityTotal;
+    } else {
+      carrito_badge.setAttribute('hidden', '');
+    }
+  } else {
+    carrito_badge.setAttribute('hidden', '');
+  }
 } // Funcion para notificacion de producto agregado exitosamente
 
 
@@ -37423,7 +37449,12 @@ function successProductAdd() {
     messageSuccess.style.visibility = "hidden";
     messageSuccess.classList.remove('transitionClean');
   }
-}
+} // Al cargar el sitio web
+
+
+$(window).on('load', function () {
+  updateBadgeQuantityShoppingcar();
+});
 
 /***/ }),
 

@@ -28,14 +28,11 @@
             0: {
               items: 2
             },
-            500: {
-              items: 2
-            },
             992: {
-              items: 3
+              items: 4
             },
             1200: {
-              items: 4
+              items: 5
             }
           }
         })

@@ -343,6 +343,7 @@
     border-radius: 3px;
     width: 100%;
     color: #fff;
+    padding: 0.75rem 0 !important;
 }
 .btn-secondary-product:hover {
     color: #fff;
@@ -535,14 +536,7 @@ footer {
 }
 /*Editar para cambiar los estilo*/
 
-.btn-secondary-product {
-    background-color: grey !important;
-    border-radius: 3px;
-    width: 100%;
-    color: #fff !important;
-    font-weight: 400 !important;
-    padding: 0.75rem 0 !important;
-}
+
 .tag-available {
     background-color: #42d697;
     border-radius: 2px;

@@ -1,13 +1,13 @@
 <?php $contador = 1; ?>
     {{-- Carousel principal --}}
-    <section class="slider_container">
+    <section>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($sliders as $slider)
                     <div <?php if ($contador==1) { echo 'class="carousel-item active"' ; } else {
                         echo 'class="carousel-item"' ; } ?>>
                         <img src="{{ asset('storage/' . $slider->image) }}"
-                            style="width: 100%; height: 60vh; object-fit: cover;" class="d-block w-100" alt="...">
+                            style="width: 100%; height: 45vh; object-fit: cover;" class="d-block w-100" alt="...">
                         <div class="carousel_body">
                             <h2>{{ $slider->title }}</h2>
                             <p>{{ $slider->description }}</p>

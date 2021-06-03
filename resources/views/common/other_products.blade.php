@@ -15,7 +15,7 @@
     mouseDrag: true,
     nav: false,
     dots: false,
-    navText: ['<img src="{{asset('icons/flecha.svg')}}" style="width: 25px;"/>', '<img src="{{asset('icons/flecha.svg')}}" style="width: 25px; transform: rotate(-180deg);"/>'],
+    navText: ['<img src="{{asset('flecha.svg')}}" style="width: 25px;"/>', '<img src="{{asset('flecha.svg')}}" style="width: 25px; transform: rotate(-180deg);"/>'],
     responsive: {
       0: {
         items: 2

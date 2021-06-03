@@ -34,11 +34,11 @@
                 Producto disponible
             </span>
         </div>
-        <h1 class="text-lg color-secondary text-rubik font-semibold mt-2" itemprop="name"> {{ $product->title }} </h1>
-        <div class="col-auto">
+        <h1 class="text-lg color-secondary text-rubik font-semibold mt-2 mb-0" itemprop="name"> {{ $product->title }} </h1>
+        <div class="col-12 px-0">
             <div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href="{{route('product.category.show', $product->category->slug)}}"><strong class="text-secondary" itemprop="category">{{$product->category->title}}</strong></a></div>
         </div>
-        <div class="text-rubik mt-3 mb-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <div class="text-rubik" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
             <span class="price_product_detail"> <span itemprop="priceCurrency">$</span> <span itemprop="price">{{number_format($product->price, 2)}}</span></span>
             <span class="price_product_detail_reference ml-2">${{number_format($product->price_reference, 2)}}</span>
         </div>
@@ -75,7 +75,7 @@
 	    	@endforeach
 		</div>
 		<div class="col-12 col-md-6 order-1 order-md-2">
-			<div class="row container_img_product_principal">
+			<div class="row container_img_product_principal mx-auto">
 				<div class="">
 					<img class="img_product_detail" id="producto_imagen_principal" src="{{asset('storage/'.$product->image)}}" alt="{{$product->title}}" itemprop="image">
 				</div>

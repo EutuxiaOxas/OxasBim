@@ -1,4 +1,4 @@
-<section class="container my-4 px-2 px-md-0">
+<section class="container-fluid my-4 px-2 px-md-4">
     <div class="mb-2">
         <h5 class="text-rubik color-primary text-lg font-semibold mb-0">Disfruta de las mejores promociones</h5>
         <p class="text-rubik">Conoce lo que traemos para tí</p>

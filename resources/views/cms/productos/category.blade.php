@@ -345,7 +345,6 @@
             catPadre = e.target.parentNode.parentNode.children[2].innerText,
             description = e.target.parentNode.parentNode.children[4].textContent,
             id = e.target.id;
-            console.log(description)
 
             axios.get(`/cms/tienda/get/category/${id}`)
               .then(res => {

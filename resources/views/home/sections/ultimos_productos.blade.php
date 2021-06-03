@@ -7,7 +7,7 @@
         <div class="owl-carousel owl-theme" id="ultimos_prductos">
           @foreach($last_products as $producto)
 
-           <div class="item">
+           <div class="item py-1">
 
                 @include('home.sections.card_product_home')
 
@@ -19,7 +19,7 @@
       <script>
         $("#ultimos_prductos").owlCarousel({
           loop: true,
-          margin: 30,
+          margin: 5,
           mouseDrag: true,
           nav: false,
           dots: false,

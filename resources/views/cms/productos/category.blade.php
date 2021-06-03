@@ -343,9 +343,9 @@
       button.addEventListener('click', (e) => {
         let title = e.target.parentNode.parentNode.children[1].textContent,
             catPadre = e.target.parentNode.parentNode.children[2].innerText,
-            description = e.target.parentNode.parentNode.children[3].textContent,
+            description = e.target.parentNode.parentNode.children[4].textContent,
             id = e.target.id;
-            console.log(e.target.parentNode.parentNode)
+            console.log(description)
 
             axios.get(`/cms/tienda/get/category/${id}`)
               .then(res => {

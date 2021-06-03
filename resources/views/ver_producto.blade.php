@@ -28,13 +28,13 @@
 	<div id="add_alert" style="display: none;" class="alert alert-success mt-3">Producto Agregado con éxito!</div>
 
     <div class="row px-2 d-md-none mt-2">
-        <div class="col-auto ml-auto">
+        <div class="col-auto ml-auto px-0">
             <span class="tag-available text-rubik">
                 <svg class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="20px" height="20px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm7 10c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.11 7 3.11V11zm-11.59.59L6 13l4 4 8-8-1.41-1.42L10 14.17z"/></svg>
                 Producto disponible
             </span>
         </div>
-        <h1 class="text-lg color-secondary text-rubik font-semibold mt-2 mb-0" itemprop="name"> {{ $product->title }} </h1>
+        <h1 class="col-12 text-lg color-secondary text-rubik font-semibold px-0 mt-2 mb-0" itemprop="name"> {{ $product->title }} </h1>
         <div class="col-12 px-0">
             <div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href="{{route('product.category.show', $product->category->slug)}}"><strong class="text-secondary" itemprop="category">{{$product->category->title}}</strong></a></div>
         </div>
@@ -82,15 +82,15 @@
 			</div>
 		</div>
 		<div class="col-12 col-md-5 order-3">
-			<div class="row alings-itmes-center d-none d-md-block">
+			<div class="row d-none d-md-block">
+                <div class="col-8 ml-auto text-right">
+                    <span class="tag-available text-rubik">
+                        <svg class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="20px" height="20px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm7 10c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.11 7 3.11V11zm-11.59.59L6 13l4 4 8-8-1.41-1.42L10 14.17z"/></svg>
+                        Producto disponible
+                    </span>
+                </div>
 				<div class="col-auto">
 					<div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href="{{route('product.category.show', $product->category->slug)}}"><strong class="text-secondary" itemprop="category">{{$product->category->title}}</strong></a></div>
-				</div>
-				<div class="col-auto ml-auto">
-					<span class="tag-available text-rubik">
-						<svg class="pb-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="20px" height="20px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm7 10c0 4.52-2.98 8.69-7 9.93-4.02-1.24-7-5.41-7-9.93V6.3l7-3.11 7 3.11V11zm-11.59.59L6 13l4 4 8-8-1.41-1.42L10 14.17z"/></svg>
-						Producto disponible
-					</span>
 				</div>
 			</div>
 			<h1 class="text-2xl color-secondary text-rubik font-semibold mt-2 d-none d-md-block" itemprop="name"> {{ $product->title }} </h1>
@@ -102,7 +102,7 @@
 			<div class="row">
 				<div class="col-3 col-lg-2 pr-0">
 						@if($product->quantity >= 10)
-						    <select class="form-control select_quantity">
+						    <select class="form-control" id="quantity_product_{{$product->id}}" style="height: 40px;">
 						        <option value="1">1</option>
 						        <option value="2">2</option>
 						        <option value="3">3</option>
@@ -114,9 +114,9 @@
 						        <option value="9">9</option>
 						        <option value="10">10</option>
 						    </select>
-						@else
+						@elseif( $product->quantity > 0)
 						    @php $contador = 1 @endphp
-						    <select class="form-control select_quantity">
+						    <select class="form-control" id="quantity_product_{{$product->id}}">
 						        @while($contador <= $product->quantity)
 						            <option value="{{$contador}}">{{$contador}}</option>
 						            @php $contador += 1 @endphp
@@ -126,13 +126,9 @@
 				</div>
 				<div class="col-9 col-lg-10">
 					@if($product->quantity > 0)
-						@if(auth()->user())
-						<button id="{{$product->id}}" class="btn btn-primary-product text-rubik to_server">Agregar al carrito</button>
-						@else
-						<button id="{{$product->id}}" class="btn btn-primary-product text-rubik ver_storage">Agregar al carrito</button>
-						@endif
+                        <button id="{{$product->id}}" class="btn btn-primary-product text-rubik addProduct">Agregar al carrito</button>
 					@else
-						<button class="btn btn-secondary-product text-rubik">Producto Agotado</button>
+						<button class="btn btn-secondary text-rubik px-5">Producto Agotado</button>
 					@endif
 				</div>
 			</div>
@@ -281,8 +277,6 @@
 </div>
 
 @include('common.other_products')
-
-
 
 <script type="text/javascript">
 	//-------- COMPARTIR CON REDES SOCIALES ------------

@@ -66,7 +66,7 @@ class ProductController extends Controller
 	        'image' => $file,
             'quantity' => $request->quantity,
 	    ]);
-        
+
 
         //--------- GUARDAR IMAGENES SECUNDARIOS EN CASO DE EXISTIR -------
         if($request->file('second_image'))
@@ -82,7 +82,7 @@ class ProductController extends Controller
             }
         }
 
-        
+
 	    return back()->with('message', 'Producto creado con éxito');
     }
 
@@ -173,9 +173,14 @@ class ProductController extends Controller
     }
 
     public function obtenerProducto($id)
-    {   
+    {
         $producto = Product::find($id);
         return $producto->quantity;
+    }
+
+    // function para obtener el producto meidante el id, solicitud AXIOS
+    public function getProductById($id){
+        return Product::findOrFail($id);
     }
 }
 

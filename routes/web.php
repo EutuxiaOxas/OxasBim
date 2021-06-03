@@ -136,3 +136,6 @@ Route::get('/cantidad-producto/{id}', 'Cms\ProductController@obtenerProducto');
 
 Route::post('/ir/whatsapp', 'WhatsappController@irAWhatsapp');
 Route::post('/crear/pedido', 'PedidosController@crearPedido');
+
+
+Route::get('/get/product-id/{id}', 'Cms\ProductController@getProductById');

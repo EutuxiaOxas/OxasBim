@@ -7,11 +7,11 @@
                 <div class="col-12 col-md-5 col-lg-4 footer_nav my-md-4 order-2 order-md-1">
                     <ul class="nav nav-sm nav-white nav-x-sm align-items-center">
                         <li class="nav-item">
-                          <a class="nav-link primer_enlace" href="https://www.instagram.com/oxas.tech/">Instagram</a>
+                          <a class="nav-link primer_enlace" href="https://www.instagram.com/construganga/">Instagram</a>
                         </li>
                         <li class="nav-item opacity">/</li>
                         <li class="nav-item">
-                          <a class="nav-link" href="https://www.facebook.com/OXAS-TECH-108906604277879/">Facebook</a>
+                          <a class="nav-link" href="https://www.facebook.com/construganga.valencia.7">Facebook</a>
                         </li>
                     </ul>
                 </div>

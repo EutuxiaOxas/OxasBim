@@ -45,7 +45,10 @@ class HomeController extends Controller
                 break;
             }
         }
-        return view('landing', compact('sliders', 'logo', 'categorias', 'publicidades', 'small_products', 'array_other_products'));
+
+        $last_products = Product::latest()->take(10)->get();
+
+        return view('home.home', compact('sliders', 'logo', 'categorias', 'publicidades', 'last_products', 'small_products', 'array_other_products'));
     }
 
 

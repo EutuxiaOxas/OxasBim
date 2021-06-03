@@ -1,6 +1,6 @@
 
 <div class="col-12 col-sm-6 col-lg-4 px-2 mb-4 pb-0">
-    <div class="card" style="border: 0px;">
+    <div class="card shadow-md" style="border: 0px;">
         <div class="card_product">
             <a href="{{route('producto.show', $producto->slug)}}" itemprop="url">
                 <img class="img_product" src="{{asset('storage/'. $producto->image)}}" alt="{{$producto->title}}" itemprop="image">

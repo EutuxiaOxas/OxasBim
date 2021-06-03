@@ -1,4 +1,4 @@
-  <div class="container">
+  <div>
     <div class="owl-carousel owl-theme carousel_products_home">
       @foreach($otros_products as $producto)
        <div class="item">

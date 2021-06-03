@@ -82,7 +82,7 @@
 			</div>
 		</div>
 		<div class="col-12 col-md-5 order-3">
-			<div class="row alings-itmes-center">
+			<div class="row alings-itmes-center d-none d-md-block">
 				<div class="col-auto">
 					<div class="categorie_product_detail text-rubik">Categoria: <a class="text_no_decoration" href="{{route('product.category.show', $product->category->slug)}}"><strong class="text-secondary" itemprop="category">{{$product->category->title}}</strong></a></div>
 				</div>

@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+.text-secondary{
+    color: #590600!important;
+}
+.text-primary{
+    color: #012111!important;
+}
 .text-rubik {
     font-family: "Rubik", sans-serif;
 }

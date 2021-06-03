@@ -1,9 +1,9 @@
   <div class="container">
     <div class="owl-carousel owl-theme carousel_products_home">
-      @foreach($otros_products as $o_product)
+      @foreach($otros_products as $producto)
        <div class="item">
 
-            @include('common.card_other_products')
+            @include('home.sections.card_product_home')
 
        </div>
        @endforeach

@@ -4,7 +4,7 @@
             <a href="{{route('producto.show', $o_product->slug)}}" itemprop="url">
                 <img class="img_product" src="{{asset('storage/'. $o_product->image)}}" alt="{{$o_product->title}}" itemprop="image">
             </a>
-        </span>        
+        </span>
         <div class="card-body" style="padding: 0.6rem 0.8rem 0 0.8rem;">
             <div class="row px-3">
                 <div class="col-12 px-0">

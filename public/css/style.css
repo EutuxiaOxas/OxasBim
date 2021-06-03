@@ -486,17 +486,21 @@ footer {
 
     overflow: hidden;
 }
+.img_product_detail {
+    min-height: 75vh;
+    max-height: 75vh;
+    min-width: auto;
+    max-width: 100%;
+}
 @media only screen and (max-width: 768px) {
     .container_img_product_principal {
         max-height: 45vh;
         min-height: 45vh;
     }
-}
-.img_product_detail {
-    min-height: auto;
-    max-height: 100%;
-    min-width: auto;
-    max-width: 100%;
+    .img_product_detail{
+        max-height: 45vh;
+        min-height: 45vh;
+    }
 }
 
 .categorie_product_detail {

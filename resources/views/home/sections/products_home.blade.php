@@ -12,7 +12,7 @@
   <script>
     $(".carousel_products_home").owlCarousel({
       loop: true,
-      margin: 30,
+      margin: 5,
       mouseDrag: true,
       nav: false,
       dots: false,
@@ -25,10 +25,10 @@
           items: 2
         },
         992: {
-          items: 3
+          items: 4
         },
         1200: {
-          items: 4
+          items: 5
         }
       }
     })

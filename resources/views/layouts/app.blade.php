@@ -41,7 +41,7 @@
 
         @include('common.navbar')
 
-        <main class="">
+        <main style="min-height:100vh;">
             @yield('content')
         </main>
     </div>

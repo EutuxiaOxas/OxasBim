@@ -1,4 +1,8 @@
 <section class="container my-5 px-2 px-md-0">
+    <div class="mb-2">
+        <h5 class="text-rubik text-lg ">Disfruta de las mejores promociones</h5>
+        <p class="text-rubik">Conoce lo que traemos para tí</p>
+    </div>
     <div class="owl-carousel owl-theme" id="destacados_banners">
         @foreach($publicidades as $publicidad)
         {{-- <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-32 xl:h-36 overflow-hidden"></div> --}}

@@ -77,7 +77,7 @@
 					</span>
 				</div>
 			</div>
-			<h1 class="title_product_detail text-rubik font-semibold mt-2" itemprop="name">{{$product->title}}</h1>
+			<h1 class="text-2xl color-secondary text-rubik font-semibold mt-2" itemprop="name"> {{ $product->title }} </h1>
 			<div class="text-rubik mt-3 mb-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 				<span class="price_product_detail"> <span itemprop="priceCurrency">$</span> <span itemprop="price">{{number_format($product->price, 2)}}</span></span>
 				<span class="price_product_detail_reference ml-2">${{number_format($product->price_reference, 2)}}</span>

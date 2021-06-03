@@ -24,9 +24,9 @@
 			<div class="row">
 				<div class="col-12 my-3">
 					@if(isset($product_categorie))
-					<h1 class="text-rubik font-light text-lg">Productos en categoria: <small>{{$product_categorie->title}}</small></h1>
+					<h1 class="text-rubik font-light text-xl">Productos en categoria: <span class="text-lg">{{$product_categorie->title}}</span></h1>
 					@else
-					<h1 class="text-rubik font-light text-lg">Productos</h1>
+					<h1 class="text-rubik font-light text-xl">Productos</h1>
 					@endif
 
 					@if(isset($productos) && sizeof($productos) > 0)

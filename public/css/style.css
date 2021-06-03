@@ -7,6 +7,13 @@
 .cart_on {
     color: blue;
 }
+.shadow-md {
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0 #0000, 0 0 #0000, var(--tw-shadow);
+}
+.rounded-md{
+    border-radius: 0.375rem;
+}
 /*Estilos Modal carrito de compras*/
 .product_main {
     position: relative;
@@ -559,7 +566,14 @@ footer {
 
 
 .img_container_others_banner{
-    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    overflow: hidden;
+    height: 9rem;
+
+    /* display: flex;
         flex-direction:row;
 	    justify-content: center;
 	    align-items: center;
@@ -568,7 +582,7 @@ footer {
         max-width:100%;
 
         border-radius: 5px 5px 0 0;
-        overflow: hidden;
+        overflow: hidden; */
   }
   .img_others_banner{
     max-height: 45vh;

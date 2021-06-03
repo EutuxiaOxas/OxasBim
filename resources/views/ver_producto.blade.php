@@ -27,6 +27,13 @@
 <div class="container mt-md-5" itemscope itemtype="https://schema.org/Product">
 	<div id="add_alert" style="display: none;" class="alert alert-success mt-3">Producto Agregado con éxito!</div>
 
+    <div class="row  d-md-none">
+        <h1 class="text-2xl color-secondary text-rubik font-semibold mt-2" itemprop="name"> {{ $product->title }} </h1>
+        <div class="text-rubik mt-3 mb-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <span class="price_product_detail"> <span itemprop="priceCurrency">$</span> <span itemprop="price">{{number_format($product->price, 2)}}</span></span>
+            <span class="price_product_detail_reference ml-2">${{number_format($product->price_reference, 2)}}</span>
+        </div>
+    </div>
 	<div class="row">
 		<div class="col-12 d-md-none order-2">
 			<div class="row px-2 mb-4 justify-content-around">
@@ -77,8 +84,8 @@
 					</span>
 				</div>
 			</div>
-			<h1 class="text-2xl color-secondary text-rubik font-semibold mt-2" itemprop="name"> {{ $product->title }} </h1>
-			<div class="text-rubik mt-3 mb-4" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+			<h1 class="text-2xl color-secondary text-rubik font-semibold mt-2 d-none d-md-block" itemprop="name"> {{ $product->title }} </h1>
+			<div class="text-rubik mt-3 mb-4 d-none d-md-block" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 				<span class="price_product_detail"> <span itemprop="priceCurrency">$</span> <span itemprop="price">{{number_format($product->price, 2)}}</span></span>
 				<span class="price_product_detail_reference ml-2">${{number_format($product->price_reference, 2)}}</span>
 			</div>

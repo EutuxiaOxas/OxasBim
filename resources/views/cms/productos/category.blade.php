@@ -69,14 +69,14 @@
                         <td>{{$categoria->id}}</td>
                         <td>{{$categoria->title}}</td>
                         <td class="text-success">
-                          @php $padre = $categoria->getFatherName() @endphp 
+                          @php $padre = $categoria->getFatherName() @endphp
                           {{$padre ? $padre->title : 'Categoria Principal'}}
                         </td>
                         <td>{{$categoria->status}}</td>
                         <td>{{$categoria->description}}</td>
                         <td>
                           <button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-primary editar_category">Editar</button>
-                          <button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_category">Eliminar</button>	
+                          <button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_category">Eliminar</button>
                         </td>
                       </tr>
                       @endforeach
@@ -103,8 +103,8 @@
                 <div id="errors_container" style="display: none;" class="alert alert-danger" role="alert">
                 </div>
 
-                <input type="hidden" id="url_access" name=""> 
-                <input type="hidden" id="url_access_modal" value="nada" name=""> 
+                <input type="hidden" id="url_access" name="">
+                <input type="hidden" id="url_access_modal" value="nada" name="">
                 <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off">
                     @csrf
                     <div class="row px-3">
@@ -129,7 +129,7 @@
                             <h5>Descripción</h5>
                             <textarea class="form-control" id="create_category_description" name="description" placeholder="Descripción"></textarea>
                         </div>
-                
+
                     </div>
                     <div class="form-group px-1 col-md-12" style="visibility: hidden; position: absolute;">
                       <h5>URL</h5>
@@ -171,7 +171,7 @@
                           <option value="0">Seleccionar categoria</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <h5>Descripcion</h5>
                         <textarea class="form-control" id="editar_description" name="description"></textarea>
@@ -345,16 +345,17 @@
             catPadre = e.target.parentNode.parentNode.children[2].innerText,
             description = e.target.parentNode.parentNode.children[3].textContent,
             id = e.target.id;
+            console.log(description)
 
             axios.get(`/cms/tienda/get/category/${id}`)
               .then(res => {
                 let slug = res.data.slug,
                     categorias = res.data.categorias;
 
-                modalEditar(id,title,description, slug, categorias, catPadre);
+                modalEditar(id,title, description, slug, categorias, catPadre);
               })
 
-            
+
       });
     });
   }
@@ -377,7 +378,7 @@
         edit_slug = document.getElementById('slug_edit'),
         cat_padre = document.getElementById('cat_padre_editar'),
         form = document.getElementById('editar_form');
-    
+
 
     cat_padre.innerHTML = '<option value="0">Seleccionar categoria padre</option>'
 
@@ -423,7 +424,7 @@
 
     if(title_edit.value != ''){
       verifySlug(value, 'editado');
-    
+
     }else {
       let alert_edit = document.getElementById('slug_alert_edit');
     }
@@ -431,15 +432,15 @@
 
 
 
-  name_category.addEventListener('keyup', (e) => {  
+  name_category.addEventListener('keyup', (e) => {
 
     let value = string_to_slug(e.target.value)
-    
+
     slug.value = value
-    
+
     if(name_category.value != ''){
       verifySlug(value, 'normal');
-    
+
     }else {
       let alert = document.getElementById('slug_alert').textContent = '';
     }
@@ -498,7 +499,7 @@
   function string_to_slug (str) {
       str = str.replace(/^\s+|\s+$/g, ''); // trim
       str = str.toLowerCase();
-    
+
       // remove accents, swap ñ for n, etc
       var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
       var to   = "aaaaaeeeeiiiioooouuuunc------";

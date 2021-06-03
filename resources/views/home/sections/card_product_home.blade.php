@@ -1,5 +1,4 @@
-
-    <div class="card" style="border: 0px;" itemscope itemtype="https://schema.org/Product">
+    <div class="card shadow-md" style="border: 0px;" itemscope itemtype="https://schema.org/Product">
         <span class="card_product">
             <a href="{{route('producto.show', $producto->slug)}}" itemprop="url">
                 <img class="img_product" src="{{asset('storage/'. $producto->image)}}" alt="{{$producto->title}}" itemprop="image">

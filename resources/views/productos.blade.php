@@ -24,15 +24,15 @@
 			<div class="row">
 				<div class="col-12 my-3">
 					@if(isset($product_categorie))
-					<h1 class="text-rubik">Productos en categoria: <small>{{$product_categorie->title}}</small></h1>
+					<h1 class="text-rubik font-light">Productos en categoria: <small>{{$product_categorie->title}}</small></h1>
 					@else
-					<h1 class="text-rubik">Productos</h1>
+					<h1 class="text-rubik font-light">Productos</h1>
 					@endif
 
 					@if(isset($productos) && sizeof($productos) > 0)
-						<p style="font-family:Rubik">Total de productos: <strong>{{sizeof($productos)}}</strong> </p>
+						<p class="text-rubik">Total de productos: <strong>{{sizeof($productos)}}</strong> </p>
 					@elseif(sizeof($productos) > 0)
-						<p style="font-family:Rubik">Total de productos: <strong>{{sizeof($productos)}}</strong> </p>
+						<p class="text-rubik">Total de productos: <strong>{{sizeof($productos)}}</strong> </p>
 					@endif
 				</div>
 				<div id="add_alert" style="display: none;" class="alert alert-success">Producto Agregado con éxito!</div>

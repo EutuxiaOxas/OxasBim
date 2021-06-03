@@ -3,10 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-.text-secondary{
-    color: #590600!important;
+.color-primary{
+    color: #DB6E00!important;
 }
-.text-primary{
+.color-secondary{
     color: #012111!important;
 }
 .text-rubik {

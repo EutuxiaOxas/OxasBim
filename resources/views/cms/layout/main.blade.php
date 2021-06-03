@@ -6,6 +6,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>@yield('title')</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="{{asset('logo.png')}}">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/AdminLTE/plugins/fontawesome-free/css/all.min.css">
@@ -123,7 +124,7 @@
                 </a>
               </li>
             </ul>
-          </li> 
+          </li>
           @endif
           @if(auth()->user()->roles->title == 'inventario' || auth()->user()->roles->title == 'administrador')
           <li class="nav-item has-treeview">
@@ -160,7 +161,7 @@
                 </a>
               </li>
             </ul>
-          </li> 
+          </li>
           @endif
           <li class="nav-item ">
             <a href="{{ route('config.home') }}" class="nav-link secciones configuraciones ">

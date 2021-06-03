@@ -3,7 +3,7 @@
     @php $x=0; @endphp
     @foreach ($array_other_products as $otros_products)
         <h2>{{$categorias[$x]->title}}</h2>
-        @include('common.products_home')
+        @include('home.sections.products_home')
         @php ++$x; @endphp
     @endforeach
 </section>

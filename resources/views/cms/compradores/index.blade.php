@@ -73,8 +73,8 @@
                    $fecha = $dia.' '.$fecha_dia.' de '.$mes;
                 @endphp
 
-                {{ $fecha }} -
-                {{  $comprador->created_at->format("g:i a") }}
+                {{ $fecha }}
+                {{-- {{  $comprador->created_at->format("g:i a") }} --}}
 
             </td>
             <td>

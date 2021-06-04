@@ -73,8 +73,8 @@
                 $fecha = $dia.' '.$fecha_dia.' de '.$mes;
             @endphp
 
-            {{ $fecha }} -
-            {{  $pedido->created_at->format("g:i a") }}
+            {{ $fecha }}
+            {{-- {{  $pedido->created_at->format("g:i a") }} --}}
             </td>
           <td>
             <button type="button" id="{{$pedido->id}}" data-toggle="modal" data-target="#modalDetallesPedidos" class="btn btn-sm btn-outline-primary pedidos_detalle">Detalles</button>

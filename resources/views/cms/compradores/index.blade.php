@@ -3,6 +3,11 @@
     Tienda | Compradores
 @endsection
 
+@php
+    $meses = ['','Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    $dias = ['','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
+@endphp
+
 @section('content')
 <section class="content-header">
     <div class="container-fluid pl-0">
@@ -46,22 +51,36 @@
           <tr>
               <th style="width: 3%">#</th>
               <th style="width: 25%">Nombre y Apellido</th>
-              <th style="width: 10%">Cédula</th>
-              <th style="width: 15%">Telefono</th>
+              <th style="width: 10%">Email</th>
+              <th style="width: 30%">Fecha de compra</th>
               <th style="width: 30%">Detalle</th>
           </tr>
       </thead>
       <tbody>
         @foreach($compradores as $comprador)
-        <tr>
-          <td>{{$comprador->id}}</td>
-          <td>{{$comprador->nombre}}</td>
-          <td>{{$comprador->documento_identidad}}</td>
-          <td>{{$comprador->telefono}} </td>
-          <td>
-            <button type="button" id="{{$comprador->id}}" data-toggle="modal" data-target="#modalDetallesPedidos" class="btn btn-sm btn-outline-primary pedidos_detalle">Detalles</button>	
-          </td>
-        </tr>
+            <tr>
+            <td>{{$comprador->id}}</td>
+            <td>{{$comprador->nombre}}</td>
+            <td>{{$comprador->email}} </td>
+            <td>
+                @php
+                   $Ndia = $comprador->created_at->format("N");
+                   $dia = $dias[$Ndia];
+                   $Nmes = $comprador->created_at->format("n");
+                   $mes = $meses[$Nmes];
+                   $fecha_dia = $comprador->created_at->format("d");
+
+                   $fecha = $dia.' '.$fecha_dia.' de '.$mes;
+                @endphp
+
+                {{ $fecha }} -
+                {{  $comprador->created_at->format("g:i a") }}
+
+            </td>
+            <td>
+                <button type="button" id="{{$comprador->id}}" data-toggle="modal" data-target="#modalDetallesPedidos" class="btn btn-sm btn-outline-primary pedidos_detalle">Detalles</button>
+            </td>
+            </tr>
         @endforeach
       </tbody>
   </table>
@@ -93,7 +112,7 @@
                       </tr>
                     </thead>
                     <tbody id="modal_detalle_body">
-                      
+
                     </tbody>
                   </table>
                 </div>
@@ -135,7 +154,7 @@
                     </tr>
                 `
             })
-        } 
+        }
 
     }
 </script>

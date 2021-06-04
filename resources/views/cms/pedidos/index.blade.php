@@ -3,6 +3,11 @@
     Tienda | Pedidos
 @endsection
 
+@php
+    $meses = ['','Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    $dias = ['','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
+@endphp
+
 @section('content')
 <section class="content-header">
     <div class="container-fluid pl-0">
@@ -47,8 +52,8 @@
               <th style="width: 3%">#</th>
               <th style="width: 25%">Nombre</th>
               <th style="width: 10%">Total</th>
-              <th style="width: 15%">Fecha</th>
-              <th style="width: 30%">Acciones</th>
+              <th style="width: 25%">Fecha</th>
+              <th style="width: 20%">Acciones</th>
           </tr>
       </thead>
       <tbody>
@@ -57,9 +62,22 @@
           <td>{{$pedido->id}}</td>
           <td>{{$pedido->name}}</td>
           <td>{{$pedido->total_amount}} $</td>
-          <td>{{$pedido->created_at}} </td>
           <td>
-            <button type="button" id="{{$pedido->id}}" data-toggle="modal" data-target="#modalDetallesPedidos" class="btn btn-sm btn-outline-primary pedidos_detalle">Detalles</button>	
+            @php
+                $Ndia = $pedido->created_at->format("N");
+                $dia = $dias[$Ndia];
+                $Nmes = $pedido->created_at->format("n");
+                $mes = $meses[$Nmes];
+                $fecha_dia = $pedido->created_at->format("d");
+
+                $fecha = $dia.' '.$fecha_dia.' de '.$mes;
+            @endphp
+
+            {{ $fecha }} -
+            {{  $pedido->created_at->format("g:i a") }}
+            </td>
+          <td>
+            <button type="button" id="{{$pedido->id}}" data-toggle="modal" data-target="#modalDetallesPedidos" class="btn btn-sm btn-outline-primary pedidos_detalle">Detalles</button>
           </td>
         </tr>
         @endforeach
@@ -93,7 +111,7 @@
                       </tr>
                     </thead>
                     <tbody id="modal_detalle_body">
-                      
+
                     </tbody>
                   </table>
                 </div>
@@ -135,7 +153,7 @@
                     </tr>
                 `
             })
-        } 
+        }
 
     }
 </script>

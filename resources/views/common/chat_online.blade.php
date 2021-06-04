@@ -1,6 +1,3 @@
-<div class="chat_online" style="position:fixed; left:1rem; bottom:2rem;">
-
-</div>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

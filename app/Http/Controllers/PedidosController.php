@@ -9,10 +9,10 @@ use App\PedidoProductos;
 use App\Product;
 class PedidosController extends Controller
 {
-    
+
 	public function index()
 	{
-		$pedidos = Pedidos::paginate(25);
+		$pedidos = Pedidos::latest()->paginate(25);
 		$secName = 'tienda';
 		return view('cms.pedidos.index', compact('pedidos', 'secName'));
 	}
@@ -44,7 +44,7 @@ class PedidosController extends Controller
     	$contador = 0;
     	foreach ($request->productos as $producto) {
     		$precio = explode('$',$producto['price']);
-    		
+
     		PedidoProductos::create([
     			'pedido_id' 	=> $pedido->id,
     			'product_id' 	=> $producto['id'],

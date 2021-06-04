@@ -82,7 +82,7 @@
                     </div>
                     <div class="">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                        <input type="submit" class="btn btn-primary" value="Continuar">
+                        <input type="submit" class="btn btn-primary" value="Continuar" id="finalizarCompra">
                     </div>
                 </form>
             </div>

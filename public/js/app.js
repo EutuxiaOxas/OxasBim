@@ -37478,6 +37478,11 @@ openModalDatos.addEventListener('click', function (event) {
       total_amount.value = amount;
     });
   });
+}); // Finalizar compra
+
+var finalizarCompra = document.getElementById('finalizarCompra');
+finalizarCompra.addEventListener('click', function (event) {
+  localStorage.removeItem('productsShoppingCar');
 });
 
 /***/ }),

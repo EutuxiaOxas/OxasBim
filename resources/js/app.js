@@ -260,3 +260,10 @@ openModalDatos.addEventListener('click', event => {
     });
 
 })
+
+
+// Finalizar compra
+const finalizarCompra = document.getElementById('finalizarCompra');
+finalizarCompra.addEventListener('click', event => {
+    localStorage.removeItem('productsShoppingCar');
+})

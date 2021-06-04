@@ -700,9 +700,9 @@ footer {
   }
   .other_products_small_img{
     max-height: 20vh;
-    max-width: 100%;
+    max-width: 100%!important;
     min-height: auto;
-    min-width: auto;
+    width: auto!important;
   }
 /* Otros porductos - Detalle del producto */
 

@@ -50,8 +50,9 @@
     <!-- FOOTER -->
     @include('common.footer')
 
-    <!-- FOOTER -->
-    @include('common.whatsapp')
+    <!-- ChatOnline -->
+    @include('common.chat_online')
+
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>

@@ -25,9 +25,12 @@
                         <span class="text-white">
                             Zona ind. Norte, av este oeste c/c norte sur, parcela 278 A. Valencia edo Carabobo
                         </span>
-                        <span class="text-white mt-1">
-                            +58 414 407 90 04
-                        </span>
+                        <div class="text-white mt-1">
+                            +58 424 421 44 74
+                        </div>
+                        <div class="text-white mt-1">
+                            +58 424 421 13 08
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-5 col-lg-auto ml-auto footer_nav my-md-4 order-3">

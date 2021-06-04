@@ -14,7 +14,7 @@ class WhatsappController extends Controller
     public function irAWhatsapp(Request $request)
     {
         $nombre = $request->nombre;
-        $email = $request->correo;
+        $correo = $request->correo;
         $amount = $request->total_amount;
 
         $total_products = json_decode($request->total_products, TRUE);
@@ -58,13 +58,13 @@ class WhatsappController extends Controller
         Compradores::create([
             'pedido_id'		=> $pedido_id,
             'nombre' 	    => $nombre,
-            'correo' 	    => $email,
+            'correo' 	    => $correo,
         ]);
 
         // Obtengo el numero de Whatsapp
         $numero = Configuraciones::where('title', 'whatsapp')->first()->description;
     	$mensaje_main = "https://api.whatsapp.com/send?phone=".$numero;
-    	$mensaje_datos_comprador ="&text="."Compra por sitio web%0A%0A".$nombre."%0A%0A"."Correo: ".$email."%0A%0A-------------%0A%0A";
+    	$mensaje_datos_comprador ="&text="."Compra por sitio web%0A%0A".$nombre."%0A%0A"."Correo: ".$correo."%0A%0A-------------%0A%0A";
 
     	$mensaje_productos = $productos_comprados."%0A%0A-------------%0A";
 

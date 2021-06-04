@@ -8,7 +8,7 @@ class Compradores extends Model
 {
     protected $table = 'compradores';
 
-    protected $fillable = ['nombre', 'telefono', 'documento_identidad', 'pedido_id'];
+    protected $fillable = ['nombre', 'correo', 'pedido_id'];
 
 
     public function pedido()

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-	Construganga - Tienda Virtual
+    Contrugangavalencia.com
 @endsection
 
 @section('header')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-	{{$product->title}}
+	{{$product->title}} - Contrugangavalencia.com
 @endsection
 
 @section('header')

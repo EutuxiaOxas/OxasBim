@@ -188,7 +188,6 @@ function updateBadgeQuantityShoppingcar(){
 
     // obtengo el span
     const carrito_badge = document.getElementById('carrito_badge');
-    console.log(carrito_badge)
 
     if( ProductsLocalStorage !== null ){
         // Llevo el string al formato JSON
@@ -226,4 +225,38 @@ function successProductAdd(){
 // Al cargar el sitio web
 $(window).on('load', function () {
     updateBadgeQuantityShoppingcar()
+})
+
+
+// Al abrir el modal de Datos
+const openModalDatos = document.getElementById('openModalDatos')
+
+openModalDatos.addEventListener('click', event => {
+    // Obtengo los datos del localstorage
+    let ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+
+    const total_products = document.getElementById('total_products');
+
+    total_products.value = ProductsLocalStorage
+
+    const total_amount = document.getElementById('total_amount');
+
+    // Llevo el string al formato JSON
+    arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+    let amount = 0;
+    // recorro los productos del localstorage
+    arrayProductsLocalStorage.forEach(product => {
+        let productId = product.id;
+        let quantity = product.quantity;
+        // busco los valores de ada producto
+        axios.get('/get/product-id/'+productId).then( function(response){
+            const { data } = response
+            let price = data.price
+            console.log(price)
+
+            amount+= parseInt(price*quantity);
+            total_amount.value = amount
+        });
+    });
+
 })

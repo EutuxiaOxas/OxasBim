@@ -44,7 +44,7 @@
             </div>
             <div class="modal-footer" >
                 <div hidden id="footerModalShoppingCar">
-                    <button id="boton_modal" class="btn btn btn-primary px-4" data-toggle="modal" data-dismiss="modal" data-target="#modalIrAWhatsapp">Finalizar en Whatsapp</button>
+                    <button id="openModalDatos" class="btn btn btn-primary px-4" data-toggle="modal" data-dismiss="modal" data-target="#modalIrAWhatsapp">Finalizar en Whatsapp</button>
                     <button type="button" id="vaciar_carrito_cart" class="btn btn btn-outline-danger">Vaciar Carrito</button>
                 </div>
             </div>
@@ -69,9 +69,8 @@
 
                 <form action="/ir/whatsapp" id="form_modal_whatsapp" method="POST" autocomplete="off">
                     @csrf
-                    <input type="hidden" id="productos_modal" name="productos">
-                    <input type="hidden" id="total_modal" name="total">
-                    <input type="hidden" id="pedido_id" name="pedido_id">
+                    <input type="hidden" id="total_products" name="total_products">
+                    <input type="hidden" id="total_amount" name="total_amount">
                     <div class="form-group">
                         <h5>Nombre y apellido</h5>
                         <input class="form-control" type="text" id="form_name" required maxlength="191" name="nombre" placeholder="Ingresa tu nombre y apellido">

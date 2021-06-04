@@ -37415,7 +37415,6 @@ function updateBadgeQuantityShoppingcar() {
   var ProductsLocalStorage = localStorage.getItem('productsShoppingCar'); // obtengo el span
 
   var carrito_badge = document.getElementById('carrito_badge');
-  console.log(carrito_badge);
 
   if (ProductsLocalStorage !== null) {
     // Llevo el string al formato JSON
@@ -37454,6 +37453,31 @@ function successProductAdd() {
 
 $(window).on('load', function () {
   updateBadgeQuantityShoppingcar();
+}); // Al abrir el modal de Datos
+
+var openModalDatos = document.getElementById('openModalDatos');
+openModalDatos.addEventListener('click', function (event) {
+  // Obtengo los datos del localstorage
+  var ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+  var total_products = document.getElementById('total_products');
+  total_products.value = ProductsLocalStorage;
+  var total_amount = document.getElementById('total_amount'); // Llevo el string al formato JSON
+
+  arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+  var amount = 0; // recorro los productos del localstorage
+
+  arrayProductsLocalStorage.forEach(function (product) {
+    var productId = product.id;
+    var quantity = product.quantity; // busco los valores de ada producto
+
+    axios.get('/get/product-id/' + productId).then(function (response) {
+      var data = response.data;
+      var price = data.price;
+      console.log(price);
+      amount += parseInt(price * quantity);
+      total_amount.value = amount;
+    });
+  });
 });
 
 /***/ }),

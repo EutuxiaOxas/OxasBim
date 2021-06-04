@@ -28,7 +28,7 @@
                         <div class="text-white mt-1">
                             +58 424 421 44 74
                         </div>
-                        <div class="text-white mt-1">
+                        <div class="col-12 text-white mt-1">
                             +58 424 421 13 08
                         </div>
                     </div>

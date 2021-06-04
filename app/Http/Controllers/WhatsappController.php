@@ -58,7 +58,7 @@ class WhatsappController extends Controller
         Compradores::create([
             'pedido_id'		=> $pedido_id,
             'nombre' 	    => $nombre,
-            'email' 	    => $email,
+            'correo' 	    => $email,
         ]);
 
         // Obtengo el numero de Whatsapp

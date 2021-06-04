@@ -38,7 +38,13 @@
                 </div>
 
                 <div id="containerBodyShoppingCard">
+                </div>
 
+                <div class="text-center" id="emptyShoppingCar">
+                    <strong class="text-lg">No tienes productos en el carrito de compras</strong>
+                    <div class="text-center">
+                        <img width="50%" src="{{ asset('empty.svg') }}" alt="carrito vacio">
+                    </div>
                 </div>
 
             </div>

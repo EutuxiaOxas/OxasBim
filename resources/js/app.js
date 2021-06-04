@@ -58,6 +58,7 @@ openModalCar.forEach(item => {
 
         //  selecciono el pie del modal
         const footerModalShoppingCar = document.getElementById('footerModalShoppingCar');
+        const emptyShoppingCar = document.getElementById('emptyShoppingCar');
 
         if( ProductsLocalStorage !== null ){
             // Llevo el string al formato JSON
@@ -131,10 +132,10 @@ openModalCar.forEach(item => {
             });
 
             footerModalShoppingCar.removeAttribute('hidden')
-
+            emptyShoppingCar.setAttribute('hidden', '')
         }else{
+            emptyShoppingCar.removeAttribute('hidden')
             footerModalShoppingCar.setAttribute('hidden', '')
-            containerBodyShoppingCard.textContent = 'No tienes productos agragados al carrito.'
         }
 
 
@@ -252,7 +253,6 @@ openModalDatos.addEventListener('click', event => {
         axios.get('/get/product-id/'+productId).then( function(response){
             const { data } = response
             let price = data.price
-            console.log(price)
 
             amount+= parseInt(price*quantity);
             total_amount.value = amount

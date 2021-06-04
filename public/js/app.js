@@ -37313,6 +37313,7 @@ openModalCar.forEach(function (item) {
     containerBodyShoppingCard.innerHTML = ''; //  selecciono el pie del modal
 
     var footerModalShoppingCar = document.getElementById('footerModalShoppingCar');
+    var emptyShoppingCar = document.getElementById('emptyShoppingCar');
 
     if (ProductsLocalStorage !== null) {
       // Llevo el string al formato JSON
@@ -37372,9 +37373,10 @@ openModalCar.forEach(function (item) {
         });
       });
       footerModalShoppingCar.removeAttribute('hidden');
+      emptyShoppingCar.setAttribute('hidden', '');
     } else {
+      emptyShoppingCar.removeAttribute('hidden');
       footerModalShoppingCar.setAttribute('hidden', '');
-      containerBodyShoppingCard.textContent = 'No tienes productos agragados al carrito.';
     }
   });
 }); // VAciar el carrito de compras
@@ -37473,7 +37475,6 @@ openModalDatos.addEventListener('click', function (event) {
     axios.get('/get/product-id/' + productId).then(function (response) {
       var data = response.data;
       var price = data.price;
-      console.log(price);
       amount += parseInt(price * quantity);
       total_amount.value = amount;
     });

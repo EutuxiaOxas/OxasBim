@@ -21,6 +21,14 @@
                     @else
                         <img src="" style="width: 70px; height: 70px;" alt="LOGO">
                     @endif
+                    <div class="row justify-content-center">
+                        <span class="text-white">
+                            Zona ind. Norte, av este oeste c/c norte sur, parcela 278 A. Valencia edo Carabobo
+                        </span>
+                        <span class="text-white mt-1">
+                            +58 414 407 90 04
+                        </span>
+                    </div>
                 </div>
                 <div class="col-12 col-md-5 col-lg-auto ml-auto footer_nav my-md-4 order-3">
                     <ul class="nav nav-sm nav-white nav-x-sm align-items-center">

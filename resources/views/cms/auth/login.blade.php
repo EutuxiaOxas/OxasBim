@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('header')
+    <meta name="robots" content="noindex,nofollow" />
+@endsection
+
 @section('captcha')
     {!! htmlScriptTagJsApi([
         'action' => 'homepage'

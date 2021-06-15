@@ -8,6 +8,9 @@
   <title>@yield('title')</title>
   <link rel="icon" type="image/png" sizes="16x16" href="{{asset('logo.png')}}">
 
+  {{-- Meta No indexar --}}
+  <meta name="robots" content="noindex,nofollow" />
+
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/AdminLTE/plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->

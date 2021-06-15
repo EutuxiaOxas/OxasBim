@@ -61,7 +61,7 @@
             <tr>
             <td>{{$comprador->id}}</td>
             <td>{{$comprador->nombre}}</td>
-            <td>{{$comprador->email}} </td>
+            <td>{{$comprador->correo}} </td>
             <td>
                 @php
                    $Ndia = $comprador->created_at->format("N");

@@ -11,6 +11,9 @@
 	<!-- Primary Meta Tags -->
 	<meta name="title" content="Contruganga - Productos en Tienda Virtual Básica">
 	<meta name="description" content="Tienda virtual para recolectar pedidos y redirigir las ventas a Whatsapp. Perfecta para activar Instagram Shop.">
+
+
+    <link rel="canonical" href="https://kabasto.com/productos" />
 @endsection
 
 @section('content')

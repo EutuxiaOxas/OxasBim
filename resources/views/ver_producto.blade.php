@@ -14,13 +14,13 @@
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="http://store.vzla.cc/">
+	<meta property="og:url" content="https://construgangavalencia.com/producto/{{$product->slug}}">
 	<meta property="og:title" content="{{$product->title}}">
 	<meta property="og:description" content="{{$product->title}} - ${{number_format($product->price, 2)}}">
 	<meta property="og:image" content="{{asset('storage/'.$product->image)}}">
 
 	{{-- url canonical --}}
-	<link rel="canonical" href="https://construgangavalencia.com/" />
+	<link rel="canonical" href="https://construgangavalencia.com/producto/{{$product->slug}}" />
 @endsection
 
 @section('content')

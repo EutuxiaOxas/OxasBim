@@ -11,6 +11,19 @@
     <!-- Primary Meta Tags -->
     <meta name="title" content="Construganga Valencia">
     <meta name="description" content="">
+
+    <style>
+        .img_banner_principal{
+            width: 100%;
+            height: 45vh;
+            object-fit: cover;
+        }
+        @media only screen and (max-width: 996px) {
+            .img_banner_principal{
+                height: auto;
+            }
+        }
+    </style>
 @endsection
 
 @section('content')

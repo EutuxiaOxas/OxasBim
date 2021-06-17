@@ -6,8 +6,7 @@
                 @foreach ($sliders as $slider)
                     <div <?php if ($contador==1) { echo 'class="carousel-item active"' ; } else {
                         echo 'class="carousel-item"' ; } ?>>
-                        <img src="{{ asset('storage/' . $slider->image) }}"
-                            style="width: 100%; height: 45vh; object-fit: cover;" class="d-block w-100" alt="...">
+                        <img src="{{ asset('storage/' . $slider->image) }}" class="d-block w-100 img_banner_principal" alt="{{ $slider->title }}">
                         <div class="carousel_body">
                             <h2>{{ $slider->title }}</h2>
                             <p>{{ $slider->description }}</p>

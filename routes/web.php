@@ -86,6 +86,7 @@ Route::middleware('landing')->group(function () {
 
 	Route::post('/guardar/publicidad', 'Cms\PublicidadController@guardarPublicidad')->name('publicidad.store');
 	Route::post('/actualizar/publicidad/{id}', 'Cms\PublicidadController@actualizarPublicidad')->name('publicidad.update');
+    Route::post('/cms/eliminar/publicidad/{id}', 'Cms\PublicidadController@eliminarPublicidad')->name('publicidad.destroy');
 });
 
 Route::middleware('tienda')->group(function () {

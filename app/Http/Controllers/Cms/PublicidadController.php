@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Cms;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Publicidad;
-use Storage; 
+use Storage;
 use Str;
 
 class PublicidadController extends Controller
@@ -54,7 +54,7 @@ class PublicidadController extends Controller
     	            'link' => $request->link,
     	            'image' => $file,
     	        ]);
-    	        
+
     	        return back()->with('message', 'Publicidad actualizada con éxito');
     	    } else {
     	        return back()->with('message', 'No se pudo actualizar la Publicidad');
@@ -66,5 +66,19 @@ class PublicidadController extends Controller
 
     	    return back()->with('message', 'Publicidad actualizada con éxito');
     	}
+    }
+
+    public function eliminarPublicidad($id){
+        $publicidad = Publicidad::find($id);
+        $deleted = Storage::disk('public')->delete($publicidad->image);
+
+        if(isset($deleted) || $publicidad->image == null)
+        {
+            $publicidad->delete();
+            return back()->with('error', 'Punlicidad eliminada con éxito');
+        } else {
+            return back()->with('error', 'No se pudo eliminar la publicidad');
+        }
+
     }
 }

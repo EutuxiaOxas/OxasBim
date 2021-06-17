@@ -605,7 +605,7 @@ footer {
     background-position: center;
     width: 100%;
     overflow: hidden;
-    height: 9rem;
+    height: 12rem;
 }
 @media only screen and (max-width: 600px) {
     .img_container_others_banner {

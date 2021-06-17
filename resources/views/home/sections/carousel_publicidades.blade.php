@@ -6,11 +6,11 @@
     <div class="owl-carousel owl-theme" id="destacados_banners">
         @foreach($publicidades as $publicidad)
         {{-- <div class="bg-no-repeat bg-cover bg-center w-full h-24 md:h-32 xl:h-36 overflow-hidden"></div> --}}
-            <div class="item img_container_others_banner shadow-md rounded-md" style="background-image: url('{{asset('storage/'.$publicidad->image)}}');">
-                <a href="{{$publicidad->link}}">
-                    <img class="img_others_banner" src="">
-                </a>
-            </div>
+            <a href="{{$publicidad->link}}">
+                <div class="item img_container_others_banner shadow-md rounded-md" style="background-image: url('{{asset('storage/'.$publicidad->image)}}');">
+                    {{-- <img class="img_others_banner" src=""> --}}
+                </div>
+            </a>
         @endforeach
     </div>
 </section>

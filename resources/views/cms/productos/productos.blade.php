@@ -43,7 +43,7 @@
             <i class="fas fa-minus"></i></button>
         </div>
     </div>
-    <div class="card-body p-0">
+    <div class="card-body p-0" style="overflow-x: scroll;">
         <table class="table table-striped projects">
             <thead>
                 <tr>
@@ -64,12 +64,12 @@
                     <img src="{{asset('storage/'. $producto->image)}}" width="30">
                 </td>
                 <td>{{$producto->title}}</td>
-                <td>{{$producto->quantity}}</td>              
+                <td>{{$producto->quantity}}</td>
                 <td>{{$producto->category->title}}</td>
                 <td>{{number_format($producto->price, 2)}} $</td>
                 <td>
                     <a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>
-                    <button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>	
+                    <button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>
                 </td>
                 </tr>
                 @endforeach
@@ -113,7 +113,7 @@
         let formEliminar = document.getElementById('eliminar_form')
 
         formEliminar.submit();
-    }); 
+    });
 
     if(eliminarButtons)
     {
@@ -121,7 +121,7 @@
             button.addEventListener('click', (e) => {
                 let id = e.target.id,
                     message = e.target.parentNode.parentNode.children[2].textContent;
-                
+
                 modalEliminar(id, message)
             });
         });

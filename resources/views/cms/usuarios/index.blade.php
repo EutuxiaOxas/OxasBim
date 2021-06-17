@@ -5,7 +5,7 @@
 
 
 @section('content')
-    
+
     <section class="content-header px-0">
         <div class="container-fluid px-0">
           <div class="row mb-2 px-0">
@@ -114,7 +114,7 @@
                             <input type="submit" id="crear_user_submit" class="btn btn-sm btn-primary px-5" value="Crear Usuario">
                             <small id="emailHelp" style="display: none;" class="form-text text-danger col-12 px-1">Las contraseñas no coinciden.</small>
                         </div>
-                      </div>                    
+                      </div>
                   </div>
                 </form>
               </div>
@@ -138,7 +138,7 @@
                 </div>
             </div>
         </div>
-        
+
       <div class="row">
         <div class="col px-0">
             <div class="card">
@@ -149,7 +149,7 @@
                       <i class="fas fa-minus"></i></button>
                   </div>
                 </div>
-                <div class="card-body p-0">
+                <div class="card-body p-0" style="overflow-x: scroll;">
                   <table class="table table-striped projects">
                       <thead>
                           <tr>
@@ -256,7 +256,7 @@
                 </div>
                 <div class="modal-body" >
                     <div id="eliminar_user">
-                        
+
                     </div>
                     <form action="" id="eliminar_form" method="POST">
                         @csrf
@@ -358,7 +358,7 @@
             console.log(container);
             container.style.display = 'none';
             container.lastElementChild.innerHTML = '';
-            
+
 
             //----------VERIFICACION CAMPOS FORM--------------
 

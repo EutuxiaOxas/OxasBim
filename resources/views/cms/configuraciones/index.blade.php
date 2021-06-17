@@ -123,7 +123,7 @@
                       <i class="fas fa-minus"></i></button>
                   </div>
                 </div>
-                <div class="card-body p-0">
+                <div class="card-body p-0" style="overflow-x: scroll;">
                   <table class="table table-striped projects">
                       <thead>
                           <tr>
@@ -265,7 +265,7 @@
                       <i class="fas fa-minus"></i></button>
                   </div>
                 </div>
-                <div class="card-body p-0">
+                <div class="card-body p-0" style="overflow-x: scroll;">
                   <table class="table table-striped projects">
                       <thead>
                           <tr>

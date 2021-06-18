@@ -599,6 +599,17 @@ footer {
     justify-content: center;
 }
 
+.img_banner_principal{
+    width: 100%;
+    height: 45vh;
+    object-fit: cover;
+}
+@media only screen and (max-width: 996px) {
+    .img_banner_principal{
+        height: auto;
+    }
+}
+
 .img_container_others_banner {
     background-repeat: no-repeat;
     background-size: cover;

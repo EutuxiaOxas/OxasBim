@@ -1,29 +1,32 @@
 @extends('layouts.app')
 
 @section('title')
-    Contrugangavalencia.com
+    Suministros Médicos en Venezuela - HeredadMedical.com
+    {{-- Contrugangavalencia.com --}}
 @endsection
 
 @section('header')
     {{-- precargar imagenes --}}
     <link rel="preload" href="{{asset('logo.png')}}" as="image">
 
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="Construganga Valencia">
-    <meta name="description" content="">
+    <meta name="robots" content="index,follow"/>
 
-    <style>
-        .img_banner_principal{
-            width: 100%;
-            height: 45vh;
-            object-fit: cover;
-        }
-        @media only screen and (max-width: 996px) {
-            .img_banner_principal{
-                height: auto;
-            }
-        }
-    </style>
+    <!-- Primary Meta Tags -->
+    {{-- <meta name="title" content="Construganga Valencia"> --}}
+    <meta name="title" content="Suministros médicos en venezuela - HeredadMedical.com">
+    <meta name="description" content="Todo tipo de suministros médicos al alcance de tu mano. Envíos a toda venezuela">
+    <meta name="keywords" content="abastos y supermercados en venezuela">
+
+    <!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://heredadmedical.com/">
+	<meta property="og:title" content="Suministros médicos en venezuela - HeredadMedical.com">
+	<meta property="og:description" content="Todo tipo de suministros médicos al alcance de tu mano. Envíos a toda venezuela">
+	<meta property="og:image" content="{{ asset( 'home.webp' ) }}">
+
+    {{-- url canonical --}}
+	<link rel="canonical" href="https://heredadmedical.com/" />
+
 @endsection
 
 @section('content')
@@ -40,7 +43,6 @@
     @include('home.sections.productos')
 
     @include('home.sections.productos_pequeños')
-
 
 @endsection
 

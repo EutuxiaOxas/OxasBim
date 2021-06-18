@@ -1,19 +1,38 @@
 @extends('layouts.app')
 
 @section('title')
-	Productos - Contrugangavalencia.com
+	{{-- Productos  - Contrugangavalencia.com --}}
+    Suministros Médicos en Valencia - HeredadMedical
 @endsection
 
 @section('header')
+
+    {{-- precargar imagenes --}}
+    <link rel="preload" href="{{asset('logo.png')}}" as="image">
+
+    <meta name="robots" content="index,follow"/>
+
+    <!-- Primary Meta Tags -->
+    {{-- <meta name="title" content="Construganga Valencia"> --}}
+    <meta name="title" content="Suministros médicos en Valencia - HeredadMedical.com">
+    <meta name="description" content="Todo tipo de suministros médicos al alcance de tu mano. Envíos gratis en Valencia. Envíos a toda venezuela">
+    <meta name="keywords" content="abastos y supermercados en venezuela">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://heredadmedical.com/productos">
+    <meta property="og:title" content="Suministros médicos en Valencia - HeredadMedical.com">
+    <meta property="og:description" content="Todo tipo de suministros médicos al alcance de tu mano. Envíos a toda venezuela. Envíos gratis en Valencia">
+    <meta property="og:image" content="{{ asset( 'home.webp' ) }}">
+
+    {{-- url canonical --}}
+    <link rel="canonical" href="https://heredadmedical.com/productos" />
 	{{-- precargar imagenes --}}
 	<link rel="preload" href="{{asset('logo.png')}}" as="image">
 
 	<!-- Primary Meta Tags -->
-	<meta name="title" content="Contruganga - Productos en Tienda Virtual Básica">
-	<meta name="description" content="Tienda virtual para recolectar pedidos y redirigir las ventas a Whatsapp. Perfecta para activar Instagram Shop.">
+	{{-- <meta name="title" content="Contruganga - Productos en Tienda Virtual Básica"> --}}
 
-
-    <link rel="canonical" href="https://kabasto.com/productos" />
 @endsection
 
 @section('content')

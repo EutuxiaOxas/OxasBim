@@ -51,7 +51,7 @@
     @include('common.footer')
 
     <!-- ChatOnline -->
-    @include('common.chat_online')
+    {{-- @include('common.chat_online') --}}
 
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

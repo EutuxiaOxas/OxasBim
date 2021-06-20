@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-12 text-center py-3 copyring-container">
                     {{-- <p class="my-3">Construganga VLN CA. Todos los derechos reservados @php echo date('Y'); @endphp </p> --}}
-                    <p class="my-3">Heredad Medical C.A. Rif.  Todos los derechos reservados @php echo date('Y'); @endphp </p>
+                    <p class="my-3">Heredad Medical C.A. Rif. J-50091652-3 Todos los derechos reservados @php echo date('Y'); @endphp </p>
                     <small> © Sitio desarrollado por <a href="https://oxas.tech/" target="_blank">oxas.tech</a></small>
                 </div>
             </div>

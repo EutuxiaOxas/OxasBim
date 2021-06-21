@@ -3,8 +3,8 @@
   @foreach($small_products as $small_product)
    <div class="item" itemscope itemtype="https://schema.org/Product">
      <div class="other_products_small">
-      <a class="enlace_other" href="{{route('producto.show', $small_product->slug)}}" itemprop="url">
-        <img class="other_products_small_img" src="{{asset('storage/'.$small_product->image)}}" itemprop="image">
+      <a class="enlace_other" href="{{route('producto.show', $small_product->slug)}}" itemprop="url" aria-label="ir a ver el detalle del producto {{$producto->title}}">
+        <img class="other_products_small_img" src="{{asset('storage/'.$small_product->image)}}" itemprop="image" alt="imagen de {{ $small_product->title }}">
       </a>
      </div>
    </div>

@@ -1,6 +1,6 @@
 <section class="container-fluid my-5 px-2 px-md-4 mb-4">
     <div class="mb-2">
-        <h5 class="text-rubik color-primary text-lg font-semibold mb-0">Nuestros últimos productos</h5>
+        <h3 class="text-rubik color-primary text-lg font-semibold mb-0">Nuestros últimos productos</h3>
         <p class="text-rubik">Revisa nuestras ofertas de nuevo inventario</p>
     </div>
     <div>

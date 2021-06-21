@@ -15,6 +15,7 @@
                         <div class="col-3 col-lg-2">
                             <div class="container_img_modal_cart shadow-md">
                                 <img class="img_modal_cart" src="" alt="Imagen Producto en carrito">
+                                <span class="deleteProductShoppingCar">x</span>
                             </div>
                         </div>
                         <div class="col-9 col-lg-10 px-0 pl-4">
@@ -28,16 +29,15 @@
                                 </div>
                                 <div class="col-6 col-md-2">
                                     <select class="form-control cantidad_producto_cart">
-
                                     </select>
                                 </div>
                             </div>
-                            <input type="hidden" value="${producto.id}">
                         </div>
+                        <input type="hidden" class="idProductCardModalShoppingCar">
                     </div>
                 </div>
 
-                <div id="containerBodyShoppingCard">
+                <div class="px-2" id="containerBodyShoppingCard">
                 </div>
 
                 <div class="text-center" id="emptyShoppingCar">
@@ -48,8 +48,8 @@
                 </div>
 
             </div>
-            <div class="modal-footer" >
-                <div hidden id="footerModalShoppingCar">
+            <div class="modal-footer">
+                <div hidden id="footerModalShoppingCar" class="row">
                     <button id="openModalDatos" class="btn btn btn-primary px-4" data-toggle="modal" data-dismiss="modal" data-target="#modalIrAWhatsapp">Finalizar en Whatsapp</button>
                     <button type="button" id="vaciar_carrito_cart" class="btn btn btn-outline-danger">Vaciar Carrito</button>
                 </div>

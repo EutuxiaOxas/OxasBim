@@ -70,16 +70,19 @@ openModalCar.forEach(item => {
             arrayProductsLocalStorage.forEach(product => {
                 newCardProductShoppingCar = cardExample.firstElementChild.cloneNode(true);
                 // Obtengo los campos del card  clonado
+                let idProductCardModalShoppingCar = newCardProductShoppingCar.querySelector('.idProductCardModalShoppingCar');
                 let newTitle = newCardProductShoppingCar.querySelector('.title_modal_cart');
                 let newPrice = newCardProductShoppingCar.querySelector('.price_modal_cart');
                 let newImage = newCardProductShoppingCar.querySelector('.img_modal_cart');
                 let selectQuantity = newCardProductShoppingCar.querySelector('.cantidad_producto_cart');
+                let deleteProductShoppingCar = newCardProductShoppingCar.querySelector('.deleteProductShoppingCar');
                 // obtengo el id del producto y la cantidad agregada
                 let productId = product.id;
                 let quantity= product.quantity;
                 selectQuantity.id = productId;
+                idProductCardModalShoppingCar.value = productId;
                 // Obtengo los datos del producto
-                 axios.get('/get/product-id/'+productId).then( function(response){
+                axios.get('/get/product-id/'+productId).then( function(response){
                     const { data } = response
                     let title = data.title
                     let price = data.price
@@ -110,8 +113,14 @@ openModalCar.forEach(item => {
                     }
 
                 });
+
+                // evento de click para elminar producto del carrito
+                deleteProductShoppingCar.addEventListener('click', event => {
+                    deleteProductInShoppingCar(productId);
+                })
                 // Inserto el card en el modal
                 containerBodyShoppingCard.appendChild(newCardProductShoppingCar);
+
 
                 // cambio el local storage en caso de que cambie el select del producto
                 selectQuantity.addEventListener('change', event => {
@@ -191,17 +200,25 @@ function updateBadgeQuantityShoppingcar(){
     const carrito_badge = document.getElementById('carrito_badge');
 
     if( ProductsLocalStorage !== null ){
+
         // Llevo el string al formato JSON
         arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
-        let quantityTotal = 0;
-        arrayProductsLocalStorage.forEach(product => {
-            quantityTotal+= parseInt(product.quantity) ;
-        });
+        if( arrayProductsLocalStorage.length > 0 ){
+            let quantityTotal = 0;
+            arrayProductsLocalStorage.forEach(product => {
+                quantityTotal+= parseInt(product.quantity) ;
+            });
 
-        if( quantityTotal > 0 ){
-            carrito_badge.removeAttribute('hidden')
-            carrito_badge.firstElementChild.textContent = quantityTotal
+            if( quantityTotal > 0 ){
+                carrito_badge.removeAttribute('hidden')
+                carrito_badge.firstElementChild.textContent = quantityTotal
+            }else{
+                carrito_badge.setAttribute('hidden', '')
+            }
         }else{
+
+            emptyShoppingCar.removeAttribute('hidden')
+            footerModalShoppingCar.setAttribute('hidden', '')
             carrito_badge.setAttribute('hidden', '')
         }
     }else{
@@ -221,6 +238,56 @@ function successProductAdd(){
         messageSuccess.style.visibility = "hidden";
         messageSuccess.classList.remove('transitionClean');
     }
+}
+
+function deleteProductInShoppingCar(product_id){
+    // Obtengo los datos del localstorage
+    let ProductsLocalStorage = localStorage.getItem('productsShoppingCar');
+
+    // Llevo el string al formato JSON
+    arrayProductsLocalStorage = JSON.parse(ProductsLocalStorage);
+
+    let productInShppingCar = false;
+    let keyArray = 0;
+
+    arrayProductsLocalStorage.forEach(product => {
+        if (product_id == product.id ){
+            productInShppingCar = true;
+        }
+        if (!productInShppingCar){
+            keyArray++;
+        }
+    });
+
+    if (productInShppingCar) {
+        // Se elimina el producto del carrito de compras
+        arrayProductsLocalStorage.splice(keyArray, 1);
+        // Elminar el card del carrito
+        removeCardProductShoppingCar(product_id);
+    }
+    // Almaceno el producot en el localStorage
+    localStorage.setItem('productsShoppingCar',JSON.stringify(arrayProductsLocalStorage));
+    // actualizo el span de carrito de compras
+    updateBadgeQuantityShoppingcar();
+}
+
+// Funcion para eliminar el card element del producto en el carrito de compras
+function removeCardProductShoppingCar ( product_id ){
+
+    // Contenedor de todos los card de productos
+    let containerBodyShoppingCard = document.getElementById('containerBodyShoppingCard');
+
+    let cardItems = containerBodyShoppingCard.querySelectorAll('.idProductCardModalShoppingCar');
+    cardItems.forEach(cardItem => {
+
+        let idCardProduct = cardItem.value;
+
+        if( idCardProduct == product_id){
+            cardItem.parentNode.remove();
+        }
+
+    });
+
 }
 
 // Al cargar el sitio web

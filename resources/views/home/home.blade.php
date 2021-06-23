@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('title')
-    Suministros Médicos en Venezuela - HeredadMedical.com
+    {{-- Suministros Médicos en Venezuela - HeredadMedical.com --}}
+    Tienda de ropa en Venezuela - AlpargataStore.com
     {{-- Contrugangavalencia.com --}}
 @endsection
 

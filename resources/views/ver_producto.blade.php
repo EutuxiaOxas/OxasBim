@@ -2,7 +2,7 @@
 
 @section('title')
 	{{-- {{$product->title}} - Contrugangavalencia.com --}}
-    {{$product->title}} - HeredadMedical.com
+    {{$product->title}} - AlpargataStore.com
 @endsection
 
 @section('header')

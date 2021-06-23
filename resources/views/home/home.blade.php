@@ -13,19 +13,24 @@
 
     <!-- Primary Meta Tags -->
     {{-- <meta name="title" content="Construganga Valencia"> --}}
-    <meta name="title" content="Suministros médicos en venezuela - HeredadMedical.com">
+    {{-- <meta name="title" content="Suministros médicos en venezuela - HeredadMedical.com">
     <meta name="description" content="Todo tipo de suministros médicos al alcance de tu mano. Envíos a toda venezuela">
-    <meta name="keywords" content="abastos y supermercados en venezuela">
+    <meta name="keywords" content="abastos y supermercados en venezuela"> --}}
+
+    <meta name="title" content="Tienda de ropa en Venezuela - AlpargataStore.com">
+    <meta name="description" content="Ropa para todos los gustos. Envíos a toda venezuela">
+    <meta name="keywords" content="ropa en venezuela">
 
     <!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://heredadmedical.com/">
-	<meta property="og:title" content="Suministros médicos en venezuela - HeredadMedical.com">
-	<meta property="og:description" content="Todo tipo de suministros médicos al alcance de tu mano. Envíos a toda venezuela">
-	<meta property="og:image" content="{{ asset( 'home.webp' ) }}">
+	{{-- <meta property="og:url" content="https://heredadmedical.com/"> --}}
+    <meta property="og:url" content="https://alpargatastore.com/">
+	<meta property="og:title" content="Tienda de ropa en Venezuela - AlpargataStore.com">
+	<meta property="og:description" content="Ropa para todos los gustos. Envíos a toda venezuela">
+	<meta property="og:image" content="{{ asset( 'logo.png' ) }}">
 
     {{-- url canonical --}}
-	<link rel="canonical" href="https://heredadmedical.com/" />
+	<link rel="canonical" href="https://alpargatastore.com/" />
 
 @endsection
 
@@ -45,5 +50,6 @@
     @include('home.sections.productos_pequeños')
 
 @endsection
+
 
 

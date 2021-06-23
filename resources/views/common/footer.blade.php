@@ -26,7 +26,7 @@
                     <div class="row justify-content-center">
                         <span class="text-white">
                             {{-- Zona ind. Norte, av este oeste c/c norte sur, parcela 278 A. Valencia edo Carabobo --}}
-                            Valencia - Carabobo, Venezuela
+                            San Diego - Carabobo, Venezuela
                         </span>
                         {{-- <div class="text-white mt-1">
                             +58 424 421 44 74
@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-12 text-center py-3 copyring-container">
                     {{-- <p class="my-3">Construganga VLN CA. Todos los derechos reservados @php echo date('Y'); @endphp </p> --}}
-                    <p class="my-3">Heredad Medical C.A. Rif. J-50091652-3 Todos los derechos reservados @php echo date('Y'); @endphp </p>
+                    <p class="my-3">Alpargata Skate C.A. Rif. J- Todos los derechos reservados @php echo date('Y'); @endphp </p>
                     <small> © Sitio desarrollado por <a href="https://oxas.tech/" target="_blank">oxas.tech</a></small>
                 </div>
             </div>

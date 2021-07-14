@@ -1,41 +1,31 @@
 @extends('layouts.app')
 
 @section('title')
-	{{-- Productos  - Contrugangavalencia.com --}}
-    Suministros Médicos en Valencia - HeredadMedical
+	Productos  - Contrugangavalencia.com
 @endsection
 
 @section('header')
 
     {{-- precargar imagenes --}}
     <link rel="preload" href="{{asset('logo.png')}}" as="image">
-
     <meta name="robots" content="index,follow"/>
 
     <!-- Primary Meta Tags -->
-    {{-- <meta name="title" content="Construganga Valencia"> --}}
-    {{-- <meta name="title" content="Suministros médicos en Valencia - HeredadMedical.com">
-    <meta name="description" content="Todo tipo de suministros médicos al alcance de tu mano. Envíos gratis en Valencia. Envíos a toda venezuela">
-    <meta name="keywords" content="abastos y supermercados en venezuela"> --}}
-
-    <meta name="title" content="Tienda de ropa en Venezuela - AlpargataStore.com">
-    <meta name="description" content="Ropa para todos los gustos. Envíos a toda venezuela">
-    <meta name="keywords" content="ropa en valencia">
+	<meta name="title" content="Contruganga - Productos en Tienda Virtual">
+	<meta name="description" content="Tienda virtual de construganga valencia">
+    <meta name="keywords" content="productos de construccion en valencia">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alpargatastore.com/productos">
-    <meta property="og:title" content="Tienda de ropa en Venezuela - AlpargataStore.com">
-    <meta property="og:description" content="Ropa para todos los gustos. Envíos a toda venezuela">
-    <meta property="og:image" content="{{ asset( 'home.webp' ) }}">
+    <meta property="og:title" content="Contruganga - Productos en Tienda Virtual">
+    <meta property="og:description" content="Tienda virtual de construganga valencia">
+    <meta property="og:image" content="{{ asset( 'logo.png' ) }}">
 
     {{-- url canonical --}}
-    <link rel="canonical" href="https://alpargatastore.com/productos" />
+    <link rel="canonical" href="https://construgangavalencia.com/productos" />
 	{{-- precargar imagenes --}}
 	<link rel="preload" href="{{asset('logo.png')}}" as="image">
-
-	<!-- Primary Meta Tags -->
-	{{-- <meta name="title" content="Contruganga - Productos en Tienda Virtual Básica"> --}}
 
 @endsection
 

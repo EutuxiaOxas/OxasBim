@@ -4,8 +4,7 @@
     box-sizing: border-box;
 }
 .color-primary {
-    /* color: #db6e00 !important; */
-    color: #40a4cf !important;
+    color: #db6e00 !important;
 }
 .color-secondary {
     color: #012111 !important;
@@ -387,8 +386,7 @@
 }
 .btn-search {
     /*cambiar para otro modelo*/
-    /* background-color: #db6e00 !important; */
-    background-color: #4fc16f !important;
+    background-color: #db6e00 !important;
 
     border-radius: 3px;
     width: 100%;
